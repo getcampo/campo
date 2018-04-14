@@ -15,5 +15,12 @@ module Campo
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Use redis cache store in all env
+    config.cache_store = :redis_cache_store, {
+      url: ENV["REDIS_URL"],
+      namespace: 'cache',
+      expires_in: 1.day
+    }
   end
 end
