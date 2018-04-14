@@ -1,15 +1,13 @@
 default: &default
   adapter: redis
   url: <%= ENV["REDIS_URL"] %>
+  channel_prefix: cable
 
 development:
   <<: *default
-  channel_prefix: campo_development
 
 test:
   <<: *default
-  channel_prefix: campo_test
 
 production:
   <<: *default
-  channel_prefix: campo_production
