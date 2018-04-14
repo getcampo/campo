@@ -24,3 +24,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.env.production
+.env.local
+.env.*.local
