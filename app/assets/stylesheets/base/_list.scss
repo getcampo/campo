@@ -1,0 +1,19 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  padding: 16px;
+  line-height: 16px;
+}
+
+a.list-item {
+  text-decoration: none;
+  color: var(--primary-text-color);
+
+  &:hover {
+    background: #f5f5f5;
+  }
+}
