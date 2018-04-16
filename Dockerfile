@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   gnupg \
   libpq-dev \
   nodejs \
+  postgresql-client \
   ruby \
   ruby-dev \
   zlib1g-dev
