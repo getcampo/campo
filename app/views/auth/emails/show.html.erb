@@ -1,0 +1,7 @@
+<%= form_tag auth_email_path, method: 'post', class: 'form' do %>
+  <div class="form-group">
+    <%= label_tag 'Email' %>
+    <%= text_field_tag 'email' %>
+  </div>
+  <button type="submit" class="button button-primary">Send Link</button>
+<% end %>
