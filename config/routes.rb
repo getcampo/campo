@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :auth do
     resource :email, only: [:show, :create]
-    get 'email/callback', to: 'email#callback'
   end
+
+  get '/auth/:provider/callback', to: 'sessions#create'
 end

@@ -82,6 +82,7 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.5.7)
     hiredis (0.6.1)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
@@ -110,6 +111,9 @@ GEM
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
     pg (1.0.0)
     public_suffix (3.0.2)
     puma (3.11.4)
@@ -209,6 +213,7 @@ DEPENDENCIES
   hiredis
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  omniauth
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.0)
