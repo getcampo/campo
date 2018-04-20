@@ -1,0 +1,17 @@
+<h3>Register</h3>
+
+<%= form_for @user do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </p>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+  <button type="submit">Submit</button>
+<% end %>

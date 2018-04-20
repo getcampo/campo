@@ -37,6 +37,12 @@
       <div class="main-content">
         <%= yield %>
       </div>
+      <div>
+        <% if Current.user %>
+          <%= Current.user.name %>
+          <%= link_to 'sign out', session_path, method: :delete %>
+        <% end %>
+      </div>
     </main>
   </body>
 </html>

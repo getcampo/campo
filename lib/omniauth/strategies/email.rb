@@ -3,6 +3,10 @@ module OmniAuth
     class Email
       include OmniAuth::Strategy
 
+      def request_phase
+        call_app!
+      end
+
       def callback_phase
         return fail!(:invalid_credentials) unless email_from_token
         super

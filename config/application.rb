@@ -24,5 +24,12 @@ module Campo
       namespace: 'cache',
       expires_in: 1.day
     }
+
+    # Disable unnessary generator
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+    end
   end
 end
