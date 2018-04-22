@@ -1,3 +1,27 @@
+<style media="screen">
+  .demo {
+    padding: 24px;
+    background: #f5f5f5;
+  }
+
+  .demo-row {
+    display: flex;
+  }
+
+  .demo-column {
+    flex-grow: 1;
+    margin: 0 8px;
+  }
+
+  .demo-column:first-child {
+    margin-left: 0;
+  }
+
+  .demo-column:last-child {
+    margin-right: 0;
+  }
+</style>
+
 <div class="toolbar toolbar-fixed toolbar-white">
   <div class="toolbar-title">
     Campo UI
@@ -10,6 +34,7 @@
     <a href="#forms" class="list-item">Forms</a>
     <a href="#dropdowns" class="list-item">Dropdowns</a>
     <a href="#toolbars" class="list-item">Toolbars</a>
+    <a href="#cards" class="list-item">Cards</a>
   </div>
 </nav>
 
@@ -218,6 +243,28 @@
         </div>
         <div class="toolbar-action">
           <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3 id="cards">Cards</h3>
+      <div class="demo">
+        <div class="demo-row">
+          <% 3.times do %>
+            <div class="card demo-column">
+              <div class="card-header">
+                <h3 class="card-title">Card header</h3>
+                <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+              </div>
+              <div class="card-body">
+                Content text
+              </div>
+              <div class="card-footer">
+                <button type="button" class="button button-flat button-primary">Action 1</button>
+                <button type="button" class="button button-flat button-primary">Action 2</button>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </section>

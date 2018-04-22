@@ -1,0 +1,28 @@
+.card {
+  background: white;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.card-title {
+  padding: 16px;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-footer {
+  display: flex;
+
+  .button-flat {
+    margin: 4px;
+  }
+}
