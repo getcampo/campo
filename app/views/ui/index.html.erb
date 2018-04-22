@@ -159,7 +159,7 @@
       <h3 id="dropdowns">Dropdowns</h3>
       <div class="dropdown" data-controller="dropdown">
         <button type="button" class="button button-raised" data-action="dropdown#open">Dropdown button</button>
-        <div class="dropdown-menu" data-target="dropdown.menu">
+        <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -167,7 +167,7 @@
       </div>
       <div class="dropdown" data-controller="dropdown">
         <button type="button" class="button button-raised" data-action="dropdown#open">Menu align right</button>
-        <div class="dropdown-menu dropdown-menu-right" data-target="dropdown.menu">
+        <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -175,7 +175,7 @@
       </div>
       <div class="dropdown" data-controller="dropdown">
         <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top</button>
-        <div class="dropdown-menu dropdown-menu-top" data-target="dropdown.menu">
+        <div class="dropdown-menu dropdown-menu-top">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -183,7 +183,7 @@
       </div>
       <div class="dropdown" data-controller="dropdown">
         <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top right</button>
-        <div class="dropdown-menu dropdown-menu-top dropdown-menu-right" data-target="dropdown.menu">
+        <div class="dropdown-menu dropdown-menu-top dropdown-menu-right">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -193,56 +193,53 @@
     <section>
       <h3 id="toolbars">Toolbars</h3>
       <div class="toolbar">
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
-        </div>
+        <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
         <div class="toolbar-title">
           Title
         </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+          </div>
         </div>
       </div>
       <br>
       <div class="toolbar toolbar-primary">
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
-        </div>
+        <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
         <div class="toolbar-title">
           Title
         </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+          </div>
         </div>
       </div>
       <br>
       <div class="toolbar toolbar-secondary">
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
-        </div>
+        <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
         <div class="toolbar-title">
           Title
         </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
-        </div>
-        <div class="toolbar-action">
-          <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
+        <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+            <a href="#" class="dropdown-item">Item</a>
+          </div>
         </div>
       </div>
     </section>
@@ -254,7 +251,14 @@
             <div class="card demo-column">
               <div class="card-header">
                 <h3 class="card-title">Card header</h3>
-                <button type="button" class="button button-icon"><i class="material-icons">more_vert</i></button>
+                <div class="dropdown" data-controller="dropdown">
+                  <button type="button" class="button button-icon"  data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item">Item</a>
+                    <a href="#" class="dropdown-item">Item</a>
+                    <a href="#" class="dropdown-item">Item</a>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 Content text

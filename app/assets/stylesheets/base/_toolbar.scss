@@ -1,5 +1,7 @@
 .toolbar {
   display: flex;
+  align-items: center;
+  padding: 4px;
 }
 
 .toolbar-fixed {
@@ -34,11 +36,7 @@
 }
 
 .toolbar-title {
-  padding: 16px;
+  padding: 12px;
   line-height: 24px;
   flex-grow: 1;
-}
-
-.toolbar-action {
-  padding: 4px;
 }
