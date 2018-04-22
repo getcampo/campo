@@ -7,6 +7,7 @@
 <nav class="side-nav">
   <div class="list">
     <a href="#buttons" class="list-item">Buttons</a>
+    <a href="#forms" class="list-item">Forms</a>
   </div>
 </nav>
 
@@ -56,6 +57,62 @@
         <a class="button button-floating button-secondary">B</a>
         <a class="button button-floating" disabled>B</a>
       </p>
+    </section>
+    <section>
+      <h3 id="forms">Forms</h3>
+      <form class="form" action="#forms">
+        <div class="form-group">
+          <label>Textfield</label>
+          <input type="text">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Column</label>
+            <input type="text">
+          </div>
+          <div class="form-group">
+            <label>Column</label>
+            <input type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Textarea</label>
+          <textarea rows="5"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Select</label>
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Checkbox</label>
+          <label>
+            <input type="checkbox">Checkbox 1
+          </label>
+          <label>
+            <input type="checkbox">Checkbox 2
+          </label>
+          <label>
+            <input type="checkbox">Checkbox 3
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Radio</label>
+          <label>
+            <input type="radio" name="radio">Radio 1
+          </label>
+          <label>
+            <input type="radio" name="radio">Radio 2
+          </label>
+          <label>
+            <input type="radio" name="radio">Radio 3
+          </label>
+        </div>
+        <button type="submit" class="button button-raised button-primary">Submit</button>
+      </form>
     </section>
   </div>
 </main>

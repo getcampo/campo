@@ -1,0 +1,56 @@
+.form {
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    line-height: 24px;
+    width: 100%;
+    outline: 0;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 1px var(--primary-color);
+    }
+  }
+
+  select {
+    height: 42px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 8px;
+    height: 16px;
+  }
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+
+  .form-group {
+    flex-grow: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
