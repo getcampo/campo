@@ -1,0 +1,15 @@
+<% content_for :body do %>
+  <div class="toolbar">
+    <div class="toolbar-title">
+      Campo
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>
+
+<%= render template: 'layouts/application' %>

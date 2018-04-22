@@ -10,21 +10,6 @@
   </head>
 
   <body>
-    <div class="toolbar">
-      <div class="toolbar-title">
-        Toolbar
-      </div>
-    </div>
-    <nav class="side-nav">
-      <div class="list">
-        <a class="list-item active" href="#">active</a>
-        <a class="list-item" href="#">item</a>
-      </div>
-    </nav>
-    <main>
-      <div class="container">
-        <%= yield %>
-      </div>
-    </main>
+    <%= content_for?(:body) ? yield(:body) : yield %>
   </body>
 </html>
