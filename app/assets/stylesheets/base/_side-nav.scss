@@ -11,3 +11,7 @@
     font-weight: bold;
   }
 }
+
+.side-nav + main {
+  margin-left: 240px;
+}

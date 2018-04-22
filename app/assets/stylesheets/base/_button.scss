@@ -1,0 +1,106 @@
+.button {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  vertical-align: middle;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.button[disabled] {
+  pointer-events: none;
+}
+
+.button-raised {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 2px;
+  min-width: 88px;
+  color: var(--text-primary-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &.button-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  &.button-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
+.button-flat {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 2px;
+  min-width: 88px;
+  color: var(--text-primary-color);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &.button-primary {
+    color: var(--primary-color);
+  }
+
+  &.button-secondary {
+    color: var(--secondary-color);
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
+.button-floating {
+  padding: 16px;
+  width: 56px;
+  border: 0;
+  border-radius: 28px;
+  vertical-align: middle;
+  color: var(--text-primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &.button-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  &.button-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}

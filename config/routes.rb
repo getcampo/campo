@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :destroy]
   get '/auth/:provider/callback', to: 'sessions#create', as: :auth_callback
+
+  if Rails.env.development?
+    get '/ui', to: 'ui#index'
+  end
 end
