@@ -10,38 +10,20 @@
   </head>
 
   <body>
+    <div class="toolbar">
+      <div class="toolbar-title">
+        Toolbar
+      </div>
+    </div>
     <nav class="side-nav">
-      <div class="side-nav-header">
-        <div class="brand">
-          Campo
-        </div>
-      </div>
-      <div class="side-nav-body">
-        <div class="list">
-          <a class="list-item active" href="#">active</a>
-          <% 30.times do %>
-          <a class="list-item" href="#">item</a>
-          <% end %>
-        </div>
-      </div>
-      <div class="side-nav-footer">
-        Footer
+      <div class="list">
+        <a class="list-item active" href="#">active</a>
+        <a class="list-item" href="#">item</a>
       </div>
     </nav>
     <main>
-      <div class="toolbar">
-        <div class="toolbar-title">
-          Toolbar
-        </div>
-      </div>
-      <div class="main-content">
+      <div class="container">
         <%= yield %>
-      </div>
-      <div>
-        <% if Current.user %>
-          <%= Current.user.name %>
-          <%= link_to 'sign out', session_path, method: :delete %>
-        <% end %>
       </div>
     </main>
   </body>

@@ -1,32 +1,13 @@
 .side-nav {
   position: fixed;
-  top: 0;
+  top: 56px;
   left: 0;
   bottom: 0;
   width: 240px;
-  display: flex;
-  flex-direction: column;
   background: #fafafa;
-  z-index: 4;
-  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.15);
+  overflow: auto;
 
   .list-item.active {
     font-weight: bold;
   }
-}
-
-.side-nav-header {
-}
-
-.side-nav-body {
-  overflow: auto;
-}
-
-.side-nav .brand {
-  padding: 16px;
-  line-height: 24px;
-}
-
-.side-nav-footer {
-  padding: 16px;
 }

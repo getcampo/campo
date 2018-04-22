@@ -2,14 +2,16 @@ html {
 }
 
 body {
+  box-sizing: border-box;
 }
 
 main {
+  margin-top: 56px;
   margin-left: 240px;
-
+  padding: 16px;
 }
 
-.main-content {
-  margin-top: 56px;
-  padding: 16px;
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }
