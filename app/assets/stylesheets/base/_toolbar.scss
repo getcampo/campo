@@ -1,14 +1,48 @@
 .toolbar {
+  display: flex;
+}
+
+.toolbar-fixed {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 4;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.toolbar-white {
   background: white;
+}
+
+.toolbar-primary {
+  background: var(--primary-color);
+  color: white;
+
+  .button-icon {
+    color: white;
+  }
+}
+
+.toolbar-secondary {
+  background: var(--secondary-color);
+  color: white;
+
+  .button-icon {
+    color: white;
+  }
 }
 
 .toolbar-title {
   padding: 16px;
   line-height: 24px;
+  flex-grow: 1;
+}
+
+.toolbar-action {
+  padding: 4px;
+
+  .button-icon:hover {
+    background: transparent;
+  }
 }

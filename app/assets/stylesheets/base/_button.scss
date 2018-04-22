@@ -106,3 +106,33 @@
     opacity: 0.3;
   }
 }
+
+.button-icon {
+  line-height: 0;
+  width: 48px;
+  padding: 12px;
+  border: 0;
+  border-radius: 24px;
+  color: var(--text-primary-color);
+  background: transparent;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &.button-primary {
+    color: var(--primary-color);
+  }
+
+  &.button-secondary {
+    color: var(--secondary-color);
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
