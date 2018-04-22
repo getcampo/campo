@@ -20,6 +20,18 @@
   .demo-column:last-child {
     margin-right: 0;
   }
+
+  .demo .dialog {
+    width: 100%;
+  }
+
+  .demo .dialog-container {
+    position: relative;
+  }
+
+  .demo .dialog-background {
+    position: absolute;
+  }
 </style>
 
 <div class="toolbar toolbar-fixed toolbar-white">
@@ -35,6 +47,7 @@
     <a href="#dropdowns" class="list-item">Dropdowns</a>
     <a href="#toolbars" class="list-item">Toolbars</a>
     <a href="#cards" class="list-item">Cards</a>
+    <a href="#dialogs" class="list-item">Dialogs</a>
   </div>
 </nav>
 
@@ -252,7 +265,7 @@
               <div class="card-header">
                 <h3 class="card-title">Card header</h3>
                 <div class="dropdown" data-controller="dropdown">
-                  <button type="button" class="button button-icon"  data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+                  <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
                   <div class="dropdown-menu dropdown-menu-right">
                     <a href="#" class="dropdown-item">Item</a>
                     <a href="#" class="dropdown-item">Item</a>
@@ -269,6 +282,51 @@
               </div>
             </div>
           <% end %>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3 id="dialogs">Dialogs</h3>
+      <div class="demo">
+        <div class="dialog open">
+          <div class="dialog-container">
+            <div class="dialog-content">
+              <div class="dialog-header">
+                <h4 class="dialog-title">Dialog Title</h4>
+                <button type="button" class="button button-icon"><i class="material-icons">close</i></button>
+              </div>
+              <div class="dialog-body">
+                Dialog Content
+              </div>
+              <div class="dialog-footer">
+                <button type="button" class="button button-flat button-primary">Action 1</button>
+                <button type="button" class="button button-flat button-primary">Action 2</button>
+              </div>
+            </div>
+            <div class="dialog-background"></div>
+          </div>
+        </div>
+      </div>
+      <h4>Dialog toggle</h4>
+      <div class="dialog" data-controller="dialog">
+        <button type="button" class="button button-raised button-primary" data-action="dialog#open">Dialog Toggle</button>
+        <div class="dialog-container">
+          <div class="dialog-content">
+            <div class="dialog-header">
+              <h4 class="dialog-title">Dialog Title</h4>
+              <button type="button" class="button button-icon" data-action="dialog#close"><i class="material-icons">close</i></button>
+            </div>
+            <div class="dialog-body">
+              <% 50.times do %>
+                <p>Long content Long content Long content Long content Long content Long content Long conten Long content Long content Long content Long contentt</p>
+              <% end %>
+            </div>
+            <div class="dialog-footer">
+              <button type="button" class="button button-flat button-primary">Action 1</button>
+              <button type="button" class="button button-flat button-primary">Action 2</button>
+            </div>
+          </div>
+          <div class="dialog-background" data-action="click->dialog#close"></div>
         </div>
       </div>
     </section>
