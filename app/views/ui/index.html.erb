@@ -8,6 +8,7 @@
   <div class="list">
     <a href="#buttons" class="list-item">Buttons</a>
     <a href="#forms" class="list-item">Forms</a>
+    <a href="#dropdowns" class="list-item">Dropdowns</a>
   </div>
 </nav>
 
@@ -113,6 +114,41 @@
         </div>
         <button type="submit" class="button button-raised button-primary">Submit</button>
       </form>
+    </section>
+    <section>
+      <h3 id="dropdowns">Dropdowns</h3>
+      <div class="dropdown" data-controller="dropdown">
+        <button type="button" class="button button-raised" data-action="dropdown#open">Dropdown button</button>
+        <div class="dropdown-menu" data-target="dropdown.menu">
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+        </div>
+      </div>
+      <div class="dropdown" data-controller="dropdown">
+        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align right</button>
+        <div class="dropdown-menu dropdown-menu-right" data-target="dropdown.menu">
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+        </div>
+      </div>
+      <div class="dropdown" data-controller="dropdown">
+        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top</button>
+        <div class="dropdown-menu dropdown-menu-top" data-target="dropdown.menu">
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+        </div>
+      </div>
+      <div class="dropdown" data-controller="dropdown">
+        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top right</button>
+        <div class="dropdown-menu dropdown-menu-top dropdown-menu-right" data-target="dropdown.menu">
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+          <a class="dropdown-item" href="#">Dropdown item</a>
+        </div>
+      </div>
     </section>
   </div>
 </main>
