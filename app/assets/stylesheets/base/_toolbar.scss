@@ -4,6 +4,18 @@
   padding: 4px;
 }
 
+.toolbar-action {
+  flex: 0 0 48px;
+
+  &:first-child {
+    flex: 0 0 56px;
+  }
+}
+
+.toolbar-title {
+  flex: 1;
+}
+
 .toolbar-fixed {
   position: fixed;
   top: 0;
