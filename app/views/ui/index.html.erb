@@ -52,19 +52,23 @@
   </div>
 </div>
 
-<nav id="side-nav" class="side-nav open">
-  <div class="list">
-    <% %w(buttons forms dropdowns toolbars cards dialogs lists).each do |name| %>
-      <a href="#<%= name %>" class="list-item">
-        <div class="list-item-content">
-          <%= name.capitalize %>
-        </div>
-      </a>
-    <% end %>
+<nav id="side-nav" class="side-nav side-nav-permanent">
+  <div class="side-nav-content">
+    <div class="list">
+      <% %w(buttons forms dropdowns toolbars cards dialogs lists).each do |name| %>
+        <a href="#<%= name %>" class="list-item">
+          <div class="list-item-content">
+            <%= name.capitalize %>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+  <div class="side-nav-background" data-controller="toggle" data-target="#side-nav">
   </div>
 </nav>
 
-<main>
+<main class="main">
   <div class="container">
     <section>
       <h3 id="buttons">Buttons</h3>
