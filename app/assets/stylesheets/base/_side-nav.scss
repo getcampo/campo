@@ -1,4 +1,9 @@
 .side-nav {
+  display: none;
+}
+
+.side-nav.open {
+  display: block;
   position: fixed;
   top: 56px;
   left: 0;
@@ -6,12 +11,8 @@
   width: 240px;
   background: #fafafa;
   overflow: auto;
-
-  .list-item.active {
-    font-weight: bold;
-  }
 }
 
-.side-nav + main {
+.side-nav.open + main {
   margin-left: 240px;
 }

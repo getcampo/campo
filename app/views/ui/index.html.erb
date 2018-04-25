@@ -45,14 +45,14 @@
 
 <div class="toolbar toolbar-fixed toolbar-white">
   <div class="toolbar-action">
-    <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
+    <button type="button" class="button button-icon" data-controller="side-nav-toggle" data-action="side-nav-toggle#toggle" data-target="#side-nav"><i class="material-icons">menu</i></button>
   </div>
   <div class="toolbar-title">
     Campo UI
   </div>
 </div>
 
-<nav class="side-nav">
+<nav id="side-nav" class="side-nav open">
   <div class="list">
     <% %w(buttons forms dropdowns toolbars cards dialogs lists).each do |name| %>
       <a href="#<%= name %>" class="list-item">
