@@ -1,7 +1,10 @@
 <% content_for :body do %>
-  <div class="toolbar">
+  <div class="toolbar toolbar-fixed toolbar-primary">
+    <div class="toolbar-action">
+      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+    </div>
     <div class="toolbar-title">
-      Campo
+      Sign in
     </div>
   </div>
 
@@ -12,4 +15,4 @@
   </main>
 <% end %>
 
-<%= render template: 'layouts/application' %>
+<%= render template: 'layouts/base' %>

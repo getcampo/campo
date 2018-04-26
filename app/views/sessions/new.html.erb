@@ -1,4 +1,20 @@
-<div class="sessions">
-  <h3>Select Auth Method</h3>
-  <a href="/auth/email/new">Email</a>
+<div class="session">
+  <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Welcome back!</h3>
+      </div>
+      <div class="card-body">
+      <form class="form" action="/session" method="post">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" value="">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" value="">
+        </div>
+        <button type="submit" class="button button-raised button-primary">Sign in</button>
+      </form>
+    </div>
+  </div>
 </div>
