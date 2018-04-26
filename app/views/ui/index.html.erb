@@ -45,14 +45,14 @@
 
 <div class="toolbar toolbar-fixed toolbar-white">
   <div class="toolbar-action">
-    <button type="button" class="button button-icon" data-controller="toggle" data-target="#side-nav"><i class="material-icons">menu</i></button>
+    <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
   </div>
   <div class="toolbar-title">
     Campo UI
   </div>
 </div>
 
-<nav id="side-nav" class="side-nav side-nav-permanent">
+<nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">
   <div class="side-nav-content">
     <div class="list">
       <% %w(buttons forms dropdowns toolbars cards dialogs lists).each do |name| %>
@@ -64,7 +64,7 @@
       <% end %>
     </div>
   </div>
-  <div class="side-nav-background" data-controller="toggle" data-target="#side-nav">
+  <div class="side-nav-background" data-action="click->side-nav#close">
   </div>
 </nav>
 
@@ -343,13 +343,13 @@
         </div>
       </div>
       <h4>Dialog toggle</h4>
-      <button type="button" class="button button-raised button-primary" data-controller="toggle" data-target="#dialog-demo">Dialog Toggle</button>
+      <button type="button" class="button button-raised button-primary" data-toggle="#dialog-demo" data-target="#dialog-demo">Dialog Toggle</button>
       <div id="dialog-demo" class="dialog" data-controller="dialog">
         <div class="dialog-container">
           <div class="dialog-content">
             <div class="dialog-header">
               <h4 class="dialog-title">Dialog Title</h4>
-              <button type="button" class="button button-icon" data-controller="toggle" data-target="#dialog-demo"><i class="material-icons">close</i></button>
+              <button type="button" class="button button-icon" data-action="dialog#close"><i class="material-icons">close</i></button>
             </div>
             <div class="dialog-body">
               <% 50.times do %>
@@ -361,7 +361,7 @@
               <button type="button" class="button button-flat button-primary">Action 2</button>
             </div>
           </div>
-          <div class="dialog-background" data-controller="toggle" data-target="#dialog-demo"></div>
+          <div class="dialog-background" data-action="click->dialog#close"></div>
         </div>
       </div>
     </section>
