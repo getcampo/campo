@@ -1,5 +1,5 @@
 class Auth::EmailsController < ApplicationController
-  layout 'session'
+  layout 'base'
 
   def show
   end

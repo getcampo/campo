@@ -6,23 +6,21 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create identity and redirect to sign up" do
-    assert_difference "Identity.count" do
-      get auth_callback_url(provider: 'email', token: OmniAuth::Strategies::Email.token_for_email('account@example.com'))
-    end
-    assert_redirected_to new_user_path
+  test "should sign in with username and password" do
+    user = User.create(name: 'Foo', username: 'foo', email: 'foo@example.com', password: 'password')
+    post session_path, params: { login: 'foo', password: 'password' }
+    assert_redirected_to root_url
   end
 
-  test "should not create identity if token error" do
-    assert_no_difference "Identity.count" do
-      get auth_callback_url(provider: 'email', token: 'wrong')
-    end
+  test "should sign in with email and password" do
+    user = User.create(name: 'Foo', username: 'foo', email: 'foo@example.com', password: 'password')
+    post session_path, params: { login: 'foo@example.com', password: 'password' }
+    assert_redirected_to root_url
   end
 
-  test "should sign in if identity belongs to user" do
-    Identity.create(provider: 'email', uid: 'account@example.com')
-    assert_no_difference "Identity.count" do
-      get auth_callback_url(provider: 'email', token: OmniAuth::Strategies::Email.token_for_email('account@example.com'))
-    end
+  test "should not sign in with wrong password" do
+    user = User.create(name: 'Foo', username: 'foo', email: 'foo@example.com', password: 'password')
+    post session_path, params: { login: 'foo@example.com', password: 'wrong_password' }
+    assert_redirected_to new_session_url
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :load_identity, :require_unbind_identity
+  layout 'base'
 
   def new
     @user = User.new
@@ -7,26 +7,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+
     if @user.save
-      Current.identity.update(user: @user)
       sign_in(@user)
       redirect_to root_url
     else
-      render :new, notice: 'Fail'
+      render :new
     end
   end
 
   private
 
-  def require_unbind_identity
-    if Current.identity.nil?
-      redirect_to new_session_url
-    elsif Current.identity.user.present?
-      redirect_to root_url
-    end
-  end
-
   def user_params
-    params.require(:user).permit(:name, :username, :email)
+    params.require(:user).permit(:name, :username, :email, :password)
   end
 end

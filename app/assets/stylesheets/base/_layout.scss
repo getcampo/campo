@@ -5,7 +5,7 @@ body {
   box-sizing: border-box;
 }
 
-main {
+.main {
   margin-top: 56px;
   padding: 16px;
 }
@@ -13,4 +13,8 @@ main {
 .container {
   max-width: 960px;
   margin: 0 auto;
+}
+
+.divider {
+  margin: 8px 0;
 }

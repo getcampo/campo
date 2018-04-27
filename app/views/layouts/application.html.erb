@@ -6,9 +6,18 @@
     <div class="toolbar-title">
       Campo
     </div>
-    <div class="toolbar-action">
-      <a href="/session/new" class="button button-flat">Sign in</a>
-    </div>
+    <% if Current.user %>
+      <div class="toolbar-action">
+        <a href="#" class="button button-flat"><%= Current.user.name %></a>
+      </div>
+      <div class="toolbar-action">
+        <a href="/session" class="button button-flat" data-method="delete" data-remote="true">Sign out</a>
+      </div>
+    <% else %>
+      <div class="toolbar-action">
+        <a href="/session/new" class="button button-flat">Sign in</a>
+      </div>
+    <% end %>
   </div>
 
   <nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">

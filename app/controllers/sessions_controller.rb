@@ -1,17 +1,17 @@
 class SessionsController < ApplicationController
-  layout 'session'
+  layout 'base'
 
   def new
   end
 
   def create
-    identity = Identity.find_or_create_by!(provider: auth_hash[:provider], uid: auth_hash[:uid])
-    set_identity(identity)
-    if identity.user
-      sign_in(identity.user)
-      redirect_to root_path
+    user = User.where("lower(username) = lower(:login) or lower(email) = lower(:login)", login: params[:login]).first
+
+    if user.authenticate(params[:password])
+      sign_in(user)
+      redirect_to session[:return_path] || root_path
     else
-      redirect_to new_user_path
+      redirect_to new_session_url, alert: 'Wrong login or password!'
     end
   end
 
