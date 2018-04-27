@@ -90,6 +90,7 @@ CREATE TABLE public.users (
     name character varying NOT NULL,
     email character varying NOT NULL,
     email_verified boolean DEFAULT false,
+    password_digest character varying NOT NULL,
     bio text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -196,7 +197,6 @@ CREATE UNIQUE INDEX index_users_on_lowercase_username ON public.users USING btre
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('0'),
 ('20180416142547'),
 ('20180416150208');
 
