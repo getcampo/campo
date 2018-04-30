@@ -31,6 +31,46 @@
     margin-right: 8px;
     height: 16px;
   }
+
+  .form-text,
+  .valid-message {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .form-text {
+    color: var(--text-secondary-color);
+  }
+
+  .form-group.is-valid {
+    label,
+    .form-text,
+    .valid-message {
+      color: var(--success-color);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      border-color: var(--success-color);
+    }
+  }
+
+  .form-group.is-invalid {
+    label,
+    .form-text,
+    .valid-message {
+      color: var(--error-color);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      border-color: var(--error-color);
+    }
+  }
 }
 
 .form-group {

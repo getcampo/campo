@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    collection do
+      post :check_username
+      post :check_email
+    end
+  end
 
   namespace :auth do
     resource :email, only: [:show, :create]
