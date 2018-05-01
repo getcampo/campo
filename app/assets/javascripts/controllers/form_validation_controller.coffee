@@ -1,4 +1,4 @@
-application.register "form-validator", class extends Stimulus.Controller
+application.register "form-validation", class extends Stimulus.Controller
   connect: ->
     controller = this
     form = this.element
@@ -22,27 +22,28 @@ application.register "form-validator", class extends Stimulus.Controller
     .then((response) -> response.json())
     .then((json) ->
       formGroup = element.closest('.form-group')
+      message = formGroup.querySelector('.validate-message')
       if json.valid
-        formGroup.classList.remove('is-invalid')
-        formGroup.classList.add('is-valid')
+        formGroup.classList.remove('invalid')
+        formGroup.classList.add('valid')
+        message?.remove()
       else
-        formGroup.classList.add('is-invalid')
-        formGroup.classList.remove('is-valid')
-      message = formGroup.querySelector('.valid-message')
-      unless message
-        message = document.createElement('div')
-        message.className = 'valid-message'
+        formGroup.classList.add('invalid')
+        formGroup.classList.remove('valid')
+        unless message
+          message = document.createElement('div')
+          message.className = 'validate-message'
+        message.textContent = json.message
         formGroup.insertBefore(message, element.nextSibling)
-      message.textContent = json.message
     )
 
   formSubmit: (event) ->
     form = event.target
-    pendingElements = form.querySelectorAll('.form-group:not(.is-valid):not(.is-invalid) [data-validate-url]')
+    pendingElements = form.querySelectorAll('.form-group:not(.valid):not(.invalid) [data-validate-url]')
     if pendingElements.length > 0
       event.preventDefault()
       pendingElements.forEach (element) ->
         element.dispatchEvent(new Event('change'))
     else
-      if form.querySelector('.is-invalid')
+      if form.querySelector('.invalid')
         event.preventDefault()

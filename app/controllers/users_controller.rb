@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to root_url
     else
-      render :new
+      render
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     errors = user.errors[params[:attribute]]
     render json: {
       valid: errors.empty?,
-      message: errors.first || 'Looks good!'
+      message: errors.first
     }
   end
 

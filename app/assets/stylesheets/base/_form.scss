@@ -33,7 +33,7 @@
   }
 
   .form-text,
-  .valid-message {
+  .validate-message {
     font-size: 14px;
     margin-top: 8px;
   }
@@ -42,29 +42,10 @@
     color: var(--text-secondary-color);
   }
 
-  .form-group.is-valid {
+  .form-group.invalid {
     label,
     .form-text,
-    .valid-message {
-      color: var(--success-color);
-    }
-
-    input[type="text"],
-    input[type="password"],
-    textarea,
-    select {
-      border-color: var(--success-color);
-
-      &:focus {
-        box-shadow: 0 0 1px var(--success-color);
-      }
-    }
-  }
-
-  .form-group.is-invalid {
-    label,
-    .form-text,
-    .valid-message {
+    .validate-message {
       color: var(--error-color);
     }
 
