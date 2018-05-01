@@ -1,11 +1,10 @@
 application.register "form-validator", class extends Stimulus.Controller
   connect: ->
-    for fieldElement in this.element.querySelectorAll('[data-validate-remote]')
-      fieldElement.addEventListener 'change', (event) ->
-        _element = event.target
-        fetch(_element.dataset['validateRemote'], {
+    this.element.querySelectorAll('[data-validate-remote]').forEach (element) ->
+      element.addEventListener 'change', (event) ->
+        fetch(element.dataset['validateRemote'], {
           method: 'post',
-          body: "value=#{_element.value}",
+          body: "value=#{encodeURIComponent(element.value)}",
           headers: {
             'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
             'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -14,7 +13,7 @@ application.register "form-validator", class extends Stimulus.Controller
         })
         .then((response) -> response.json())
         .then((json) ->
-          formGroup = _element.closest('.form-group')
+          formGroup = element.closest('.form-group')
           if json.valid
             formGroup.classList.remove('is-invalid')
             formGroup.classList.add('is-valid')
@@ -25,6 +24,6 @@ application.register "form-validator", class extends Stimulus.Controller
           unless message
             message = document.createElement('div')
             message.className = 'valid-message'
-            formGroup.insertBefore(message, _element.nextSibling)
+            formGroup.insertBefore(message, element.nextSibling)
           message.textContent = json.message
         )
