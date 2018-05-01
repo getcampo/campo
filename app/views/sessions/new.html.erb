@@ -13,6 +13,11 @@
           <h3 class="card-title">Welcome back!</h3>
         </div>
         <div class="card-body">
+          <% if flash[:alert] %>
+            <div class="flash flash-alert">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
           <%= form_with url: session_path, class: 'form' do |form| %>
             <div class="form-group">
               <%= form.label :login, 'Username or Email' %>
