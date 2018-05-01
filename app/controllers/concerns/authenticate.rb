@@ -8,19 +8,23 @@ module Authenticate
   private
 
   def authenticate
-    if session[:user_id]
-      unless Current.user = User.find_by(id: session[:user_id])
+    if cookies[:auth_token]
+      unless Current.user = User.find_by(auth_token: cookies[:auth_token])
         sign_out
       end
     end
   end
 
   def sign_in(user)
-    session[:user_id] = user.id
+    cookies[:auth_token] = {
+      value: user.auth_token,
+      expires: 1.month,
+      httponly: true
+    }
   end
 
   def sign_out
-    session[:user_id] = nil
+    cookies[:auth_token] = nil
   end
 
   def set_identity(identity)

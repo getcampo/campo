@@ -92,6 +92,7 @@ CREATE TABLE public.users (
     email_verified boolean DEFAULT false,
     password_digest character varying NOT NULL,
     bio text,
+    auth_token character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -174,6 +175,13 @@ CREATE UNIQUE INDEX index_identities_on_uid_and_provider ON public.identities US
 --
 
 CREATE INDEX index_identities_on_user_id ON public.identities USING btree (user_id);
+
+
+--
+-- Name: index_users_on_auth_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_auth_token ON public.users USING btree (auth_token);
 
 
 --

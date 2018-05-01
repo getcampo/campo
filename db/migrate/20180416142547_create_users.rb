@@ -7,8 +7,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :email_verified, default: false
       t.string :password_digest, null: false
       t.text :bio
+      t.string :auth_token, null: false
 
       t.timestamps
+
+      t.index :auth_token, unique: true
     end
 
     reversible do |dir|
