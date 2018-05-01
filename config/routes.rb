@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     collection do
-      post :check_username
-      post :check_email
+      post 'validate/:attribute', to: 'users#validate', constraints: { attribute: /name|username|email|password/ }
     end
   end
 

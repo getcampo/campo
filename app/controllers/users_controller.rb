@@ -16,20 +16,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def check_username
-    user = User.new(username: params[:value])
+  # constraints by routes
+  # attribute: /name|username|email|password/
+  def validate
+    user = User.new(params[:attribute] => params[:value])
     user.valid?
-    errors = user.errors[:username]
-    render json: {
-      valid: errors.empty?,
-      message: errors.first || 'Looks good!'
-    }
-  end
-
-  def check_email
-    user = User.new(email: params[:value])
-    user.valid?
-    errors = user.errors[:email]
+    errors = user.errors[params[:attribute]]
     render json: {
       valid: errors.empty?,
       message: errors.first || 'Looks good!'

@@ -3,14 +3,14 @@ application.register "form-validator", class extends Stimulus.Controller
     controller = this
     form = this.element
 
-    form.querySelectorAll('[data-validate-remote]').forEach (element) ->
+    form.querySelectorAll('[data-validate-url]').forEach (element) ->
       element.addEventListener 'change', controller.validateRemote
 
     form.addEventListener 'ajax:before', controller.formSubmit
 
   validateRemote: (event) ->
     element = event.target
-    fetch(element.dataset['validateRemote'], {
+    fetch(element.dataset['validateUrl'], {
       method: 'post',
       body: "value=#{encodeURIComponent(element.value)}",
       headers: {
@@ -38,7 +38,7 @@ application.register "form-validator", class extends Stimulus.Controller
 
   formSubmit: (event) ->
     form = event.target
-    pendingElements = form.querySelectorAll('.form-group:not(.is-valid):not(.is-invalid) [data-validate-remote]')
+    pendingElements = form.querySelectorAll('.form-group:not(.is-valid):not(.is-invalid) [data-validate-url]')
     if pendingElements.length > 0
       event.preventDefault()
       pendingElements.forEach (element) ->
