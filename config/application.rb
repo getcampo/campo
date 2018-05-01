@@ -26,6 +26,10 @@ module Campo
     }
 
     config.action_mailer.default_url_options = { host: ENV['HOST'] }
+    # disable field_with_error class
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      html_tag
+    end
 
     # Disable unnessary generator
     config.generators do |generate|

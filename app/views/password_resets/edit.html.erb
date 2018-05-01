@@ -13,22 +13,7 @@
           <h3 class="card-title">Reset your password</h3>
         </div>
         <div class="card-body">
-          <% if flash[:alert] %>
-            <div class="flash flash-alert">
-              <%= flash[:alert] %>
-            </div>
-          <% end %>
-          <%= form_with model: @user, url: password_reset_url(token: params[:token]), class: 'form' do |form| %>
-            <div class="form-group">
-              <%= form.label :password, 'Password' %>
-              <%= form.password_field :password %>
-            </div>
-            <div class="form-group">
-              <%= form.label :password_confirmation, 'Confirm password' %>
-              <%= form.password_field :password_confirmation %>
-            </div>
-            <button type="submit" class="button button-raised button-primary button-full-width">Change password</button>
-          <% end %>
+          <%= render 'form' %>
         </div>
       </div>
     </div>
