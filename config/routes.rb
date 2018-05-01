@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'validate/:attribute', to: 'users#validate', constraints: { attribute: /name|username|email|password/ }
     end
   end
+  resource :password_reset, only: [:show, :create, :edit, :update]
 
   namespace :auth do
     resource :email, only: [:show, :create]

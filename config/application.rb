@@ -25,6 +25,8 @@ module Campo
       expires_in: 1.day
     }
 
+    config.action_mailer.default_url_options = { host: ENV['HOST'] }
+
     # Disable unnessary generator
     config.generators do |generate|
       generate.helper false
