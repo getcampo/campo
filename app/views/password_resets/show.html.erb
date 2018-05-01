@@ -19,10 +19,10 @@
             </div>
           <% end %>
           <%= form_with url: password_reset_url, class: 'form' do |form| %>
-            <div class="form-group">
+            <div class="form-field">
               <%= form.label :email, 'Email' %>
               <%= form.text_field :email %>
-              <div class="form-text">
+              <div class="form-helper">
                 Enter your email and we will send your a link to reset your password.
               </div>
             </div>

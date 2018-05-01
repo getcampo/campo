@@ -32,19 +32,19 @@
     height: 16px;
   }
 
-  .form-text,
+  .form-helper,
   .validate-message {
     font-size: 14px;
     margin-top: 8px;
   }
 
-  .form-text {
+  .form-helper {
     color: var(--text-secondary-color);
   }
 
-  .form-group.invalid {
+  .form-field.invalid {
     label,
-    .form-text,
+    .form-helper,
     .validate-message {
       color: var(--error-color);
     }
@@ -62,7 +62,7 @@
   }
 }
 
-.form-group {
+.form-field {
   margin-bottom: 16px;
 }
 
@@ -70,7 +70,7 @@
   display: flex;
   width: 100%;
 
-  .form-group {
+  .form-field {
     flex-grow: 1;
     margin-left: 8px;
     margin-right: 8px;
