@@ -54,6 +54,10 @@
     textarea,
     select {
       border-color: var(--success-color);
+
+      &:focus {
+        box-shadow: 0 0 1px var(--success-color);
+      }
     }
   }
 
@@ -69,6 +73,10 @@
     textarea,
     select {
       border-color: var(--error-color);
+
+      &:focus {
+        box-shadow: 0 0 1px var(--error-color);
+      }
     }
   }
 }
