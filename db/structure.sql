@@ -45,8 +45,9 @@ CREATE TABLE public.ar_internal_metadata (
 CREATE TABLE public.identities (
     id bigint NOT NULL,
     user_id bigint,
-    uid character varying,
     provider character varying,
+    uid character varying,
+    name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

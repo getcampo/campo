@@ -7,13 +7,12 @@ Rails.application.routes.draw do
     end
   end
   resource :password_reset, only: [:show, :create, :edit, :update]
-
-  namespace :auth do
-    resource :email, only: [:show, :create]
-  end
-
   resource :session, only: [:new, :create, :destroy]
-  get '/auth/:provider/callback', to: 'sessions#create', as: :auth_callback
+
+  get '/auth/:provider/callback', to: 'auths#callback', as: :auth_callback
+  namespace :auth do
+    resources :users, only: [:new, :create]
+  end
 
   if Rails.env.development?
     get '/ui', to: 'ui#index'

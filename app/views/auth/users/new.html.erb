@@ -1,0 +1,34 @@
+<div class="toolbar toolbar-fixed toolbar-primary">
+  <div class="toolbar-action">
+    <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+  </div>
+  <div class="toolbar-title">Sign up</div>
+</div>
+
+<main class="main">
+  <div class="container">
+    <div class="session">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Complete account info</h3>
+        </div>
+        <div class="card-body">
+          <%= render 'form' %>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="list">
+          <a href="/session/new" class="list-item">
+            <div class="list-item-content align-center">
+              Sign in
+            </div>
+            <div class="list-item-icon">
+              <i class="material-icons">chevron_right</i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
