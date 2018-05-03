@@ -1,12 +1,12 @@
 <%= form_with url: session_path, id: 'sign-in-form', class: 'form' do |form| %>
   <div class="form-field">
     <%= form.label :login, 'Username or Email' %>
-    <%= form.text_field :login, value: params[:login] %>
+    <%= form.text_field :login, value: params[:login], autofocus: true %>
   </div>
   <div class="form-field <%= 'invalid' if @sign_in_error %>">
     <label for="password">
       Password
-      <a href="/password_reset" class="text-muted float-right">Forgot password?</a>
+      <a href="/password_reset" class="text-muted float-right" tabindex="-1">Forgot password?</a>
     </label>
     <%= form.password_field :password %>
     <% if @sign_in_error %>
