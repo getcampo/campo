@@ -13,11 +13,6 @@
           <h3 class="card-title">Sign in</h3>
         </div>
         <div class="card-body">
-          <% if flash[:alert] %>
-            <div class="flash flash-alert">
-              <%= flash[:alert] %>
-            </div>
-          <% end %>
           <%= render 'auth_providers' %>
           <%= form_with url: session_path, class: 'form' do |form| %>
             <div class="form-field">

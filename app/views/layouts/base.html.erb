@@ -11,5 +11,13 @@
 
   <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
+
+    <% %w(notice alert).each do |type| %>
+      <% if flash[type] %>
+        <div class="snackbar animated fadeInUp" data-controller="snackbar" data-hide-on="5000">
+          <%= flash[type] %>
+        </div>
+      <% end %>
+    <% end %>
   </body>
 </html>

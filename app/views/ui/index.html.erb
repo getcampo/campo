@@ -446,9 +446,8 @@
       </template>
       <script type="text/javascript">
         document.querySelector('#toggle-snackbar').addEventListener('click', function(event) {
-          var main = document.querySelector('.main');
           var snackbar = document.importNode(document.querySelector('#snackbar-template').content, true);
-          main.appendChild(snackbar);
+          document.querySelector('main').appendChild(snackbar);
         });
       </script>
     </section>
