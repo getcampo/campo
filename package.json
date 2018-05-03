@@ -2,6 +2,7 @@
   "name": "campo",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.6.1",
     "normalize.css": "^8.0.0",
     "stimulus": "^1.0.1"
   }

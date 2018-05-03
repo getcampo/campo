@@ -1,0 +1,9 @@
+@import 'animate.css/source/base';
+@import 'animate.css/source/fading_entrances/fadeIn';
+@import 'animate.css/source/fading_entrances/fadeInUp';
+@import 'animate.css/source/fading_exits/fadeOut';
+@import 'animate.css/source/fading_exits/fadeOutDown';
+
+.animated {
+  animation-duration: 0.3s;
+}
