@@ -18,3 +18,19 @@ body {
 .divider {
   margin: 8px 0;
 }
+
+.row {
+  margin-bottom: 16px;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-muted {
+  color: var(--text-secondary-color);
+}
+
+a.text-muted {
+  color: var(--text-secondary-color);
+}

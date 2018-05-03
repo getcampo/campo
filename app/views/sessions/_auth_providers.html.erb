@@ -1,0 +1,12 @@
+<% if AUTH_PROVIDERS.any? %>
+  <% if AUTH_PROVIDERS.include?('test') %>
+    <div class="row">
+      <a href="/auth/test" class="button button-raised button-full-width">Test</a>
+    </div>
+  <% end %>
+  <div class="break">
+    <div class="break-content">
+      OR
+    </div>
+  </div>
+<% end %>

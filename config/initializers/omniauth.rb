@@ -1,5 +1,7 @@
+AUTH_PROVIDERS = ENV['AUTH_PROVIDERS'].split(',').map(&:strip)
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  if Rails.env.development? || Rails.env.test?
+  if AUTH_PROVIDERS.include?('test')
     require 'omniauth/strategies/test'
     provider :test
   end
