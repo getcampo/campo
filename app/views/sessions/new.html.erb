@@ -14,21 +14,7 @@
         </div>
         <div class="card-body">
           <%= render 'auth_providers' %>
-          <%= form_with url: session_path, class: 'form' do |form| %>
-            <div class="form-field">
-              <%= form.label :login, 'Username or Email' %>
-              <%= form.text_field :login %>
-            </div>
-            <div class="form-field">
-              <label for="password">
-                Password
-                <a href="/password_reset" class="text-muted float-right">Forgot password?</a>
-              </label>
-              <%= form.password_field :password %>
-            </div>
-            <button type="submit" class="button button-raised button-primary">Sign in</button>
-            <a href="/users/new" class="button button-flat button-primary float-right">Sign up</a>
-          <% end %>
+          <%= render 'form' %>
         </div>
       </div>
     </div>

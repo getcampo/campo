@@ -3,7 +3,9 @@
 @import 'animate.css/source/fading_entrances/fadeInUp';
 @import 'animate.css/source/fading_exits/fadeOut';
 @import 'animate.css/source/fading_exits/fadeOutDown';
+@import 'animate.css/source/attention_seekers/shake';
 
-.animated {
+.animated.fadeInUp,
+.animated.fadeOutDown {
   animation-duration: 0.3s;
 }

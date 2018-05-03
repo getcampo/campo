@@ -1,0 +1,20 @@
+<%= form_with url: session_path, id: 'sign-in-form', class: 'form' do |form| %>
+  <div class="form-field">
+    <%= form.label :login, 'Username or Email' %>
+    <%= form.text_field :login, value: params[:login] %>
+  </div>
+  <div class="form-field <%= 'invalid' if @sign_in_error %>">
+    <label for="password">
+      Password
+      <a href="/password_reset" class="text-muted float-right">Forgot password?</a>
+    </label>
+    <%= form.password_field :password %>
+    <% if @sign_in_error %>
+      <div class="validate-message">
+        Incorrect username or password.
+      </div>
+    <% end %>
+  </div>
+  <button type="submit" class="button button-raised button-primary <%= 'animated shake' if @sign_in_error %>">Sign in</button>
+  <a href="/users/new" class="button button-flat button-primary float-right">Sign up</a>
+<% end %>
