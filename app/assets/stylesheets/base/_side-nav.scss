@@ -38,6 +38,10 @@
 
   .side-nav.open + .main {
     margin-left: 240px;
+
+    .snackbar {
+      left: 256px;
+    }
   }
 
   .side-nav-permanent {
@@ -45,6 +49,10 @@
 
     & + .main {
       margin-left: 240px;
+
+      .snackbar {
+        left: 256px;
+      }
     }
 
     &.open {

@@ -41,6 +41,11 @@
   .list-item-avatar img {
     background: #ccc;
   }
+
+  .demo .snackbar {
+    position: static;
+    width: 288px;
+  }
 </style>
 
 <div class="toolbar toolbar-fixed toolbar-white">
@@ -55,7 +60,7 @@
 <nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">
   <div class="side-nav-content">
     <div class="list">
-      <% %w(buttons forms dropdowns toolbars cards dialogs lists).each do |name| %>
+      <% %w(buttons forms dropdowns toolbars cards dialogs lists snackbars).each do |name| %>
         <a href="#<%= name %>" class="list-item">
           <div class="list-item-content">
             <%= name.capitalize %>
@@ -423,6 +428,29 @@
           </a>
         <% end %>
       </div>
+    </section>
+
+    <section>
+      <h3 id="snackbars">Snackbars</h3>
+      <div class="demo">
+        <div class="snackbar">
+          Snackbar content
+        </div>
+      </div>
+      <h4>Snackbar toggle</h4>
+      <button id="toggle-snackbar" type="button" name="button" class="button button-raised button-primary">Snackbar Toggle</button>
+      <template id="snackbar-template">
+        <div class="snackbar" data-controller="snackbar" data-hide-on="5000">
+          Snackbar content
+        </div>
+      </template>
+      <script type="text/javascript">
+        document.querySelector('#toggle-snackbar').addEventListener('click', function(event) {
+          var main = document.querySelector('.main');
+          var snackbar = document.importNode(document.querySelector('#snackbar-template').content, true);
+          main.appendChild(snackbar);
+        });
+      </script>
     </section>
   </div>
 </main>
