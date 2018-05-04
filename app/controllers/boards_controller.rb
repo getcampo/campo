@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to @board, notice: "Board is successfully created."
     else
-      render
+      render 'update_form'
     end
   end
 
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
     if @board.update board_params
       redirect_to @board, notice: "Board is successfully updated."
     else
-      render
+      render 'update_form'
     end
   end
 

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to root_url
     else
-      render
+      render 'update_form'
     end
   end
 

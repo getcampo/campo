@@ -25,7 +25,7 @@ class PasswordResetsController < ApplicationController
     if @user.update params.require(:user).permit(:password, :password_confirmation)
       redirect_to new_session_path, notice: 'Password reset success.'
     else
-      render
+      render 'update_form'
     end
   end
 

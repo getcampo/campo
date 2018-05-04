@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to session[:return_path] || root_path
     else
       @sign_in_error = true
-      render
+      render 'update_form'
     end
   end
 
