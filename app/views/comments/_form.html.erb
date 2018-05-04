@@ -1,0 +1,13 @@
+<%= form_with model: @comment, id: 'comment-form', class: 'form' do |form| %>
+  <%= form.hidden_field :topic_id %>
+  <div class="form-field <%= 'invalid' if @comment.errors[:content].any? %>">
+    <%= form.text_area :content, rows: 5 %>
+    <% if @comment.errors[:content].any? %>
+      <div class="validate-message">
+        <%= @comment.errors[:content].first %>
+        <%= @comment.errors.full_messages %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.submit class: 'button button-raised button-primary' %>
+<% end %>

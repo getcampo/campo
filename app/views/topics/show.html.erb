@@ -1,3 +1,20 @@
-<h3><%= @topic.title %></h3>
+<h2><%= @topic.title %></h2>
 
 <%= @topic.content %>
+
+<h3>Comments</h3>
+
+<div id="comments" class="list">
+  <%= render @topic.comments %>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <div class="list-item-avatar">
+      <img src="" alt="" style="background: #ccc;">
+    </div>
+    <div class="list-item-content">
+      <%= render 'comments/form' %>
+    </div>
+  </div>
+</div>
