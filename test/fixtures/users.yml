@@ -1,0 +1,6 @@
+user:
+  name: User
+  username: user
+  email: user@example.com
+  password_digest: <%= BCrypt::Password.create '123456' %>
+  auth_token: <%= SecureRandom.base58 %>
