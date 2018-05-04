@@ -1,6 +1,9 @@
 class PasswordResetsController < ApplicationController
+  include AuthPassword
+
   layout 'base'
 
+  before_action :require_auth_password_enabled
   before_action :load_user_from_token, only: [:edit, :update]
 
   def show

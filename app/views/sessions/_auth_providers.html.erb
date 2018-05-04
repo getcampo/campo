@@ -4,9 +4,11 @@
       <a href="/auth/test" class="button button-raised button-full-width">Test</a>
     </div>
   <% end %>
-  <div class="break">
-    <div class="break-content">
-      OR
+  <% if AUTH_PROVIDERS.include?('password') %>
+    <div class="break">
+      <div class="break-content">
+        OR
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

@@ -14,7 +14,9 @@
         </div>
         <div class="card-body">
           <%= render 'sessions/auth_providers' %>
-          <%= render 'form' %>
+          <% if AUTH_PROVIDERS.include?('password') %>
+            <%= render 'form' %>
+          <% end %>
         </div>
       </div>
     </div>

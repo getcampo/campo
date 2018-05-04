@@ -20,7 +20,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not sign in with wrong password" do
     user = User.create(name: 'Foo', username: 'foo', email: 'foo@example.com', password: 'password')
-    post session_path, params: { login: 'foo@example.com', password: 'wrong_password' }
-    assert_redirected_to new_session_url
+    post session_path, params: { login: 'foo@example.com', password: 'wrong_password' }, xhr: true
+    # render form error message
+    assert_response :success
   end
 end
