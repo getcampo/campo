@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_secure_token :auth_token
 
   has_many :identities
+  has_many :topics
+  has_many :comments
 
   validates :name, :username, :email, presence: true
   validates :username, :email, uniqueness: { case_sensitive: false }

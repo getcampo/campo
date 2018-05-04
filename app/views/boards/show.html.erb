@@ -1,1 +1,17 @@
 <h3><%= @board.name %></h3>
+
+<div class="list">
+  <% @board.topics.each do |topic| %>
+    <a class="list-item" href="<%= topic_path(topic) %>">
+      <div class="list-item-avatar">
+        <img src="" alt="" style="background: #ccc">
+      </div>
+      <div class="list-item-content">
+        <h4 class="list-item-content-primary"><%= topic.title %></h4>
+        <div class="list-item-content-secondary"><%= truncate topic.content %></div>
+      </div>
+    </a>
+  <% end %>
+</div>
+
+<a href="/topics/new" class="button button-floating button-secondary right-bottom"><i class="material-icons">add</i></a>

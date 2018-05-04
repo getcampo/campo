@@ -25,6 +25,37 @@ body {
 
 .row {
   margin-bottom: 16px;
+  display: flex;
+}
+
+.col {
+  margin: 0 8px;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    margin: 0 8px;
+    flex-grow: #{$i};
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .float-right {

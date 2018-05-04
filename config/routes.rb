@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       post 'validate/:attribute', to: 'boards#validate', constraints: { attribute: /name|slug/ }
     end
   end
+  resources :topics
 
   if Rails.env.development?
     get '/ui', to: 'ui#index'

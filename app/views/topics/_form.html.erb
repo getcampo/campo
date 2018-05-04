@@ -1,0 +1,17 @@
+<%= form_with model: @topic, id: 'topic-form', class: 'form' do |form| %>
+  <div class="row">
+    <div class="form-field col-3">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+    <div class="form-field col-1">
+      <%= form.label :board_id %>
+      <%= form.collection_select :board_id, Board.all, :id, :name %>
+    </div>
+  </div>
+  <div class="form-field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 8 %>
+  </div>
+  <%= form.submit class: 'button button-raised button-primary' %>
+<% end %>

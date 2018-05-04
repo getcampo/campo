@@ -1,0 +1,5 @@
+topic:
+  title: Title
+  content: Content
+  user: :user
+  board: :board
