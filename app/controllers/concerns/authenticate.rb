@@ -15,6 +15,13 @@ module Authenticate
     end
   end
 
+  def require_sign_in
+    unless Current.user
+      session[:return_path] = request.path
+      redirect_to new_session_path, alert: 'Require sign in.'
+    end
+  end
+
   def sign_in(user)
     cookies[:auth_token] = {
       value: user.auth_token,

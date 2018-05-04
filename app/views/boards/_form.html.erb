@@ -1,0 +1,25 @@
+<%= form_with model: @board, id: 'board-form', class: 'form', data: { controller: 'form-validation' } do |form| %>
+  <div class="form-field <%= 'invalid' if @board.errors[:name].any? %>">
+    <%= form.label :name %>
+    <%= form.text_field :name, data: { 'validate-url': '/boards/validate/name' } %>
+    <% if @board.errors[:name].any? %>
+      <div class="validate-message">
+        <%= @board.errors[:name].first %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-field <%= 'invalid' if @board.errors[:slug].any? %>">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, data: { 'validate-url': '/boards/validate/slug' } %>
+    <% if @board.errors[:slug].any? %>
+      <div class="validate-message">
+        <%= @board.errors[:slug].first %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 3 %>
+  </div>
+  <%= form.submit class: 'button button-raised button-primary' %>
+<% end %>

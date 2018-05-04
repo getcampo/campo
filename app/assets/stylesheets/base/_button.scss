@@ -105,6 +105,12 @@
   &[disabled] {
     opacity: 0.3;
   }
+
+  &.right-bottom {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+  }
 }
 
 .button-icon {

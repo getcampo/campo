@@ -6,8 +6,6 @@ application.register "form-validation", class extends Stimulus.Controller
     form.querySelectorAll('[data-validate-url]').forEach (input) ->
       input.addEventListener 'change', controller.validateRemote
 
-    form.addEventListener 'ajax:before', controller.formSubmit
-
   validateRemote: (event) ->
     input = event.target
     fetch(input.dataset['validateUrl'], {
@@ -36,14 +34,3 @@ application.register "form-validation", class extends Stimulus.Controller
         message.textContent = json.message
         field.insertBefore(message, input.nextSibling)
     )
-
-  formSubmit: (event) ->
-    form = event.target
-    pendingInputs = form.querySelectorAll('.form-field:not(.valid):not(.invalid) [data-validate-url]')
-    if pendingInputs.length > 0
-      event.preventDefault()
-      pendingInputs.forEach (input) ->
-        input.dispatchEvent(new Event('change'))
-    else
-      if form.querySelector('.invalid')
-        event.preventDefault()

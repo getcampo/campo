@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
+  resources :boards do
+    collection do
+      post 'validate/:attribute', to: 'boards#validate', constraints: { attribute: /name|slug/ }
+    end
+  end
+
   if Rails.env.development?
     get '/ui', to: 'ui#index'
   end
