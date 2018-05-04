@@ -47,6 +47,7 @@ CREATE TABLE public.boards (
     name character varying NOT NULL,
     slug character varying NOT NULL,
     description text,
+    last_topic_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -69,6 +70,39 @@ CREATE SEQUENCE public.boards_id_seq
 --
 
 ALTER SEQUENCE public.boards_id_seq OWNED BY public.boards.id;
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.comments (
+    id bigint NOT NULL,
+    topic_id bigint,
+    user_id bigint,
+    content text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
 
 
 --
@@ -112,6 +146,41 @@ ALTER SEQUENCE public.identities_id_seq OWNED BY public.identities.id;
 CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
+
+
+--
+-- Name: topics; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.topics (
+    id bigint NOT NULL,
+    board_id bigint,
+    user_id bigint,
+    title character varying NOT NULL,
+    content text NOT NULL,
+    last_comment_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: topics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.topics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.topics_id_seq OWNED BY public.topics.id;
 
 
 --
@@ -159,10 +228,24 @@ ALTER TABLE ONLY public.boards ALTER COLUMN id SET DEFAULT nextval('public.board
 
 
 --
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
 -- Name: identities id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.identities ALTER COLUMN id SET DEFAULT nextval('public.identities_id_seq'::regclass);
+
+
+--
+-- Name: topics id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topics ALTER COLUMN id SET DEFAULT nextval('public.topics_id_seq'::regclass);
 
 
 --
@@ -189,6 +272,14 @@ ALTER TABLE ONLY public.boards
 
 
 --
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: identities identities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -205,6 +296,14 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: topics topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.topics
+    ADD CONSTRAINT topics_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -213,10 +312,31 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_boards_on_last_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_boards_on_last_topic_id ON public.boards USING btree (last_topic_id);
+
+
+--
 -- Name: index_boards_on_lowercase_slug; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_boards_on_lowercase_slug ON public.users USING btree (lower((username)::text));
+
+
+--
+-- Name: index_comments_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_comments_on_topic_id ON public.comments USING btree (topic_id);
+
+
+--
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
 
 
 --
@@ -231,6 +351,27 @@ CREATE UNIQUE INDEX index_identities_on_uid_and_provider ON public.identities US
 --
 
 CREATE INDEX index_identities_on_user_id ON public.identities USING btree (user_id);
+
+
+--
+-- Name: index_topics_on_board_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topics_on_board_id ON public.topics USING btree (board_id);
+
+
+--
+-- Name: index_topics_on_last_comment_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topics_on_last_comment_id ON public.topics USING btree (last_comment_id);
+
+
+--
+-- Name: index_topics_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topics_on_user_id ON public.topics USING btree (user_id);
 
 
 --
@@ -263,6 +404,8 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20180416142547'),
 ('20180416150208'),
-('20180504065146');
+('20180504065146'),
+('20180504130253'),
+('20180504131350');
 
 
