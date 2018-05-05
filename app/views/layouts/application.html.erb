@@ -8,10 +8,16 @@
     </div>
     <% if Current.user %>
       <div class="toolbar-action">
-        <a href="#" class="button button-flat"><%= Current.user.name %></a>
-      </div>
-      <div class="toolbar-action">
-        <a href="/session" class="button button-flat" data-method="delete" data-remote="true">Sign out</a>
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="letter-avatar" data-action="dropdown#open">
+            <%= Current.user.name[0] %>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="/settings/account" class="dropdown-item">Settings</a>
+            <hr class="divider">
+            <a href="/session" class="dropdown-item" data-method="delete" data-remote="true">Sign out</a>
+          </div>
+        </div>
       </div>
     <% else %>
       <div class="toolbar-action">

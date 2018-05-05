@@ -23,6 +23,8 @@ body {
 
 .divider {
   margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .row {
@@ -81,6 +83,11 @@ a.text-muted {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+
+.toolbar-action .letter-avatar {
+  width: 36px;
+  height: 36px;
 }
 
 .subheader {
