@@ -11,6 +11,7 @@ class Settings::AccountsController < ApplicationController
     @user = Current.user
 
     if @user.update user_params
+      @user.avatar.attach params[:user][:avatar]
       redirect_to settings_account_path, notice: 'Account is successfully updated.'
     else
       render 'update_form'

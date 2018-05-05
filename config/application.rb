@@ -31,6 +31,8 @@ module Campo
       html_tag
     end
 
+    config.active_storage.service = ENV['STORAGE_SERVICE']
+
     # Disable unnessary generator
     config.generators do |generate|
       generate.helper false

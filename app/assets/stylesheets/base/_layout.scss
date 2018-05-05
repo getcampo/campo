@@ -129,3 +129,19 @@ a.text-muted {
   font-size: 14px;
   color: var(--text-secondary-color);
 }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.avatar-2x {
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-4x {
+  width: 160px;
+  height: 160px;
+}
