@@ -9,7 +9,7 @@
     <% if Current.user %>
       <div class="toolbar-action">
         <div class="dropdown" data-controller="dropdown">
-          <button type="button" class="letter-avatar" data-action="dropdown#open">
+          <button type="button" class="letter-avatar dropdown-toggle" data-action="dropdown#open">
             <%= Current.user.name[0] %>
           </button>
           <div class="dropdown-menu dropdown-menu-right">

@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   resources :topics, only: [:show, :new, :create, :edit, :update]
   resources :comments, only: [:create, :edit, :update]
 
+  namespace :settings do
+    resource :account, only: [:show, :update] do
+      post 'validate/:attribute', to: 'accounts#validate', constraints: { attribute: /name|username|email/ }
+    end
+  end
+
   if Rails.env.development?
     get '/ui', to: 'ui#index'
   end

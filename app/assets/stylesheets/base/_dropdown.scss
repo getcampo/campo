@@ -3,6 +3,13 @@
   display: inline-block;
 }
 
+.dropdown-toggle {
+  cursor: pointer;
+  outline: 0;
+  box-shadow: none;
+  border: none;
+}
+
 .dropdown-menu {
   display: none;
   position: absolute;
