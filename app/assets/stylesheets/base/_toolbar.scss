@@ -1,7 +1,6 @@
 .toolbar {
   display: flex;
   align-items: center;
-  padding: 4px;
 }
 
 .toolbar-action {
@@ -14,38 +13,6 @@
 
 .toolbar-title {
   flex: 1;
-}
-
-.toolbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 4;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.toolbar-white {
-  background: white;
-}
-
-.toolbar-primary {
-  background: var(--primary-color);
-  color: white;
-
-  .button-icon,
-  .button-flat {
-    color: white;
-  }
-}
-
-.toolbar-secondary {
-  background: var(--secondary-color);
-  color: white;
-
-  .button-icon {
-    color: white;
-  }
 }
 
 .toolbar-title {
