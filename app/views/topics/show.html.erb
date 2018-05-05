@@ -16,9 +16,7 @@
     <div class="list">
       <div class="list-item">
         <div class="list-item-avatar">
-          <div class="letter-avatar">
-            <%= @topic.user.name[0] %>
-          </div>
+          <%= avatar_tag @topic.user %>
         </div>
         <div class="list-item-content">
           <div class="list-item-content-primary">
@@ -41,10 +39,16 @@
     <div class="list">
       <div class="list-item">
         <div class="list-item-avatar">
-          <img src="" alt="" style="background: #ccc;">
+          <% if Current.user %>
+            <%= avatar_tag Current.user %>
+          <% end %>
         </div>
         <div class="list-item-content">
-          <%= render 'comments/form' %>
+          <% if Current.user %>
+            <%= render 'comments/form' %>
+          <% else %>
+            <a href="/session/new" class="button button-raised button-primary">Sign in to Commnet</a>
+          <% end %>
         </div>
       </div>
     </div>

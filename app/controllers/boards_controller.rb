@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   layout 'base', only: [:new, :edit]
 
-  before_action :require_sign_in, except: [:index]
+  before_action :require_sign_in, except: [:index, :show]
 
   def index
     @boards = Board.all

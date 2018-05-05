@@ -88,9 +88,27 @@ a.text-muted {
   align-items: center;
 }
 
-.toolbar-action .letter-avatar {
-  width: 36px;
-  height: 36px;
+.letter-avatar-2x {
+  width: 80px;
+  height: 80px;
+}
+
+.letter-avatar-4x {
+  width: 160px;
+  height: 160px;
+}
+
+.button-avatar {
+  padding: 6px;
+  background: none;
+  box-shadow: none;
+  border: none;
+
+  .letter-avatar,
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .subheader {
@@ -134,6 +152,7 @@ a.text-muted {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  vertical-align: middle;
 }
 
 .avatar-2x {

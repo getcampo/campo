@@ -29,9 +29,7 @@
   <div class="form-field">
     <%= form.label :avatar %>
     <div>
-      <% if @user.avatar.attached? %>
-        <%= image_tag url_for(@user.avatar), class: 'avatar avatar-2x' %>
-      <% end %>
+      <%= avatar_tag @user, size: '2x' %>
     </div>
     <%= form.file_field :avatar %>
   </div>
