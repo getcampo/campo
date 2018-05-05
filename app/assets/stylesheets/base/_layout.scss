@@ -164,3 +164,20 @@ a.text-muted {
   width: 160px;
   height: 160px;
 }
+
+.loading-message {
+  display: none;
+
+  .material-icons {
+    font-size: 2em;
+  }
+
+}
+
+.loading + .loading-message {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary-color);
+}

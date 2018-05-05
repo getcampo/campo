@@ -1,0 +1,9 @@
+<a class="list-item" href="<%= topic_path(topic) %>">
+  <div class="list-item-avatar">
+    <%= avatar_tag topic.user %>
+  </div>
+  <div class="list-item-content">
+    <h4 class="list-item-content-primary"><%= topic.title %></h4>
+    <div class="list-item-content-secondary"><%= truncate topic.content %></div>
+  </div>
+</a>
