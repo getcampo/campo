@@ -9,7 +9,7 @@
 
 <main class="main">
   <div class="container">
-    <h2 class="topic-title"><%= @topic.title %></h2>
+    <h1 class="topic-title"><%= @topic.title %></h1>
 
     <div class="list">
       <div class="list-item">
@@ -20,9 +20,12 @@
         </div>
         <div class="list-item-content">
           <div class="list-item-content-primary">
-            <%= @topic.user.name %>
+            <span><%= @topic.user.name %></span>
+            <span><%= l @topic.created_at, format: :long %></span>
           </div>
-          <%= @topic.content %>
+          <article class="typography">
+            <%= sanitize markdown_render @topic.content %>
+          </article>
         </div>
       </div>
     </div>

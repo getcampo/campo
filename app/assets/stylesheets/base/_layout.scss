@@ -2,7 +2,9 @@ html {
 }
 
 body {
+  color: var(--text-primary-color);
   box-sizing: border-box;
+  line-height: 1.5;
 }
 
 .main {
@@ -90,5 +92,30 @@ a.text-muted {
 }
 
 .text-secondary {
+  color: var(--text-secondary-color);
+}
+
+.break {
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  margin: 8px 0;
+
+  &::before {
+    content: ' ';
+    border-bottom: 1px solid var(--border-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.break-content {
+  background: white;
+  padding: 8px;
+  display: inline-block;
+  font-size: 14px;
   color: var(--text-secondary-color);
 }

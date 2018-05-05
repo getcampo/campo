@@ -32,6 +32,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth'
 
+# Markdown
+gem 'redcarpet'
+# Code heighlight
+gem 'rouge'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

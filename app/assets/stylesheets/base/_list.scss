@@ -23,7 +23,6 @@
 
 .list-item-content {
   padding: 16px 0;
-  line-height: 1;
   flex-grow: 1;
   overflow: hidden;
   color: var(--text-primary-color);
@@ -43,6 +42,7 @@
 
 .list-item-content-primary {
   font-size: 16px;
+  line-height: 1;
   margin: 0 0 8px;
   overflow: hidden;
   white-space: nowrap;
@@ -52,6 +52,7 @@
 
 .list-item-content-secondary {
   font-size: 14px;
+  line-height: 1;
   margin: 0;
   overflow: hidden;
   white-space: nowrap;

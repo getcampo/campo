@@ -6,8 +6,12 @@
   </div>
   <div class="list-item-content">
     <div class="list-item-content-primary">
-      <%= comment.content %>
+      <span><%= comment.user.name %></span>
+      <span><%= l comment.created_at, format: :long %></span>
     </div>
+    <article class="typography">
+      <%= sanitize markdown_render comment.content %>
+    </article>
     <a href="<%= edit_comment_path(comment) %>">edit</a>
   </div>
 </div>
