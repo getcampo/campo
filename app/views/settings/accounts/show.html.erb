@@ -1,11 +1,16 @@
-<div class="toolbar toolbar-fixed toolbar-primary">
-  <div class="toolbar-action">
-    <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+<div class="appbar appbar-primary appbar-fixed">
+  <div class="toolbar">
+    <div class="toolbar-action">
+      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+    </div>
+    <div class="toolbar-title">Settings</div>
   </div>
-  <div class="toolbar-title">Settings</div>
+  <div class="tab">
+    <a href="/settings/account" class="tab-item <%= 'active' if controller_name = 'accounts' %>">Account</a>
+  </div>
 </div>
 
-<main class="main">
+<main class="main with-appbar-tab">
   <div class="container container-small">
     <%= render 'form' %>
   </div>

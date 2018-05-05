@@ -3,7 +3,7 @@
     padding: 4px;
   }
 
-  .tab {
+  .tab-item:first-child {
     margin-left: 56px;
   }
 }
@@ -30,6 +30,10 @@
     color: white;
   }
 
+  .tab-item {
+    color: white;
+  }
+
   .tab-item.active {
     border-color: white;
   }
@@ -40,6 +44,10 @@
   color: white;
 
   .button-icon {
+    color: white;
+  }
+
+  .tab-item {
     color: white;
   }
 

@@ -1,5 +1,6 @@
 .tab {
   display: flex;
+  overflow: auto;
 }
 
 .tab-item {
@@ -9,6 +10,8 @@
   text-align: center;
   cursor: pointer;
   opacity: 0.8;
+  text-decoration: none;
+  flex-shrink: 0;
 
   &:hover {
     background: rgba(0, 0, 0, 0.05);
