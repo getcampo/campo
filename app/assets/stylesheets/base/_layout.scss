@@ -80,3 +80,15 @@ a.text-muted {
   justify-content: center;
   align-items: center;
 }
+
+.subheader {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 0;
+  margin: 16px;;
+  color: var(--text-secondary-color);
+}
+
+.text-secondary {
+  color: var(--text-secondary-color);
+}

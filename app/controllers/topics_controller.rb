@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  layout 'base', except: [:show]
+  layout 'base'
 
   before_action :require_sign_in, except: :show
 

@@ -5,7 +5,6 @@
     <% if @comment.errors[:content].any? %>
       <div class="validate-message">
         <%= @comment.errors[:content].first %>
-        <%= @comment.errors.full_messages %>
       </div>
     <% end %>
   </div>

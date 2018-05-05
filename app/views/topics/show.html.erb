@@ -1,20 +1,47 @@
-<h2><%= @topic.title %></h2>
-
-<%= @topic.content %>
-
-<h3>Comments</h3>
-
-<div id="comments" class="list">
-  <%= render @topic.comments %>
-</div>
-
-<div class="list">
-  <div class="list-item">
-    <div class="list-item-avatar">
-      <img src="" alt="" style="background: #ccc;">
-    </div>
-    <div class="list-item-content">
-      <%= render 'comments/form' %>
-    </div>
+<div class="toolbar toolbar-fixed toolbar-primary">
+  <div class="toolbar-action">
+    <a href="<%= board_path(@topic.board) %>" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+  </div>
+  <div class="toolbar-title">
+    Topic
   </div>
 </div>
+
+<main class="main">
+  <div class="container">
+    <h2 class="topic-title"><%= @topic.title %></h2>
+
+    <div class="list">
+      <div class="list-item">
+        <div class="list-item-avatar">
+          <div class="letter-avatar">
+            <%= @topic.user.name[0] %>
+          </div>
+        </div>
+        <div class="list-item-content">
+          <div class="list-item-content-primary">
+            <%= @topic.user.name %>
+          </div>
+          <%= @topic.content %>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subheader">Comments</h3>
+
+    <div id="comments" class="list">
+      <%= render @topic.comments %>
+    </div>
+
+    <div class="list">
+      <div class="list-item">
+        <div class="list-item-avatar">
+          <img src="" alt="" style="background: #ccc;">
+        </div>
+        <div class="list-item-content">
+          <%= render 'comments/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

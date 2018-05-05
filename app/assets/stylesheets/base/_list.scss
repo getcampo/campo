@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+  margin: 8px 0;
 }
 
 .list-item {
@@ -42,6 +42,7 @@
 }
 
 .list-item-content-primary {
+  font-size: 16px;
   margin: 0 0 8px;
   overflow: hidden;
   white-space: nowrap;

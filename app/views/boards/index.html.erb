@@ -1,8 +1,16 @@
+<h2 class="subheader">All boards</h2>
+
 <div class="list">
   <% @boards.each do |board| %>
     <a class="list-item" href="<%= board_path(board) %>">
+      <div class="list-item-icon">
+        <i class="material-icons">forum</i>
+      </div>
       <div class="list-item-content">
-        <h3 class="list-item-content-primary"><%= board.name %></h3>
+        <h3 class="list-item-content-primary">
+          <%= board.name %>
+          <span class="text-secondary"> - <%= board.topics.count %> topics</span>
+        </h3>
         <div class="list-item-content-secondary"><%= board.description %></div>
       </div>
     </a>
