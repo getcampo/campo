@@ -1,13 +1,15 @@
-<div class="toolbar toolbar-fixed toolbar-primary">
-  <div class="toolbar-action">
-    <a href="<%= board_path(@topic.board) %>" class="button button-icon"><i class="material-icons">arrow_back</i></a>
-  </div>
-  <div class="toolbar-title">
-    Topic
+<div class="appbar appbar-primary appbar-fixed">
+  <div class="toolbar">
+    <div class="toolbar-action">
+      <a href="<%= board_path(@topic.board) %>" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+    </div>
+    <div class="toolbar-title">
+      Topic
+    </div>
   </div>
 </div>
 
-<main class="main">
+<main class="main with-appbar">
   <div class="container">
     <h1 class="topic-title"><%= @topic.title %></h1>
 

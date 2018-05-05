@@ -1,32 +1,34 @@
 <% content_for :body do %>
-  <div class="toolbar toolbar-fixed toolbar-primary">
-    <div class="toolbar-action">
-      <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
-    </div>
-    <div class="toolbar-title">
-      Campo
-    </div>
-    <% if Current.user %>
+  <div class="appbar appbar-primary appbar-fixed">
+    <div class="toolbar">
       <div class="toolbar-action">
-        <div class="dropdown" data-controller="dropdown">
-          <button type="button" class="letter-avatar dropdown-toggle" data-action="dropdown#open">
-            <%= Current.user.name[0] %>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="/settings/account" class="dropdown-item">Settings</a>
-            <hr class="divider">
-            <a href="/session" class="dropdown-item" data-method="delete" data-remote="true">Sign out</a>
+        <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
+      </div>
+      <div class="toolbar-title">
+        Campo
+      </div>
+      <% if Current.user %>
+        <div class="toolbar-action">
+          <div class="dropdown" data-controller="dropdown">
+            <button type="button" class="letter-avatar dropdown-toggle" data-action="dropdown#open">
+              <%= Current.user.name[0] %>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="/settings/account" class="dropdown-item">Settings</a>
+              <hr class="divider">
+              <a href="/session" class="dropdown-item" data-method="delete" data-remote="true">Sign out</a>
+            </div>
           </div>
         </div>
-      </div>
-    <% else %>
-      <div class="toolbar-action">
-        <a href="/users/new" class="button button-flat">Sign up</a>
-      </div>
-      <div class="toolbar-action">
-        <a href="/session/new" class="button button-flat">Sign in</a>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="toolbar-action">
+          <a href="/users/new" class="button button-flat">Sign up</a>
+        </div>
+        <div class="toolbar-action">
+          <a href="/session/new" class="button button-flat">Sign in</a>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">
@@ -44,7 +46,7 @@
     </div>
   </nav>
 
-  <main class="main">
+  <main class="main with-appbar">
     <div class="container">
       <%= yield %>
     </div>
