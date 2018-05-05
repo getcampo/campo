@@ -5,9 +5,11 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.references :user
       t.string :title, null: false
       t.text :content, null: false
-      t.references :last_comment
+      t.datetime :activated_at, null: false
 
       t.timestamps
+
+      t.index :activated_at
     end
   end
 end

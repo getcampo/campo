@@ -115,7 +115,6 @@ CREATE TABLE public.boards (
     name character varying NOT NULL,
     slug character varying NOT NULL,
     description text,
-    last_topic_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -226,7 +225,7 @@ CREATE TABLE public.topics (
     user_id bigint,
     title character varying NOT NULL,
     content text NOT NULL,
-    last_comment_id bigint,
+    activated_at timestamp without time zone NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -431,13 +430,6 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
--- Name: index_boards_on_last_topic_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_boards_on_last_topic_id ON public.boards USING btree (last_topic_id);
-
-
---
 -- Name: index_boards_on_lowercase_slug; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -473,17 +465,17 @@ CREATE INDEX index_identities_on_user_id ON public.identities USING btree (user_
 
 
 --
+-- Name: index_topics_on_activated_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_topics_on_activated_at ON public.topics USING btree (activated_at);
+
+
+--
 -- Name: index_topics_on_board_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_topics_on_board_id ON public.topics USING btree (board_id);
-
-
---
--- Name: index_topics_on_last_comment_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_topics_on_last_comment_id ON public.topics USING btree (last_comment_id);
 
 
 --

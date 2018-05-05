@@ -4,7 +4,6 @@ class CreateBoards < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :slug, null: false
       t.text :description
-      t.references :last_topic
 
       t.timestamps
     end
