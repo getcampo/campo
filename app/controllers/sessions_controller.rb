@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       sign_in(user)
-      redirect_to session[:return_path] || root_path
+      redirect_to session.delete(:return_path) || root_path
     else
       @sign_in_error = true
       render 'update_form'
