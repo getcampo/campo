@@ -13,6 +13,7 @@ class Settings::AccountsController < ApplicationController
     if @user.update user_params
       redirect_to settings_account_path, notice: 'Account is successfully updated.'
     else
+      render 'update_form'
     end
   end
 

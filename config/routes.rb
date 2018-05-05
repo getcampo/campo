@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resource :account, only: [:show, :update] do
       post 'validate/:attribute', to: 'accounts#validate', constraints: { attribute: /name|username|email/ }
     end
+    resource :password, only: [:show, :update]
   end
 
   if Rails.env.development?

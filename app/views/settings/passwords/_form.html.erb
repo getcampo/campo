@@ -1,0 +1,21 @@
+<%= form_with model: @user, url: settings_password_path, id: 'password-form', class: 'form' do |form| %>
+  <div class="form-field <%= 'invalid' if @user.errors[:password].any? %>">
+    <%= form.label :password %>
+    <%= form.password_field :password, autofocus: true %>
+    <% if @user.errors[:password].any? %>
+      <div class="validate-message">
+        <%= @user.errors[:password].first %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-field <%= 'invalid' if @user.errors[:password_confirmation].any? %>">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+    <% if @user.errors[:password_confirmation].any? %>
+      <div class="validate-message">
+        <%= @user.errors[:password_confirmation].first %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.submit 'Update Password', class: 'button button-raised button-primary' %>
+<% end %>

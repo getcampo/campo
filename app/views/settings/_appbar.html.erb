@@ -1,0 +1,14 @@
+<div class="appbar appbar-primary appbar-fixed">
+  <div class="toolbar">
+    <div class="toolbar-action">
+      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+    </div>
+    <div class="toolbar-title">Settings</div>
+  </div>
+  <div class="tab">
+    <a href="/settings/account" class="tab-item <%= 'active' if controller_name == 'accounts' %>">Account</a>
+    <% if AUTH_PROVIDERS.include?('password') %>
+      <a href="/settings/password" class="tab-item <%= 'active' if controller_name == 'passwords' %>">Password</a>
+    <% end %>
+  </div>
+</div>
