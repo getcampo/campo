@@ -1,6 +1,8 @@
 <div id="comment-<%= comment.id %>" class="list-item">
   <div class="list-item-avatar">
-    <img src="" alt="" style="background: #ccc;">
+    <div class="letter-avatar">
+      <%= comment.user.name[0] %>
+    </div>
   </div>
   <div class="list-item-content">
     <div class="list-item-content-primary">

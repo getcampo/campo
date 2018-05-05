@@ -4,7 +4,9 @@
   <% @board.topics.each do |topic| %>
     <a class="list-item" href="<%= topic_path(topic) %>">
       <div class="list-item-avatar">
-        <img src="" alt="" style="background: #ccc">
+        <div class="letter-avatar">
+          <%= topic.user.name[0] %>
+        </div>
       </div>
       <div class="list-item-content">
         <h4 class="list-item-content-primary"><%= topic.title %></h4>
