@@ -68,11 +68,11 @@ body {
   float: right;
 }
 
-.text-muted {
+.text-secondary {
   color: var(--text-secondary-color);
 }
 
-a.text-muted {
+a.text-secondary {
   color: var(--text-secondary-color);
 }
 
@@ -115,10 +115,6 @@ a.text-muted {
   line-height: 16px;
   padding: 0;
   margin: 16px;;
-  color: var(--text-secondary-color);
-}
-
-.text-secondary {
   color: var(--text-secondary-color);
 }
 

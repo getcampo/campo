@@ -5,13 +5,13 @@
   <div class="list-item-content">
     <div class="list-item-content-primary">
       <%= comment.user.name %>
-      <span class="text-muted float-right"><%= local_time_ago comment.created_at %></span>
+      <span class="text-secondary float-right"><%= local_time_ago comment.created_at %></span>
     </div>
     <article class="typography">
       <%= sanitize markdown_render comment.content %>
     </article>
     <div class="list-item-content-secondary">
-      <a href="<%= edit_comment_path(comment) %>" class="text-muted" data-controller="visible-to-creator">Edit</a>
+      <a href="<%= edit_comment_path(comment) %>" class="text-secondary" data-controller="visible-to-creator">Edit</a>
     </div>
   </div>
 </div>

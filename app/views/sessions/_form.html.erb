@@ -6,7 +6,7 @@
   <div class="form-field <%= 'invalid' if @sign_in_error %>">
     <label for="password">
       Password
-      <a href="/password_reset" class="text-muted float-right" tabindex="-1">Forgot password?</a>
+      <a href="/password_reset" class="text-secondary float-right" tabindex="-1">Forgot password?</a>
     </label>
     <%= form.password_field :password %>
     <% if @sign_in_error %>
