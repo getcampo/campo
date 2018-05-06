@@ -36,6 +36,8 @@ gem 'omniauth'
 gem 'redcarpet'
 # Code heighlight
 gem 'rouge'
+# Display time to browser local
+gem 'local_time'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
