@@ -1,5 +1,5 @@
 class Board < ApplicationRecord
-  has_many :topics
+  has_many :topics, counter_cache: true
 
   validates :name, :slug, presence: true
   validates :slug, uniqueness: { case_sensitive: false }

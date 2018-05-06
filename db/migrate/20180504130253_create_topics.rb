@@ -6,6 +6,7 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :content, null: false
       t.datetime :activated_at, null: false
+      t.integer :comments_count, default: 0
 
       t.timestamps
 

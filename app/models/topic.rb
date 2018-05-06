@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  has_many :comments
+  has_many :comments, counter_cache: true
   belongs_to :board
   belongs_to :user
 

@@ -44,7 +44,7 @@
       <hr class="divider">
       <h3 class="subheader">Boards</h3>
       <div class="list">
-        <% Board.all.each do |board| %>
+        <% Board.order(topics_count: :desc).each do |board| %>
           <a href="<%= board_path(board) %>" class="list-item">
             <div class="list-item-icon">
               <i class="material-icons">forum</i>

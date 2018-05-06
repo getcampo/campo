@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   before_action :require_sign_in, except: [:index, :show]
 
   def index
-    @boards = Board.all
+    @boards = Board.order(topics_count: :desc)
   end
 
   def new

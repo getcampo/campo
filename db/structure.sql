@@ -115,6 +115,7 @@ CREATE TABLE public.boards (
     name character varying NOT NULL,
     slug character varying NOT NULL,
     description text,
+    topics_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -226,6 +227,7 @@ CREATE TABLE public.topics (
     title character varying NOT NULL,
     content text NOT NULL,
     activated_at timestamp without time zone NOT NULL,
+    comments_count integer DEFAULT 0,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

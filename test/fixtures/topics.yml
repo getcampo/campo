@@ -3,3 +3,4 @@ topic:
   content: Content
   user: :user
   board: :board
+  activated_at: <%= Time.now %>

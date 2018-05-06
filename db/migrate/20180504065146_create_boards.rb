@@ -4,6 +4,7 @@ class CreateBoards < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :slug, null: false
       t.text :description
+      t.integer :topics_count, default: 0
 
       t.timestamps
     end
