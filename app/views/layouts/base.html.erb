@@ -10,6 +10,7 @@
 
     <% if Current.user %>
       <meta name="current-user-id" content="<%= Current.user.id %>">
+      <meta name="current-user-admin" content="<%= Current.user.admin? %>">
     <% end %>
   </head>
 

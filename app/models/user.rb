@@ -22,4 +22,9 @@ class User < ApplicationRecord
   def self.from_password_reset_token(token)
     find_by(id: Rails.cache.read("users/password_reset/#{token}"))
   end
+
+  ADMIN_EMAILS = ENV['ADMIN_EMAILS'].split(',').map(&:strip)
+  def admin?
+    ADMIN_EMAILS.include?(email)
+  end
 end

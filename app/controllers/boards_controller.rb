@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   layout 'base', only: [:new, :edit]
 
-  before_action :require_sign_in, except: [:index, :show]
+  before_action :require_sign_in, :require_admin, except: [:index, :show]
 
   def index
     @boards = Board.order(topics_count: :desc)

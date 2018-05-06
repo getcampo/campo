@@ -22,6 +22,12 @@ module Authenticate
     end
   end
 
+  def require_admin
+    unless  Current.user.admin?
+      redirect_to root_path, alert: 'Require admin.'
+    end
+  end
+
   def sign_in(user)
     cookies[:auth_token] = {
       value: user.auth_token,
