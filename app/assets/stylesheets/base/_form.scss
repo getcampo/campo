@@ -1,7 +1,7 @@
 .form {
   label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   input[type="text"],
@@ -15,6 +15,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 2px;
+    display: block;
 
     &:focus {
       border-color: var(--primary-color);
@@ -67,7 +68,7 @@
 }
 
 .form-field {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .form-row {
