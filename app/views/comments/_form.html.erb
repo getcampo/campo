@@ -1,7 +1,7 @@
-<%= form_with model: @comment, id: 'comment-form', class: 'form' do |form| %>
+<%= form_with model: @comment, id: 'comment-form', class: 'form', data: { controller: 'editor' } do |form| %>
   <%= form.hidden_field :topic_id %>
   <div class="form-field <%= 'invalid' if @comment.errors[:content].any? %>">
-    <%= form.text_area :content, rows: 5 %>
+    <%= form.text_area :content, rows: 5, data: { target: 'editor.textarea' } %>
     <% if @comment.errors[:content].any? %>
       <div class="validate-message">
         <%= @comment.errors[:content].first %>
@@ -9,4 +9,8 @@
     <% end %>
   </div>
   <%= form.submit class: 'button button-raised button-primary' %>
+  <label class="button button-icon">
+    <i class="material-icons">attach_file</i>
+    <input type="file" name="attachment[file]" value="" data-action="editor#attachFile" class="hide">
+  </label>
 <% end %>

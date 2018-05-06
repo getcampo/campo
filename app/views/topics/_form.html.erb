@@ -1,4 +1,4 @@
-<%= form_with model: @topic, id: 'topic-form', class: 'form' do |form| %>
+<%= form_with model: @topic, id: 'topic-form', class: 'form', data: { controller: 'editor' } do |form| %>
   <div class="row">
     <div class="form-field col-3">
       <%= form.label :title %>
@@ -11,7 +11,11 @@
   </div>
   <div class="form-field">
     <%= form.label :content %>
-    <%= form.text_area :content, rows: 8 %>
+    <%= form.text_area :content, rows: 8, data: { target: 'editor.textarea' } %>
   </div>
   <%= form.submit class: 'button button-raised button-primary' %>
+  <label class="button button-icon">
+    <i class="material-icons">attach_file</i>
+    <input type="file" name="attachment[file]" value="" data-action="editor#attachFile" class="hide">
+  </label>
 <% end %>
