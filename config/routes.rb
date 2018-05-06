@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :topics, only: [:show, :new, :create, :edit, :update]
   resources :comments, only: [:create, :edit, :update]
   resources :attachments, only: [:create]
+  resource :preview, only: [:create]
 
   namespace :settings do
     resource :account, only: [:show, :update] do

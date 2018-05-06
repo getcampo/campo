@@ -16,6 +16,9 @@
   <%= form.submit class: 'button button-raised button-primary' %>
   <label class="button button-icon">
     <i class="material-icons">attach_file</i>
-    <input type="file" name="attachment[file]" value="" data-action="editor#attachFile" class="hide">
+    <input type="file" data-action="editor#attachFile" class="hide">
   </label>
+  <button type="button" class="button button-icon" data-action="editor#preview">
+    <i class="material-icons">visibility</i>
+  </button>
 <% end %>

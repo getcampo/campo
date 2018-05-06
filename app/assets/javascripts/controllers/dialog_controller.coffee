@@ -1,10 +1,11 @@
 application.register "dialog", class extends Stimulus.Controller
   connect: ->
     toggle = document.querySelector("[data-toggle='##{this.element.id}']")
-    toggle.addEventListener 'click', =>
-      this.toggle()
+    if toggle
+      toggle.addEventListener 'click', =>
+        this.open()
 
-  toggle: (event) ->
+  open: (event) ->
     this.element.classList.toggle('open')
 
   close: ->
