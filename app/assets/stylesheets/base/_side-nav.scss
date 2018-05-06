@@ -29,19 +29,15 @@
 }
 
 @media (min-width: 1200px) {
-  .side-nav-content {
-    top: 56px;
-    background: #fafafa;
-    box-shadow: none;
-    z-index: 0;
-  }
-
-  .side-nav.open + .main {
-    margin-left: 240px;
-  }
-
   .side-nav-permanent {
     display: block;
+
+    .side-nav-content {
+      top: 56px;
+      background: #fafafa;
+      box-shadow: none;
+      z-index: 0;
+    }
 
     & + .main {
       margin-left: 240px;
