@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find_by!(slug: params[:id])
-    @topics = @board.topics.order(activated_at: :desc).offset(params[:page].to_i * 25).limit(25)
+    @topics = @board.topics.order(activated_at: :desc).page(params[:page])
   end
 
   def edit
