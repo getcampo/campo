@@ -20,3 +20,8 @@ WORKDIR /app
 RUN gem install bundler
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install
+
+COPY . /app/
+RUN bundle exec bin/rails assets:precompile
+
+CMD bundle exec rails s -b 0.0.0.0
