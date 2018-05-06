@@ -5,7 +5,7 @@
         <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
       </div>
       <div class="toolbar-title">
-        Campo
+        <%= content_for(:toolbar_title) %>
       </div>
       <% if Current.user %>
         <div class="toolbar-action">
@@ -38,7 +38,7 @@
           <div class="list-item-content">Home</div>
         </a>
         <a href="/boards" class="list-item">
-          <div class="list-item-content">All boards</div>
+          <div class="list-item-content">Boards</div>
         </a>
       </div>
     </div>

@@ -1,56 +1,55 @@
-<div class="appbar appbar-primary appbar-fixed">
-  <div class="toolbar">
-    <div class="toolbar-action">
-      <a href="<%= board_path(@topic.board) %>" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+<% content_for :toolbar_title do %>
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="<%= board_path(@topic.board) %>"><%= @topic.board.name %></a>
+    </li>
+    <li class="breadcrumb-item active">
+      <%= @topic.title %>
+    </li>
+  </ul>
+<% end %>
+
+<h1 class="topic-title"><%= @topic.title %></h1>
+
+<div class="list">
+  <div class="list-item">
+    <div class="list-item-avatar">
+      <%= avatar_tag @topic.user %>
     </div>
-    <div class="toolbar-title">
-      Topic
+    <div class="list-item-content">
+      <div class="list-item-content-primary">
+        <span><%= @topic.user.name %></span>
+        <span><%= l @topic.created_at, format: :long %></span>
+      </div>
+      <article class="typography">
+        <%= sanitize markdown_render @topic.content %>
+      </article>
     </div>
   </div>
 </div>
 
-<main class="main with-appbar">
-  <div class="container">
-    <h1 class="topic-title"><%= @topic.title %></h1>
+<h3 class="subheader">Comments</h3>
 
-    <div class="list">
-      <div class="list-item">
-        <div class="list-item-avatar">
-          <%= avatar_tag @topic.user %>
-        </div>
-        <div class="list-item-content">
-          <div class="list-item-content-primary">
-            <span><%= @topic.user.name %></span>
-            <span><%= l @topic.created_at, format: :long %></span>
-          </div>
-          <article class="typography">
-            <%= sanitize markdown_render @topic.content %>
-          </article>
-        </div>
-      </div>
+<div id="comments" class="list">
+  <%= render @topic.comments %>
+</div>
+
+<div class="list">
+  <div class="list-item">
+    <div class="list-item-avatar">
+      <% if Current.user %>
+        <%= avatar_tag Current.user %>
+      <% end %>
     </div>
-
-    <h3 class="subheader">Comments</h3>
-
-    <div id="comments" class="list">
-      <%= render @topic.comments %>
-    </div>
-
-    <div class="list">
-      <div class="list-item">
-        <div class="list-item-avatar">
-          <% if Current.user %>
-            <%= avatar_tag Current.user %>
-          <% end %>
-        </div>
-        <div class="list-item-content">
-          <% if Current.user %>
-            <%= render 'comments/form' %>
-          <% else %>
-            <a href="/session/new" class="button button-raised button-primary">Sign in to Commnet</a>
-          <% end %>
-        </div>
-      </div>
+    <div class="list-item-content">
+      <% if Current.user %>
+        <%= render 'comments/form' %>
+      <% else %>
+        <a href="/session/new" class="button button-raised button-primary">Sign in to Commnet</a>
+      <% end %>
     </div>
   </div>
-</main>
+</div>
