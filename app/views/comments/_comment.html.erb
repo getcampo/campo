@@ -1,4 +1,4 @@
-<div id="comment-<%= comment.id %>" class="list-item">
+<div id="comment-<%= comment.id %>" class="list-item" data-controller="visible" data-creator-id="<%= comment.user.id %>">
   <div class="list-item-avatar">
     <%= avatar_tag comment.user %>
   </div>
@@ -10,6 +10,8 @@
     <article class="typography">
       <%= sanitize markdown_render comment.content %>
     </article>
-    <a href="<%= edit_comment_path(comment) %>">edit</a>
+    <div class="list-item-content-secondary">
+      <a href="<%= edit_comment_path(comment) %>" class="text-muted" data-controller="visible-to-creator">Edit</a>
+    </div>
   </div>
 </div>

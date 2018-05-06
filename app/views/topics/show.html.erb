@@ -27,6 +27,9 @@
       <article class="typography">
         <%= sanitize markdown_render @topic.content %>
       </article>
+      <div class="list-item-content-secondary">
+        <a href="<%= edit_topic_path(@topic) %>" class="text-muted" data-controller="visible-to-creator">Edit</a>
+      </div>
     </div>
   </div>
 </div>
