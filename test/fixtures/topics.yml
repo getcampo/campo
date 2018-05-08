@@ -2,5 +2,5 @@ topic:
   title: Title
   content: Content
   user: :user
-  board: :board
+  forum: :forum
   activated_at: <%= Time.now %>

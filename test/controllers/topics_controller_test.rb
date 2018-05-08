@@ -15,7 +15,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
   test "should create topic" do
     sign_in_as(users(:user))
     assert_difference "Topic.count" do
-      post topics_url, params: { topic: { title: 'Title', board_id: boards(:board).id, content: 'Content'}}
+      post topics_url, params: { topic: { title: 'Title', forum_id: forums(:forum).id, content: 'Content'}}
     end
     topic = Topic.last
     assert_redirected_to topic_path(topic)

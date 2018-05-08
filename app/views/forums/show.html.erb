@@ -4,12 +4,12 @@
       <a href="/">Home</a>
     </li>
     <li class="breadcrumb-item active">
-      <%= @board.name %>
+      <%= @forum.name %>
     </li>
   </ul>
 <% end %>
 
-<div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="<%= board_path(@board) %>">
+<div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="<%= forum_path(@forum) %>">
   <%= render @topics %>
 </div>
 <div class="loading-message">

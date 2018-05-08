@@ -42,21 +42,21 @@
         </a>
       </div>
       <hr class="divider">
-      <h3 class="subheader">Boards</h3>
+      <h3 class="subheader">Forums</h3>
       <div class="list">
-        <% Board.order(topics_count: :desc).each do |board| %>
-          <a href="<%= board_path(board) %>" class="list-item">
+        <% Forum.order(topics_count: :desc).each do |forum| %>
+          <a href="<%= forum_path(forum) %>" class="list-item">
             <div class="list-item-icon">
               <i class="material-icons">forum</i>
             </div>
-            <div class="list-item-content align-center"><%= board.name %></div>
+            <div class="list-item-content align-center"><%= forum.name %></div>
           </a>
         <% end %>
-        <a href="/boards" class="list-item">
+        <a href="/forums" class="list-item">
           <div class="list-item-icon">
             <i class="material-icons">more_horiz</i>
           </div>
-          <div class="list-item-content align-center">All boards</div>
+          <div class="list-item-content align-center">All forums</div>
         </a>
       </div>
     </div>

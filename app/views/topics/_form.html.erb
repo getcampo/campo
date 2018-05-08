@@ -5,8 +5,8 @@
       <%= form.text_field :title %>
     </div>
     <div class="form-field col-1">
-      <%= form.label :board_id %>
-      <%= form.collection_select :board_id, Board.all, :id, :name %>
+      <%= form.label :forum_id %>
+      <%= form.collection_select :forum_id, Forum.all, :id, :name %>
     </div>
   </div>
   <div class="form-field">

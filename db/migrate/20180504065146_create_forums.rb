@@ -1,6 +1,6 @@
-class CreateBoards < ActiveRecord::Migration[5.2]
+class CreateForums < ActiveRecord::Migration[5.2]
   def change
-    create_table :boards do |t|
+    create_table :forums do |t|
       t.string :name, null: false
       t.string :slug, null: false
       t.text :description
@@ -12,14 +12,14 @@ class CreateBoards < ActiveRecord::Migration[5.2]
     reversible do |dir|
       dir.up do
         execute <<-SQL
-          CREATE UNIQUE INDEX index_boards_on_lowercase_slug
+          CREATE UNIQUE INDEX index_forums_on_lowercase_slug
             ON users USING btree (LOWER(username));
         SQL
       end
 
       dir.down do
         execute <<-SQL
-          DROP INDEX index_boards_on_lowercase_slug;
+          DROP INDEX index_forums_on_lowercase_slug;
         SQL
       end
     end

@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
-  resources :boards do
+  resources :forums do
     collection do
-      post 'validate/:attribute', to: 'boards#validate', constraints: { attribute: /name|slug/ }
+      post 'validate/:attribute', to: 'forums#validate', constraints: { attribute: /name|slug/ }
     end
   end
   resources :topics, only: [:show, :new, :create, :edit, :update]

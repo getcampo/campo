@@ -107,40 +107,6 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: boards; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.boards (
-    id bigint NOT NULL,
-    name character varying NOT NULL,
-    slug character varying NOT NULL,
-    description text,
-    topics_count integer DEFAULT 0,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: boards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.boards_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: boards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.boards_id_seq OWNED BY public.boards.id;
-
-
---
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -171,6 +137,40 @@ CREATE SEQUENCE public.comments_id_seq
 --
 
 ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- Name: forums; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.forums (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    slug character varying NOT NULL,
+    description text,
+    topics_count integer DEFAULT 0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: forums_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.forums_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forums_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.forums_id_seq OWNED BY public.forums.id;
 
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.topics (
     id bigint NOT NULL,
-    board_id bigint,
+    forum_id bigint,
     user_id bigint,
     title character varying NOT NULL,
     content text NOT NULL,
@@ -304,17 +304,17 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
--- Name: boards id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.boards ALTER COLUMN id SET DEFAULT nextval('public.boards_id_seq'::regclass);
-
-
---
 -- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- Name: forums id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.forums ALTER COLUMN id SET DEFAULT nextval('public.forums_id_seq'::regclass);
 
 
 --
@@ -363,19 +363,19 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: boards boards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.boards
-    ADD CONSTRAINT boards_pkey PRIMARY KEY (id);
-
-
---
 -- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forums forums_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.forums
+    ADD CONSTRAINT forums_pkey PRIMARY KEY (id);
 
 
 --
@@ -432,13 +432,6 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
--- Name: index_boards_on_lowercase_slug; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_boards_on_lowercase_slug ON public.users USING btree (lower((username)::text));
-
-
---
 -- Name: index_comments_on_topic_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -450,6 +443,13 @@ CREATE INDEX index_comments_on_topic_id ON public.comments USING btree (topic_id
 --
 
 CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
+
+
+--
+-- Name: index_forums_on_lowercase_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_forums_on_lowercase_slug ON public.users USING btree (lower((username)::text));
 
 
 --
@@ -474,10 +474,10 @@ CREATE INDEX index_topics_on_activated_at ON public.topics USING btree (activate
 
 
 --
--- Name: index_topics_on_board_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_topics_on_forum_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_topics_on_board_id ON public.topics USING btree (board_id);
+CREATE INDEX index_topics_on_forum_id ON public.topics USING btree (forum_id);
 
 
 --

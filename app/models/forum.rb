@@ -1,4 +1,4 @@
-class Board < ApplicationRecord
+class Forum < ApplicationRecord
   has_many :topics, counter_cache: true
 
   validates :name, :slug, presence: true

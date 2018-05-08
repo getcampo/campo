@@ -6,7 +6,7 @@
       <a href="/">Home</a>
     </li>
     <li class="breadcrumb-item">
-      <a href="<%= board_path(@topic.board) %>"><%= @topic.board.name %></a>
+      <a href="<%= forum_path(@topic.forum) %>"><%= @topic.forum.name %></a>
     </li>
     <li class="breadcrumb-item active">
       <%= @topic.title %>
