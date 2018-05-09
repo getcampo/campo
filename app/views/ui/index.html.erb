@@ -79,33 +79,47 @@
   <div class="container">
     <section>
       <h3 id="buttons">Buttons</h3>
-      <h4 id="raised-buttons">Raised buttons</h4>
+      <h4 id="raised-buttons">Contained buttons</h4>
       <p>
-        <button type="button" class="button button-raised">Default</button>
-        <button type="button" class="button button-raised button-primary">Primary</button>
-        <button type="button" class="button button-raised button-secondary">Secondary</button>
-        <button type="button" class="button button-raised" disabled>Disabled</button>
+        <button type="button" class="button button-contained">Default</button>
+        <button type="button" class="button button-contained button-primary">Primary</button>
+        <button type="button" class="button button-contained button-secondary">Secondary</button>
+        <button type="button" class="button button-contained" disabled>Disabled</button>
       </p>
-      <h4 id="raised-buttons-link">Raised buttons (Link)</h4>
+      <h4 id="raised-buttons-link">Contained buttons (Link)</h4>
       <p>
-        <a class="button button-raised">Default</a>
-        <a class="button button-raised button-primary">Primary</a>
-        <a class="button button-raised button-secondary">Secondary</a>
-        <a class="button button-raised" disabled>Disabled</a>
+        <a class="button button-contained">Default</a>
+        <a class="button button-contained button-primary">Primary</a>
+        <a class="button button-contained button-secondary">Secondary</a>
+        <a class="button button-contained" disabled>Disabled</a>
       </p>
-      <h4 id="flat-buttons">Flat buttons</h4>
+      <h4 id="flat-buttons">Text buttons</h4>
       <p>
-        <button type="button" class="button button-flat">Default</button>
-        <button type="button" class="button button-flat button-primary">Primary</button>
-        <button type="button" class="button button-flat button-secondary">Secondary</button>
-        <button type="button" class="button button-flat" disabled>Disabled</button>
+        <button type="button" class="button button-text">Default</button>
+        <button type="button" class="button button-text button-primary">Primary</button>
+        <button type="button" class="button button-text button-secondary">Secondary</button>
+        <button type="button" class="button button-text" disabled>Disabled</button>
       </p>
-      <h4 id="flat-buttons-link">Flat buttons (Link)</h4>
+      <h4 id="flat-buttons-link">Text buttons (Link)</h4>
       <p>
-        <a class="button button-flat">Default</a>
-        <a class="button button-flat button-primary">Primary</a>
-        <a class="button button-flat button-secondary">Secondary</a>
-        <a class="button button-flat" disabled>Disabled</a>
+        <a class="button button-text">Default</a>
+        <a class="button button-text button-primary">Primary</a>
+        <a class="button button-text button-secondary">Secondary</a>
+        <a class="button button-text" disabled>Disabled</a>
+      </p>
+      <h4 id="flat-buttons">Outlined buttons</h4>
+      <p>
+        <button type="button" class="button button-outlined">Default</button>
+        <button type="button" class="button button-outlined button-primary">Primary</button>
+        <button type="button" class="button button-outlined button-secondary">Secondary</button>
+        <button type="button" class="button button-outlined" disabled>Disabled</button>
+      </p>
+      <h4 id="flat-buttons-link">Outlined buttons (Link)</h4>
+      <p>
+        <a class="button button-outlined">Default</a>
+        <a class="button button-outlined button-primary">Primary</a>
+        <a class="button button-outlined button-secondary">Secondary</a>
+        <a class="button button-outlined" disabled>Disabled</a>
       </p>
       <h4 id="floating-buttons">Floating buttons</h4>
       <p>
@@ -189,7 +203,7 @@
             <input type="radio" name="radio">Radio 3
           </label>
         </div>
-        <button type="submit" class="button button-raised button-primary">Submit</button>
+        <button type="submit" class="button button-contained button-primary">Submit</button>
       </form>
       <h4 id="form-validation">Form validation</h4>
       <form class="form">
@@ -212,7 +226,7 @@
     <section>
       <h3 id="dropdowns">Dropdowns</h3>
       <div class="dropdown" data-controller="dropdown">
-        <button type="button" class="button button-raised" data-action="dropdown#open">Dropdown button</button>
+        <button type="button" class="button button-contained" data-action="dropdown#open">Dropdown button</button>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -220,7 +234,7 @@
         </div>
       </div>
       <div class="dropdown" data-controller="dropdown">
-        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align right</button>
+        <button type="button" class="button button-contained" data-action="dropdown#open">Menu align right</button>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -228,7 +242,7 @@
         </div>
       </div>
       <div class="dropdown" data-controller="dropdown">
-        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top</button>
+        <button type="button" class="button button-contained" data-action="dropdown#open">Menu align top</button>
         <div class="dropdown-menu dropdown-menu-top">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -236,7 +250,7 @@
         </div>
       </div>
       <div class="dropdown" data-controller="dropdown">
-        <button type="button" class="button button-raised" data-action="dropdown#open">Menu align top right</button>
+        <button type="button" class="button button-contained" data-action="dropdown#open">Menu align top right</button>
         <div class="dropdown-menu dropdown-menu-top dropdown-menu-right">
           <a class="dropdown-item" href="#">Dropdown item</a>
           <a class="dropdown-item" href="#">Dropdown item</a>
@@ -333,8 +347,8 @@
                 Content text
               </div>
               <div class="card-footer">
-                <button type="button" class="button button-flat button-primary">Action 1</button>
-                <button type="button" class="button button-flat button-primary">Action 2</button>
+                <button type="button" class="button button-text button-primary">Action 1</button>
+                <button type="button" class="button button-text button-primary">Action 2</button>
               </div>
             </div>
           <% end %>
@@ -355,8 +369,8 @@
                 Dialog Content
               </div>
               <div class="dialog-footer">
-                <button type="button" class="button button-flat button-primary">Action 1</button>
-                <button type="button" class="button button-flat button-primary">Action 2</button>
+                <button type="button" class="button button-text button-primary">Action 1</button>
+                <button type="button" class="button button-text button-primary">Action 2</button>
               </div>
             </div>
             <div class="dialog-background"></div>
@@ -364,7 +378,7 @@
         </div>
       </div>
       <h4>Dialog toggle</h4>
-      <button type="button" class="button button-raised button-primary" data-toggle="#dialog-demo" data-target="#dialog-demo">Dialog Toggle</button>
+      <button type="button" class="button button-contained button-primary" data-toggle="#dialog-demo" data-target="#dialog-demo">Dialog Toggle</button>
       <div id="dialog-demo" class="dialog" data-controller="dialog">
         <div class="dialog-container">
           <div class="dialog-content">
@@ -378,8 +392,8 @@
               <% end %>
             </div>
             <div class="dialog-footer">
-              <button type="button" class="button button-flat button-primary">Action 1</button>
-              <button type="button" class="button button-flat button-primary">Action 2</button>
+              <button type="button" class="button button-text button-primary">Action 1</button>
+              <button type="button" class="button button-text button-primary">Action 2</button>
             </div>
           </div>
           <div class="dialog-background" data-action="click->dialog#close"></div>
@@ -437,7 +451,7 @@
         </div>
       </div>
       <h4>Snackbar toggle</h4>
-      <button id="toggle-snackbar" type="button" name="button" class="button button-raised button-primary">Snackbar Toggle</button>
+      <button id="toggle-snackbar" type="button" name="button" class="button button-contained button-primary">Snackbar Toggle</button>
       <template id="snackbar-template">
         <div class="snackbar animated fadeInUp" data-controller="snackbar" data-hide-on="5000">
           Snackbar content

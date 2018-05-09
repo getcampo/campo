@@ -13,7 +13,7 @@
   pointer-events: none;
 }
 
-.button-raised {
+.button-contained {
   line-height: 24px;
   padding: 6px 12px;
   border: 0;
@@ -45,7 +45,7 @@
   }
 }
 
-.button-flat {
+.button-text {
   line-height: 24px;
   padding: 6px 12px;
   border: 0;
@@ -73,6 +73,36 @@
     opacity: 0.3;
   }
 }
+
+.button-outlined {
+  line-height: 24px;
+  padding: 5px 11px;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  min-width: 88px;
+  color: var(--text-primary-color);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &.button-primary {
+    color: var(--primary-color);
+  }
+
+  &.button-secondary {
+    color: var(--secondary-color);
+  }
+
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
 
 .button-floating {
   line-height: 0;
