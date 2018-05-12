@@ -1,2 +1,3 @@
 document.querySelector('#comments').insertAdjacentHTML('beforeend', '<%= j render @comment %>');
-document.querySelector('#comment-form textarea').value = '';
+<% @comment = Comment.new(topic_id: @comment.topic_id) %>
+document.querySelector('#comment-form').outerHTML = '<%= j render "form" %>';
