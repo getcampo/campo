@@ -8,6 +8,8 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.integer :comments_count, default: 0
       t.datetime :activated_at, null: false
       t.boolean :trashed, default: false
+      t.datetime :edited_at
+      t.references :edited_user, index: false
 
       t.timestamps
 

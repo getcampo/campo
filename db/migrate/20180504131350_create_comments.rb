@@ -5,6 +5,8 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.references :user
       t.text :content, null: false
       t.boolean :trashed, default: false
+      t.datetime :edited_at
+      t.references :edited_user, index: false
 
       t.timestamps
     end

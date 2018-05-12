@@ -28,6 +28,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Current.user.topics.find params[:id]
+    @topic.edited_by Current.user
 
     if @topic.update topic_params
       redirect_to @topic, notice: 'Topic is successfully updated.'

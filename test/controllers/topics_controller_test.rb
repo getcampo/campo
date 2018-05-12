@@ -33,6 +33,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     patch topic_url(topics(:topic)), params: { topic: { title: 'Change' } }
     assert_redirected_to topic_url(topics(:topic))
     assert_equal 'Change', topics(:topic).reload.title
+    assert_equal users(:user), topics(:topic).edited_user
   end
 
   test "should trash topic" do

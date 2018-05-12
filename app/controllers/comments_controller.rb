@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Current.user.comments.find params[:id]
+    @comment.edited_by Current.user
 
     if @comment.update comment_params
       redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), notice: 'Comment is successfully updated.'
