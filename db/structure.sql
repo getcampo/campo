@@ -115,6 +115,7 @@ CREATE TABLE public.comments (
     topic_id bigint,
     user_id bigint,
     content text NOT NULL,
+    trashed boolean DEFAULT false,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -226,8 +227,9 @@ CREATE TABLE public.topics (
     user_id bigint,
     title character varying NOT NULL,
     content text NOT NULL,
-    activated_at timestamp without time zone NOT NULL,
     comments_count integer DEFAULT 0,
+    activated_at timestamp without time zone NOT NULL,
+    trashed boolean DEFAULT false,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

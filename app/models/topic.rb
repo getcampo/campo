@@ -1,4 +1,6 @@
 class Topic < ApplicationRecord
+  include Trashable
+
   has_many :comments, counter_cache: true
   belongs_to :forum
   belongs_to :user
