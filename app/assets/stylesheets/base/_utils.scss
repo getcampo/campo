@@ -1,0 +1,12 @@
+.float-right {
+  float: right;
+}
+
+.text-secondary {
+  color: var(--text-secondary-color);
+}
+
+a.text-secondary {
+  color: var(--text-secondary-color);
+  text-decoration: none;
+}

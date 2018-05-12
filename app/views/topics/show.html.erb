@@ -22,15 +22,31 @@
       <%= avatar_tag @topic.user %>
     </div>
     <div class="list-item-content">
-      <div class="list-item-content-primary">
-        <%= @topic.user.name %>
-        <span class="text-secondary float-right"><%= local_time_ago @topic.created_at %></span>
-      </div>
-      <article class="typography">
-        <%= sanitize markdown_render @topic.content %>
-      </article>
-      <div class="list-item-content-secondary">
-        <a href="<%= edit_topic_path(@topic) %>" class="text-secondary" data-controller="visible-to-creator">Edit</a>
+      <div class="post">
+        <div class="post-header">
+          <span class="post-header-name"><%= @topic.user.name %></span>
+          <div class="float-right">
+            <a href="<%= topic_path(@topic) %>" class="post-header-time text-secondary"><%= local_time_ago @topic.created_at %></a>
+            <div class="dropdown" data-controller="dropdown">
+              <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
+                <i class="material-icons">more_vert</i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">
+                  <i class="material-icons">edit</i>
+                  Edit
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-body">
+          <article class="typography">
+            <%= sanitize markdown_render @topic.content %>
+          </article>
+        </div>
+        <div class="post-footer">
+        </div>
       </div>
     </div>
   </div>
