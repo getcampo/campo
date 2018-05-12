@@ -1,8 +1,8 @@
 class Topic < ApplicationRecord
   include Trashable, Editable
 
-  has_many :comments, counter_cache: true
-  belongs_to :forum
+  has_many :comments
+  belongs_to :forum, counter_cache: true
   belongs_to :user
 
   validates :title, :content, presence: true
