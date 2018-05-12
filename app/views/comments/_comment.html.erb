@@ -7,7 +7,7 @@
       <div class="post-header">
         <span class="post-header-name"><%= comment.user.name %></span>
         <div class="float-right">
-          <a href="<%= topic_path(comment.topic, anchor: "comment-#{comment.id}") %>" class="post-header-time text-secondary"><%= local_time_ago comment.created_at %></a>
+          <a href="<%= topic_path(comment.topic, anchor: "comment-#{comment.id}") %>" class="post-header-time text-small text-secondary"><%= local_time_ago comment.created_at %></a>
           <div class="dropdown" data-controller="dropdown">
             <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
               <i class="material-icons">more_vert</i>
@@ -27,6 +27,11 @@
         <article class="typography">
           <%= sanitize markdown_render comment.content %>
         </article>
+        <% if comment.edited_user %>
+          <div class="text-small text-secondary">
+            Edited by <%= comment.edited_user.name %> at <%= local_time_ago comment.edited_at %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

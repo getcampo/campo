@@ -24,7 +24,7 @@
         <div class="post-header">
           <span class="post-header-name"><%= @topic.user.name %></span>
           <div class="float-right">
-            <a href="<%= topic_path(@topic) %>" class="post-header-time text-secondary"><%= local_time_ago @topic.created_at %></a>
+            <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_ago @topic.created_at %></a>
             <div class="dropdown" data-controller="dropdown">
               <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
                 <i class="material-icons">more_vert</i>
@@ -44,8 +44,11 @@
           <article class="typography">
             <%= sanitize markdown_render @topic.content %>
           </article>
-        </div>
-        <div class="post-footer">
+          <% if @topic.edited_user %>
+            <div class="text-small text-secondary">
+              Edited by <%= @topic.edited_user.name %> at <%= local_time_ago @topic.edited_at %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
