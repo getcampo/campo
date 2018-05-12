@@ -7,15 +7,17 @@
       <div class="post-header">
         <span class="post-header-name"><%= comment.user.name %></span>
         <div class="float-right">
-          <a href="<%= topic_path(@topic, anchor: "comment-#{comment.id}") %>" class="post-header-time text-secondary"><%= local_time_ago comment.created_at %></a>
+          <a href="<%= topic_path(comment.topic, anchor: "comment-#{comment.id}") %>" class="post-header-time text-secondary"><%= local_time_ago comment.created_at %></a>
           <div class="dropdown" data-controller="dropdown">
             <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="<%= edit_comment_path(comment) %>" class="dropdown-item">
-                <i class="material-icons">edit</i>
-                Edit
+                <i class="material-icons">edit</i>Edit
+              </a>
+              <a href="<%= trash_comment_path(comment) %>" class="dropdown-item" data-method="put" data-confirm="Are you sure you want to delete this comment?" data-remote="true">
+                <i class="material-icons">delete</i>Trash
               </a>
             </div>
           </div>

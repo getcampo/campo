@@ -19,8 +19,15 @@ Rails.application.routes.draw do
       post 'validate/:attribute', to: 'forums#validate', constraints: { attribute: /name|slug/ }
     end
   end
-  resources :topics, only: [:show, :new, :create, :edit, :update]
-  resources :comments, only: [:create, :edit, :update]
+
+  concern :trashable do
+    member do
+      put :trash
+    end
+  end
+
+  resources :topics, only: [:show, :new, :create, :edit, :update], concerns: [:trashable]
+  resources :comments, only: [:create, :edit, :update], concerns: [:trashable]
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
 

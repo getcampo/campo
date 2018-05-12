@@ -21,4 +21,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     patch comment_url(comments(:comment)), params: { comment: { content: 'Change'} }
     assert_redirected_to topic_path(comments(:comment).topic, anchor: "comment-#{comments(:comment).id}")
   end
+
+  test "should trash comment" do
+    sign_in_as users(:user)
+    put trash_comment_url(comments(:comment)), xhr: true
+    assert comments(:comment).reload.trashed?
+  end
 end

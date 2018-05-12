@@ -36,6 +36,12 @@ class TopicsController < ApplicationController
     end
   end
 
+  def trash
+    @topic = Current.user.topics.find params[:id]
+    @topic.trash
+    redirect_to root_path, notice: 'Topic is successfully delete.'
+  end
+
   private
 
   def topic_params

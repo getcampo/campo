@@ -27,6 +27,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def trash
+    @comment = Current.user.comments.find params[:id]
+    @comment.trash
+  end
+
   private
 
   def comment_params

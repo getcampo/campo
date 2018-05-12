@@ -34,4 +34,10 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to topic_url(topics(:topic))
     assert_equal 'Change', topics(:topic).reload.title
   end
+
+  test "should trash topic" do
+    sign_in_as(users(:user))
+    put trash_topic_url(topics(:topic))
+    assert topics(:topic).reload.trashed?
+  end
 end

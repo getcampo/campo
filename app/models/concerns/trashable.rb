@@ -1,7 +1,7 @@
 module Trashable
   extend ActiveSupport::Concern
 
-  include do
+  included do
     default_scope { where(trashed: false) }
     scope :trashed, -> { where(trashed: true) }
   end

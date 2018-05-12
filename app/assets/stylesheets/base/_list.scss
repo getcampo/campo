@@ -25,7 +25,6 @@
 .list-item-content {
   padding: 16px 0;
   flex-grow: 1;
-  overflow: hidden;
   color: var(--text-primary-color);
 
   &:first-child {
@@ -39,15 +38,23 @@
   &.align-center {
     align-self: center;
   }
+
+  &.text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+
+    .list-item-content-primary,
+    .list-item-content-secondary {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .list-item-content-primary {
   font-size: 16px;
   line-height: 1.2;
   margin: 0 0 8px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   font-weight: normal;
 }
 
@@ -55,9 +62,6 @@
   font-size: 14px;
   line-height: 1.2;
   margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: var(--text-secondary-color);
 }
 
