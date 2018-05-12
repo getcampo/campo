@@ -2,6 +2,9 @@ class TopicsController < ApplicationController
   layout 'base', except: [:show]
 
   before_action :require_sign_in, except: :show
+  before_action :set_topic, except: [:new, :create]
+  before_action :check_edit_permission, only: [:edit, :update]
+  before_action :check_trash_permission, only: [:trash]
 
   def new
     @topic = Topic.new
@@ -18,16 +21,13 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find params[:id]
     @comment = Comment.new topic: @topic
   end
 
   def edit
-    @topic = Current.user.topics.find params[:id]
   end
 
   def update
-    @topic = Current.user.topics.find params[:id]
     @topic.edited_by Current.user
 
     if @topic.update topic_params
@@ -38,7 +38,6 @@ class TopicsController < ApplicationController
   end
 
   def trash
-    @topic = Current.user.topics.find params[:id]
     @topic.trash
     redirect_to root_path, notice: 'Topic is successfully delete.'
   end
@@ -47,5 +46,21 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :forum_id, :content)
+  end
+
+  def set_topic
+    @topic = Topic.find params[:id]
+  end
+
+  def check_edit_permission
+    unless @topic.user == Current.user or Current.user.admin?
+      redirect_to topic_url(@topic), alert: 'You have no permission.'
+    end
+  end
+
+  def check_trash_permission
+    unless Current.user.admin?
+      redirect_to topic_url(@topic), alert: 'You have no permission.'
+    end
   end
 end

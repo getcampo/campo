@@ -36,9 +36,15 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     assert_equal users(:user), topics(:topic).edited_user
   end
 
-  test "should trash topic" do
-    sign_in_as(users(:user))
+  test "should trash topic by admin" do
+    sign_in_as(users(:admin))
     put trash_topic_url(topics(:topic))
     assert topics(:topic).reload.trashed?
+  end
+
+  test "should not trash topic by user" do
+    sign_in_as(users(:user))
+    put trash_topic_url(topics(:topic))
+    assert_not topics(:topic).reload.trashed?
   end
 end

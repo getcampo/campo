@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   layout 'base'
 
   before_action :require_sign_in
+  before_action :set_comment, except: [:create]
+  before_action :check_edit_permission, only: [:edit, :update]
+  before_action :check_trash_permission, only: [:trash]
 
   def create
     @comment = Current.user.comments.new comment_params
@@ -14,11 +17,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Current.user.comments.find params[:id]
   end
 
   def update
-    @comment = Current.user.comments.find params[:id]
     @comment.edited_by Current.user
 
     if @comment.update comment_params
@@ -29,7 +30,6 @@ class CommentsController < ApplicationController
   end
 
   def trash
-    @comment = Current.user.comments.find params[:id]
     @comment.trash
   end
 
@@ -37,5 +37,21 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:topic_id, :content)
+  end
+
+  def set_comment
+    @comment = Comment.find params[:id]
+  end
+
+  def check_edit_permission
+    unless @comment.user == Current.user or Current.user.admin?
+      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: 'You have no permission.'
+    end
+  end
+
+  def check_trash_permission
+    unless Current.user.admin?
+      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: 'You have no permission.'
+    end
   end
 end
