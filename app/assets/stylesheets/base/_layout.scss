@@ -203,4 +203,22 @@ body {
   border-left: 2px solid #ccc;
   background: #fafafa;
   border-radius: 2px;
+  max-height: 80px;
+  overflow: hidden;
+
+  .expand-less {
+    display: none;
+  }
+
+  &.expanded {
+    max-height: none;
+
+    .expand-more {
+      display: none;
+    }
+
+    .expand-less {
+      display: inline-block;
+    }
+  }
 }

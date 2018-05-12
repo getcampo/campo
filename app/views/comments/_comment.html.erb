@@ -7,7 +7,7 @@
       <div class="post-header">
         <span class="post-header-name"><%= comment.user.name %></span>
         <div class="float-right">
-          <a href="<%= topic_path(comment.topic, anchor: "comment-#{comment.id}") %>" class="post-header-time text-small text-secondary"><%= local_time_ago comment.created_at %></a>
+          <a href="<%= "#comment-#{comment.id}" %>" class="post-header-time text-small text-secondary"><%= local_time_ago comment.created_at %></a>
           <div class="dropdown" data-controller="dropdown">
             <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
               <i class="material-icons">more_vert</i>
@@ -28,16 +28,26 @@
       </div>
       <div class="post-body">
         <% if comment.reply_to_comment %>
-          <div class="reply-to-quote">
+          <div class="reply-to-quote" data-controller="expandable">
             <div class="reply-to-quote-header">
               <%= comment.reply_to_comment.user.name %>
-              <button type="button" class="button button-icon button-icon-small float-right">
-                <i class="material-icons">expand_more</i>
-              </button>
+              <div class="line-height-1 float-right">
+                <a href="<%= "#comment-#{comment.reply_to_comment.id}" %>" class="button button-icon button-icon-small">
+                  <i class="material-icons">arrow_upward</i>
+                </a>
+                <button type="button" class="button button-icon button-icon-small expand-more" data-action="expandable#expandMore">
+                  <i class="material-icons">expand_more</i>
+                </button>
+                <button type="button" class="button button-icon button-icon-small expand-less" data-action="expandable#expandLess">
+                  <i class="material-icons">expand_less</i>
+                </button>
+              </div>
             </div>
-            <article class="typography">
-              <%= sanitize markdown_render comment.reply_to_comment.content %>
-            </article>
+            <div class="reply-to-quote-body">
+              <article class="typography">
+                <%= sanitize markdown_render comment.reply_to_comment.content %>
+              </article>
+            </div>
           </div>
         <% end %>
         <article class="typography">
