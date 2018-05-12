@@ -37,7 +37,7 @@
   bottom: 0;
 }
 
-.dropdown-item {
+.dropdown-menu-item {
   display: block;
   padding: 8px 16px;
   line-height: 24px;
@@ -51,5 +51,6 @@
   .material-icons {
     vertical-align: top;
     margin-right: 8px;
+    color: var(--text-secondary-color);
   }
 }

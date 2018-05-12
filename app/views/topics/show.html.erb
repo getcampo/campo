@@ -32,10 +32,10 @@
                 <i class="material-icons">more_vert</i>
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">
+                <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item">
                   <i class="material-icons">edit</i> Edit
                 </a>
-                <a href="<%= trash_topic_path(@topic) %>" class="dropdown-item" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
+                <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
                   <i class="material-icons">delete</i> Trash
                 </a>
               </div>
