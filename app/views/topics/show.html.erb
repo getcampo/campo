@@ -20,7 +20,7 @@
       <%= avatar_tag @topic.user %>
     </div>
     <div class="list-item-content">
-      <div class="post">
+      <div class="post" data-creator-id="<%= @topic.user.id %>">
         <div class="post-header">
           <span class="post-header-name"><%= @topic.user.name %></span>
           <div class="float-right">

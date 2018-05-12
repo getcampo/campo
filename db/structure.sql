@@ -114,6 +114,7 @@ CREATE TABLE public.comments (
     id bigint NOT NULL,
     topic_id bigint,
     user_id bigint,
+    reply_to_comment_id bigint,
     content text NOT NULL,
     trashed boolean DEFAULT false,
     edited_user_id bigint,
@@ -435,6 +436,13 @@ CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active
 --
 
 CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_comments_on_reply_to_comment_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_comments_on_reply_to_comment_id ON public.comments USING btree (reply_to_comment_id);
 
 
 --

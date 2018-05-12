@@ -1,9 +1,9 @@
-<div id="comment-<%= comment.id %>" class="list-item" data-controller="visible" data-creator-id="<%= comment.user.id %>">
+<div id="comment-<%= comment.id %>" class="list-item">
   <div class="list-item-avatar">
     <%= avatar_tag comment.user %>
   </div>
   <div class="list-item-content">
-    <div class="post">
+    <div class="post" data-controller="post" data-creator-id="<%= comment.user.id %>" data-creator-name="<%= comment.user.name %>" data-creator-username="<%= comment.user.username %>" data-comment-id="<%= comment.id %>">
       <div class="post-header">
         <span class="post-header-name"><%= comment.user.name %></span>
         <div class="float-right">
@@ -13,6 +13,9 @@
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-menu-item" data-action="post#reply">
+                <i class="material-icons">reply</i>Reply
+              </a>
               <a href="<%= edit_comment_path(comment) %>" class="dropdown-menu-item" data-controller="visible-to-creator">
                 <i class="material-icons">edit</i>Edit
               </a>
@@ -24,6 +27,19 @@
         </div>
       </div>
       <div class="post-body">
+        <% if comment.reply_to_comment %>
+          <div class="reply-to-quote">
+            <div class="reply-to-quote-header">
+              <%= comment.reply_to_comment.user.name %>
+              <button type="button" class="button button-icon button-icon-small float-right">
+                <i class="material-icons">expand_more</i>
+              </button>
+            </div>
+            <article class="typography">
+              <%= sanitize markdown_render comment.reply_to_comment.content %>
+            </article>
+          </div>
+        <% end %>
         <article class="typography">
           <%= sanitize markdown_render comment.content %>
         </article>

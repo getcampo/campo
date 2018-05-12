@@ -1,5 +1,15 @@
 <%= form_with model: @comment, id: 'comment-form', class: 'form', data: { controller: 'editor' } do |form| %>
   <%= form.hidden_field :topic_id %>
+  <% if @comment.new_record? %>
+    <%= form.hidden_field :reply_to_comment_id, data: { target: 'editor.replyToInput' }, disabled: true %>
+    <div class="reply-to-message text-secondary" data-target="editor.replyToMessage">
+      <i class="material-icons vertical-top">reply</i>
+      <span class="reply-to-message-name"></span>
+      <button type="button" class="button button-icon button-icon-small vertical-top text-secondary" data-action="editor#cleanReplyTo">
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+  <% end %>
   <div class="form-field <%= 'invalid' if @comment.errors[:content].any? %>">
     <%= form.text_area :content, rows: 5, data: { target: 'editor.textarea' } %>
     <% if @comment.errors[:content].any? %>

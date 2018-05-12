@@ -25,6 +25,7 @@
 .list-item-content {
   padding: 16px 0;
   flex-grow: 1;
+  min-width: 0;
   color: var(--text-primary-color);
 
   &:first-child {

@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
     create_table :comments do |t|
       t.belongs_to :topic
       t.belongs_to :user
+      t.belongs_to :reply_to_comment
       t.text :content, null: false
       t.boolean :trashed, default: false
       t.belongs_to :edited_user, index: false

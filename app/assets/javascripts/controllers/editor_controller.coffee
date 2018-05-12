@@ -1,5 +1,5 @@
 application.register "editor", class extends Stimulus.Controller
-  @targets: ['textarea']
+  @targets: ['textarea', 'replyToInput', 'replyToMessage']
 
   attachFile: (event) ->
     for file in event.target.files
@@ -51,3 +51,8 @@ application.register "editor", class extends Stimulus.Controller
       success: (data, statusText, xhr) =>
         console.log xhr.responseText
         this.previewDialog.querySelector('.dialog-body').innerHTML = xhr.responseText
+
+  cleanReplyTo: ->
+    this.replyToInputTarget.value = ''
+    this.replyToInputTarget.disabled = true
+    this.replyToMessageTarget.classList.remove('show')

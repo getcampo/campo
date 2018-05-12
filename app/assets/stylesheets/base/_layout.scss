@@ -186,3 +186,21 @@ body {
 .float-right {
   float: right;
 }
+
+.reply-to-message {
+  line-height: 1.5;
+  display: none;
+  margin-bottom: 8px;
+
+  &.show {
+    display: block;
+  }
+}
+
+.reply-to-quote {
+  margin: 8px 0;
+  padding: 8px;
+  border-left: 2px solid #ccc;
+  background: #fafafa;
+  border-radius: 2px;
+}
