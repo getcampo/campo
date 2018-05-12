@@ -1,4 +1,4 @@
 application.register "visible-to-admin", class extends Stimulus.Controller
   connect: ->
-    if document.querySelector('meta[name=current-user-admin]').content != 'true'
+    unless Current.admin()
       this.element.remove()

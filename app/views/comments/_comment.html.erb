@@ -8,7 +8,7 @@
         <span class="post-header-name"><%= comment.user.name %></span>
         <div class="float-right">
           <a href="<%= "#comment-#{comment.id}" %>" class="post-header-time text-small text-secondary"><%= local_time_ago comment.created_at %></a>
-          <div class="dropdown" data-controller="dropdown">
+          <div class="dropdown" data-controller="dropdown visible-to-user">
             <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
               <i class="material-icons">more_vert</i>
             </button>
