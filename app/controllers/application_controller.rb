@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  include Authenticate
+  include HttpAcceptLanguage::AutoLocale, Authenticate
 end

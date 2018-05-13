@@ -33,6 +33,8 @@ module Campo
 
     config.active_storage.service = ENV['STORAGE_SERVICE']
 
+    config.i18n.available_locales = %w(en zh-CN)
+
     # Disable unnessary generator
     config.generators do |generate|
       generate.helper false
