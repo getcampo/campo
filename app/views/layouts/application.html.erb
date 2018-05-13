@@ -59,6 +59,15 @@
           <div class="list-item-content align-center">All forums</div>
         </a>
       </div>
+      <% if Current.user&.admin? %>
+        <hr class="divider">
+        <a href="/admin" class="list-item">
+          <div class="list-item-icon">
+            <i class="material-icons">dashboard</i>
+          </div>
+          <div class="list-item-content align-center">Dashboard</div>
+        </a>
+      <% end %>
     </div>
     <div class="side-nav-background" data-action="click->side-nav#close">
     </div>

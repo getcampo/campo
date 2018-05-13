@@ -38,6 +38,10 @@ Rails.application.routes.draw do
     resource :password, only: [:show, :update]
   end
 
+  namespace :admin do
+    root to: 'dashboard#index'
+  end
+
   if Rails.env.development?
     get '/ui', to: 'ui#index'
   end
