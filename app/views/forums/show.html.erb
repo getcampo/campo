@@ -9,11 +9,13 @@
   </ul>
 <% end %>
 
+<a href="<%= new_topic_path(forum_id: @forum.id) %>" class="button button-floating button-secondary right-bottom" data-controller="visible-to-user">
+  <i class="material-icons">add</i>
+</a>
+
 <div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="<%= forum_path(@forum) %>">
   <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [topic, topic.user] } %>
 </div>
 <div class="loading-message">
   <i class="material-icons animated rotate">refresh</i>
 </div>
-
-<a href="<%= new_topic_path(forum_id: @forum.id) %>" class="button button-floating button-secondary right-bottom"><i class="material-icons">add</i></a>

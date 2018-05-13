@@ -2,13 +2,7 @@
   <%= t 'common.forums' %>
 <% end %>
 
-<div class="toolbar">
-  <div class="toolbar-title">
-  </div>
-  <div class="toolbar-action">
-    <a href="/admin/forums/new" class="button button-contained button-primary"><%= t '.new_forum' %></a>
-  </div>
-</div>
+<a href="<%= new_admin_forum_path %>" class="button button-floating button-primary right-bottom"><i class="material-icons">add</i></a>
 
 <table class="table">
   <thead>

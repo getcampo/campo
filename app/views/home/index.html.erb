@@ -2,11 +2,13 @@
   <%= t 'common.home' %>
 <% end %>
 
+<a href="/topics/new" class="button button-floating button-secondary right-bottom" data-controller="visible-to-user">
+  <i class="material-icons">add</i>
+</a>
+
 <div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="/">
   <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [topic, topic.user] } %>
 </div>
 <div class="loading-message">
   <i class="material-icons animated rotate">refresh</i>
 </div>
-
-<a href="/topics/new" class="button button-floating button-secondary right-bottom"><i class="material-icons">add</i></a>
