@@ -1,17 +1,32 @@
 <%= form_with model: @topic, id: 'topic-form', class: 'form', data: { controller: 'editor' } do |form| %>
   <div class="row">
-    <div class="form-field col-3">
+    <div class="form-field col-3 <%= 'invalid' if @topic.errors[:title].any? %>">
       <%= form.label :title %>
       <%= form.text_field :title %>
+      <% if @topic.errors[:title].any? %>
+        <div class="validate-message">
+          <%= @topic.errors[:title].first %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-field col-1">
+    <div class="form-field col-1 <%= 'invalid' if @topic.errors[:forum_id].any? %>">
       <%= form.label :forum_id %>
       <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name %>
+      <% if @topic.errors[:forum_id].any? %>
+        <div class="validate-message">
+          <%= @topic.errors[:forum_id].first %>
+        </div>
+      <% end %>
     </div>
   </div>
-  <div class="form-field">
+  <div class="form-field <%= 'invalid' if @topic.errors[:content].any? %>">
     <%= form.label :content %>
     <%= form.text_area :content, rows: 8, data: { target: 'editor.textarea' } %>
+      <% if @topic.errors[:content].any? %>
+        <div class="validate-message">
+          <%= @topic.errors[:content].first %>
+        </div>
+      <% end %>
   </div>
   <%= form.submit class: 'button button-contained button-primary' %>
   <label class="button button-icon">
