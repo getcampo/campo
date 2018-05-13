@@ -5,7 +5,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find_by!(slug: params[:id])
-    @topics = @forum.topics.order(activated_at: :desc).page(params[:page])
+    @topics = @forum.topics.includes(:user).order(activated_at: :desc).page(params[:page])
   end
 
   # constraints by routes

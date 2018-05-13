@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @topics = Topic.order(activated_at: :desc).page(params[:page])
+    @topics = Topic.includes(:user).order(activated_at: :desc).page(params[:page])
   end
 end

@@ -1,31 +1,33 @@
-<a class="list-item" href="<%= topic_path(topic) %>">
-  <div class="list-item-avatar">
-    <%= avatar_tag topic.user %>
-  </div>
-  <div class="list-item-content text-overflow">
-    <h4 class="list-item-content-primary">
-      <%= topic.title %>
-    </h4>
-    <div class="list-item-content-secondary">
-      <%= topic.forum.name %>
-      ·
-      <% if topic.last_comment %>
-        <%= topic.last_comment.user.name %>
-        <%= local_time_ago topic.last_comment.created_at %>
-        -
-        <%= truncate topic.last_comment.content, length: 140 %>
-      <% else %>
-        <%= topic.user.name %>
-        <%= local_time_ago topic.created_at %>
-        -
-        <%= truncate topic.content, length: 140 %>
-      <% end %>
+<% cache [topic, topic.user] do %>
+  <a class="list-item" href="<%= topic_path(topic) %>">
+    <div class="list-item-avatar">
+      <%= avatar_tag topic.user %>
     </div>
-  </div>
-  <div class="list-item-icon align-center nowrap">
-    <div class="comments-count">
-      <i class="material-icons">comment</i>
-      <%= topic.comments_count %>
+    <div class="list-item-content text-overflow">
+      <h4 class="list-item-content-primary">
+        <%= topic.title %>
+      </h4>
+      <div class="list-item-content-secondary">
+        <%= topic.forum.name %>
+        ·
+        <% if topic.last_comment %>
+          <%= topic.last_comment.user.name %>
+          <%= local_time_ago topic.last_comment.created_at %>
+          -
+          <%= truncate topic.last_comment.content, length: 140 %>
+        <% else %>
+          <%= topic.user.name %>
+          <%= local_time_ago topic.created_at %>
+          -
+          <%= truncate topic.content, length: 140 %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</a>
+    <div class="list-item-icon align-center nowrap">
+      <div class="comments-count">
+        <i class="material-icons">comment</i>
+        <%= topic.comments_count %>
+      </div>
+    </div>
+  </a>
+<% end %>

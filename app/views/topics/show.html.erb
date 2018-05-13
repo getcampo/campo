@@ -14,54 +14,56 @@
 
 <h1 class="topic-title"><%= @topic.title %></h1>
 
-<div class="list">
-  <div class="list-item">
-    <div class="list-item-avatar">
-      <%= avatar_tag @topic.user %>
-    </div>
-    <div class="list-item-content">
-      <div class="post" data-controller="post" data-creator-id="<%= @topic.user.id %>">
-        <div class="post-header">
-          <span class="post-header-name"><%= @topic.user.name %></span>
-          <div class="float-right">
-            <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_ago @topic.created_at %></a>
-            <div class="dropdown" data-controller="dropdown visible-to-user">
-              <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
-                <i class="material-icons">more_vert</i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-menu-item" data-action="post#reply">
-                  <i class="material-icons">reply</i>Reply
-                </a>
-                <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-creator-or-admin">
-                  <i class="material-icons">edit</i>Edit
-                </a>
-                <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-admin" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
-                  <i class="material-icons">delete</i>Trash
-                </a>
+<% cache [@topic, @topic.user, :content] do %>
+  <div class="list">
+    <div class="list-item">
+      <div class="list-item-avatar">
+        <%= avatar_tag @topic.user %>
+      </div>
+      <div class="list-item-content">
+        <div class="post" data-controller="post" data-creator-id="<%= @topic.user.id %>">
+          <div class="post-header">
+            <span class="post-header-name"><%= @topic.user.name %></span>
+            <div class="float-right">
+              <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_ago @topic.created_at %></a>
+              <div class="dropdown" data-controller="dropdown visible-to-user">
+                <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-menu-item" data-action="post#reply">
+                    <i class="material-icons">reply</i>Reply
+                  </a>
+                  <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-creator-or-admin">
+                    <i class="material-icons">edit</i>Edit
+                  </a>
+                  <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-admin" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
+                    <i class="material-icons">delete</i>Trash
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="post-body">
-          <article class="typography">
-            <%= sanitize markdown_render @topic.content %>
-          </article>
-          <% if @topic.edited_user %>
-            <div class="text-small text-secondary">
-              Edited by <%= @topic.edited_user.name %> at <%= local_time_ago @topic.edited_at %>
-            </div>
-          <% end %>
+          <div class="post-body">
+            <article class="typography">
+              <%= sanitize markdown_render @topic.content %>
+            </article>
+            <% if @topic.edited_user %>
+              <div class="text-small text-secondary">
+                Edited by <%= @topic.edited_user.name %> at <%= local_time_ago @topic.edited_at %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <h3 class="subheader">Comments</h3>
 
 <div id="comments" class="list">
-  <%= render @topic.comments %>
+  <%= render partial: 'comments/comment', collection: @topic.comments.includes(:user), cached: -> comment { [comment, comment.user] } %>
 </div>
 
 <div class="list">
