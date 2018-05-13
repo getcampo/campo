@@ -7,6 +7,8 @@
 }
 
 .breadcrumb-item {
+  white-space: nowrap;
+
   a {
     color: var(--text-primary-color);
     text-decoration: none;
