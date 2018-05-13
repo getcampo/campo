@@ -4,7 +4,7 @@ application.register "editor", class extends Stimulus.Controller
   attachFile: (event) ->
     for file in event.target.files
       fileName = file.name
-      imageTag = "![#{fileName}](uplaoding...)"
+      imageTag = "![Uplaoding #{fileName}...]()"
       this.textareaTarget.value = this.textareaTarget.value + imageTag
       formData = new FormData()
       formData.append 'attachment[file]', file
