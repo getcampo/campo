@@ -1,0 +1,38 @@
+<% content_for :toolbar_title do %>
+  Forums
+<% end %>
+
+<div class="toolbar">
+  <div class="toolbar-title">
+  </div>
+  <div class="toolbar-action">
+    <a href="/admin/forums/new" class="button button-contained button-primary">New Forum</a>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Description</th>
+      <th>Topics</th>
+      <th class="align-right">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forums.each do |forum| %>
+      <tr>
+        <td><%= forum.id %></td>
+        <td><%= forum.name %></td>
+        <td><%= forum.slug %></td>
+        <td><%= truncate forum.description %></td>
+        <td><%= forum.topics_count %></td>
+        <td class="align-right">
+          <a href="<%= edit_admin_forum_url(forum) %>"><i class="material-icons vertical-top">edit</i></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
