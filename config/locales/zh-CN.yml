@@ -4,6 +4,10 @@ zh-CN:
     attributes:
       comment:
         content: 内容
+      forum:
+        description: 描述
+        name: 名称
+        slug: Slug
       topic:
         content: 内容
         forum_id: 论坛
@@ -16,19 +20,11 @@ zh-CN:
         password: 密码
         password_confirmation: 密码确认
         username: 用户名
-      forum:
-        name: 名称
-        slug: Slug
-        description: 描述
     models:
       comment: 评论
       forum: 论坛
       topic: 话题
       user: 用户
-  errors:
-    messages:
-      blank: 不能为空
-      taken: 已经存在
   admin:
     forums:
       edit:
@@ -61,6 +57,22 @@ zh-CN:
     sign_in: 登录
     sign_out: 登出
     sign_up: 注册
+  errors:
+    messages:
+      blank: 不能为空
+      taken: 已经存在
+  flash:
+    account_is_successfully_updated: 账号更新成功。
+    comment_is_successfully_updated: 评论更新成功。
+    forum_is_successfully_created: 论坛创建成功。
+    forum_is_successfully_updated: 论坛更新成功。
+    invalid_token: 无效 Token。
+    password_is_successfully_reset: 密码重置成功。
+    password_is_successfully_updated: 密码更新成功。
+    topic_is_successfully_deleted: 话题删除成功。
+    topic_is_successfully_updated: 话题更新成功。
+    user_not_found: 没有找到该用户。
+    you_have_no_permissions: 您没有权限。
   forums:
     index:
       all_forums: 全部论坛

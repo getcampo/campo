@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
     @topic.edited_by Current.user
 
     if @topic.update topic_params
-      redirect_to @topic, notice: 'Topic is successfully updated.'
+      redirect_to @topic, notice: t('flash.topic_is_successfully_updated')
     else
       render 'update_form'
     end
@@ -39,7 +39,7 @@ class TopicsController < ApplicationController
 
   def trash
     @topic.trash
-    redirect_to root_path, notice: 'Topic is successfully delete.'
+    redirect_to root_path, notice: t('flash.topic_is_successfully_deleted')
   end
 
   private
@@ -54,13 +54,13 @@ class TopicsController < ApplicationController
 
   def check_edit_permission
     unless @topic.user == Current.user or Current.user.admin?
-      redirect_to topic_url(@topic), alert: 'You have no permission.'
+      redirect_to topic_url(@topic), alert: t('flash.you_have_no_permissions')
     end
   end
 
   def check_trash_permission
     unless Current.user.admin?
-      redirect_to topic_url(@topic), alert: 'You have no permission.'
+      redirect_to topic_url(@topic), alert: t('flash.you_have_no_permissions')
     end
   end
 end

@@ -61,6 +61,18 @@ en:
     messages:
       blank: Can't be blank
       taken: Already exists
+  flash:
+    account_is_successfully_updated: Account is successfully updated.
+    comment_is_successfully_updated: Comment is successfully updated.
+    forum_is_successfully_created: Forum is successfully created.
+    forum_is_successfully_updated: Forum is successfully updated.
+    invalid_token: Invalid token.
+    password_is_successfully_reset: Password is successfully reset.
+    password_is_successfully_updated: Password is successfully updated.
+    topic_is_successfully_deleted: Topic is successfully deleted.
+    topic_is_successfully_updated: Topic is successfully updated.
+    user_not_found: User not found.
+    you_have_no_permissions: You have no permissions.
   forums:
     index:
       all_forums: All Forums

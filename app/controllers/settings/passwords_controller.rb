@@ -12,7 +12,7 @@ class Settings::PasswordsController < ApplicationController
     @user = Current.user
 
     if @user.update user_params
-      redirect_to settings_password_path, notice: 'Password is successfully updated.'
+      redirect_to settings_password_path, notice: t('flash.password_is_successfully_updated')
     else
       render 'update_form'
     end

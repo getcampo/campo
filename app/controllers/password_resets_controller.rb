@@ -14,7 +14,7 @@ class PasswordResetsController < ApplicationController
     if user
       UserMailer.with(user: user).password_reset.deliver_later
     else
-      redirect_to password_reset_url, alert: 'User not found.'
+      redirect_to password_reset_url, alert: t('flash.user_not_found')
     end
   end
 
@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     if @user.update params.require(:user).permit(:password, :password_confirmation)
-      redirect_to new_session_path, notice: 'Password reset success.'
+      redirect_to new_session_path, notice: t('flash.password_is_successfully_reset')
     else
       render 'update_form'
     end
@@ -33,7 +33,7 @@ class PasswordResetsController < ApplicationController
 
   def load_user_from_token
     unless @user = User.from_password_reset_token(params[:token])
-      redirect_to password_reset_url, alert: 'Token invalid.'
+      redirect_to password_reset_url, alert: t('flash.invalid_token')
     end
   end
 end

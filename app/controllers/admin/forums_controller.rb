@@ -13,7 +13,7 @@ class Admin::ForumsController < ApplicationController
     @forum = Forum.new forum_params
 
     if @forum.save
-      redirect_to admin_forums_url, notice: "Forum is successfully created."
+      redirect_to admin_forums_url, notice: t('flash.forum_is_successfully_created')
     else
       render 'update_form'
     end
@@ -27,7 +27,7 @@ class Admin::ForumsController < ApplicationController
     @forum = Forum.find_by!(slug: params[:id])
 
     if @forum.update forum_params
-      redirect_to admin_forums_url, notice: "Forum is successfully updated."
+      redirect_to admin_forums_url, notice: t('flash.forum_is_successfully_updated')
     else
       render 'update_form'
     end

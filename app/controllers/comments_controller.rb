@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment.edited_by Current.user
 
     if @comment.update comment_params
-      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), notice: 'Comment is successfully updated.'
+      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), notice: t('flash.comment_is_successfully_updated')
     else
       render 'update_form'
     end
@@ -46,13 +46,13 @@ class CommentsController < ApplicationController
 
   def check_edit_permission
     unless @comment.user == Current.user or Current.user.admin?
-      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: 'You have no permission.'
+      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: t('flash.you_have_no_permissions')
     end
   end
 
   def check_trash_permission
     unless Current.user.admin?
-      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: 'You have no permission.'
+      redirect_to topic_url(@comment.topic, anchor: "comment-#{@comment.id}"), alert: t('flash.you_have_no_permissions')
     end
   end
 end
