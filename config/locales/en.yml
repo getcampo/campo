@@ -69,6 +69,7 @@ en:
     invalid_token: Invalid token.
     password_is_successfully_reset: Password is successfully reset.
     password_is_successfully_updated: Password is successfully updated.
+    require_sign_in: Require sign in.
     topic_is_successfully_deleted: Topic is successfully deleted.
     topic_is_successfully_updated: Topic is successfully updated.
     user_not_found: User not found.
@@ -97,7 +98,8 @@ en:
   password_resets:
     show:
       password_reset: Password Reset
-      password_reset_notice: Enter your email and we will send your a link to reset your password.
+      password_reset_notice: Enter your email and we will send your a link to reset
+        your password.
       send_email: Send Email
   sessions:
     auth_providers:
@@ -120,3 +122,4 @@ en:
       new_topic: New Topic
     show:
       comments: Comments
+      sign_in_to_comment: Sign in to comment

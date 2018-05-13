@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
   before_action :require_auth_password_enabled, only: [:create]
 
   def new
+    if params[:return_to]
+      session[:return_to] = URI(params[:return_to]).path
+    end
+    logger.info session[:return_to]
   end
 
   def create
@@ -13,7 +17,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       sign_in(user)
-      redirect_to session.delete(:return_path) || root_path
+      redirect_to session.delete(:return_to) || root_path
     else
       @sign_in_error = true
       render 'update_form'

@@ -6,7 +6,7 @@ class AuthsController < ApplicationController
 
     if identity.user
       sign_in(identity.user)
-      redirect_to session.delete(:return_path) || root_path
+      redirect_to session.delete(:return_to) || root_path
     else
       session[:identity_id] = identity.id
       session[:auth_info] = {

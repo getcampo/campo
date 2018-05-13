@@ -17,14 +17,13 @@ module Authenticate
 
   def require_sign_in
     unless Current.user
-      session[:return_path] = request.path
-      redirect_to new_session_path, alert: 'Require sign in.'
+      redirect_to new_session_path(return_to: request.path), alert: t('flash.require_sign_in')
     end
   end
 
   def require_admin
     unless  Current.user.admin?
-      redirect_to root_path, alert: 'Require admin.'
+      redirect_to root_path, alert: t('flash.you_have_no_permissions')
     end
   end
 

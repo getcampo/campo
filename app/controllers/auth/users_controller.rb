@@ -18,7 +18,7 @@ class Auth::UsersController < ApplicationController
     if @user.save
       @identity.update(user: @user)
       sign_in(@user)
-      redirect_to root_url
+      redirect_to session.delete(:return_to) || root_path
     else
       render 'update_form'
     end

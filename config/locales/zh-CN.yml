@@ -69,6 +69,7 @@ zh-CN:
     invalid_token: 无效 Token。
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
+    require_sign_in: 需要登录。
     topic_is_successfully_deleted: 话题删除成功。
     topic_is_successfully_updated: 话题更新成功。
     user_not_found: 没有找到该用户。
@@ -120,3 +121,4 @@ zh-CN:
       new_topic: 新话题
     show:
       comments: 评论
+      sign_in_to_comment: 登录后评论
