@@ -6,7 +6,7 @@
     </div>
     <div class="form-field col-1">
       <%= form.label :forum_id %>
-      <%= form.collection_select :forum_id, Forum.all, :id, :name %>
+      <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name %>
     </div>
   </div>
   <div class="form-field">

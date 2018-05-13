@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   before_action :check_trash_permission, only: [:trash]
 
   def new
-    @topic = Topic.new
+    @topic = Topic.new forum_id: params[:forum_id]
   end
 
   def create
