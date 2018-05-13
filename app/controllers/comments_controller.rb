@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment = Current.user.comments.new comment_params
 
     if @comment.save
+      @comment.topic.update last_comment: @comment
       render
     else
       render 'update_form'

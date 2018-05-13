@@ -4,6 +4,7 @@ class Topic < ApplicationRecord
   has_many :comments
   belongs_to :forum, counter_cache: true
   belongs_to :user
+  belongs_to :last_comment, class_name: 'Comment', optional: true
 
   validates :title, :content, presence: true
 
