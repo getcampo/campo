@@ -94,6 +94,18 @@ zh-CN:
       sign_in: 登录
       sign_out: 登出
       sign_up: 注册
+  password_resets:
+    show:
+      password_reset: 密码重置
+      password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。
+      send_email: 发送邮件
+  sessions:
+    auth_providers:
+      or: 或者
+    form:
+      forgot_password: 忘记密码？
+      incorrect_username_or_password: 账号名或密码不正确。
+      username_or_email: 用户名或邮箱
   settings:
     accounts:
       form:

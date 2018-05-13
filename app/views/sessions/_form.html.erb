@@ -1,19 +1,19 @@
 <%= form_with url: session_path, id: 'sign-in-form', class: 'form' do |form| %>
   <div class="form-field">
-    <%= form.label :login, 'Username or Email' %>
+    <%= form.label :login, t('.username_or_email') %>
     <%= form.text_field :login, value: params[:login], autofocus: true %>
   </div>
   <div class="form-field <%= 'invalid' if @sign_in_error %>">
     <label for="password">
-      Password
-      <a href="/password_reset" class="text-secondary float-right" tabindex="-1">Forgot password?</a>
+      <%= t 'common.password' %>
+      <a href="/password_reset" class="text-secondary float-right" tabindex="-1"><%= t '.forgot_password' %></a>
     </label>
     <%= form.password_field :password %>
     <% if @sign_in_error %>
       <div class="validate-message">
-        Incorrect username or password.
+        <%= t '.incorrect_username_or_password' %>
       </div>
     <% end %>
   </div>
-  <button type="submit" class="button button-contained button-primary">Sign in</button>
+  <button type="submit" class="button button-contained button-primary"><%= t 'common.sign_in' %></button>
 <% end %>

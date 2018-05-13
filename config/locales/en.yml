@@ -94,6 +94,18 @@ en:
       sign_in: Sign in
       sign_out: Sign out
       sign_up: Sign up
+  password_resets:
+    show:
+      password_reset: Password Reset
+      password_reset_notice: Enter your email and we will send your a link to reset your password.
+      send_email: Send Email
+  sessions:
+    auth_providers:
+      or: Or
+    form:
+      forgot_password: Forgot password?
+      incorrect_username_or_password: Incorrect username or password.
+      username_or_email: Username or Email
   settings:
     accounts:
       form:
