@@ -2,11 +2,23 @@
   <div class="list-item-avatar">
     <%= avatar_tag topic.user %>
   </div>
-  <div class="list-item-content">
+  <div class="list-item-content text-overflow">
     <h4 class="list-item-content-primary">
       <%= topic.title %>
-      <span class="text-secondary float-right"><%= local_time_ago topic.activated_at %></span>
     </h4>
-    <div class="list-item-content-secondary"><%= truncate topic.content %></div>
+    <div class="list-item-content-secondary">
+      <%= topic.forum.name %>
+      ·
+      <%= topic.user.name %>
+      <%= local_time_ago topic.created_at %>
+      -
+      <%= truncate topic.content, length: 140 %>
+    </div>
+  </div>
+  <div class="list-item-icon align-center nowrap">
+    <div class="comments-count">
+      <i class="material-icons">comment</i>
+      <%= topic.comments_count %>
+    </div>
   </div>
 </a>

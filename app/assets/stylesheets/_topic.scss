@@ -3,3 +3,12 @@
   padding-top: 16px;
   line-height: 1.5;
 }
+
+.comments-count {
+  line-height: 24px;
+  color: var(--text-secondary-color);
+
+  .material-icons {
+    vertical-align: top;
+  }
+}
