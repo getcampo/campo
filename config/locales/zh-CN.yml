@@ -1,1 +1,98 @@
+---
 zh-CN:
+  activerecord:
+    attributes:
+      comment:
+        content: 内容
+      topic:
+        content: 内容
+        forum_id: 论坛
+        title: 标题
+      user:
+        avatar: 头像
+        bio: 简介
+        email: 邮箱
+        name: 全名
+        password: 密码
+        password_confirmation: 密码确认
+        username: 用户名
+      forum:
+        name: 名称
+        slug: Slug
+        description: 描述
+    models:
+      comment: 评论
+      forum: 论坛
+      topic: 话题
+      user: 用户
+  errors:
+    messages:
+      blank: 不能为空
+      taken: 已经存在
+  admin:
+    forums:
+      edit:
+        edit_forum: 编辑论坛
+      index:
+        action: 动作
+        description: 描述
+        id: ID
+        name: 名称
+        new_forum: 新论坛
+        slug: Slug
+        topics: 话题数
+      new:
+        new_form: 创建论坛
+  comments:
+    comment:
+      edited_at: 编辑于
+    edit:
+      edit_comment: 编辑评论
+  common:
+    account: 账号
+    dashboard: 面板
+    delete: 删除
+    edit: 编辑
+    forums: 论坛
+    home: 首页
+    password: 密码
+    reply: 回复
+    settings: 设置
+    sign_in: 登录
+    sign_out: 登出
+    sign_up: 注册
+  forums:
+    index:
+      all_forums: 全部论坛
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 创建%{model}
+      submit: 提交%{model}
+      update: 更新%{model}
+  layouts:
+    admin:
+      exit_to_app: 回到前台
+    application:
+      all_forums: 全部论坛
+      dashboard: 管理面板
+      forums: 论坛
+      settings: 设置
+      sign_in: 登录
+      sign_out: 登出
+      sign_up: 注册
+  settings:
+    accounts:
+      form:
+        update_account: 更新账号
+    passwords:
+      form:
+        update_password: 更新密码
+  topics:
+    edit:
+      edit_topic: 编辑话题
+    new:
+      new_topic: 新话题
+    show:
+      comments: 评论

@@ -1,24 +1,24 @@
 <% content_for :toolbar_title do %>
-  Forums
+  <%= t 'common.forums' %>
 <% end %>
 
 <div class="toolbar">
   <div class="toolbar-title">
   </div>
   <div class="toolbar-action">
-    <a href="/admin/forums/new" class="button button-contained button-primary">New Forum</a>
+    <a href="/admin/forums/new" class="button button-contained button-primary"><%= t '.new_forum' %></a>
   </div>
 </div>
 
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Description</th>
-      <th>Topics</th>
-      <th class="align-right">Action</th>
+      <th><%= t '.id' %></th>
+      <th><%= t '.name' %></th>
+      <th><%= t '.slug' %></th>
+      <th><%= t '.description' %></th>
+      <th><%= t '.topics' %></th>
+      <th class="align-right"><%= t '.action' %></th>
     </tr>
   </thead>
   <tbody>

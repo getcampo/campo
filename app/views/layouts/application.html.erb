@@ -14,18 +14,18 @@
               <%= avatar_tag Current.user %>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="/settings/account" class="dropdown-menu-item">Settings</a>
+              <a href="/settings/account" class="dropdown-menu-item"><%= t 'common.settings' %></a>
               <hr class="divider">
-              <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true">Sign out</a>
+              <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true"><%= t 'common.sign_out' %></a>
             </div>
           </div>
         </div>
       <% else %>
         <div class="toolbar-action">
-          <a href="/users/new" class="button button-text">Sign up</a>
+          <a href="/users/new" class="button button-text"><%= t 'common.sign_up' %></a>
         </div>
         <div class="toolbar-action">
-          <a href="/session/new" class="button button-text">Sign in</a>
+          <a href="/session/new" class="button button-text"><%= t 'common.sign_in' %></a>
         </div>
       <% end %>
     </div>
@@ -38,11 +38,11 @@
           <div class="list-item-icon">
             <i class="material-icons">home</i>
           </div>
-          <div class="list-item-content align-center">Home</div>
+          <div class="list-item-content align-center"><%= t 'common.home' %></div>
         </a>
       </div>
       <hr class="divider">
-      <h3 class="subheader">Forums</h3>
+      <h3 class="subheader"><%= t 'common.forums' %></h3>
       <div class="list">
         <% Forum.order(topics_count: :desc).each do |forum| %>
           <a href="<%= forum_path(forum) %>" class="list-item">
@@ -56,7 +56,7 @@
           <div class="list-item-icon">
             <i class="material-icons">more_horiz</i>
           </div>
-          <div class="list-item-content align-center">All forums</div>
+          <div class="list-item-content align-center"><%= t '.all_forums' %></div>
         </a>
       </div>
       <% if Current.user&.admin? %>
@@ -65,7 +65,7 @@
           <div class="list-item-icon">
             <i class="material-icons">dashboard</i>
           </div>
-          <div class="list-item-content align-center">Dashboard</div>
+          <div class="list-item-content align-center"><%= t 'common.dashboard' %></div>
         </a>
       <% end %>
     </div>

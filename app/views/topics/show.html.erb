@@ -1,7 +1,7 @@
 <% content_for :toolbar_title do %>
   <ul class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="/">Home</a>
+      <a href="/"><%= t 'common.home' %></a>
     </li>
     <li class="breadcrumb-item">
       <a href="<%= forum_path(@topic.forum) %>"><%= @topic.forum.name %></a>
@@ -32,13 +32,13 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-menu-item" data-action="post#reply">
-                    <i class="material-icons">reply</i>Reply
+                    <i class="material-icons">reply</i><%= t 'common.reply' %>
                   </a>
                   <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-creator-or-admin">
-                    <i class="material-icons">edit</i>Edit
+                    <i class="material-icons">edit</i><%= t 'common.edit' %>
                   </a>
                   <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-admin" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
-                    <i class="material-icons">delete</i>Trash
+                    <i class="material-icons">delete</i><%= t 'common.delete' %>
                   </a>
                 </div>
               </div>
@@ -60,7 +60,7 @@
   </div>
 <% end %>
 
-<h3 class="subheader">Comments</h3>
+<h3 class="subheader"><%= t '.comments' %></h3>
 
 <div id="comments" class="list">
   <%= render partial: 'comments/comment', collection: @topic.comments.includes(:user), cached: -> comment { [comment, comment.user] } %>

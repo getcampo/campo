@@ -1,1 +1,98 @@
+---
 en:
+  activerecord:
+    attributes:
+      comment:
+        content: Content
+      forum:
+        description: Description
+        name: Name
+        slug: Slug
+      topic:
+        content: Content
+        forum_id: Forum
+        title: Title
+      user:
+        avatar: Avatar
+        bio: Bio
+        email: Email
+        name: Full Name
+        password: Password
+        password_confirmation: Password Confirmation
+        username: Username
+    models:
+      comment: Comment
+      forum: Forum
+      topic: Topic
+      user: User
+  admin:
+    forums:
+      edit:
+        edit_forum: Edit Forum
+      index:
+        action: Action
+        description: Description
+        id: ID
+        name: name
+        new_forum: New Forum
+        slug: Slug
+        topics: Topics
+      new:
+        new_form: New Forum
+  comments:
+    comment:
+      edited_at: edited at
+    edit:
+      edit_comment: Edit Comment
+  common:
+    account: Account
+    dashboard: Dashboard
+    delete: Delete
+    edit: Edit
+    forums: Forums
+    home: Home
+    password: Password
+    reply: Reply
+    settings: Settings
+    sign_in: Sign in
+    sign_out: Sign out
+    sign_up: Sing up
+  errors:
+    messages:
+      blank: Can't be blank
+      taken: Already exists
+  forums:
+    index:
+      all_forums: All Forums
+  helpers:
+    select:
+      prompt: Please Select
+    submit:
+      create: Create %{model}
+      submit: Submit %{model}
+      update: Update %{model}
+  layouts:
+    admin:
+      exit_to_app: Back to Front
+    application:
+      all_forums: All Forums
+      dashboard: Dashboard
+      forums: Forums
+      settings: Settings
+      sign_in: Sign in
+      sign_out: Sign out
+      sign_up: Sign up
+  settings:
+    accounts:
+      form:
+        update_account: Update Account
+    passwords:
+      form:
+        update_password: Update Password
+  topics:
+    edit:
+      edit_topic: Edit Topic
+    new:
+      new_topic: New Topic
+    show:
+      comments: Comments

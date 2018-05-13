@@ -19,9 +19,9 @@
             <%= avatar_tag Current.user %>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="/settings/account" class="dropdown-menu-item">Settings</a>
+            <a href="/settings/account" class="dropdown-menu-item"><%= t 'common.settings' %></a>
             <hr class="divider">
-            <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true">Sign out</a>
+            <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true"><%= t 'common.sign_out' %></a>
           </div>
         </div>
       </div>
@@ -35,20 +35,20 @@
           <div class="list-item-icon">
             <i class="material-icons">dashboard</i>
           </div>
-          <div class="list-item-content align-center">Dashboard</div>
+          <div class="list-item-content align-center"><%= t 'common.dashboard' %></div>
         </a>
         <a href="/admin/forums" class="list-item">
           <div class="list-item-icon">
             <i class="material-icons">forum</i>
           </div>
-          <div class="list-item-content align-center">Forums</div>
+          <div class="list-item-content align-center"><%= t 'common.forums' %></div>
         </a>
         <hr class="divider">
         <a href="/" class="list-item">
           <div class="list-item-icon">
             <i class="material-icons">exit_to_app</i>
           </div>
-          <div class="list-item-content align-center">Exit to App</div>
+          <div class="list-item-content align-center"><%= t '.exit_to_app' %></div>
         </a>
       </div>
     </div>
