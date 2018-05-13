@@ -31,7 +31,7 @@
     <div>
       <%= avatar_tag @user, size: '2x' %>
     </div>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, accept: 'image/*' %>
   </div>
   <div class="form-field <%= 'invalid' if @user.errors[:bio].any? %>">
     <%= form.label :bio %>
