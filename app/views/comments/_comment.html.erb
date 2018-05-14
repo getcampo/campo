@@ -1,4 +1,4 @@
-<% cache [comment, comment.user] do %>
+<% cache [I18n.locale, comment, comment.user] do %>
   <div id="comment-<%= comment.id %>" class="list-item">
     <div class="list-item-avatar">
       <%= avatar_tag comment.user %>

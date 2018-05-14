@@ -7,7 +7,7 @@
 </a>
 
 <div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="/">
-  <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [topic, topic.user] } %>
+  <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
 </div>
 <div class="loading-message">
   <i class="material-icons animated rotate">refresh</i>
