@@ -19,5 +19,4 @@ window.Current =
   locale: ->
     document.querySelector('meta[name=locale]')?.content || 'en'
 
-console.log Current.locale()
 LocalTime.config.locale = Current.locale()
