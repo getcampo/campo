@@ -1,4 +1,4 @@
-<%= form_with model: @user, url: settings_password_path, id: 'password-form', class: 'form content-box' do |form| %>
+<%= form_with model: @user, url: settings_password_path, id: 'password-form', class: 'form p-4' do |form| %>
   <div class="form-field <%= 'invalid' if @user.errors[:password].any? %>">
     <%= form.label :password %>
     <%= form.password_field :password, autofocus: true %>

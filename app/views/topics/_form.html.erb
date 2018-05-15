@@ -1,4 +1,4 @@
-<%= form_with model: @topic, id: 'topic-form', class: 'form content-box', data: { controller: 'editor' } do |form| %>
+<%= form_with model: @topic, id: 'topic-form', class: 'form p-4', data: { controller: 'editor' } do |form| %>
   <div class="row">
     <div class="form-field col-3 <%= 'invalid' if @topic.errors[:title].any? %>">
       <%= form.label :title %>
