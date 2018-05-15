@@ -34,7 +34,6 @@ en:
         description: Description
         id: ID
         name: name
-        new_forum: New Forum
         slug: Slug
         topics: Topics
       new:
@@ -87,17 +86,8 @@ en:
       submit: Submit %{model}
       update: Update %{model}
   layouts:
-    admin:
-      back_to_home: Back to Home
-      exit_to_app: Back to Front
     application:
       all_forums: All Forums
-      dashboard: Dashboard
-      forums: Forums
-      settings: Settings
-      sign_in: Sign in
-      sign_out: Sign out
-      sign_up: Sign up
   password_resets:
     edit:
       password_reset: Password Reset
@@ -105,8 +95,7 @@ en:
       change_password: Change password
     show:
       password_reset: Password Reset
-      password_reset_notice: Enter your email and we will send your a link to reset
-        your password.
+      password_reset_notice: Enter your email and we will send your a link to reset your password.
       send_email: Send Email
   sessions:
     auth_providers:

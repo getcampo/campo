@@ -34,7 +34,6 @@ zh-CN:
         description: 描述
         id: ID
         name: 名称
-        new_forum: 新论坛
         slug: Slug
         topics: 话题数
       new:
@@ -87,17 +86,8 @@ zh-CN:
       submit: 提交%{model}
       update: 更新%{model}
   layouts:
-    admin:
-      back_to_home: 回到首页
-      exit_to_app: 回到前台
     application:
       all_forums: 全部论坛
-      dashboard: 管理面板
-      forums: 论坛
-      settings: 设置
-      sign_in: 登录
-      sign_out: 登出
-      sign_up: 注册
   password_resets:
     edit:
       password_reset: 密码重置
