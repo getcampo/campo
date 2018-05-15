@@ -1,6 +1,6 @@
 <%= form_with model: @user, url: password_reset_url(token: params[:token]), class: 'form p-4', id: 'password-reset-form' do |form| %>
   <div class="form-field <%= 'invalid' if @user.errors[:password].any? %>">
-    <%= form.label :password, 'Password' %>
+    <%= form.label :password %>
     <%= form.password_field :password %>
     <% if @user.errors[:password].any? %>
       <div class="validate-message">
@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class="form-field <%= 'invalid' if @user.errors[:password_confirmation].any? %>">
-    <%= form.label :password_confirmation, 'Confirm password' %>
+    <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation %>
     <% if @user.errors[:password_confirmation].any? %>
       <div class="validate-message">
@@ -17,5 +17,5 @@
       </div>
     <% end %>
   </div>
-  <button type="submit" class="button button-contained button-primary">Change password</button>
+  <%= form.submit t('.change_password'), class: 'button button-contained button-primary' %>
 <% end %>

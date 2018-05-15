@@ -10,6 +10,7 @@
 <main class="main with-appbar">
   <div class="container">
     <div class="session">
+      <h3 class="text-align-center"><%= t '.password_reset' %></h3>
       <%= form_with url: password_reset_url, class: 'form' do |form| %>
         <div class="form-field">
           <%= form.label :email, 'Email' %>
@@ -18,7 +19,7 @@
             <%= t '.password_reset_notice' %>
           </div>
         </div>
-        <button type="submit" class="button button-contained button-primary"><%= t '.send_email' %></button>
+        <%= form.submit t('.send_email'), class: 'button button-contained button-primary' %>
       <% end %>
     </div>
   </div>

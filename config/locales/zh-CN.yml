@@ -61,6 +61,7 @@ zh-CN:
     messages:
       blank: 不能为空
       taken: 已经存在
+      confirmation: 确认值不匹配
   flash:
     account_is_successfully_updated: 账号更新成功。
     comment_is_successfully_updated: 评论更新成功。
@@ -69,6 +70,7 @@ zh-CN:
     invalid_token: 无效 Token。
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
+    password_reset_email_has_been_send: 密码重置邮件已发送。
     require_sign_in: 需要登录。
     topic_is_successfully_deleted: 话题删除成功。
     topic_is_successfully_updated: 话题更新成功。
@@ -96,6 +98,10 @@ zh-CN:
       sign_out: 登出
       sign_up: 注册
   password_resets:
+    edit:
+      password_reset: 密码重置
+    form:
+      change_password: 修改密码
     show:
       password_reset: 密码重置
       password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。

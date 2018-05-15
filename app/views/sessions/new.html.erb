@@ -13,6 +13,7 @@
 <main class="main with-appbar">
   <div class="container">
     <div class="session">
+      <h3 class="text-align-center"><%= t 'common.sign_in' %></h3>
       <%= render 'auth_providers' %>
       <% if AUTH_PROVIDERS.include?('password') %>
       <%= render 'form' %>

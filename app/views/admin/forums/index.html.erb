@@ -12,7 +12,7 @@
       <th><%= t '.slug' %></th>
       <th><%= t '.description' %></th>
       <th><%= t '.topics' %></th>
-      <th class="align-right"><%= t '.action' %></th>
+      <th class="text-align-right"><%= t '.action' %></th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <td><%= forum.slug %></td>
         <td><%= truncate forum.description %></td>
         <td><%= forum.topics_count %></td>
-        <td class="align-right">
+        <td class="text-align-right">
           <a href="<%= edit_admin_forum_url(forum) %>"><i class="material-icons vertical-top">edit</i></a>
         </td>
       </tr>

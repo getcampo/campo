@@ -13,6 +13,7 @@ class PasswordResetsController < ApplicationController
     user = User.find_by("lower(email) = lower(?)", params[:email])
     if user
       UserMailer.with(user: user).password_reset.deliver_later
+      redirect_to password_reset_url, alert: t('flash.password_reset_email_has_been_send')
     else
       redirect_to password_reset_url, alert: t('flash.user_not_found')
     end

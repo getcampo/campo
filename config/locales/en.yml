@@ -60,6 +60,7 @@ en:
   errors:
     messages:
       blank: Can't be blank
+      confirmation: Confirmation not match
       taken: Already exists
   flash:
     account_is_successfully_updated: Account is successfully updated.
@@ -69,6 +70,7 @@ en:
     invalid_token: Invalid token.
     password_is_successfully_reset: Password is successfully reset.
     password_is_successfully_updated: Password is successfully updated.
+    password_reset_email_has_been_send: Password reset email has been send.
     require_sign_in: Require sign in.
     topic_is_successfully_deleted: Topic is successfully deleted.
     topic_is_successfully_updated: Topic is successfully updated.
@@ -96,6 +98,10 @@ en:
       sign_out: Sign out
       sign_up: Sign up
   password_resets:
+    edit:
+      password_reset: Password Reset
+    form:
+      change_password: Change password
     show:
       password_reset: Password Reset
       password_reset_notice: Enter your email and we will send your a link to reset
