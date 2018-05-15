@@ -60,8 +60,8 @@ zh-CN:
   errors:
     messages:
       blank: 不能为空
-      taken: 已经存在
       confirmation: 确认值不匹配
+      taken: 已经存在
   flash:
     account_is_successfully_updated: 账号更新成功。
     comment_is_successfully_updated: 评论更新成功。
@@ -88,6 +88,7 @@ zh-CN:
       update: 更新%{model}
   layouts:
     admin:
+      back_to_home: 回到首页
       exit_to_app: 回到前台
     application:
       all_forums: 全部论坛

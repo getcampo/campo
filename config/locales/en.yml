@@ -88,6 +88,7 @@ en:
       update: Update %{model}
   layouts:
     admin:
+      back_to_home: Back to Home
       exit_to_app: Back to Front
     application:
       all_forums: All Forums

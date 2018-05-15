@@ -7,27 +7,7 @@
       <div class="toolbar-title">
         <%= content_for(:toolbar_title) %>
       </div>
-      <% if Current.user %>
-        <div class="toolbar-action">
-          <div class="dropdown" data-controller="dropdown">
-            <button type="button" class="button-avatar" data-action="dropdown#open">
-              <%= avatar_tag Current.user %>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="/settings/account" class="dropdown-menu-item"><%= t 'common.settings' %></a>
-              <hr class="divider">
-              <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true"><%= t 'common.sign_out' %></a>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <div class="toolbar-action">
-          <a href="/users/new" class="button button-text"><%= t 'common.sign_up' %></a>
-        </div>
-        <div class="toolbar-action">
-          <a href="/session/new" class="button button-text"><%= t 'common.sign_in' %></a>
-        </div>
-      <% end %>
+      <%= render 'layouts/appbar_user' %>
     </div>
   </div>
 

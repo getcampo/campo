@@ -13,18 +13,7 @@
       <div class="toolbar-title">
         <%= content_for(:toolbar_title) %>
       </div>
-      <div class="toolbar-action">
-        <div class="dropdown" data-controller="dropdown">
-          <button type="button" class="button-avatar" data-action="dropdown#open">
-            <%= avatar_tag Current.user %>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="/settings/account" class="dropdown-menu-item"><%= t 'common.settings' %></a>
-            <hr class="divider">
-            <a href="/session" class="dropdown-menu-item" data-method="delete" data-remote="true"><%= t 'common.sign_out' %></a>
-          </div>
-        </div>
-      </div>
+      <%= render 'layouts/appbar_user' %>
     </div>
   </div>
 
@@ -46,9 +35,9 @@
         <hr class="divider">
         <a href="/" class="list-item">
           <div class="list-item-icon">
-            <i class="material-icons">exit_to_app</i>
+            <i class="material-icons">home</i>
           </div>
-          <div class="list-item-content align-center"><%= t '.exit_to_app' %></div>
+          <div class="list-item-content align-center"><%= t 'common.home' %></div>
         </a>
       </div>
     </div>

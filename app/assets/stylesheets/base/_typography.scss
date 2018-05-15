@@ -1,13 +1,5 @@
 a {
   color: var(--primary-color);
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.7;
-  }
 }
 
 .typography {
@@ -49,7 +41,6 @@ a {
 
   a {
     color: var(--primary-color);
-    text-decoration: none;
 
     &:hover {
       opacity: 0.9;
