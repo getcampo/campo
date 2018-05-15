@@ -122,4 +122,5 @@ en:
       new_topic: New Topic
     show:
       comments: Comments
+      edited_at: edited at
       sign_in_to_comment: Sign in to comment

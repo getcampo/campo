@@ -7,4 +7,8 @@ module ApplicationHelper
       content_tag :div, user.name[0], class: "letter-avatar letter-avatar-#{size}"
     end
   end
+
+  def local_time_or_date(time)
+    local_relative_time time, type: 'time-or-date'
+  end
 end

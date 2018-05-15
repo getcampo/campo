@@ -1,4 +1,4 @@
-<%= form_with model: @comment, id: 'comment-form', class: 'form content-box', data: { controller: 'editor' } do |form| %>
+<%= form_with model: @comment, id: 'comment-form', class: 'form', data: { controller: 'editor' } do |form| %>
   <% if @comment.new_record? %>
     <%= form.hidden_field :topic_id %>
     <%= form.hidden_field :reply_to_comment_id, data: { target: 'editor.replyToInput' }, disabled: @comment.persisted? %>

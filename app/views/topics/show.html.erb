@@ -25,7 +25,7 @@
           <div class="post-header">
             <span class="post-header-name"><%= @topic.user.name %></span>
             <div class="float-right">
-              <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_ago @topic.created_at %></a>
+              <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_or_date @topic.created_at %></a>
               <div class="dropdown" data-controller="dropdown visible-to-user">
                 <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
                   <i class="material-icons">more_vert</i>
@@ -50,7 +50,7 @@
             </article>
             <% if @topic.edited_user %>
               <div class="text-small text-secondary">
-                Edited by <%= @topic.edited_user.name %> at <%= local_time_ago @topic.edited_at %>
+                <%= @topic.edited_user.name %> <%= t '.edited_at' %> <%= local_time_or_date @topic.edited_at %>
               </div>
             <% end %>
           </div>

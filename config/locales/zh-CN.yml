@@ -121,4 +121,5 @@ zh-CN:
       new_topic: 新话题
     show:
       comments: 评论
+      edited_at: 编辑于
       sign_in_to_comment: 登录后评论
