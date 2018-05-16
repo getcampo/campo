@@ -2,12 +2,12 @@ disk:
   service: Disk
   root: <%= Rails.root.join(ENV['STORAGE_DISK_ROOT']) %>
 
-amazon:
+s3:
   service: S3
-  access_key_id: <%= ENV['STORAGE_AMAZON_ACCESS_KEY_ID'] %>
-  secret_access_key: <%= ENV['STORAGE_AMAZON_SECRET_ACCESS_KEY'] %>
-  region: <%= ENV['STORAGE_AMAZON_REGION'] %>
-  bucket: <%= ENV['STORAGE_AMAZON_BUCKET'] %>
+  access_key_id: <%= ENV['STORAGE_S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['STORAGE_S3_SECRET_ACCESS_KEY'] %>
+  region: <%= ENV['STORAGE_S3_REGION'] %>
+  bucket: <%= ENV['STORAGE_S3_BUCKET'] %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
