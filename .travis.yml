@@ -1,0 +1,15 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+install:
+  - docker-compose build
+  - docker-compose run web bash -c "yarn install"
+  - docker-compose run web bash -c "bin/rails db:setup"
+
+script:
+  - docker-compose run web bash -c "bin/rails test"
+  - docker-compose run web bash -c "brakeman"
