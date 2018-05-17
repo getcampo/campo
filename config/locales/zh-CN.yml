@@ -10,7 +10,7 @@ zh-CN:
         slug: Slug
       topic:
         content: 内容
-        forum_id: 论坛
+        forum_id: 版块
         title: 标题
       user:
         avatar: 头像
@@ -22,13 +22,13 @@ zh-CN:
         username: 用户名
     models:
       comment: 评论
-      forum: 论坛
+      forum: 版块
       topic: 话题
       user: 用户
   admin:
     forums:
       edit:
-        edit_forum: 编辑论坛
+        edit_forum: 编辑版块
       index:
         action: 动作
         description: 描述
@@ -37,7 +37,7 @@ zh-CN:
         slug: Slug
         topics: 话题数
       new:
-        new_form: 创建论坛
+        new_form: 创建版块
   comments:
     comment:
       edited_at: 编辑于
@@ -48,7 +48,7 @@ zh-CN:
     dashboard: 面板
     delete: 删除
     edit: 编辑
-    forums: 论坛
+    forums: 版块
     home: 首页
     password: 密码
     reply: 回复
@@ -64,8 +64,8 @@ zh-CN:
   flash:
     account_is_successfully_updated: 账号更新成功。
     comment_is_successfully_updated: 评论更新成功。
-    forum_is_successfully_created: 论坛创建成功。
-    forum_is_successfully_updated: 论坛更新成功。
+    forum_is_successfully_created: 版块创建成功。
+    forum_is_successfully_updated: 版块更新成功。
     invalid_token: 无效 Token。
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
@@ -77,7 +77,7 @@ zh-CN:
     you_have_no_permissions: 您没有权限。
   forums:
     index:
-      all_forums: 全部论坛
+      all_forums: 全部版块
   helpers:
     select:
       prompt: 请选择
@@ -87,7 +87,7 @@ zh-CN:
       update: 更新%{model}
   layouts:
     application:
-      all_forums: 全部论坛
+      all_forums: 全部版块
   password_resets:
     edit:
       password_reset: 密码重置
