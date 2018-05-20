@@ -1,24 +1,32 @@
-# README
+# Campo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Campo is an open source web forum application, it's design concept is lightweight, mobile friendly and easy to maintain.
 
-Things you may want to cover:
+Currently under active development, not recommended to deploy in production.
 
-* Ruby version
+## Development
 
-* System dependencies
+Campo use docker in development and deployment, it provides a consistent environment.
 
-* Configuration
+### Install Docker
 
-* Database creation
+Visit https://www.docker.com/community-edition and install docker for you operating system.
 
-* Database initialization
+### Clone repo
 
-* How to run the test suite
+```console
+$ git clone https://github.com/getcampo/campo.git
+$ cd campo
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Run dev server
 
-* Deployment instructions
+```console
+$ docker-compose up
+```
 
-* ...
+Visit http://localhost:3000/ .
+
+## License
+
+MIT License.
