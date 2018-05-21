@@ -14,7 +14,7 @@
 
 <h1 class="topic-title"><%= @topic.title %></h1>
 
-<% cache [@topic, @topic.user, :content] do %>
+<% cache [I18n.locale, @topic, @topic.user, :content] do %>
   <div class="list">
     <div class="list-item">
       <div class="list-item-avatar">
