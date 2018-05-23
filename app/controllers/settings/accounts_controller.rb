@@ -14,7 +14,10 @@ class Settings::AccountsController < ApplicationController
       @user.avatar.attach params[:user][:avatar] if params[:user][:avatar].present?
       redirect_to settings_account_path, notice: t('flash.account_is_successfully_updated')
     else
-      render 'update_form'
+      respond_to do |format|
+        format.html { render 'show' }
+        format.js { render 'update_form' }
+      end
     end
   end
 

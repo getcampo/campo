@@ -1,5 +1,5 @@
 <%= form_with model: @user, url: settings_account_path, local: true, id: 'account-form', class: 'form p-4', data: { controller: 'form-validation' } do |form| %>
-  <div class="form-field">
+  <div class="form-field <%= 'invalid' if @user.errors[:name].any? %>"">
     <%= form.label :name %>
     <%= form.text_field :name, 'data-validate-url': '/settings/account/validate/name', autofocus: true %>
     <% if @user.errors[:name].any? %>
