@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+if ENV['ENV_FILE'].present?
+  Dotenv.load(ENV['ENV_FILE'])
+end
+
 module Campo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
