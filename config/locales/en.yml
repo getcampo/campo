@@ -55,7 +55,7 @@ en:
     settings: Settings
     sign_in: Sign in
     sign_out: Sign out
-    sign_up: Sing up
+    sign_up: Sign up
   errors:
     messages:
       blank: Can't be blank
