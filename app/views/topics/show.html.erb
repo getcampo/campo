@@ -63,7 +63,7 @@
 <h3 class="subheader"><%= t '.comments' %></h3>
 
 <div id="comments" class="list">
-  <%= render partial: 'comments/comment', collection: @topic.comments.includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
+  <%= render partial: 'comments/comment', collection: @topic.comments.order(id: :asc).includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
 </div>
 
 <div class="list">
