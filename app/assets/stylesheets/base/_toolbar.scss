@@ -9,6 +9,10 @@
   &:first-child {
     flex: 0 0 56px;
   }
+
+  .button-text {
+    min-width: 0;
+  }
 }
 
 .toolbar-title {
