@@ -1,0 +1,31 @@
+<% cache [I18n.locale, notification] do %>
+  <% case notification.name when 'comment' %>
+    <a class="list-item" href="<%= topic_path(notification.source.topic, anchor: "comment-#{notification.source.id}") %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.source.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= t '.comment_title', name: notification.source.user.name, title: notification.source.topic.title %>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
+        </div>
+      </div>
+    </a>
+  <% when 'reply' %>
+    <a class="list-item" href="<%= topic_path(notification.source.topic, anchor: "comment-#{notification.source.id}") %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.source.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= t '.reply_title', name: notification.source.user.name, title: notification.source.topic.title %>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
+        </div>
+      </div>
+    </a>
+  <% end %>
+<% end %>

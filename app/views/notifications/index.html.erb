@@ -1,0 +1,16 @@
+<div class="appbar appbar-primary appbar-fixed">
+  <div class="toolbar">
+    <div class="toolbar-action">
+      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+    </div>
+    <div class="toolbar-title"><%= t 'common.notifications' %></div>
+  </div>
+</div>
+
+<main class="main with-appbar">
+  <div class="container">
+    <div class="list">
+      <%= render partial: 'notification', collection: @notifications, cached: -> notification { [I18n.locale, notification] } %>
+    </div>
+  </div>
+</main>
