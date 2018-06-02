@@ -11,4 +11,12 @@ module ApplicationHelper
   def local_time_or_date(time)
     local_relative_time time, type: 'time-or-date'
   end
+
+  def back_path
+    if request.referer && URI(request.referer).host == request.host
+      request.referer
+    else
+      root_path
+    end
+  end
 end
