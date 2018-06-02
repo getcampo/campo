@@ -63,6 +63,9 @@ group :development, :test do
 
   # Useful I18n task
   gem 'i18n-tasks', '~> 0.9.21', require: false
+
+  # Fixtures replacement
+  gem 'factory_bot_rails'
 end
 
 group :development do

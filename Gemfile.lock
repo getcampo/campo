@@ -103,6 +103,11 @@ GEM
       thread_safe
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
     faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
@@ -311,6 +316,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  factory_bot_rails
   google-cloud-storage
   hiredis
   http_accept_language
@@ -339,4 +345,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

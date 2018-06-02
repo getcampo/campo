@@ -1,6 +1,0 @@
-topic:
-  title: Title
-  content: Content
-  user: :user
-  forum: :forum
-  activated_at: <%= Time.now %>
