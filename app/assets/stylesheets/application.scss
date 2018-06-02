@@ -5,3 +5,18 @@
 @import 'sessions';
 @import 'topic';
 @import 'post';
+
+.notifications-unread {
+  position: relative;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #F44336;
+  }
+}
