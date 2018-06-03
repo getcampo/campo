@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  include Trashable, Editable, Pageable
+  include Trashable, Editable, Pageable, Mentionable
 
   has_many :comments
   belongs_to :forum, counter_cache: true, touch: true
@@ -9,8 +9,17 @@ class Topic < ApplicationRecord
   validates :title, :content, presence: true
 
   before_create :set_activated_at
+  after_commit :create_mention_notifications, on: [:create]
 
   def set_activated_at
     self.activated_at = current_time_from_proper_timezone
+  end
+
+  def create_mention_notifications
+    mention_users.each do |mention_user|
+      if mention_user != user
+        mention_user.notifications.create(name: 'mention', source: self)
+      end
+    end
   end
 end

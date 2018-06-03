@@ -36,7 +36,8 @@
       </div>
     </a>
   <% when 'mention' %>
-    <a class="list-item" href="<%= topic_path(notification.source.topic, anchor: "comment-#{notification.source.id}") %>">
+    <% url = notification.source.is_a?(Topic) ? topic_path(notification.source) : topic_path(notification.source.topic, anchor: "comment-#{notification.source.id}") %>
+    <a class="list-item" href="<%= url %>">
       <div class="list-item-avatar">
         <%= avatar_tag notification.source.user %>
       </div>

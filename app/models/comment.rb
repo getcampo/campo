@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  include Trashable, Editable
+  include Trashable, Editable, Mentionable
 
   belongs_to :topic, touch: true, counter_cache: true
   belongs_to :user
@@ -27,16 +27,5 @@ class Comment < ApplicationRecord
         mention_user.notifications.create(name: 'mention', source: self)
       end
     end
-  end
-
-  def mention_users
-    mention_users = []
-    Nokogiri::HTML(MarkdownRenderer.render(content)).search('//text()').each do |node|
-      node.text.scan(/@([a-zA-Z][a-zA-Z0-9\-]+)/).each do |match|
-        user = User.find_by username: match.first
-        mention_users << user if user
-      end
-    end
-    mention_users.uniq
   end
 end
