@@ -19,4 +19,8 @@ module ApplicationHelper
       root_path
     end
   end
+
+  def markdown_render(content)
+    MarkdownRenderer.render(content)
+  end
 end

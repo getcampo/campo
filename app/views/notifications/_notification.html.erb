@@ -33,5 +33,22 @@
         <%= local_time_or_date notification.created_at %>
       </div>
     </a>
+  <% when 'mention' %>
+    <a class="list-item" href="<%= topic_path(notification.source.topic, anchor: "comment-#{notification.source.id}") %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.source.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= t '.mention_title', name: notification.source.user.name, title: notification.source.topic.title %>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
+        </div>
+      </div>
+      <div class="list-item-timestamp">
+        <%= local_time_or_date notification.created_at %>
+      </div>
+    </a>
   <% end %>
 <% end %>

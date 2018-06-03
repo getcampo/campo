@@ -4,7 +4,7 @@ class Notification < ApplicationRecord
   belongs_to :user
   belongs_to :source, polymorphic: true
 
-  validates :name, inclusion: { in: %w(comment reply) }
+  validates :name, inclusion: { in: %w(comment reply mention) }
 
   scope :unread, -> { where(read: false) }
 end

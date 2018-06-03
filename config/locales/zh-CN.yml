@@ -92,6 +92,7 @@ zh-CN:
   notifications:
     notification:
       comment_title: "%{name} 评论了 %{title}"
+      mention_title: "%{name} 提及了你 %{title}"
       reply_title: "%{name} 回复了 %{title}"
   password_resets:
     edit:

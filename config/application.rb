@@ -47,3 +47,5 @@ module Campo
     end
   end
 end
+
+require 'markdown_renderer'
