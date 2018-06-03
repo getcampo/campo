@@ -91,9 +91,9 @@ en:
       all_forums: All Forums
   notifications:
     notification:
-      comment_title: "%{name} commented on %{title}"
-      mention_title: "%{name} mention you %{title}"
-      reply_title: "%{name} replied on %{title}"
+      comment_your_topic: comment your topic
+      mention_you: mention you
+      reply_your_comment: reply your comment
   password_resets:
     edit:
       password_reset: Password Reset

@@ -6,14 +6,15 @@
       </div>
       <div class="list-item-content text-overflow">
         <div class="list-item-content-primary">
-          <%= t '.comment_title', name: notification.source.user.name, title: notification.source.topic.title %>
+          <%= notification.source.user.name %>
+          <%= t '.comment_your_topic' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
         </div>
         <div class="list-item-content-secondary">
           <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
         </div>
-      </div>
-      <div class="list-item-timestamp">
-        <%= local_time_or_date notification.created_at %>
       </div>
     </a>
   <% when 'reply' %>
@@ -23,14 +24,15 @@
       </div>
       <div class="list-item-content text-overflow">
         <div class="list-item-content-primary">
-          <%= t '.reply_title', name: notification.source.user.name, title: notification.source.topic.title %>
+          <%= notification.source.user.name %>
+          <%= t '.reply_your_comment' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
         </div>
         <div class="list-item-content-secondary">
           <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
         </div>
-      </div>
-      <div class="list-item-timestamp">
-        <%= local_time_or_date notification.created_at %>
       </div>
     </a>
   <% when 'mention' %>
@@ -40,14 +42,15 @@
       </div>
       <div class="list-item-content text-overflow">
         <div class="list-item-content-primary">
-          <%= t '.mention_title', name: notification.source.user.name, title: notification.source.topic.title %>
+          <%= notification.source.user.name %>
+          <%= t '.mention_you' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
         </div>
         <div class="list-item-content-secondary">
           <%= truncate strip_tags(markdown_render(notification.source.content)), length: 140 %>
         </div>
-      </div>
-      <div class="list-item-timestamp">
-        <%= local_time_or_date notification.created_at %>
       </div>
     </a>
   <% end %>

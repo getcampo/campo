@@ -91,9 +91,9 @@ zh-CN:
       all_forums: 全部版块
   notifications:
     notification:
-      comment_title: "%{name} 评论了 %{title}"
-      mention_title: "%{name} 提及了你 %{title}"
-      reply_title: "%{name} 回复了 %{title}"
+      comment_your_topic: 评论了你的话题
+      mention_you: 提及了你
+      reply_your_comment: 回复了你的评论
   password_resets:
     edit:
       password_reset: 密码重置
