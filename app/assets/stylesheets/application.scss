@@ -20,3 +20,10 @@
     background-color: #F44336;
   }
 }
+
+.list-item-timestamp {
+  padding: 16px;
+  color: var(--text-secondary-color);
+  flex: 0 0;
+  white-space: nowrap;
+}
