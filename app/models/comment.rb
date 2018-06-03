@@ -7,7 +7,17 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
-  after_commit :create_comment_notifications, :create_reply_notifications, :create_mention_notifications, on: [:create]
+  after_commit :enqueue_create_notifications, on: [:create]
+
+  def enqueue_create_notifications
+    CommentNotificationJob.perform_later(self)
+  end
+
+  def create_notifications
+    create_comment_notifications
+    create_reply_notifications
+    create_mention_notifications
+  end
 
   def create_comment_notifications
     if user != topic.user

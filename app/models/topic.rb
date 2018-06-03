@@ -9,10 +9,18 @@ class Topic < ApplicationRecord
   validates :title, :content, presence: true
 
   before_create :set_activated_at
-  after_commit :create_mention_notifications, on: [:create]
+  after_commit :enqueue_create_notifications, on: [:create]
 
   def set_activated_at
     self.activated_at = current_time_from_proper_timezone
+  end
+
+  def enqueue_create_notifications
+    TopicNotificationJob.perform_later(self)
+  end
+
+  def create_notifications
+    create_mention_notifications
   end
 
   def create_mention_notifications
