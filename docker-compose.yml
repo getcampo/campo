@@ -10,6 +10,14 @@ services:
     depends_on:
       - postgres
       - redis
+  worker:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - redis
   postgres:
     image: postgres:10
   redis:
