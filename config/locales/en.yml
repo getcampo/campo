@@ -50,6 +50,7 @@ en:
     edit: Edit
     forums: Forums
     home: Home
+    notifications: Notifications
     password: Password
     reply: Reply
     settings: Settings
@@ -88,6 +89,11 @@ en:
   layouts:
     application:
       all_forums: All Forums
+  notifications:
+    notification:
+      comment_on_your_topic: comment your topic
+      mention_you: mention you
+      reply_to_your_comment: reply your comment
   password_resets:
     edit:
       password_reset: Password Reset

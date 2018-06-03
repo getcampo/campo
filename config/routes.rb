@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update], concerns: [:trashable]
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
+  resources :notifications, only: [:index]
 
   namespace :settings do
     resource :account, only: [:show, :update] do

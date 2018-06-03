@@ -1,0 +1,58 @@
+<% cache [I18n.locale, notification] do %>
+  <% case notification.name when 'comment' %>
+    <a class="list-item" href="<%= topic_path(notification.record.topic, anchor: "comment-#{notification.record.id}") %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.record.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= notification.record.user.name %>
+          <%= t '.comment_on_your_topic' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.record.content)), length: 140 %>
+        </div>
+      </div>
+    </a>
+  <% when 'reply' %>
+    <a class="list-item" href="<%= topic_path(notification.record.topic, anchor: "comment-#{notification.record.id}") %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.record.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= notification.record.user.name %>
+          <%= t '.reply_to_your_comment' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.record.content)), length: 140 %>
+        </div>
+      </div>
+    </a>
+  <% when 'mention' %>
+    <% url = notification.record.is_a?(Topic) ? topic_path(notification.record) : topic_path(notification.record.topic, anchor: "comment-#{notification.record.id}") %>
+    <a class="list-item" href="<%= url %>">
+      <div class="list-item-avatar">
+        <%= avatar_tag notification.record.user %>
+      </div>
+      <div class="list-item-content text-overflow">
+        <div class="list-item-content-primary">
+          <%= notification.record.user.name %>
+          <%= t '.mention_you' %>
+          <div class="float-right">
+            <span class="text-small text-secondary"><%= local_time_or_date notification.created_at %></span>
+          </div>
+        </div>
+        <div class="list-item-content-secondary">
+          <%= truncate strip_tags(markdown_render(notification.record.content)), length: 140 %>
+        </div>
+      </div>
+    </a>
+  <% end %>
+<% end %>

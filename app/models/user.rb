@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :identities
   has_many :topics
   has_many :comments
+  has_many :notifications
 
   validates :name, :username, :email, presence: true
   validates :username, :email, uniqueness: { case_sensitive: false }

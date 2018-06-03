@@ -1,0 +1,5 @@
+document.querySelector('#notifications').insertAdjacentHTML('beforeend', '<%= j render partial: "notification", collection: @notifications, cached: -> notification { [I18n.locale, notification] } %>')
+document.querySelector('#notifications').dataset.infinitePage = '<%= params[:page] %>'
+<% if Current.user.notifications.count <= ((params[:page] || 1).to_i * 25) %>
+  document.querySelector('#notifications').dataset.infinitePageEnd = 'true'
+<% end %>

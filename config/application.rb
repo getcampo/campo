@@ -37,6 +37,8 @@ module Campo
 
     config.active_storage.service = ENV['STORAGE_SERVICE']
 
+    config.active_job.queue_adapter = :sidekiq
+
     config.i18n.available_locales = %w(en zh-CN)
 
     # Disable unnessary generator
@@ -47,3 +49,5 @@ module Campo
     end
   end
 end
+
+require 'markdown_renderer'
