@@ -26,7 +26,7 @@ class Topic < ApplicationRecord
   def create_mention_notifications
     mention_users.each do |mention_user|
       if mention_user != user
-        mention_user.notifications.create(name: 'mention', source: self)
+        mention_user.notifications.create(name: 'mention', record: self)
       end
     end
   end

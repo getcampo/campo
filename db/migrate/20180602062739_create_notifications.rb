@@ -3,9 +3,8 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     create_table :notifications do |t|
       t.string :name
       t.belongs_to :user
-      t.belongs_to :source, polymorphic: true
+      t.belongs_to :record, polymorphic: true
       t.boolean :read, default: false
-      t.json :data
 
       t.timestamps
     end

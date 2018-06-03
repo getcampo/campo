@@ -8,7 +8,7 @@ class CommentTest < ActiveSupport::TestCase
     end
     notification = topic.user.notifications.last
     assert_equal 'comment', notification.name
-    assert_equal Comment.last, notification.source
+    assert_equal Comment.last, notification.record
   end
 
   test "should create reply notifications" do
@@ -18,7 +18,7 @@ class CommentTest < ActiveSupport::TestCase
     end
     notification = comment.user.notifications.last
     assert_equal 'reply', notification.name
-    assert_equal Comment.last, notification.source
+    assert_equal Comment.last, notification.record
   end
 
   test "should not create duplicate reply notifications for topic user" do
@@ -29,7 +29,7 @@ class CommentTest < ActiveSupport::TestCase
     end
     notification = topic.user.notifications.last
     assert_equal 'comment', notification.name
-    assert_equal Comment.last, notification.source
+    assert_equal Comment.last, notification.record
   end
 
   test "should create notification for mention user" do
@@ -41,6 +41,6 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal [user], comment.mention_users
     notification = user.notifications.last
     assert_equal 'mention', notification.name
-    assert_equal comment, notification.source
+    assert_equal comment, notification.record
   end
 end

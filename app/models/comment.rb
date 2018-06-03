@@ -21,20 +21,20 @@ class Comment < ApplicationRecord
 
   def create_comment_notifications
     if user != topic.user
-      topic.user.notifications.create(name: 'comment', source: self)
+      topic.user.notifications.create(name: 'comment', record: self)
     end
   end
 
   def create_reply_notifications
     if reply_to_comment && user != reply_to_comment.user && reply_to_comment.user != topic.user
-      reply_to_comment.user.notifications.create(name: 'reply', source: self)
+      reply_to_comment.user.notifications.create(name: 'reply', record: self)
     end
   end
 
   def create_mention_notifications
     mention_users.each do |mention_user|
       if mention_user != topic.user && (reply_to_comment.nil? || mention_user != reply_to_comment.user)
-        mention_user.notifications.create(name: 'mention', source: self)
+        mention_user.notifications.create(name: 'mention', record: self)
       end
     end
   end

@@ -219,10 +219,9 @@ CREATE TABLE public.notifications (
     id bigint NOT NULL,
     name character varying,
     user_id bigint,
-    source_type character varying,
-    source_id bigint,
+    record_type character varying,
+    record_id bigint,
     read boolean DEFAULT false,
-    data json,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -533,10 +532,10 @@ CREATE INDEX index_identities_on_user_id ON public.identities USING btree (user_
 
 
 --
--- Name: index_notifications_on_source_type_and_source_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_notifications_on_record_type_and_record_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_notifications_on_source_type_and_source_id ON public.notifications USING btree (source_type, source_id);
+CREATE INDEX index_notifications_on_record_type_and_record_id ON public.notifications USING btree (record_type, record_id);
 
 
 --

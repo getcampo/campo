@@ -10,6 +10,6 @@ class TopicTest < ActiveSupport::TestCase
     assert_equal [user], topic.mention_users
     notification = user.notifications.last
     assert_equal 'mention', notification.name
-    assert_equal topic, notification.source
+    assert_equal topic, notification.record
   end
 end

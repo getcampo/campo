@@ -3,7 +3,7 @@ require 'test_helper'
 class NotificationsControllerTest < ActionDispatch::IntegrationTest
   test "auto mark all as read" do
     user = create(:user)
-    user.notifications.create(name: 'comment', source: create(:comment))
+    user.notifications.create(name: 'comment', record: create(:comment))
     sign_in_as user
     get notifications_url
     assert_response :success
