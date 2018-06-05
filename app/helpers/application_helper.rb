@@ -12,14 +12,6 @@ module ApplicationHelper
     local_relative_time time, type: 'time-or-date'
   end
 
-  def back_path
-    if request.referer && URI(request.referer).host == request.host
-      request.referer
-    else
-      root_path
-    end
-  end
-
   def markdown_render(content)
     MarkdownRenderer.render(content)
   end
