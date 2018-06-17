@@ -1,0 +1,8 @@
+build:
+  docker:
+    web: Dockerfile.web
+    worker: Dockerfile.worker
+release:
+  image: web
+  command:
+    - bin/rails db:migrate
