@@ -1,9 +1,8 @@
 version: '3.0'
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile.web
+    build: .
+    command: bin/rails server -b 0.0.0.0
     volumes:
       - .:/app
     ports:
@@ -12,9 +11,8 @@ services:
       - postgres
       - redis
   worker:
-    build:
-      context: .
-      dockerfile: Dockerfile.worker
+    build: .
+    command: sidekiq
     volumes:
       - .:/app
     depends_on:

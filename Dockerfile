@@ -28,5 +28,3 @@ RUN bundle install
 
 COPY . /app/
 RUN bin/rails assets:precompile
-
-CMD ["sidekiq"]
