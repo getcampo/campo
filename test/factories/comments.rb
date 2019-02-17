@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :comment do
     user
     topic
-    content "Content"
+    content { "Content" }
   end
 end
