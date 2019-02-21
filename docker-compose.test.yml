@@ -2,7 +2,7 @@ version: '3.0'
 services:
   sut:
     build: .
-    command: bin/rails test
+    command: bin/setup && bin/rails test && brakeman
     depends_on:
       - postgres
       - redis
