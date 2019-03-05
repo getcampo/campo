@@ -1,9 +1,13 @@
-version: '3.0'
+version: '3.4'
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      target: base
     command: bin/rails server -b 0.0.0.0
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
     volumes:
       - campo-sync:/app:nocopy
     ports:
@@ -11,8 +15,21 @@ services:
     depends_on:
       - postgres
       - redis
+  webpacker:
+    build:
+      context: .
+      target: base
+    command: bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+    volumes:
+      - campo-sync:/app:nocopy
+    ports:
+      - 3035:3035
   worker:
-    build: .
+    build:
+      context: .
+      target: base
     command: bundle exec sidekiq
     volumes:
       - campo-sync:/app:nocopy
