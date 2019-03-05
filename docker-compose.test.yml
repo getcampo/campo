@@ -2,7 +2,7 @@ version: '3.4'
 services:
   sut:
     build: .
-    command: bin/setup && bin/rails test && brakeman
+    command: bash -c "bin/setup && bin/rails test && bundle exec brakeman"
     depends_on:
       - postgres
       - redis
