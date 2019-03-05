@@ -16,8 +16,6 @@
 # Ignore uploaded files in development
 /storage/*
 
-/node_modules
-/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -30,3 +28,9 @@
 .env.*.local
 
 .docker-sync
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
+/yarn-error.log
