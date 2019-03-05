@@ -1,10 +1,11 @@
 version: '3.0'
+
 services:
   web:
     build: .
     command: bin/rails server -b 0.0.0.0
     volumes:
-      - .:/app
+      - campo-sync:/app:nocopy
     ports:
       - 3000:3000
     depends_on:
@@ -12,9 +13,9 @@ services:
       - redis
   worker:
     build: .
-    command: sidekiq
+    command: bundle exec sidekiq
     volumes:
-      - .:/app
+      - campo-sync:/app:nocopy
     depends_on:
       - postgres
       - redis
@@ -22,3 +23,7 @@ services:
     image: postgres:10
   redis:
     image: redis:3.2
+
+volumes:
+  campo-sync:
+    external: true

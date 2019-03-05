@@ -12,6 +12,12 @@ Campo use docker in development and deployment, it provides a consistent environ
 
 Visit https://www.docker.com/community-edition and install docker for you operating system.
 
+### Install docker-sync
+
+```console
+$ gem install docker-sync
+```
+
 ### Clone repo
 
 ```console
@@ -20,6 +26,20 @@ $ cd campo
 ```
 
 ### Run dev server
+
+Start docker sync:
+
+```console
+$ docker-sync start
+```
+
+Open a new console and run:
+
+```console
+$ docker-compose run web bin/setup
+```
+
+Start docker services:
 
 ```console
 $ docker-compose up

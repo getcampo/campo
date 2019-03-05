@@ -1,0 +1,6 @@
+version: '2'
+
+syncs:
+  campo-sync:
+    src: './'
+    sync_excludes: ['.git', 'node_modules', 'vendor/bundle', 'tmp']
