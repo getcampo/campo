@@ -2,12 +2,12 @@
   "name": "campo",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^4.0.1",
     "animate.css": "^3.6.1",
     "normalize.css": "^8.0.0",
     "stimulus": "^1.0.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^3.2.1"
   }
 }
