@@ -4,10 +4,13 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.1",
     "actioncable": "^5.2.2",
+    "activestorage": "^5.2.2",
     "animate.css": "^3.6.1",
     "local-time": "^2.1.0",
     "normalize.css": "^8.0.0",
-    "stimulus": "^1.1.1"
+    "rails-ujs": "^5.2.2",
+    "stimulus": "^1.1.1",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.2.1"
