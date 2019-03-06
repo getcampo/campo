@@ -11,3 +11,6 @@ console.log('Hello World from Webpacker')
 
 import 'javascripts/application'
 import 'stylesheets/application'
+
+let imageContext = require.context('images/', true)
+imageContext.keys().forEach(imageContext)
