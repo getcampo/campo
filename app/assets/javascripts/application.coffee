@@ -2,8 +2,6 @@
 #= require activestorage
 #= require turbolinks
 #= require stimulus/dist/stimulus.umd
-#= require local-time
-#= require_tree ./locales
 #= require_self
 #= require_tree .
 
@@ -18,5 +16,3 @@ window.Current =
 
   locale: ->
     document.querySelector('meta[name=locale]')?.content || 'en'
-
-LocalTime.config.locale = Current.locale()

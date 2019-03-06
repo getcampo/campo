@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.1",
     "animate.css": "^3.6.1",
+    "local-time": "^2.1.0",
     "normalize.css": "^8.0.0",
     "stimulus": "^1.0.1"
   },
