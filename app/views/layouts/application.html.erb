@@ -6,9 +6,36 @@
         Campo
       </a>
 
-      <form class="form-inline">
+      <form class="form-inline ml-auto">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
       </form>
+
+      <ul class="navbar-nav flex-row">
+        <% if Current.user %>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <i class="fa fa-bell"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+              <%= Current.user.name %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="<%= settings_account_path %>">Settings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<%= session_path %>" data-remote="true" data-method="delete">Sign out</a>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_session_path %>">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_user_path %>">Sign up</a>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 
