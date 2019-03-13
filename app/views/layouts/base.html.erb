@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="locale" content="<%= I18n.locale %>">
+    <link rel="icon" href="<%= asset_pack_path 'media/images/logo.png' %>">
+
     <title>Campo</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="locale" content="<%= I18n.locale %>">
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -18,13 +22,5 @@
 
   <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
-
-    <% %w(notice alert).each do |type| %>
-      <% if flash[type] %>
-        <div class="snackbar animated fadeInUp" data-controller="snackbar" data-hide-on="5000">
-          <%= flash[type] %>
-        </div>
-      <% end %>
-    <% end %>
   </body>
 </html>

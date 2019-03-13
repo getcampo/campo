@@ -1,55 +1,13 @@
 <% content_for :body do %>
-  <div class="appbar appbar-primary appbar-fixed">
-    <div class="toolbar">
-      <div class="toolbar-action">
-        <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
-      </div>
-      <div class="toolbar-title">
-        <%= content_for(:toolbar_title) %>
-      </div>
-      <%= render 'layouts/appbar_user' %>
-    </div>
-  </div>
+  <nav class="navbar sticky-top navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        Campo
+      </a>
 
-  <nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">
-    <div class="side-nav-content">
-      <div class="list">
-        <a href="/" class="list-item">
-          <div class="list-item-icon">
-            <i class="material-icons">home</i>
-          </div>
-          <div class="list-item-content align-center"><%= t 'common.home' %></div>
-        </a>
-      </div>
-      <hr class="divider">
-      <h3 class="subheader"><%= t 'common.forums' %></h3>
-      <div class="list">
-        <% Forum.order(topics_count: :desc).limit(5).each do |forum| %>
-          <a href="<%= forum_path(forum) %>" class="list-item">
-            <div class="list-item-icon">
-              <i class="material-icons">forum</i>
-            </div>
-            <div class="list-item-content align-center"><%= forum.name %></div>
-          </a>
-        <% end %>
-        <a href="/forums" class="list-item">
-          <div class="list-item-icon">
-            <i class="material-icons">more_horiz</i>
-          </div>
-          <div class="list-item-content align-center"><%= t '.all_forums' %></div>
-        </a>
-      </div>
-      <% if Current.user&.admin? %>
-        <hr class="divider">
-        <a href="/admin" class="list-item">
-          <div class="list-item-icon">
-            <i class="material-icons">dashboard</i>
-          </div>
-          <div class="list-item-content align-center"><%= t 'common.dashboard' %></div>
-        </a>
-      <% end %>
-    </div>
-    <div class="side-nav-background" data-action="click->side-nav#close">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      </form>
     </div>
   </nav>
 
