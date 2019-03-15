@@ -1,33 +1,18 @@
 <% cache [I18n.locale, topic, topic.user] do %>
-  <a class="list-item" href="<%= topic_path(topic) %>">
-    <div class="list-item-avatar">
+  <a class="media topic-item rounded" href="<%= topic_path(topic) %>">
+    <div class="mr-2">
       <%= avatar_tag topic.user %>
     </div>
-    <div class="list-item-content text-overflow">
-      <h4 class="list-item-content-primary">
-        <%= topic.title %>
-      </h4>
-      <div class="list-item-content-secondary">
-        <%= topic.forum.name %>
-        ·
-        <% if topic.last_comment %>
-          <%= topic.last_comment.user.name %>
-          <%= local_time_or_date topic.last_comment.created_at %>
-          -
-          <%= truncate strip_tags(markdown_render(topic.last_comment.content)), length: 140 %>
-        <% else %>
-          <%= topic.user.name %>
-          <%= local_time_or_date topic.created_at %>
-          -
-          <%= truncate strip_tags(markdown_render(topic.content)), length: 140 %>
-        <% end %>
+    <div class="media-body">
+      <h3 class="text-truncate"><%= topic.title %></h3>
+      <div class="topic-item-info text-muted">
+        <span class="badge badge-light"><%= topic.forum.name %></span>
+        <span class="mr-1"><i class="far fa-user"></i> <%= topic.user.name %></span>
+        <span class="mr-1"><i class="far fa-comment-alt"></i> <%= topic.comments.count %></span>
       </div>
     </div>
-    <div class="list-item-icon align-center nowrap">
-      <div class="comments-count">
-        <i class="material-icons">comment</i>
-        <%= topic.comments_count %>
-      </div>
+    <div class="ml-2">
+      <small class="text-muted"><%= local_time_or_date topic.activated_at %></small>
     </div>
   </a>
 <% end %>

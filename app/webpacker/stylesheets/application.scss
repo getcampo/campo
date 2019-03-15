@@ -5,6 +5,7 @@
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
 
 .navbar-nav .nav-link {
   padding: 0.5rem 0.5rem;
@@ -12,4 +13,63 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 .navbar-nav .dropdown-menu {
   position: absolute;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.avatar-2x {
+  width: 96px;
+  height: 96px;
+}
+
+.avatar-4x {
+  width: 192px;
+  height: 192px;
+}
+
+.letter-avatar {
+  background: #ccc;
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+
+  &.avatar-2x {
+    font-size: 3rem;
+  }
+
+  &.avatar-4x {
+    font-size: 6rem;
+  }
+}
+
+.topic-list {
+  margin: 0 -0.5rem;
+}
+
+.topic-item {
+  padding: 0.5rem;
+  color: $body-color;
+
+  &:hover {
+    color: $body-color;
+    background: $gray-100;
+    text-decoration: none;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+}
+
+.topic-item-info {
+  font-size: 0.8rem;
+  line-height: 18px;
 }

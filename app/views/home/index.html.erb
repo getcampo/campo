@@ -1,14 +1,29 @@
-<% content_for :toolbar_title do %>
-  <%= t 'common.home' %>
-<% end %>
+<div class="d-flex mt-3 mb-2">
+  <div class="btn-group mr-1">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+      All
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Feed</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Ruby</a>
+      <a class="dropdown-item" href="#">Javascript</a>
+    </div>
+  </div>
 
-<a href="/topics/new" class="button button-floating button-secondary right-bottom" data-controller="visible-to-user">
-  <i class="material-icons">add</i>
-</a>
+  <div class="btn-group">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+      Latest
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Top</a>
+      <a class="dropdown-item" href="#">Oldest</a>
+    </div>
+  </div>
 
-<div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="/">
-  <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+  <a href="<%= new_topic_path %>" class="btn btn-primary ml-auto">New Topic</a>
 </div>
-<div class="loading-message">
-  <i class="material-icons animated rotate">refresh</i>
+
+<div class="topic-list">
+  <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
 </div>
