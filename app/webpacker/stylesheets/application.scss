@@ -67,6 +67,14 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
     line-height: 22px;
     margin-bottom: 8px;
   }
+
+  .comment-count.badge {
+    background: $gray-500;
+  }
+
+  &:visited .comment-count.badge {
+    background: $gray-300;
+  }
 }
 
 .topic-item-info {
