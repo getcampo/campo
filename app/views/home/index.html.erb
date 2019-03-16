@@ -27,3 +27,7 @@
 <div class="topic-list">
   <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
 </div>
+
+<div class="mt-2 mb-2">
+  <%= paginate @topics %>
+</div>

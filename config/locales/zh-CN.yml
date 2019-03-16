@@ -86,9 +86,6 @@ zh-CN:
       create: 创建%{model}
       submit: 提交%{model}
       update: 更新%{model}
-  layouts:
-    application:
-      all_forums: 全部版块
   notifications:
     notification:
       comment_on_your_topic: 评论了你的话题
@@ -126,3 +123,9 @@ zh-CN:
       comments: 评论
       edited_at: 编辑于
       sign_in_to_comment: 登录后评论
+  views:
+    pagination:
+      first: 首页
+      last: 尾页
+      next: 下一页
+      previous: 上一页

@@ -39,6 +39,9 @@ gem 'rouge'
 # Display time to browser local
 gem 'local_time'
 
+# paginate
+gem 'kaminari'
+
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 

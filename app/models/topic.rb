@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  include Trashable, Editable, Pageable, Mentionable
+  include Trashable, Editable, Mentionable
 
   has_many :comments
   belongs_to :forum, counter_cache: true, touch: true

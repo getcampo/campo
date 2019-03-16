@@ -86,9 +86,6 @@ en:
       create: Create %{model}
       submit: Submit %{model}
       update: Update %{model}
-  layouts:
-    application:
-      all_forums: All Forums
   notifications:
     notification:
       comment_on_your_topic: comment your topic
@@ -126,3 +123,9 @@ en:
       comments: Comments
       edited_at: edited at
       sign_in_to_comment: Sign in to comment
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
