@@ -7,6 +7,10 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 
+img {
+  max-width: 100%;
+}
+
 .navbar-nav .nav-link {
   padding: 0.5rem 0.5rem;
 }
@@ -80,4 +84,32 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 .topic-item-info {
   font-size: 0.8rem;
   line-height: 18px;
+}
+
+.post {
+}
+
+.post-avatar {
+  display: inline-block;
+}
+
+@include media-breakpoint-up(sm) {
+  .post {
+    position: relative;
+    padding: 0 56px;
+  }
+
+  .post-header {
+    margin-bottom: 8px;
+  }
+
+  .post-avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.btn {
+  cursor: pointer;
 }

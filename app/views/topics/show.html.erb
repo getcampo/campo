@@ -1,84 +1,47 @@
-<% content_for :toolbar_title do %>
-  <ul class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="/"><%= t 'common.home' %></a>
-    </li>
-    <li class="breadcrumb-item">
-      <a href="<%= forum_path(@topic.forum) %>"><%= @topic.forum.name %></a>
-    </li>
-    <li class="breadcrumb-item active">
-      <%= @topic.title %>
-    </li>
-  </ul>
-<% end %>
-
-<h1 class="topic-title"><%= @topic.title %></h1>
+<div class="mt-3 mb-3">
+  <span class="badge badge-light mb-2"><%= @topic.forum.name %></span>
+  <h1><%= @topic.title %></h1>
+</div>
 
 <% cache [I18n.locale, @topic, @topic.user, :content] do %>
-  <div class="list">
-    <div class="list-item">
-      <div class="list-item-avatar">
+  <div class="post">
+    <div class="post-header">
+      <div class="post-avatar">
         <%= avatar_tag @topic.user %>
       </div>
-      <div class="list-item-content">
-        <div class="post" data-controller="post" data-creator-id="<%= @topic.user.id %>">
-          <div class="post-header">
-            <span class="post-header-name"><%= @topic.user.name %></span>
-            <div class="float-right">
-              <a href="<%= topic_path(@topic) %>" class="post-header-time text-small text-secondary"><%= local_time_or_date @topic.created_at %></a>
-              <div class="dropdown" data-controller="dropdown visible-to-user">
-                <button type="button" class="button button-icon button-icon-small text-secondary" data-action="dropdown#open">
-                  <i class="material-icons">more_vert</i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-menu-item" data-action="post#reply">
-                    <i class="material-icons">reply</i><%= t 'common.reply' %>
-                  </a>
-                  <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-creator-or-admin">
-                    <i class="material-icons">edit</i><%= t 'common.edit' %>
-                  </a>
-                  <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible-to-admin" data-method="put" data-confirm="Are you sure you want to delete this topic?" data-remote="true">
-                    <i class="material-icons">delete</i><%= t 'common.delete' %>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="post-body">
-            <article class="typography">
-              <%= sanitize markdown_render @topic.content %>
-            </article>
-            <% if @topic.edited_user %>
-              <div class="text-small text-secondary">
-                <%= @topic.edited_user.name %> <%= t '.edited_at' %> <%= local_time_or_date @topic.edited_at %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <span><%= @topic.user.name %></span>
+      <span><%= local_time_or_date @topic.created_at %></span>
+      <% if @topic.edited_at %>
+        <span>Edited at <%= local_time_or_date @topic.edited_at %></span>
+      <% end %>
+    </div>
+    <div class="post-body">
+      <%= sanitize markdown_render @topic.content %>
+    </div>
+    <div class="post-footer">
     </div>
   </div>
 <% end %>
-
-<h3 class="subheader"><%= t '.comments' %></h3>
 
 <div id="comments" class="list">
   <%= render partial: 'comments/comment', collection: @topic.comments.order(id: :asc).includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
 </div>
 
-<div class="list">
-  <div class="list-item">
-    <div class="list-item-avatar">
-      <% if Current.user %>
-        <%= avatar_tag Current.user %>
-      <% end %>
+<% if Current.user %>
+  <div class="post">
+    <div class="post-header">
+      <div class="post-avatar">
+          <%= avatar_tag Current.user %>
+      </div>
     </div>
-    <div class="list-item-content">
-      <% if Current.user %>
-        <%= render 'comments/form' %>
-      <% else %>
-        <a href="<%= new_session_path(return_to: topic_path(@topic)) %>" class="button button-contained button-primary"><%= t '.sign_in_to_comment' %></a>
-      <% end %>
+    <div class="post-body">
+      <%= render 'comments/form' %>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="post">
+    <div class="post-body">
+      <a href="<%= new_session_path(return_to: topic_path(@topic)) %>" class="btn btn-primary"><%= t '.sign_in_to_comment' %></a>
+    </div>
+  </div>
+<% end %>
