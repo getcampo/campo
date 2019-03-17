@@ -1,4 +1,8 @@
 // Bootstrap
+$breadcrumb-padding-x: 0;
+$breadcrumb-bg: transparent;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-divider: quote(">");
 @import "~bootstrap/scss/bootstrap";
 
 // Fontawesome
@@ -87,10 +91,22 @@ img {
 }
 
 .post {
+  margin-bottom: 1.5rem;
+}
+
+.post-header {
+  line-height: 24px;
+  margin-bottom: 16px;
 }
 
 .post-avatar {
   display: inline-block;
+  line-height: 1;
+
+  img {
+    height: 24px;
+    width: 24px;
+  }
 }
 
 @include media-breakpoint-up(sm) {
@@ -107,6 +123,11 @@ img {
     position: absolute;
     top: 0;
     left: 0;
+
+    img {
+      height: 48px;
+      width: 48px;
+    }
   }
 }
 

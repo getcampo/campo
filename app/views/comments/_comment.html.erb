@@ -5,15 +5,19 @@
         <%= avatar_tag comment.user %>
       </div>
       <span><%= comment.user.name %></span>
-      <span><%= local_time_or_date comment.created_at %></span>
+      <span class="text-muted"><%= local_time_or_date comment.created_at %></span>
       <% if comment.edited_at %>
-        <span>Edited at <%= local_time_or_date comment.edited_at %></span>
+        <span class="text-muted">Edited at <%= local_time_or_date comment.edited_at %></span>
       <% end %>
     </div>
     <div class="post-body">
       <%= sanitize markdown_render comment.content %>
     </div>
     <div class="post-footer">
+      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-ellipsis-h"></i></button>
     </div>
   </div>
 <% end %>

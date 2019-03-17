@@ -1,7 +1,11 @@
-<div class="mt-3 mb-3">
-  <span class="badge badge-light mb-2"><%= @topic.forum.name %></span>
-  <h1><%= @topic.title %></h1>
-</div>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/" class="text-muted">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= forum_path(@topic.forum) %>" class="text-muted"><%= @topic.forum.name %></a></li>
+  </ol>
+</nav>
+
+<h1 class="mb-3"><%= @topic.title %></h1>
 
 <% cache [I18n.locale, @topic, @topic.user, :content] do %>
   <div class="post">
@@ -10,15 +14,19 @@
         <%= avatar_tag @topic.user %>
       </div>
       <span><%= @topic.user.name %></span>
-      <span><%= local_time_or_date @topic.created_at %></span>
+      <span class="text-muted"><%= local_time_or_date @topic.created_at %></span>
       <% if @topic.edited_at %>
-        <span>Edited at <%= local_time_or_date @topic.edited_at %></span>
+        <span class="text-muted">Edited at <%= local_time_or_date @topic.edited_at %></span>
       <% end %>
     </div>
     <div class="post-body">
       <%= sanitize markdown_render @topic.content %>
     </div>
     <div class="post-footer">
+      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
+      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-ellipsis-h"></i></button>
     </div>
   </div>
 <% end %>
