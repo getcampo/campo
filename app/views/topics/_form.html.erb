@@ -1,39 +1,21 @@
-<%= form_with model: @topic, id: 'topic-form', class: 'form p-4', data: { controller: 'editor' } do |form| %>
-  <div class="row">
-    <div class="form-field col-3 <%= 'invalid' if @topic.errors[:title].any? %>">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-      <% if @topic.errors[:title].any? %>
-        <div class="validate-message">
-          <%= @topic.errors[:title].first %>
-        </div>
-      <% end %>
+<%= form_with model: @topic, id: 'topic-form', data: { controller: 'editor' } do |form| %>
+  <div class="form-row">
+    <div class="form-group col-8">
+      <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
     </div>
-    <div class="form-field col-1 <%= 'invalid' if @topic.errors[:forum_id].any? %>">
-      <%= form.label :forum_id %>
-      <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name %>
-      <% if @topic.errors[:forum_id].any? %>
-        <div class="validate-message">
-          <%= @topic.errors[:forum_id].first %>
-        </div>
-      <% end %>
+    <div class="form-group col-4">
+      <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name, {}, class: 'form-control' %>
     </div>
   </div>
-  <div class="form-field <%= 'invalid' if @topic.errors[:content].any? %>">
-    <%= form.label :content %>
-    <%= form.text_area :content, rows: 8, data: { target: 'editor.textarea' } %>
-      <% if @topic.errors[:content].any? %>
-        <div class="validate-message">
-          <%= @topic.errors[:content].first %>
-        </div>
-      <% end %>
+  <div class="form-group">
+    <%= form.text_area :content, rows: 8, data: { target: 'editor.textarea' }, class: 'form-control' %>
   </div>
-  <%= form.submit class: 'button button-contained button-primary' %>
-  <label class="button button-icon">
-    <i class="material-icons">attach_file</i>
-    <input type="file" data-action="editor#attachFile" accept="image/*" class="hide">
-  </label>
-  <button type="button" class="button button-icon" data-action="editor#preview">
-    <i class="material-icons">visibility</i>
-  </button>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+    <label class="btn btn-light mb-0">
+      <i class="fa fa-paperclip"></i>
+      <input type="file" data-action="editor#attachFile" accept="image/*" class="d-none">
+    </label>
+  </div>
 <% end %>

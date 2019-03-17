@@ -1,14 +1,28 @@
-<div class="appbar appbar-primary appbar-fixed">
-  <div class="toolbar">
-    <div class="toolbar-action">
-      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
-    </div>
-    <div class="toolbar-title"><%= t '.new_topic' %></div>
-  </div>
-</div>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li>
+    <% if @topic.forum %>
+      <li class="breadcrumb-item">
+        <a href="<%= forum_path(@topic.forum) %>"><%= @topic.forum.name %></a>
+      </li>
+    <% end %>
+    <li class="breadcrumb-item active">New Topic</li>
+  </ol>
+</nav>
 
 <main class="main with-appbar">
   <div class="container">
-    <%= render 'form' %>
+    <div class="post">
+      <div class="post-header">
+        <div class="post-avatar">
+          <%= avatar_tag Current.user %>
+        </div>
+      </div>
+      <div class="post-body">
+        <%= render 'form' %>
+      </div>
+    </div>
   </div>
 </main>

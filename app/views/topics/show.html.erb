@@ -26,7 +26,12 @@
       <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
-      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-ellipsis-h"></i></button>
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></button>
+        <div class="dropdown-menu">
+          <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">编辑</a>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

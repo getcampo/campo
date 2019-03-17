@@ -1,6 +1,4 @@
 class TopicsController < ApplicationController
-  layout 'base', except: [:show]
-
   before_action :require_sign_in, except: :show
   before_action :set_topic, except: [:new, :create]
   before_action :check_edit_permission, only: [:edit, :update]
