@@ -35,14 +35,10 @@ en:
         slug: Slug
         topics: Topics
   common:
-    dashboard: Dashboard
-    forums: Forums
     home: Home
     notifications: Notifications
     password: Password
-    settings: Settings
     sign_in: Sign in
-    sign_out: Sign out
     sign_up: Sign up
   errors:
     messages:
