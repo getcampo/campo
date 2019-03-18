@@ -1,46 +1,49 @@
-<%= form_with model: @user, url: settings_account_path, local: true, id: 'account-form', class: 'form p-4', data: { controller: 'form-validation' } do |form| %>
-  <div class="form-field <%= 'invalid' if @user.errors[:name].any? %>"">
+<%= form_with model: @user, url: settings_account_path, local: true, id: 'account-form', data: { controller: 'form-validation' } do |form| %>
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, 'data-validate-url': '/settings/account/validate/name', autofocus: true %>
+    <%= form.text_field :name, class: "form-control #{'is-invalid' if @user.errors[:name].any?}", 'data-validate-url': '/settings/account/validate/name', autofocus: true %>
     <% if @user.errors[:name].any? %>
-      <div class="validate-message">
+      <div class="invalid-feedback">
         <%= @user.errors[:name].first %>
       </div>
     <% end %>
   </div>
-  <div class="form-field <%= 'invalid' if @user.errors[:username].any? %>">
+  <div class="form-group">
     <%= form.label :username %>
-    <%= form.text_field :username, 'data-validate-url': '/settings/account/validate/username' %>
+    <%= form.text_field :username, class: "form-control #{'is-invalid' if @user.errors[:username].any?}", 'data-validate-url': '/settings/account/validate/username' %>
     <% if @user.errors[:username].any? %>
-      <div class="validate-message">
+      <div class="invalid-feedback">
         <%= @user.errors[:username].first %>
       </div>
     <% end %>
   </div>
-  <div class="form-field <%= 'invalid' if @user.errors[:email].any? %>">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, 'data-validate-url': '/settings/account/validate/email' %>
+    <%= form.text_field :email, class: "form-control #{'is-invalid' if @user.errors[:email].any?}", 'data-validate-url': '/settings/account/validate/email' %>
     <% if @user.errors[:email].any? %>
-      <div class="validate-message">
+      <div class="invalid-feedback">
         <%= @user.errors[:email].first %>
       </div>
     <% end %>
   </div>
-  <div class="form-field">
+  <div class="form-group">
     <%= form.label :avatar %>
-    <div>
+    <div class="mb-2">
       <%= avatar_tag @user, size: '2x' %>
     </div>
-    <%= form.file_field :avatar, accept: 'image/*' %>
+    <label class="btn btn-outline-primary btn-sm">
+      Select Image
+      <%= form.file_field :avatar, accept: 'image/*', class: 'd-none' %>
+    </label>
   </div>
-  <div class="form-field <%= 'invalid' if @user.errors[:bio].any? %>">
+  <div class="form-group">
     <%= form.label :bio %>
-    <%= form.text_area :bio %>
+    <%= form.text_area :bio, class: "form-control #{'is-invalid' if @user.errors[:bio].any?}" %>
     <% if @user.errors[:bio].any? %>
-      <div class="validate-message">
+      <div class="invalid-feedback">
         <%= @user.errors[:bio].first %>
       </div>
     <% end %>
   </div>
-  <%= form.submit t('.update_account'), class: 'button button-contained button-primary' %>
+  <%= form.submit t('.update_account'), class: 'btn btn-primary' %>
 <% end %>

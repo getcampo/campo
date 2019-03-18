@@ -38,21 +38,12 @@ zh-CN:
         topics: 话题数
       new:
         new_form: 创建版块
-  comments:
-    comment:
-      edited_at: 编辑于
-    edit:
-      edit_comment: 编辑评论
   common:
-    account: 账号
     dashboard: 面板
-    delete: 删除
-    edit: 编辑
     forums: 版块
     home: 首页
     notifications: 通知
     password: 密码
-    reply: 回复
     settings: 设置
     sign_in: 登录
     sign_out: 登出
@@ -115,13 +106,7 @@ zh-CN:
       form:
         update_password: 更新密码
   topics:
-    edit:
-      edit_topic: 编辑话题
-    new:
-      new_topic: 新话题
     show:
-      comments: 评论
-      edited_at: 编辑于
       sign_in_to_comment: 登录后评论
   views:
     pagination:

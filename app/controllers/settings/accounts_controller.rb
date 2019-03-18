@@ -1,8 +1,4 @@
-class Settings::AccountsController < ApplicationController
-  layout 'base'
-
-  before_action :require_sign_in
-
+class Settings::AccountsController < Settings::BaseController
   def show
     @user = Current.user
   end

@@ -1,0 +1,6 @@
+<nav class="nav nav-pills flex-column">
+  <a class="nav-link <%= 'active' if controller_name == 'accounts' %>" href="<%= settings_account_path %>">Account</a>
+  <% if AUTH_PROVIDERS.include?('password') %>
+    <a class="nav-link <%= 'active' if controller_name == 'passwords' %>" href="<%= settings_password_path %>">Password</a>
+  <% end %>
+</nav>

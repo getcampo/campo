@@ -1,8 +1,7 @@
-class Settings::PasswordsController < ApplicationController
+class Settings::PasswordsController < Settings::BaseController
   include AuthPassword
-  layout 'base'
 
-  before_action :require_sign_in, :require_auth_password_enabled
+  before_action :require_auth_password_enabled
 
   def show
     @user = Current.user

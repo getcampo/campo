@@ -38,21 +38,12 @@ en:
         topics: Topics
       new:
         new_form: New Forum
-  comments:
-    comment:
-      edited_at: edited at
-    edit:
-      edit_comment: Edit Comment
   common:
-    account: Account
     dashboard: Dashboard
-    delete: Delete
-    edit: Edit
     forums: Forums
     home: Home
     notifications: Notifications
     password: Password
-    reply: Reply
     settings: Settings
     sign_in: Sign in
     sign_out: Sign out
@@ -115,13 +106,7 @@ en:
       form:
         update_password: Update Password
   topics:
-    edit:
-      edit_topic: Edit Topic
-    new:
-      new_topic: New Topic
     show:
-      comments: Comments
-      edited_at: edited at
       sign_in_to_comment: Sign in to comment
   views:
     pagination:
