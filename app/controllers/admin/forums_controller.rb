@@ -1,6 +1,4 @@
-class Admin::ForumsController < ApplicationController
-  include AdminScoped
-
+class Admin::ForumsController < Admin::BaseController
   def index
     @forums = Forum.order(id: :desc).all
   end

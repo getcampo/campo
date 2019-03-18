@@ -1,0 +1,12 @@
+<div class="mb-3">
+  <button type="button" class="btn btn-outline-primary d-flex d-md-none justify-content-between w-100 mb-2" data-toggle="collapse" data-target="#settings-nav">
+    <%= t(".#{controller_name}") %><i class="fa fa-angle-down align-self-center"></i>
+  </button>
+
+  <div class="collapse collapse-md-only" id="settings-nav">
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link <%= 'active' if controller_name == 'dashboard' %>" href="<%= admin_root_path %>">Dashboard</a>
+      <a class="nav-link <%= 'active' if controller_name == 'forums' %>" href="<%= admin_forums_path %>">Forum</a>
+    </nav>
+  </div>
+</div>

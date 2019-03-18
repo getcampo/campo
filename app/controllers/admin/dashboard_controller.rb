@@ -1,5 +1,4 @@
-class Admin::DashboardController < ApplicationController
-  include AdminScoped
+class Admin::DashboardController < Admin::BaseController
   def index
   end
 end

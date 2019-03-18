@@ -27,8 +27,6 @@ zh-CN:
       user: 用户
   admin:
     forums:
-      edit:
-        edit_forum: 编辑版块
       index:
         action: 动作
         description: 描述
@@ -36,8 +34,6 @@ zh-CN:
         name: 名称
         slug: Slug
         topics: 话题数
-      new:
-        new_form: 创建版块
   common:
     dashboard: 面板
     forums: 版块

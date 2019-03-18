@@ -27,8 +27,6 @@ en:
       user: User
   admin:
     forums:
-      edit:
-        edit_forum: Edit Forum
       index:
         action: Action
         description: Description
@@ -36,8 +34,6 @@ en:
         name: name
         slug: Slug
         topics: Topics
-      new:
-        new_form: New Forum
   common:
     dashboard: Dashboard
     forums: Forums
