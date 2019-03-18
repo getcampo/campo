@@ -134,3 +134,9 @@ img {
 .btn {
   cursor: pointer;
 }
+
+@include media-breakpoint-up(md) {
+  .collapse-md-only:not(.show) {
+    display: block;
+  }
+}
