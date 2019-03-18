@@ -1,23 +1,9 @@
-<div class="appbar appbar-primary appbar-fixed">
-  <div class="toolbar toolbar-fixed toolbar-primary">
-    <div class="toolbar-action">
-      <a href="/" class="button button-icon"><i class="material-icons">arrow_back</i></a>
-    </div>
-    <div class="toolbar-title"><%= t 'common.sign_in' %></div>
-    <div class="toolbar-action">
-      <a href="/users/new" class="button button-text"><%= t 'common.sign_up' %></a>
-    </div>
+<div class="row justify-content-center mt-4">
+  <div class="col-md-6">
+    <h3 class="pb-2 mb-4 border-bottom text-center"><%= t 'common.sign_in' %></h3>
+    <%= render 'auth_providers' %>
+    <% if AUTH_PROVIDERS.include?('password') %>
+      <%= render 'form' %>
+    <% end %>
   </div>
 </div>
-
-<main class="main with-appbar">
-  <div class="container">
-    <div class="session">
-      <h3 class="text-align-center"><%= t 'common.sign_in' %></h3>
-      <%= render 'auth_providers' %>
-      <% if AUTH_PROVIDERS.include?('password') %>
-      <%= render 'form' %>
-      <% end %>
-    </div>
-  </div>
-</main>

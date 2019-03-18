@@ -140,3 +140,26 @@ img {
     display: block;
   }
 }
+
+.break {
+  position: relative;
+  padding: 16px;
+  text-align: center;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    border-bottom: 1px solid $border-color;
+    z-index: -1;
+  }
+}
+
+.break-content {
+  display: inline-block;
+  padding: 0 8px;
+  background: white;
+}
