@@ -15,17 +15,13 @@
   </ol>
 </nav>
 
-<main class="main with-appbar">
-  <div class="container">
-    <div class="post">
-      <div class="post-header">
-        <div class="post-avatar">
-          <%= avatar_tag Current.user %>
-        </div>
-      </div>
-      <div class="post-body">
-        <%= render 'form' %>
-      </div>
+<div class="post">
+  <div class="post-header">
+    <div class="post-avatar">
+      <%= avatar_tag Current.user %>
     </div>
   </div>
-</main>
+  <div class="post-body">
+    <%= render 'form' %>
+  </div>
+</div>

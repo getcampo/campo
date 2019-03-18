@@ -17,7 +17,14 @@
       <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
-      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-ellipsis-h"></i></button>
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown">
+          <i class="fa fa-ellipsis-h"></i>
+        </button>
+        <div class="dropdown-menu">
+          <a href="<%= edit_comment_path(comment) %>" class="dropdown-item">Edit</a>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

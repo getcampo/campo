@@ -1,16 +1,30 @@
-<div class="appbar appbar-primary appbar-fixed">
-  <div class="toolbar">
-    <div class="toolbar-action">
-      <a href="<%= topic_path(@comment.topic, anchor: "comment-#{@comment.id}") %>" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li>
+    <% if @comment.topic.forum %>
+      <li class="breadcrumb-item">
+        <a href="<%= forum_path(@comment.topic.forum) %>"><%= @comment.topic.forum.name %></a>
+      </li>
+    <% end %>
+    <li class="breadcrumb-item">
+      <a href="<%= topic_path(@comment.topic) %>"><%= @comment.topic.title %></a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="<%= topic_path(@comment.topic, anchor: "comment-#{@comment.id}") %>">#todo</a>
+    </li>
+    <li class="breadcrumb-item active">Edit</li>
+  </ol>
+</nav>
+
+<div class="post">
+  <div class="post-header">
+    <div class="post-avatar">
+      <%= avatar_tag Current.user %>
     </div>
-    <div class="toolbar-title"><%= t '.edit_comment' %></div>
+  </div>
+  <div class="post-body">
+    <%= render 'form' %>
   </div>
 </div>
-
-<main class="main with-appbar">
-  <div class="container">
-    <div class="p-4">
-      <%= render 'form' %>
-    </div>
-  </div>
-</main>

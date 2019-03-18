@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  layout 'base'
-
   before_action :require_sign_in
   before_action :set_comment, except: [:create]
   before_action :check_edit_permission, only: [:edit, :update]
