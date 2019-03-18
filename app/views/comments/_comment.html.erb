@@ -1,5 +1,5 @@
 <% cache [I18n.locale, comment, comment.user] do %>
-  <div class="post">
+  <div class="post" id="comment-<%= comment.id %>">
     <div class="post-header">
       <div class="post-avatar">
         <%= avatar_tag comment.user %>
@@ -23,6 +23,7 @@
         </button>
         <div class="dropdown-menu">
           <a href="<%= edit_comment_path(comment) %>" class="dropdown-item">Edit</a>
+          <a href="<%= trash_comment_path(comment) %>" class="dropdown-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
         </div>
       </div>
     </div>

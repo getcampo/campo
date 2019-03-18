@@ -30,6 +30,7 @@
         <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></button>
         <div class="dropdown-menu">
           <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">Edit</a>
+          <a href="<%= trash_topic_path(@topic) %>" class="dropdown-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
         </div>
       </div>
     </div>
