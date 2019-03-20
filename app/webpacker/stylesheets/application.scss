@@ -163,3 +163,13 @@ img {
   padding: 0 8px;
   background: white;
 }
+
+[data-controller="infinite-page"] {
+  [data-target="infinite-page.placeholder"] {
+    display: none;
+  }
+
+  &[data-infinite-page-loading="true"] [data-target="infinite-page.placeholder"] {
+    display: block;
+  }
+}

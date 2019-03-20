@@ -2,9 +2,10 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
+  static targets = ['placeholder']
+
   connect() {
     this.threshold = 400
-    this.loading = false
     document.addEventListener('scroll', this.onScroll.bind(this))
   }
 
@@ -13,7 +14,7 @@ export default class extends Controller {
   }
 
   onScroll() {
-    if (this.loading) {
+    if (this.data.get('loading') == 'true') {
       return
     }
 
@@ -25,15 +26,16 @@ export default class extends Controller {
     let rect = this.element.getBoundingClientRect()
     let distance = rect.height - (window.innerHeight - rect.top)
     if (distance < this.threshold) {
-      this.loading = true
-      this.element.classList.add('loading')
-      let nextPage = parseInt(this.element.dataset.infinitePage) + 1
+      this.data.set('loading', 'true')
+      let nextPage = parseInt(this.data.get('page')) + 1
+      let url = new URL(location.href)
+      url.searchParams.set('page', nextPage)
       Rails.ajax({
-        url: this.element.dataset.infinitePageUrl + '?page=' + nextPage,
+        url: url.href,
         type: 'get',
         dataType: 'script',
         complete: () => {
-          this.loading = false
+          this.data.set('loading', 'false')
           this.element.classList.remove('loading')
         }
       })
