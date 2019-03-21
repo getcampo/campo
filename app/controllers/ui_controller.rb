@@ -3,4 +3,7 @@ class UiController < ApplicationController
 
   def index
   end
+
+  def scrollbar
+  end
 end
