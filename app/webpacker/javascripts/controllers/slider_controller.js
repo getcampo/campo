@@ -35,13 +35,7 @@ export default class extends Controller {
     let halfStep = max / ((this.getRange() - 1) * 2)
     let position;
 
-    if (this.getValue() == 1) {
-      position = 0
-    } else if (this.getValue() == this.getRange()) {
-      position = max
-    } else {
-      position = this.getValue() * (halfStep * 2) - halfStep
-    }
+    position = (this.getValue() - 1) * (halfStep * 2)
     this.handleTarget.style.top = `${position}px`
   }
 
