@@ -3,6 +3,14 @@ $breadcrumb-padding-x: 0;
 $breadcrumb-bg: transparent;
 $breadcrumb-margin-bottom: 0;
 $breadcrumb-divider: quote(">");
+
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1140px
+) !default;
+
 @import "~bootstrap/scss/bootstrap";
 
 // Fontawesome
@@ -114,7 +122,7 @@ img {
 @include media-breakpoint-up(sm) {
   .post {
     position: relative;
-    padding: 0 56px;
+    padding-left: 56px;
   }
 
   .post-header {

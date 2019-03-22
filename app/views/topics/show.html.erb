@@ -7,55 +7,80 @@
 
 <h1 class="mb-3"><%= @topic.title %></h1>
 
-<% cache [I18n.locale, @topic, @topic.user, :content] do %>
-  <div class="post">
-    <div class="post-header">
-      <div class="post-avatar">
-        <%= avatar_tag @topic.user %>
-      </div>
-      <span><%= @topic.user.name %></span>
-      <span class="text-muted"><%= local_time_or_date @topic.created_at %></span>
-      <% if @topic.edited_at %>
-        <span class="text-muted">Edited at <%= local_time_or_date @topic.edited_at %></span>
-      <% end %>
-    </div>
-    <div class="post-body">
-      <%= sanitize markdown_render @topic.content %>
-    </div>
-    <div class="post-footer">
-      <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
-      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
-      <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
-      <div class="dropdown d-inline-block">
-        <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></button>
-        <div class="dropdown-menu">
-          <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">Edit</a>
-          <a href="<%= trash_topic_path(@topic) %>" class="dropdown-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+<div class="row">
+  <div class="col-md-9">
+    <% cache [I18n.locale, @topic, @topic.user, :content] do %>
+      <div class="post">
+        <div class="post-header">
+          <div class="post-avatar">
+            <%= avatar_tag @topic.user %>
+          </div>
+          <span><%= @topic.user.name %></span>
+          <span class="text-muted"><%= local_time_or_date @topic.created_at %></span>
+          <% if @topic.edited_at %>
+            <span class="text-muted">Edited at <%= local_time_or_date @topic.edited_at %></span>
+          <% end %>
+        </div>
+        <div class="post-body">
+          <%= sanitize markdown_render @topic.content %>
+        </div>
+        <div class="post-footer">
+          <button type="button" class="btn btn-light btn-sm"><i class="fa fa-reply"></i></button>
+          <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
+          <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
+          <div class="dropdown d-inline-block">
+            <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></button>
+            <div class="dropdown-menu">
+              <a href="<%= edit_topic_path(@topic) %>" class="dropdown-item">Edit</a>
+              <a href="<%= trash_topic_path(@topic) %>" class="dropdown-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+            </div>
+          </div>
         </div>
       </div>
+    <% end %>
+
+    <div id="comments" class="list">
+      <%= render partial: 'comments/comment', collection: @topic.comments.order(id: :asc).includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>
+
+    <% if Current.user %>
+      <div class="post">
+        <div class="post-header">
+          <div class="post-avatar">
+              <%= avatar_tag Current.user %>
+          </div>
+        </div>
+        <div class="post-body">
+          <%= render 'comments/form' %>
+        </div>
+      </div>
+    <% else %>
+      <div class="post">
+        <div class="post-body">
+          <a href="<%= new_session_path(return_to: topic_path(@topic)) %>" class="btn btn-primary"><%= t '.sign_in_to_comment' %></a>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<div id="comments" class="list">
-  <%= render partial: 'comments/comment', collection: @topic.comments.order(id: :asc).includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
-</div>
-
-<% if Current.user %>
-  <div class="post">
-    <div class="post-header">
-      <div class="post-avatar">
-          <%= avatar_tag Current.user %>
+  <div class="col-md-3">
+    <div class="position-fixed w-100">
+      <div class="slider" data-controller="slider" data-slider-value="1" data-slider-range="<%= @topic.comments.count + 1 %>">
+        <button type="button" class="slider-link">
+          <i class="fa fa-angle-double-up"></i> First
+        </button>
+        <div class="slider-scrollbar" data-target="slider.scrollbar">
+          <div class="slider-handle" data-target="slider.handle">
+            <div class="slider-bar">
+            </div>
+            <div class="slider-info">
+              <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
+            </div>
+          </div>
+        </div>
+        <button type="button" class="slider-link">
+          <i class="fa fa-angle-double-down"></i> Last
+        </button>
       </div>
     </div>
-    <div class="post-body">
-      <%= render 'comments/form' %>
-    </div>
   </div>
-<% else %>
-  <div class="post">
-    <div class="post-body">
-      <a href="<%= new_session_path(return_to: topic_path(@topic)) %>" class="btn btn-primary"><%= t '.sign_in_to_comment' %></a>
-    </div>
-  </div>
-<% end %>
+</div>
