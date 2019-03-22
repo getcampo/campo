@@ -65,7 +65,7 @@
   <div class="col-md-3">
     <div class="position-fixed w-100">
       <div class="slider" data-controller="slider" data-slider-value="1" data-slider-range="<%= @topic.comments.count + 1 %>" data-target="topic.slider">
-        <button type="button" class="slider-link">
+        <button type="button" class="slider-link" data-action="slider#min">
           <i class="fa fa-angle-double-up"></i> First
         </button>
         <div class="slider-scrollbar" data-target="slider.scrollbar">
@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="slider-link">
+        <button type="button" class="slider-link" data-action="slider#max">
           <i class="fa fa-angle-double-down"></i> Last
         </button>
       </div>

@@ -117,4 +117,14 @@ export default class extends Controller {
       this.triggerEvent()
     }
   }
+
+  min() {
+    this.setValue(1);
+    this.triggerEvent()
+  }
+
+  max() {
+    this.setValue(this.getRange());
+    this.triggerEvent()
+  }
 }
