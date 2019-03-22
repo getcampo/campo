@@ -7,7 +7,7 @@
 
 <h1 class="mb-3"><%= @topic.title %></h1>
 
-<div class="row">
+<div class="row" data-controller="topic">
   <div class="col-md-9">
     <% cache [I18n.locale, @topic, @topic.user, :content] do %>
       <div class="post">
@@ -40,7 +40,7 @@
     <% end %>
 
     <div id="comments" class="list">
-      <%= render partial: 'comments/comment', collection: @topic.comments.order(id: :asc).includes(:user), cached: -> comment { [I18n.locale, comment, comment.user] } %>
+      <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>
 
     <% if Current.user %>
@@ -64,7 +64,7 @@
   </div>
   <div class="col-md-3">
     <div class="position-fixed w-100">
-      <div class="slider" data-controller="slider" data-slider-value="1" data-slider-range="<%= @topic.comments.count + 1 %>">
+      <div class="slider" data-controller="slider" data-slider-value="1" data-slider-range="<%= @topic.comments.count + 1 %>" data-target="topic.slider">
         <button type="button" class="slider-link">
           <i class="fa fa-angle-double-up"></i> First
         </button>

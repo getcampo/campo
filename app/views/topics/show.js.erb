@@ -1,0 +1,7 @@
+document.querySelector('#comments').innerHTML = "<%= j render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>";
+
+<% if @target_comment %>
+  window.scrollTo(0, document.querySelector('#comment-<%= @target_comment.id %>').getBoundingClientRect().top + window.scrollY - 64);
+<% else %>
+  window.scrollTo(0, 0);
+<% end %>
