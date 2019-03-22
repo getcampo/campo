@@ -76,7 +76,7 @@ export default class extends Controller {
   }
 
   move(event) {
-    let scrollbarTop = this.scrollbarTarget.offsetTop
+    let scrollbarTop = this.scrollbarTarget.getBoundingClientRect().top
     let handleHeight = this.handleTarget.offsetHeight
     let max = this.scrollbarTarget.offsetHeight - this.handleTarget.offsetHeight
     let mouseTop = event.y
