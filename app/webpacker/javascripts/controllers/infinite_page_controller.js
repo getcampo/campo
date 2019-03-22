@@ -6,11 +6,11 @@ export default class extends Controller {
 
   connect() {
     this.threshold = 400
-    document.addEventListener('scroll', this.onScroll.bind(this))
+    document.addEventListener('scroll', this.onScroll)
   }
 
   disconnect() {
-    document.removeEventListener('scroll', this.onScroll.bind(this))
+    document.removeEventListener('scroll', this.onScroll)
   }
 
   onScroll() {
