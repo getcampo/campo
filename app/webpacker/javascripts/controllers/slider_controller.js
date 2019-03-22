@@ -90,6 +90,7 @@ export default class extends Controller {
       position = max
     }
 
+    this.handleTarget.classList.add('dragging')
     this.handleTarget.style.top = `${position}px`
 
     let halfStep = max / ((this.getRange() - 1) * 2)
@@ -106,6 +107,7 @@ export default class extends Controller {
   stop(event) {
     document.removeEventListener('mousemove', this.handlers.move)
     document.removeEventListener('mouseup', this.handlers.stop)
+    this.handleTarget.classList.remove('dragging')
     this.data.set('value', this.tmpValue)
     this.triggerEvent()
   }
@@ -113,6 +115,7 @@ export default class extends Controller {
   select(event) {
     if (event.target == this.scrollbarTarget) {
       this.move(event)
+      this.handleTarget.classList.remove('dragging')
       this.data.set('value', this.tmpValue)
       this.triggerEvent()
     }

@@ -27,7 +27,11 @@
   padding: 4px 0;
   margin-left: -3px;
   background-color: white;
-  cursor: move;
+  cursor: ns-resize;
+}
+
+.slider-handle:not(.dragging) {
+  transition: top 0.15s;
 }
 
 .slider-bar {
