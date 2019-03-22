@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ['scrollbar', 'handle', 'value', 'range']
 
   connect() {
+    this.element.slider = this
+    this.scrollbarTarget.addEventListener('click', this.select.bind(this))
     this.handleTarget.addEventListener('mousedown', this.start.bind(this))
 
     this.handlers = {
@@ -11,13 +13,21 @@ export default class extends Controller {
       stop: this.stop.bind(this)
     }
 
+    this.updateHandle()
+  }
+
+  updateHandle() {
+    this.updateHandleHeight()
+    this.updateHandlePosition()
+    this.updateHandleInfo(this.getValue(), this.getRange())
+  }
+
+  updateHandleHeight() {
     let handleHeight = 100 / this.getRange()
     if (handleHeight < 20) {
       handleHeight = 20
     }
     this.handleTarget.style.height = `${handleHeight}%`
-
-    this.updateHandleInfo(this.getValue(), this.getRange())
   }
 
   updateHandlePosition() {
@@ -42,7 +52,14 @@ export default class extends Controller {
 
   setValue(value) {
     this.data.set('value', value)
+    this.updateHandlePosition()
     this.updateHandleInfo(value, this.getRange())
+  }
+
+  triggerEvent() {
+    this.element.dispatchEvent(
+      new CustomEvent('slider.change', {detail: { value: this.getValue(), range: this.getRange() } })
+    )
   }
 
   getValue() {
@@ -51,6 +68,7 @@ export default class extends Controller {
 
   setRange(range) {
     this.data.set('range', range)
+    this.updateHandle()
   }
 
   getRange() {
@@ -58,17 +76,12 @@ export default class extends Controller {
   }
 
   start(event) {
-    console.log('start')
-    console.log(event)
     document.addEventListener('mousemove', this.handlers.move)
     document.addEventListener('mouseup', this.handlers.stop)
     this.tmpValue = this.getValue()
   }
 
   move(event) {
-    console.log('move')
-    console.log(event)
-
     let scrollbarTop = this.scrollbarTarget.offsetTop
     let handleHeight = this.handleTarget.offsetHeight
     let max = this.scrollbarTarget.offsetHeight - this.handleTarget.offsetHeight
@@ -97,10 +110,17 @@ export default class extends Controller {
   }
 
   stop(event) {
-    console.log('stop')
-    console.log(event)
     document.removeEventListener('mousemove', this.handlers.move)
     document.removeEventListener('mouseup', this.handlers.stop)
-    this.setValue(this.tmpValue)
+    this.data.set('value', this.tmpValue)
+    this.triggerEvent()
+  }
+
+  select(event) {
+    if (event.target == this.scrollbarTarget) {
+      this.move(event)
+      this.data.set('value', this.tmpValue)
+      this.triggerEvent()
+    }
   }
 }

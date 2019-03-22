@@ -18,6 +18,7 @@
   margin: 8px 0 8px 4px;
   border-left: 2px solid $gray-300;
   position: relative;
+  cursor: pointer;
 }
 
 .slider-handle {
@@ -27,7 +28,7 @@
   padding: 4px 0;
   margin-left: -3px;
   background-color: white;
-  cursor: pointer;
+  cursor: move;
 }
 
 .slider-bar {
