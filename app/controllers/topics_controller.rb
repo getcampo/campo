@@ -19,25 +19,17 @@ class TopicsController < ApplicationController
   end
 
   def show
-    position = (params[:position] || 1).to_i
-    offset = if position < 10
-      0
-    elsif position > (@topic.comments.count - 10)
-      @topic.comments.count - 20
+    if params[:position]
+      load_position_comments
+    elsif params[:before]
+      load_before_comments
+    elsif params[:after]
+      load_after_comments
     else
-      position - 10
+      @comments = @topic.comments.order(id: :asc).includes(:user).limit(20)
     end
 
-    if offset < 0
-      offset = 0
-    end
-
-    @comments = @topic.comments.order(id: :asc).includes(:user).offset(offset).limit(20)
     @comment = Comment.new topic: @topic
-
-    if position > 1
-      @target_comment = @topic.comments.order(id: :asc).offset(position - 2).first
-    end
   end
 
   def edit
@@ -77,6 +69,47 @@ class TopicsController < ApplicationController
   def check_trash_permission
     unless Current.user.admin?
       redirect_to topic_url(@topic), alert: t('flash.you_have_no_permissions')
+    end
+  end
+
+  def load_position_comments
+    position = params[:position].to_i
+    offset = if position < 10
+      0
+    elsif position > (@topic.comments.count - 10)
+      @topic.comments.count - 20
+    else
+      position - 10
+    end
+
+    if offset < 0
+      offset = 0
+    end
+
+    @comments = @topic.comments.order(id: :asc).includes(:user).offset(offset).limit(20)
+
+    if position > 1
+      @focus_comment = @topic.comments.order(id: :asc).offset(position - 2).first
+    end
+  end
+
+  def load_before_comments
+    comment_id = params[:before].to_i
+    position = @topic.comments.order(id: :asc).where("id < ?", comment_id).count
+    offset = (position > 20) ? (position - 20) : 0
+    @comments = @topic.comments.order(id: :asc).where("id < ?", comment_id).offset(offset).limit(20)
+    if offset == 0
+      @reached_begin = true
+    end
+  end
+
+  def load_after_comments
+    comment_id = params[:after].to_i
+    position = @topic.comments.order(id: :asc).where("id < ?", comment_id).count
+    offset = position + 1
+    @comments = @topic.comments.order(id: :asc).offset(offset).limit(20)
+    if offset == @topic.comments.count
+      @reached_end = true
     end
   end
 end

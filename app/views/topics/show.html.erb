@@ -39,7 +39,14 @@
       </div>
     <% end %>
 
-    <div id="comments" class="list" data-target="topic.comments" data-focus-id="<%= @target_comment ? @target_comment.id : '' %>">
+    <div id="comments" class="list"
+      data-target="topic.comments"
+      data-focus-id="<%= @focus_comment ? @focus_comment.id : '' %>"
+      data-begin-id="<%= @comments.first&.id %>"
+      data-end-id="<%= @comments.last&.id %>"
+      data-reached-begin="<%= @reached_begin %>"
+      data-reached-end="<%= @reached_end %>"
+      >
       <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>
 
