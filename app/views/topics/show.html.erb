@@ -7,7 +7,7 @@
 
 <h1 class="mb-3"><%= @topic.title %></h1>
 
-<div class="row" data-controller="topic">
+<div id="topic" class="row" data-controller="topic">
   <div class="col-md-9">
     <% cache [I18n.locale, @topic, @topic.user, :content] do %>
       <div class="post">
@@ -39,7 +39,7 @@
       </div>
     <% end %>
 
-    <div id="comments" class="list">
+    <div id="comments" class="list" data-target="topic.comments" data-focus-id="<%= @target_comment ? @target_comment.id : '' %>">
       <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>
 
