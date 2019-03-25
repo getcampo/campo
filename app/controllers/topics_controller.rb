@@ -26,7 +26,7 @@ class TopicsController < ApplicationController
     elsif params[:after]
       load_after_comments
     else
-      @comments = @topic.comments.order(id: :asc).includes(:user).limit(20)
+      load_normal_comments
     end
 
     @comment = Comment.new topic: @topic
@@ -91,6 +91,14 @@ class TopicsController < ApplicationController
     if position > 1
       @focus_comment = @topic.comments.order(id: :asc).offset(position - 2).first
     end
+
+    if offset == 0
+      @reached_begin = true
+    end
+
+    if offset + 20 >= @topic.comments.count
+      @reached_end = true
+    end
   end
 
   def load_before_comments
@@ -109,6 +117,14 @@ class TopicsController < ApplicationController
     offset = position + 1
     @comments = @topic.comments.order(id: :asc).offset(offset).limit(20)
     if offset == @topic.comments.count
+      @reached_end = true
+    end
+  end
+
+  def load_normal_comments
+    @comments = @topic.comments.order(id: :asc).includes(:user).limit(20)
+    @reached_begin = true
+    if @topic.comments.count <= 20
       @reached_end = true
     end
   end

@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'comments']
+  static targets = ['slider', 'comments', 'loadingBefore', 'loadingAfter']
 
   connect() {
     this.sliderTarget.addEventListener('slider.change', this.visitPosition.bind(this))
@@ -59,6 +59,7 @@ export default class extends Controller {
     }
 
     this.loading = true
+    this.loadingBeforeTarget.classList.remove('d-none')
     let url = new URL(location.href)
     url.searchParams.set('before', this.commentsTarget.dataset.beginId)
     Rails.ajax({
@@ -67,7 +68,6 @@ export default class extends Controller {
       dataType: 'html',
       success: (data) => {
         let oldHeight = this.commentsTarget.offsetHeight
-        console.log(this.commentsTarget.offsetHeight)
         let commentsElement = data.querySelector('#comments')
         this.commentsTarget.insertAdjacentHTML('afterbegin', commentsElement.innerHTML)
         this.commentsTarget.dataset.beginId = commentsElement.dataset.beginId
@@ -77,6 +77,7 @@ export default class extends Controller {
       },
       complete: () => {
         this.loading = false
+        this.loadingBeforeTarget.classList.add('d-none')
       }
     })
   }
@@ -87,6 +88,7 @@ export default class extends Controller {
     }
 
     this.loading = true
+    this.loadingAfterTarget.classList.remove('d-none')
     let url = new URL(location.href)
     url.searchParams.set('after', this.commentsTarget.dataset.endId)
     Rails.ajax({
@@ -101,6 +103,7 @@ export default class extends Controller {
       },
       complete: () => {
         this.loading = false
+        this.loadingAfterTarget.classList.add('d-none')
       }
     })
   }

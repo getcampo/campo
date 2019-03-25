@@ -39,6 +39,9 @@
       </div>
     <% end %>
 
+    <div class="p-4 text-muted text-center d-none" data-target="topic.loadingBefore">
+      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+    </div>
     <div id="comments" class="list"
       data-target="topic.comments"
       data-focus-id="<%= @focus_comment ? @focus_comment.id : '' %>"
@@ -48,6 +51,9 @@
       data-reached-end="<%= @reached_end %>"
       >
       <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
+    </div>
+    <div class="p-4 text-muted text-center d-none" data-target="topic.loadingAfter">
+      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
     </div>
 
     <% if Current.user %>
