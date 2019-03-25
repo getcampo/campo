@@ -10,7 +10,7 @@
 <div id="topic" class="row" data-controller="topic">
   <div class="col-md-9">
     <% cache [I18n.locale, @topic, @topic.user, :content] do %>
-      <div class="post">
+      <div class="post" data-index="0" data-target="topic.post">
         <div class="post-header">
           <div class="post-avatar">
             <%= avatar_tag @topic.user %>
@@ -50,6 +50,7 @@
       data-reached-begin="<%= @reached_begin %>"
       data-reached-end="<%= @reached_end %>"
       data-offset="<%= @offset %>"
+      data-total="<%= @topic.comments.count %>"
       >
       <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>
@@ -78,7 +79,7 @@
   </div>
   <div class="col-md-3">
     <div class="position-fixed w-100">
-      <div class="slider" data-controller="slider" data-slider-value="1" data-slider-range="<%= @topic.comments.count + 1 %>" data-target="topic.slider">
+      <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.comments.count + 1 %>" data-target="topic.slider">
         <button type="button" class="slider-link" data-action="slider#min">
           <i class="fa fa-angle-double-up"></i> First
         </button>

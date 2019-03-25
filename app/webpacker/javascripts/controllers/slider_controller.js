@@ -13,66 +13,74 @@ export default class extends Controller {
       stop: this.stop.bind(this)
     }
 
-    this.updateHandle()
+    this.update()
   }
 
-  updateHandle() {
-    this.updateHandleHeight()
-    this.updateHandlePosition()
-    this.updateHandleInfo(this.getValue(), this.getRange())
+  setData(begin, end, total) {
+    this.setBegin(begin)
+    this.setEnd(end)
+    this.setTotal(total)
+    this.update()
   }
 
-  updateHandleHeight() {
-    let handleHeight = 100 / this.getRange()
+  update() {
+    let stepHeight = 100 / this.getTotal()
+
+    let handleHeight = stepHeight * this.getLength()
     if (handleHeight < 20) {
       handleHeight = 20
     }
     this.handleTarget.style.height = `${handleHeight}%`
+
+    let spaceStepHeight = (100 - handleHeight) / (this.getTotal() - this.getLength())
+    let handleTop = spaceStepHeight * (this.getBegin() - 1)
+    this.handleTarget.style.top = `${handleTop}%`
+
+    this.updateHandleInfo(this.getEnd(), this.getTotal())
   }
 
-  updateHandlePosition() {
-    let max = this.scrollbarTarget.offsetHeight - this.handleTarget.offsetHeight
-    let halfStep = max / ((this.getRange() - 1) * 2)
-    let position;
-
-    position = (this.getValue() - 1) * (halfStep * 2)
-    this.handleTarget.style.top = `${position}px`
+  updateHandleInfo(end, total) {
+    this.valueTarget.textContent = end
+    this.rangeTarget.textContent = total
   }
 
-  updateHandleInfo(value, range) {
-    this.valueTarget.textContent = value
-    this.rangeTarget.textContent = range
+  setBegin(value) {
+    this.data.set('begin', value)
   }
 
-  setValue(value) {
-    this.data.set('value', value)
-    this.updateHandlePosition()
-    this.updateHandleInfo(value, this.getRange())
+  setEnd(value) {
+    this.data.set('end', value)
+  }
+
+  setTotal(value) {
+    this.data.set('total', value)
+  }
+
+  getBegin() {
+    return parseInt(this.data.get('begin')) || 1
+  }
+
+  getEnd() {
+    return parseInt(this.data.get('end')) || 1
+  }
+
+  getTotal() {
+    return parseInt(this.data.get('total')) || 1
+  }
+
+  getLength() {
+    return this.getEnd() - this.getBegin() + 1
   }
 
   triggerEvent() {
     this.element.dispatchEvent(
-      new CustomEvent('slider.change', {detail: { value: this.getValue(), range: this.getRange() } })
+      new CustomEvent('slider.change', { detail: { begin: this.getBegin(), end: this.getEnd(), total: this.getTotal() } })
     )
-  }
-
-  getValue() {
-    return parseInt(this.data.get('value')) || 1
-  }
-
-  setRange(range) {
-    this.data.set('range', range)
-    this.updateHandle()
-  }
-
-  getRange() {
-    return parseInt(this.data.get('range')) || 1
   }
 
   start(event) {
     document.addEventListener('mousemove', this.handlers.move)
     document.addEventListener('mouseup', this.handlers.stop)
-    this.tmpValue = this.getValue()
   }
 
   move(event) {
@@ -93,22 +101,23 @@ export default class extends Controller {
     this.handleTarget.classList.add('dragging')
     this.handleTarget.style.top = `${position}px`
 
-    let halfStep = max / ((this.getRange() - 1) * 2)
+    let halfStep = max / (this.getTotal() - this.getLength()) / 2
     if (position < halfStep) {
       this.tmpValue = 1
     } else if (position > (max - halfStep)) {
-      this.tmpValue = this.getRange()
+      this.tmpValue = this.getTotal()
     } else {
       this.tmpValue = Math.ceil((position + halfStep) / (halfStep * 2))
     }
-    this.updateHandleInfo(this.tmpValue, this.getRange())
+    this.updateHandleInfo(this.tmpValue, this.getTotal())
   }
 
   stop(event) {
     document.removeEventListener('mousemove', this.handlers.move)
     document.removeEventListener('mouseup', this.handlers.stop)
     this.handleTarget.classList.remove('dragging')
-    this.data.set('value', this.tmpValue)
+    this.setBegin(this.tmpValue)
+    this.setEnd(this.tmpValue + this.getLength() - 1)
     this.triggerEvent()
   }
 
@@ -116,18 +125,23 @@ export default class extends Controller {
     if (event.target == this.scrollbarTarget) {
       this.move(event)
       this.handleTarget.classList.remove('dragging')
-      this.data.set('value', this.tmpValue)
+      this.setBegin(this.tmpValue)
+      this.setEnd(this.tmpValue + this.getLength() - 1)
       this.triggerEvent()
     }
   }
 
   min() {
-    this.setValue(1);
+    this.setBegin(1)
+    this.setEnd(1)
+    this.update()
     this.triggerEvent()
   }
 
   max() {
-    this.setValue(this.getRange());
+    this.setBegin(this.getTotal())
+    this.setEnd(this.getTotal())
+    this.update()
     this.triggerEvent()
   }
 }

@@ -2,11 +2,14 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'comments', 'loadingBefore', 'loadingAfter']
+  static targets = ['slider', 'comments', 'post', 'loadingBefore', 'loadingAfter']
 
   connect() {
     this.sliderTarget.addEventListener('slider.change', this.visitPosition.bind(this))
     this.recalculateIndex()
+    setTimeout(() => {
+      this.updateSlider()
+    }, 0)
     this.focusComment()
     this.onScrollHandle = this.onScroll.bind(this)
 
@@ -19,7 +22,7 @@ export default class extends Controller {
 
   visitPosition(event) {
     let url = new URL(location.href)
-    url.searchParams.set('position', event.detail.value)
+    url.searchParams.set('position', event.detail.begin)
     Rails.ajax({
       url: url.href,
       type: 'get',
@@ -27,6 +30,7 @@ export default class extends Controller {
       success: (data) => {
         this.commentsTarget.outerHTML = data.querySelector('#comments').outerHTML
         this.recalculateIndex()
+        this.updateSlider()
         this.focusComment()
       }
     })
@@ -52,10 +56,7 @@ export default class extends Controller {
       }
     }
 
-    let comment = Array.from(this.commentsTarget.querySelectorAll('.post')).find((comment) => {
-      return comment.getBoundingClientRect().y > 0
-    })
-    this.sliderTarget.slider.setValue(parseInt(comment.dataset.index) + 2)
+    this.updateSlider()
   }
 
   loadBefore() {
@@ -82,6 +83,7 @@ export default class extends Controller {
         this.commentsTarget.dataset.offset = commentsElement.dataset.offset
         window.scrollTo(0, oldScrollY + (this.commentsTarget.offsetHeight - oldHeight))
         this.recalculateIndex()
+        this.updateSlider()
       },
       complete: () => {
         this.loading = false
@@ -109,6 +111,7 @@ export default class extends Controller {
         this.commentsTarget.dataset.endId = commentsElement.dataset.endId
         this.commentsTarget.dataset.reachedEnd = commentsElement.dataset.reachedEnd
         this.recalculateIndex()
+        this.updateSlider()
       },
       complete: () => {
         this.loading = false
@@ -118,11 +121,27 @@ export default class extends Controller {
   }
 
   recalculateIndex() {
-    let index = parseInt(this.commentsTarget.dataset.offset)
+    let index = parseInt(this.commentsTarget.dataset.offset) + 1
     this.commentsTarget.querySelectorAll('.post').forEach((comment) => {
       comment.dataset.index = index
       comment.querySelector('.post-body').textContent = index
       index += 1
     })
+  }
+
+  updateSlider() {
+    let comments = Array.from(this.postTargets).filter((comment) => {
+      return comment.getBoundingClientRect().y > 0 && comment.getBoundingClientRect().y < window.innerHeight
+    })
+    let begin, end
+    if (comments.length) {
+      begin = parseInt(comments[0].dataset.index) + 1
+      end = parseInt(comments[comments.length - 1].dataset.index) + 1
+    } else {
+      begin = 1
+      end = 1
+    }
+    let total = parseInt(this.commentsTarget.dataset.total) + 1
+    this.sliderTarget.slider.setData(begin, end, total)
   }
 }

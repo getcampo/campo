@@ -1,5 +1,5 @@
 <% cache [I18n.locale, comment, comment.user] do %>
-  <div class="post" id="comment-<%= comment.id %>">
+  <div class="post" id="comment-<%= comment.id %>" data-target="topic.post">
     <div class="post-header">
       <div class="post-avatar">
         <%= avatar_tag comment.user %>
