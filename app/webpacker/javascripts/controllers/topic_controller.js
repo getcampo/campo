@@ -6,6 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.sliderTarget.addEventListener('slider.change', this.visitPosition.bind(this))
+    this.recalculateIndex()
     this.focusComment()
     this.onScrollHandle = this.onScroll.bind(this)
 
@@ -25,6 +26,7 @@ export default class extends Controller {
       dataType: 'html',
       success: (data) => {
         this.commentsTarget.outerHTML = data.querySelector('#comments').outerHTML
+        this.recalculateIndex()
         this.focusComment()
       }
     })
@@ -42,15 +44,18 @@ export default class extends Controller {
     if (!this.loading) {
       let rect = this.commentsTarget.getBoundingClientRect()
       if (rect.height - (window.innerHeight - rect.top) < 400) {
-        console.log('load after')
         this.loadAfter()
       }
 
       if (rect.top > -400) {
-        console.log('load before')
         this.loadBefore()
       }
     }
+
+    let comment = Array.from(this.commentsTarget.querySelectorAll('.post')).find((comment) => {
+      return comment.getBoundingClientRect().y > 0
+    })
+    this.sliderTarget.slider.setValue(parseInt(comment.dataset.index) + 2)
   }
 
   loadBefore() {
@@ -68,12 +73,15 @@ export default class extends Controller {
       dataType: 'html',
       success: (data) => {
         let oldHeight = this.commentsTarget.offsetHeight
+        let oldScrollY = window.scrollY
+        //console.log(oldHeight)
         let commentsElement = data.querySelector('#comments')
         this.commentsTarget.insertAdjacentHTML('afterbegin', commentsElement.innerHTML)
         this.commentsTarget.dataset.beginId = commentsElement.dataset.beginId
         this.commentsTarget.dataset.reachedBegin = commentsElement.dataset.reachedBegin
-        console.log(this.commentsTarget.offsetHeight)
-        window.scrollTo(0, window.scrollY + (this.commentsTarget.offsetHeight - oldHeight))
+        this.commentsTarget.dataset.offset = commentsElement.dataset.offset
+        window.scrollTo(0, oldScrollY + (this.commentsTarget.offsetHeight - oldHeight))
+        this.recalculateIndex()
       },
       complete: () => {
         this.loading = false
@@ -100,11 +108,21 @@ export default class extends Controller {
         this.commentsTarget.insertAdjacentHTML('beforeend', commentsElement.innerHTML)
         this.commentsTarget.dataset.endId = commentsElement.dataset.endId
         this.commentsTarget.dataset.reachedEnd = commentsElement.dataset.reachedEnd
+        this.recalculateIndex()
       },
       complete: () => {
         this.loading = false
         this.loadingAfterTarget.classList.add('d-none')
       }
+    })
+  }
+
+  recalculateIndex() {
+    let index = parseInt(this.commentsTarget.dataset.offset)
+    this.commentsTarget.querySelectorAll('.post').forEach((comment) => {
+      comment.dataset.index = index
+      comment.querySelector('.post-body').textContent = index
+      index += 1
     })
   }
 }

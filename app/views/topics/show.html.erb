@@ -49,6 +49,7 @@
       data-end-id="<%= @comments.last&.id %>"
       data-reached-begin="<%= @reached_begin %>"
       data-reached-end="<%= @reached_end %>"
+      data-offset="<%= @offset %>"
       >
       <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
     </div>

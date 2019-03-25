@@ -74,7 +74,7 @@ class TopicsController < ApplicationController
 
   def load_position_comments
     position = params[:position].to_i
-    offset = if position < 10
+    @offset = if position < 10
       0
     elsif position > (@topic.comments.count - 10)
       @topic.comments.count - 20
@@ -82,21 +82,21 @@ class TopicsController < ApplicationController
       position - 10
     end
 
-    if offset < 0
-      offset = 0
+    if @offset < 0
+      @offset = 0
     end
 
-    @comments = @topic.comments.order(id: :asc).includes(:user).offset(offset).limit(20)
+    @comments = @topic.comments.order(id: :asc).includes(:user).offset(@offset).limit(20)
 
     if position > 1
       @focus_comment = @topic.comments.order(id: :asc).offset(position - 2).first
     end
 
-    if offset == 0
+    if @offset == 0
       @reached_begin = true
     end
 
-    if offset + 20 >= @topic.comments.count
+    if @offset + 20 >= @topic.comments.count
       @reached_end = true
     end
   end
@@ -104,9 +104,9 @@ class TopicsController < ApplicationController
   def load_before_comments
     comment_id = params[:before].to_i
     position = @topic.comments.order(id: :asc).where("id < ?", comment_id).count
-    offset = (position > 20) ? (position - 20) : 0
-    @comments = @topic.comments.order(id: :asc).where("id < ?", comment_id).offset(offset).limit(20)
-    if offset == 0
+    @offset = (position > 20) ? (position - 20) : 0
+    @comments = @topic.comments.order(id: :asc).where("id < ?", comment_id).offset(@offset).limit(20)
+    if @offset == 0
       @reached_begin = true
     end
   end
@@ -114,14 +114,15 @@ class TopicsController < ApplicationController
   def load_after_comments
     comment_id = params[:after].to_i
     position = @topic.comments.order(id: :asc).where("id < ?", comment_id).count
-    offset = position + 1
-    @comments = @topic.comments.order(id: :asc).offset(offset).limit(20)
-    if offset == @topic.comments.count
+    @offset = position + 1
+    @comments = @topic.comments.order(id: :asc).offset(@offset).limit(20)
+    if @offset == @topic.comments.count
       @reached_end = true
     end
   end
 
   def load_normal_comments
+    @offset = 0
     @comments = @topic.comments.order(id: :asc).includes(:user).limit(20)
     @reached_begin = true
     if @topic.comments.count <= 20
