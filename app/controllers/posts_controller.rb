@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   before_action :require_sign_in
   before_action :set_post, except: [:create]
 
+  def show
+    render 'update'
+  end
+
   def create
     @post = Current.user.posts.new post_params
 

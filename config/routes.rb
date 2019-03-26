@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: [:show, :new, :create, :edit, :update], concerns: [:trashable]
-  resources :posts, only: [:create, :edit, :update], concerns: [:trashable]
+  resources :posts, only: [:show, :create, :edit, :update], concerns: [:trashable]
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
   resources :notifications, only: [:index]
