@@ -2,6 +2,7 @@ class Topic < ApplicationRecord
   include Trashable, Editable, Mentionable
 
   has_many :comments
+  has_many :posts
   belongs_to :forum, counter_cache: true, touch: true
   belongs_to :user
   belongs_to :last_comment, class_name: 'Comment', optional: true

@@ -247,6 +247,44 @@ ALTER SEQUENCE public.notifications_id_seq OWNED BY public.notifications.id;
 
 
 --
+-- Name: posts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.posts (
+    id bigint NOT NULL,
+    topic_id bigint,
+    user_id bigint,
+    post_number integer,
+    reply_to_post_id bigint,
+    body text,
+    edited_user_id bigint,
+    edited_at timestamp without time zone,
+    deleted_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -375,6 +413,13 @@ ALTER TABLE ONLY public.notifications ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
+
+
+--
 -- Name: topics id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -442,6 +487,14 @@ ALTER TABLE ONLY public.identities
 
 ALTER TABLE ONLY public.notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
 
 
 --
@@ -546,6 +599,34 @@ CREATE INDEX index_notifications_on_user_id ON public.notifications USING btree 
 
 
 --
+-- Name: index_posts_on_edited_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_edited_user_id ON public.posts USING btree (edited_user_id);
+
+
+--
+-- Name: index_posts_on_reply_to_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_reply_to_post_id ON public.posts USING btree (reply_to_post_id);
+
+
+--
+-- Name: index_posts_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_topic_id ON public.posts USING btree (topic_id);
+
+
+--
+-- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
+
+
+--
 -- Name: index_topics_on_activated_at; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -600,6 +681,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180504130253'),
 ('20180504131350'),
 ('20180505102833'),
-('20180602062739');
+('20180602062739'),
+('20190326074116');
 
 
