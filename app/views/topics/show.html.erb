@@ -12,17 +12,17 @@
     <div class="p-4 text-muted text-center d-none" data-target="topic.loadingBefore">
       <i class="fas fa-circle-notch fa-spin fa-lg"></i>
     </div>
-    <div id="comments" class="list"
-      data-target="topic.comments"
-      data-focus-id="<%= @focus_comment ? @focus_comment.id : '' %>"
-      data-begin-id="<%= @comments.first&.id %>"
-      data-end-id="<%= @comments.last&.id %>"
+    <div id="posts"
+      data-target="topic.posts"
+      data-focus-id="<%= @focus_post&.id %>"
+      data-begin-id="<%= @posts.first&.id %>"
+      data-end-id="<%= @posts.last&.id %>"
       data-reached-begin="<%= @reached_begin %>"
       data-reached-end="<%= @reached_end %>"
       data-offset="<%= @offset %>"
-      data-total="<%= @topic.comments.count %>"
+      data-total="<%= @topic.posts.count %>"
       >
-      <%= render partial: 'comments/comment', collection: @comments, cached: -> comment { [I18n.locale, comment, comment.user] } %>
+      <%= render partial: 'posts/post', collection: @topic.posts, cached: -> post { [I18n.locale, post] } %>
     </div>
     <div class="p-4 text-muted text-center d-none" data-target="topic.loadingAfter">
       <i class="fas fa-circle-notch fa-spin fa-lg"></i>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="post-body">
-          <%= render 'comments/form' %>
+          <%= render 'posts/form', post: @topic.posts.new %>
         </div>
       </div>
     <% else %>
@@ -49,7 +49,7 @@
   </div>
   <div class="col-md-3">
     <div class="position-fixed w-100">
-      <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.comments.count + 1 %>" data-target="topic.slider">
+      <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
         <button type="button" class="slider-link" data-action="slider#min">
           <i class="fa fa-angle-double-up"></i> First
         </button>

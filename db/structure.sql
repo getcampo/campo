@@ -254,7 +254,7 @@ CREATE TABLE public.posts (
     id bigint NOT NULL,
     topic_id bigint,
     user_id bigint,
-    post_number integer,
+    number integer,
     reply_to_post_id bigint,
     body text,
     edited_user_id bigint,

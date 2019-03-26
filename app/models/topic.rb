@@ -3,7 +3,7 @@ class Topic < ApplicationRecord
 
   has_many :comments
   has_many :posts
-  has_one :first_post, -> { where(post_number: 1) }, class_name: 'Post'
+  has_one :first_post, -> { where(number: 1) }, class_name: 'Post'
   belongs_to :forum, counter_cache: true, touch: true
   belongs_to :user
   belongs_to :last_comment, class_name: 'Comment', optional: true

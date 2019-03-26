@@ -1,0 +1,2 @@
+document.querySelector('#post-<%= @post.id %> .post-body').innerHTML = '<%= j render "form", post: @post %>';
+document.querySelector('#post-<%= @post.id %> .post-footer').classList.add('d-none');
