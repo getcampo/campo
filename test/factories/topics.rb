@@ -3,6 +3,5 @@ FactoryBot.define do
     user
     forum
     title { 'Title' }
-    content { 'Content' }
   end
 end

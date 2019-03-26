@@ -6,10 +6,12 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new forum_id: params[:forum_id]
+    @topic.build_first_post
   end
 
   def create
     @topic = Current.user.topics.new topic_params
+    @topic.first_post.user = Current.user
 
     if @topic.save
       redirect_to @topic, notice: 'Topic is successfully created.'
@@ -32,19 +34,6 @@ class TopicsController < ApplicationController
     @comment = Comment.new topic: @topic
   end
 
-  def edit
-  end
-
-  def update
-    @topic.edited_by Current.user
-
-    if @topic.update topic_params
-      redirect_to @topic, notice: t('flash.topic_is_successfully_updated')
-    else
-      render 'update_form'
-    end
-  end
-
   def trash
     @topic.trash
     redirect_to root_path, notice: t('flash.topic_is_successfully_deleted')
@@ -53,7 +42,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :forum_id, :content)
+    params.require(:topic).permit(:title, :forum_id, first_post_attributes: [:body])
   end
 
   def set_topic

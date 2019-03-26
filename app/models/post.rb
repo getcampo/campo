@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :topic
+  belongs_to :topic, optional: true
   belongs_to :user
   belongs_to :reply_to_post, class_name: 'Post', optional: true
 

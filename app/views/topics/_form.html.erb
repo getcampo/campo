@@ -7,9 +7,11 @@
       <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name, {}, class: 'form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= form.text_area :content, rows: 8, data: { target: 'editor.textarea' }, class: 'form-control' %>
-  </div>
+  <%= form.fields_for :first_post do |post_form| %>
+    <div class="form-group">
+      <%= post_form.text_area :body, rows: 8, data: { target: 'editor.textarea' }, class: 'form-control' %>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= form.submit class: 'btn btn-primary' %>

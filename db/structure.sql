@@ -302,7 +302,6 @@ CREATE TABLE public.topics (
     forum_id bigint,
     user_id bigint,
     title character varying NOT NULL,
-    content text NOT NULL,
     comments_count integer DEFAULT 0,
     last_comment_id bigint,
     activated_at timestamp without time zone NOT NULL,

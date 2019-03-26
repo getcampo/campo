@@ -3,11 +3,14 @@ class Topic < ApplicationRecord
 
   has_many :comments
   has_many :posts
+  has_one :first_post, -> { where(post_number: 1) }, class_name: 'Post'
   belongs_to :forum, counter_cache: true, touch: true
   belongs_to :user
   belongs_to :last_comment, class_name: 'Comment', optional: true
 
-  validates :title, :content, presence: true
+  validates :title, presence: true
+
+  accepts_nested_attributes_for :first_post, update_only: true
 
   before_create :set_activated_at
   after_commit :enqueue_create_notifications, on: [:create]
