@@ -28,7 +28,6 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:show, :new, :create, :edit, :update], concerns: [:trashable]
   resources :posts, only: [:create, :edit, :update], concerns: [:trashable]
-  resources :comments, only: [:create, :edit, :update], concerns: [:trashable]
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
   resources :notifications, only: [:index]

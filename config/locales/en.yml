@@ -47,7 +47,6 @@ en:
       taken: Already exists
   flash:
     account_is_successfully_updated: Account is successfully updated.
-    comment_is_successfully_updated: Comment is successfully updated.
     forum_is_successfully_created: Forum is successfully created.
     forum_is_successfully_updated: Forum is successfully updated.
     invalid_token: Invalid token.
@@ -56,7 +55,6 @@ en:
     password_reset_email_has_been_send: Password reset email has been send.
     require_sign_in: Require sign in.
     topic_is_successfully_deleted: Topic is successfully deleted.
-    topic_is_successfully_updated: Topic is successfully updated.
     user_not_found: User not found.
     you_have_no_permissions: You have no permissions.
   forums:

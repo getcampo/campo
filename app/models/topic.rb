@@ -24,14 +24,5 @@ class Topic < ApplicationRecord
   end
 
   def create_notifications
-    create_mention_notifications
-  end
-
-  def create_mention_notifications
-    mention_users.each do |mention_user|
-      if mention_user != user
-        mention_user.notifications.create(name: 'mention', record: self)
-      end
-    end
   end
 end

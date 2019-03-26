@@ -47,7 +47,6 @@ zh-CN:
       taken: 已经存在
   flash:
     account_is_successfully_updated: 账号更新成功。
-    comment_is_successfully_updated: 评论更新成功。
     forum_is_successfully_created: 版块创建成功。
     forum_is_successfully_updated: 版块更新成功。
     invalid_token: 无效 Token。
@@ -56,7 +55,6 @@ zh-CN:
     password_reset_email_has_been_send: 密码重置邮件已发送。
     require_sign_in: 需要登录。
     topic_is_successfully_deleted: 话题删除成功。
-    topic_is_successfully_updated: 话题更新成功。
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
   forums:
