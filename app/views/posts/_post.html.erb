@@ -1,5 +1,5 @@
 <% cache [I18n.locale, post, post.user] do %>
-  <div class="post" id="post-<%= post.id %>" data-target="topic.post">
+  <div class="post" id="post-<%= post.id %>" data-target="topic.post" data-number="<%= post.number %>">
     <div class="post-header d-flex">
       <div class="post-avatar">
         <%= avatar_tag post.user %>

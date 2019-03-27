@@ -61,7 +61,24 @@ export default class extends Controller {
       }
     }
 
+    this.updateHistory()
     this.updateSlider()
+  }
+
+  updateHistory() {
+    if (this.scrollHistoryTimeout) {
+      clearTimeout(this.scrollHistoryTimeout)
+    }
+    this.scrollHistoryTimeout = setTimeout(() => {
+      let post = Array.from(this.postTargets).find((post) => {
+        return post.getBoundingClientRect().y > 0 && post.getBoundingClientRect().y < window.innerHeight
+      })
+
+      let topicId = this.element.dataset.topicId
+      let number = parseInt(post.dataset.number)
+      let path = number > 1 ? `/topics/${topicId}/${number}` : `/topics/${topicId}`
+      history.replaceState(history.state, document.title, path)
+    }, 250)
   }
 
   loadBefore() {
