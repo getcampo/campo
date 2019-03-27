@@ -91,8 +91,9 @@ export default class extends Controller {
 
   move(event) {
     let scrollbarTop = this.scrollbarTarget.getBoundingClientRect().top
+    let scrollbarHeight = this.scrollbarTarget.offsetHeight
     let handleHeight = this.handleTarget.offsetHeight
-    let max = this.scrollbarTarget.offsetHeight - this.handleTarget.offsetHeight
+    let max = scrollbarHeight - handleHeight
     let mouseTop = event.y
     let position = mouseTop - scrollbarTop - (handleHeight / 2)
 
@@ -107,7 +108,7 @@ export default class extends Controller {
     this.handleTarget.classList.add('dragging')
     this.handleTarget.style.top = `${position}px`
 
-    let halfStep = max / (this.getTotal() - this.getLength()) / 2
+    let halfStep = max / (this.getTotal() - 1) / 2
     if (position < halfStep) {
       this.tmpValue = 1
     } else if (position > (max - halfStep)) {
