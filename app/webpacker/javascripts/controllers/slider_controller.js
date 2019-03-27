@@ -87,6 +87,7 @@ export default class extends Controller {
   start(event) {
     document.addEventListener('mousemove', this.handlers.move)
     document.addEventListener('mouseup', this.handlers.stop)
+    this.tmpValue = this.getBegin()
   }
 
   move(event) {
@@ -96,6 +97,10 @@ export default class extends Controller {
     let max = scrollbarHeight - handleHeight
     let mouseTop = event.y
     let position = mouseTop - scrollbarTop - (handleHeight / 2)
+
+    if (max == 0) {
+      return
+    }
 
     if (position < 0) {
       position = 0
