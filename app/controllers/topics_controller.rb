@@ -73,10 +73,10 @@ class TopicsController < ApplicationController
       @offset = 0
     end
 
-    @posts = @topic.posts.order(id: :asc).includes(:user).offset(@offset).limit(20)
+    @posts = @topic.posts.order(number: :asc).includes(:user).offset(@offset).limit(20)
 
     if position > 1
-      @focus_post = @topic.posts.order(id: :asc).offset(position - 2).first
+      @focus_post = @topic.posts.order(number: :asc).offset(position - 2).first
     end
 
     if @offset == 0
@@ -90,9 +90,9 @@ class TopicsController < ApplicationController
 
   def load_before_posts
     post_id = params[:before].to_i
-    position = @topic.posts.order(id: :asc).where("id < ?", post_id).count
+    position = @topic.posts.order(number: :asc).where("id < ?", post_id).count
     @offset = (position > 20) ? (position - 20) : 0
-    @posts = @topic.posts.order(id: :asc).where("id < ?", post_id).offset(@offset).limit(20)
+    @posts = @topic.posts.order(number: :asc).where("id < ?", post_id).offset(@offset).limit(20)
     if @offset == 0
       @reached_begin = true
     end
@@ -100,9 +100,9 @@ class TopicsController < ApplicationController
 
   def load_after_posts
     post_id = params[:after].to_i
-    position = @topic.posts.order(id: :asc).where("id < ?", post_id).count
+    position = @topic.posts.order(number: :asc).where("id < ?", post_id).count
     @offset = position + 1
-    @posts = @topic.posts.order(id: :asc).offset(@offset).limit(20)
+    @posts = @topic.posts.order(number: :asc).offset(@offset).limit(20)
     if @offset == @topic.posts.count
       @reached_end = true
     end
@@ -110,7 +110,7 @@ class TopicsController < ApplicationController
 
   def load_normal_posts
     @offset = 0
-    @posts = @topic.posts.order(id: :asc).includes(:user).limit(20)
+    @posts = @topic.posts.order(number: :asc).includes(:user).limit(20)
     @reached_begin = true
     if @topic.posts.count <= 20
       @reached_end = true

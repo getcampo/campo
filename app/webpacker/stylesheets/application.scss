@@ -19,6 +19,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 
+@import 'post';
 @import 'slider';
 
 img {
@@ -98,47 +99,6 @@ img {
 .topic-item-info {
   font-size: 0.8rem;
   line-height: 18px;
-}
-
-.post {
-  margin-bottom: 1.5rem;
-}
-
-.post-header {
-  line-height: 24px;
-  margin-bottom: 16px;
-}
-
-.post-avatar {
-  display: inline-block;
-  line-height: 1;
-
-  img {
-    height: 24px;
-    width: 24px;
-  }
-}
-
-@include media-breakpoint-up(sm) {
-  .post {
-    position: relative;
-    padding-left: 56px;
-  }
-
-  .post-header {
-    margin-bottom: 8px;
-  }
-
-  .post-avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    img {
-      height: 48px;
-      width: 48px;
-    }
-  }
 }
 
 .btn {

@@ -1,0 +1,41 @@
+.post {
+  margin-bottom: 1.5rem;
+}
+
+.post-header {
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.post-avatar {
+  display: inline-block;
+  line-height: 1;
+  margin-right: 8px;
+
+  .avatar {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .post {
+    position: relative;
+    padding-left: 56px;
+  }
+
+  .post-header {
+    margin-bottom: 8px;
+  }
+
+  .post-avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .avatar {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}
