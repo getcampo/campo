@@ -32,7 +32,13 @@ export default class extends Controller {
     }
     this.handleTarget.style.height = `${handleHeight}%`
 
-    let spaceStepHeight = (100 - handleHeight) / (this.getTotal() - this.getLength())
+    let spaceHeight = 100 - handleHeight
+    let spaceStepHeight;
+    if (spaceHeight > 0) {
+      spaceStepHeight = (100 - handleHeight) / (this.getTotal() - this.getLength())
+    } else {
+      spaceStepHeight = 0
+    }
     let handleTop = spaceStepHeight * (this.getBegin() - 1)
     this.handleTarget.style.top = `${handleTop}%`
 
