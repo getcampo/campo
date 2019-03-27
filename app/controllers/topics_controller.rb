@@ -27,8 +27,10 @@ class TopicsController < ApplicationController
       load_before_posts
     elsif params[:after]
       load_after_posts
+    elsif params[:number]
+      load_number_posts
     else
-      load_normal_posts
+      load_default_posts
     end
   end
 
@@ -61,13 +63,7 @@ class TopicsController < ApplicationController
 
   def load_position_posts
     position = params[:position].to_i
-    @offset = if position < 10
-      0
-    elsif position > (@topic.posts.count - 10)
-      @topic.posts.count - 20
-    else
-      position - 10
-    end
+    @offset = position > 10 ? position - 10 : 0
 
     if @offset < 0
       @offset = 0
@@ -108,7 +104,26 @@ class TopicsController < ApplicationController
     end
   end
 
-  def load_normal_posts
+  def load_number_posts
+    @focus_post = @topic.posts.find_by number: params[:number]
+    if @focus_post
+      position = @topic.posts.where("number < ?", @focus_post.number).count
+      @offset = position > 10 ? position - 10 : 0
+      @posts = @topic.posts.order(number: :asc).offset(@offset).limit(20)
+
+      if @offset == 0
+        @reached_begin = true
+      end
+
+      if @offset + 20 >= @topic.posts.count
+        @reached_end = true
+      end
+    else
+      load_default_posts
+    end
+  end
+
+  def load_default_posts
     @offset = 0
     @posts = @topic.posts.order(number: :asc).includes(:user).limit(20)
     @reached_begin = true

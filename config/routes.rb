@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :topics, only: [:show, :new, :create, :edit, :update], concerns: [:trashable]
+  get 'topics/:id/(:number)', to: 'topics#show', as: 'topic', constraints: { id: /\d+/, number: /\d+/ }
+  resources :topics, only: [:new, :create, :edit, :update], concerns: [:trashable]
   resources :posts, only: [:show, :create, :edit, :update], concerns: [:trashable]
   resources :attachments, only: [:create]
   resource :preview, only: [:create]

@@ -6,7 +6,9 @@
       </div>
       <div class="post-info">
         <b><%= post.user.name %></b>
-        <span class="text-muted"><%= local_time_or_date post.created_at %></span>
+        <a href="<%= topic_path(post.topic, number: (post.number > 1 ? post.number : nil)) %>" class="text-muted">
+          <%= local_time_or_date post.created_at %>
+        </a>
         <% if post.edited_at %>
           <span class="text-muted">• Edited at <%= local_time_or_date post.edited_at %></span>
         <% end %>
