@@ -1,4 +1,4 @@
-<% cache [I18n.locale, topic, topic.user] do %>
+<% cache [I18n.locale, topic] do %>
   <a class="media topic-item rounded" href="<%= topic_path(topic) %>">
     <div class="mr-2">
       <%= avatar_tag topic.user %>
@@ -10,16 +10,16 @@
         •
         <span><%= topic.user.name %></span>
         •
-        <% if topic.comments.last %>
-          replied by <%= topic.comments.last.user.name %> at <%= local_time_or_date topic.comments.last.created_at %>
+        <% if topic.posts.last %>
+          replied by <%= topic.posts.last.user.name %> at <%= local_time_or_date topic.posts.last.created_at %>
         <% else %>
           posted at <span><%= local_time_or_date topic.created_at %></span>
         <% end %>
       </div>
     </div>
     <div class="ml-2 align-self-center">
-      <% if topic.comments.count > 0 %>
-        <span class="comment-count badge badge-pill badge-secondary"><%= topic.comments.count %></span>
+      <% if topic.posts.count > 1 %>
+        <span class="comment-count badge badge-pill badge-secondary"><%= topic.posts.count %></span>
       <% end %>
     </div>
   </a>
