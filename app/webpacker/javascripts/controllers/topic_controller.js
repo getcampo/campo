@@ -146,6 +146,6 @@ export default class extends Controller {
       end = 1
     }
     let total = parseInt(this.postsTarget.dataset.total)
-    this.sliderTarget.slider.setData(begin, end, total)
+    this.sliderTarget.sliderController.setData(begin, end, total)
   }
 }

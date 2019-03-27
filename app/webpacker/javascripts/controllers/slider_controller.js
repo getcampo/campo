@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ['scrollbar', 'handle', 'value', 'range']
 
   connect() {
-    this.element.slider = this
+    this.element.sliderController = this
     this.scrollbarTarget.addEventListener('click', this.select.bind(this))
     this.handleTarget.addEventListener('mousedown', this.start.bind(this))
 
