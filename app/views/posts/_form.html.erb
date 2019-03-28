@@ -1,11 +1,53 @@
-<%= form_with model: post, id: (post.new_record? ? 'new-post-form' : "post-#{post.id}-form"), data: { controller: 'editor' } do |form| %>
+<%= form_with model: post, id: (post.new_record? ? 'new-post-form' : "post-#{post.id}-form") do |form| %>
   <% if post.new_record? %>
     <%= form.hidden_field :topic_id %>
     <%= form.hidden_field :reply_to_post_id, data: { target: 'editor.replyToInput' }, disabled: post.persisted? %>
   <% end %>
 
   <div class="form-group mb-2">
-    <%= form.text_area :body, rows: 5, data: { target: 'editor.textarea' }, class: 'form-control' %>
+    <div class="editor" data-controller="editor">
+      <div class="editor-toolbar d-flex border-bottom bg-light">
+        <div class="btn-group">
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-heading fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-bold fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-italic fa-fw"></i>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-quote-left fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-code fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-link fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-paperclip fa-fw"></i>
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-list-ul fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-list-ol fa-fw"></i>
+          </button>
+        </div>
+        <div class="ml-auto">
+          <button type="button" class="btn btn-light btn-sm">
+            <i class="fa fa-eye fa-fw"></i>
+          </button>
+        </div>
+      </div>
+      <%= form.text_area :body, rows: 5, data: { target: 'editor.input' } %>
+    </div>
   </div>
 
   <div class="form-group d-flex">

@@ -2,7 +2,26 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['textarea', 'replyToInput', 'replyToMessage']
+  static targets = ['input', 'replyToInput', 'replyToMessage']
+
+  connect() {
+    this.inputTarget.addEventListener('focus', this.focus.bind(this))
+    this.inputTarget.addEventListener('blur', this.blur.bind(this))
+    this.blurHanlder = this.blur.bind(this)
+  }
+
+  focus() {
+    this.element.classList.add('focus')
+
+    document.addEventListener('click', this.blurHanlder)
+  }
+
+  blur(event) {
+    if (!this.element.contains(event.target)) {
+      this.element.classList.remove('focus')
+      document.removeEventListener('click', this.blurHanlder)
+    }
+  }
 
   attachFile(event) {
     Array.from(event.target.files).forEach(file => {

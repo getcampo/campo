@@ -1,0 +1,36 @@
+.editor {
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  overflow: hidden;
+  transition: $input-transition;
+  display: flex;
+  flex-direction: column;
+
+  &.focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  .editor-toolbar {
+    .btn-group {
+    }
+
+    .btn {
+      border-radius: 0;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  textarea {
+    border: none;
+    width: 100%;
+    padding: $input-padding-y $input-padding-x;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
