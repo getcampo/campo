@@ -39,6 +39,20 @@ export default class extends Controller {
     this.prefixLine('> ')
   }
 
+  link() {
+    this.inputTarget.focus()
+    let start = this.inputTarget.selectionStart
+    let end = this.inputTarget.selectionEnd
+    let selection = this.inputTarget.value.substring(start, end)
+    if (selection.length) {
+      document.execCommand('insertText', false, `[${selection}](url)`)
+      this.inputTarget.setSelectionRange(start + selection.length + 3, start + selection.length + 6)
+    } else {
+      document.execCommand('insertText', false, `[](url)`)
+      this.inputTarget.setSelectionRange(start + 1, start + 1)
+    }
+  }
+
   orderedList() {
     let number = 0
     this.prefixLine(() => {
@@ -56,7 +70,7 @@ export default class extends Controller {
     let end = this.inputTarget.selectionEnd
     let selection = this.inputTarget.value.substring(start, end)
     document.execCommand('insertText', false, `${before}${selection}${after}`)
-    this.inputTarget.setSelectionRange(start + before.length, end + after.length)
+    this.inputTarget.setSelectionRange(start + before.length, end + before.length)
   }
 
   prefixLine(prefix) {
