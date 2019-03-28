@@ -70,14 +70,14 @@ export default class extends Controller {
       clearTimeout(this.scrollHistoryTimeout)
     }
     this.scrollHistoryTimeout = setTimeout(() => {
-      let post = Array.from(this.postTargets).find((post) => {
-        return post.getBoundingClientRect().y > 0 && post.getBoundingClientRect().y < window.innerHeight
-      })
-
-      let topicId = this.element.dataset.topicId
-      let number = parseInt(post.dataset.number)
-      let path = number > 1 ? `/topics/${topicId}/${number}` : `/topics/${topicId}`
-      history.replaceState(history.state, document.title, path)
+      let posts = this.visiblePosts()
+      if (posts.length) {
+        let post = posts[0]
+        let topicId = this.element.dataset.topicId
+        let number = parseInt(post.dataset.number)
+        let path = number > 1 ? `/topics/${topicId}/${number}` : `/topics/${topicId}`
+        history.replaceState(history.state, document.title, path)
+      }
     }, 250)
   }
 
@@ -97,7 +97,6 @@ export default class extends Controller {
       success: (data) => {
         let oldHeight = this.postsTarget.offsetHeight
         let oldScrollY = window.scrollY
-        //console.log(oldHeight)
         let postsElement = data.querySelector('#posts')
         this.postsTarget.insertAdjacentHTML('afterbegin', postsElement.innerHTML)
         this.postsTarget.dataset.beginId = postsElement.dataset.beginId
@@ -151,18 +150,21 @@ export default class extends Controller {
   }
 
   updateSlider() {
-    let posts = Array.from(this.postTargets).filter((post) => {
-      return post.getBoundingClientRect().y > 0 && post.getBoundingClientRect().y < window.innerHeight
-    })
-    let begin, end
+    let posts = this.visiblePosts()
     if (posts.length) {
-      begin = parseInt(posts[0].dataset.index) + 1
-      end = parseInt(posts[posts.length - 1].dataset.index) + 1
-    } else {
-      begin = 1
-      end = 1
+      let begin = parseInt(posts[0].dataset.index) + 1
+      let end = parseInt(posts[posts.length - 1].dataset.index) + 1
+      let total = parseInt(this.postsTarget.dataset.total)
+      this.sliderTarget.sliderController.setData(begin, end, total)
     }
-    let total = parseInt(this.postsTarget.dataset.total)
-    this.sliderTarget.sliderController.setData(begin, end, total)
+  }
+
+  // 64 is padding top with fixed navbar
+  visiblePosts() {
+    return Array.from(this.postTargets).filter((post) => {
+      let postTop = post.getBoundingClientRect().y
+      let postBottom = postTop + post.offsetHeight
+      return (postTop > 64 && postTop < window.innerHeight) || (postBottom > 64 && postBottom < window.innerHeight) || (postTop < 64 && postBottom > window.innerHeight)
+    })
   }
 }
