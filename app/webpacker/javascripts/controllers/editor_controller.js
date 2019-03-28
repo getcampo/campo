@@ -23,6 +23,26 @@ export default class extends Controller {
     }
   }
 
+  heading() {
+  }
+
+  bold() {
+    this.wrapText('**', '**')
+  }
+
+  italic() {
+    this.wrapText('*', '*')
+  }
+
+  wrapText(before, after) {
+    this.inputTarget.focus()
+    let start = this.inputTarget.selectionStart
+    let end = this.inputTarget.selectionEnd
+    let selection = this.inputTarget.value.substring(start, end)
+    document.execCommand('insertText', false, `${before}${selection}${after}`)
+    this.inputTarget.setSelectionRange(start + before.length, end + after.length)
+  }
+
   attachFile(event) {
     Array.from(event.target.files).forEach(file => {
       let fileName = file.name
