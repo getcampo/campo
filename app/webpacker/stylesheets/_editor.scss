@@ -3,8 +3,6 @@
   border-radius: $input-border-radius;
   overflow: hidden;
   transition: $input-transition;
-  display: flex;
-  flex-direction: column;
 
   &.focus {
     border-color: $input-focus-border-color;
@@ -31,6 +29,34 @@
 
     &:focus {
       outline: 0;
+    }
+  }
+
+  .editor-edit-area {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .editor-preview-area {
+    display: none
+  }
+
+  .editor-preview-output {
+    padding: $input-padding-y $input-padding-x;
+  }
+
+  &.previewing {
+    .editor-edit-area {
+      display: none;
+    }
+
+    .editor-preview-area {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .editor-preview-output {
+      min-height: 132px;
     }
   }
 }
