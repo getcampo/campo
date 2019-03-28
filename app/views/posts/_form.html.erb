@@ -28,9 +28,14 @@
           <button type="button" class="btn btn-light btn-sm" data-action="editor#link">
             <i class="fa fa-link fa-fw"></i>
           </button>
-          <button type="button" class="btn btn-light btn-sm">
+          <label class="btn btn-light btn-sm mb-0">
+            <i class="fa fa-image fa-fw"></i>
+            <input type="file" accept=".gif,.jpeg,.jpg,.png" data-action="editor#attach" class="d-none">
+          </label>
+          <label class="btn btn-light btn-sm mb-0">
             <i class="fa fa-paperclip fa-fw"></i>
-          </button>
+            <input type="file" accept=".gif,.jpeg,.jpg,.png,.docx,.gz,.log,.pdf,.pptx,.txt,.xlsx,.zip" data-action="editor#attach" class="d-none">
+          </label>
         </div>
         <div class="btn-group">
           <button type="button" class="btn btn-light btn-sm" data-action="editor#unorderedList">

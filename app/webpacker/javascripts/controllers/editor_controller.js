@@ -35,6 +35,27 @@ export default class extends Controller {
     this.prefixLine('## ')
   }
 
+  code() {
+    this.inputTarget.focus()
+    let start = this.inputTarget.selectionStart
+    let end = this.inputTarget.selectionEnd
+    let selection = this.inputTarget.value.substring(start, end)
+
+    if (selection.includes("\n")) {
+      let lineStart = this.inputTarget.value.lastIndexOf("\n", start) + 1
+      let lineEnd = this.inputTarget.value.indexOf("\n", end)
+      if (lineEnd < 0) {
+        lineEnd = this.inputTarget.value.length
+      }
+      let content = this.inputTarget.value.substring(lineStart, lineEnd)
+      let replaceText = "```\n" + content + "\n```\n"
+      this.inputTarget.setSelectionRange(lineStart, lineEnd)
+      document.execCommand('insertText', false, replaceText)
+    } else {
+      this.wrapText('`', '`')
+    }
+  }
+
   quote() {
     this.prefixLine('> ')
   }
@@ -86,7 +107,6 @@ export default class extends Controller {
 
     let replaceText
     if (typeof prefix === 'function') {
-      console.log('hit')
       replaceText = prefix() + selection.replace(/\n/g, function() {
         return `\n${prefix()}`
       })
@@ -98,11 +118,20 @@ export default class extends Controller {
     document.execCommand('insertText', false, replaceText)
   }
 
-  attachFile(event) {
+  attach(event) {
+    this.inputTarget.focus()
     Array.from(event.target.files).forEach(file => {
       let fileName = file.name
-      let imageTag = `![Uplaoding ${fileName}...]()`
-      this.textareaTarget.value = this.textareaTarget.value + imageTag
+      let pendingTag
+      if (file.type.startsWith('image/')) {
+        pendingTag = `![Uplaoding ${fileName}...]()`
+      } else {
+        pendingTag = `[Uplaoding ${fileName}...]()`
+      }
+      let start = this.inputTarget.selectionStart
+      let end = this.inputTarget.selectionEnd
+      document.execCommand('insertText', false, pendingTag)
+      this.inputTarget.setSelectionRange(start + pendingTag.length, start + pendingTag)
       let formData = new FormData()
       formData.append('attachment[file]', file)
       Rails.ajax({
@@ -111,7 +140,16 @@ export default class extends Controller {
         dataType: 'json',
         data: formData,
         success: (data) => {
-          this.textareaTarget.value = this.textareaTarget.value.replace(imageTag, `![${data.filename}](${data.url})`)
+          let start = this.inputTarget.selectionStart
+          let end = this.inputTarget.selectionEnd
+          let content;
+          if (file.type.startsWith('image/')) {
+            content = `![${data.filename}](${data.url})`
+          } else {
+            pendingTag = `[${data.filename}](${data.url})`
+          }
+          this.inputTarget.value = this.inputTarget.value.replace(pendingTag, content)
+          this.inputTarget.setSelectionRange(start + content.length, end + content.length)
         }
       });
     })
