@@ -23,15 +23,31 @@ export default class extends Controller {
     }
   }
 
-  heading() {
-  }
-
   bold() {
     this.wrapText('**', '**')
   }
 
   italic() {
     this.wrapText('*', '*')
+  }
+
+  heading() {
+    this.prefixLine('## ')
+  }
+
+  quote() {
+    this.prefixLine('> ')
+  }
+
+  orderedList() {
+    let number = 0
+    this.prefixLine(() => {
+      return `${number += 1}. `
+    })
+  }
+
+  unorderedList() {
+    this.prefixLine('- ')
   }
 
   wrapText(before, after) {
@@ -41,6 +57,31 @@ export default class extends Controller {
     let selection = this.inputTarget.value.substring(start, end)
     document.execCommand('insertText', false, `${before}${selection}${after}`)
     this.inputTarget.setSelectionRange(start + before.length, end + after.length)
+  }
+
+  prefixLine(prefix) {
+    this.inputTarget.focus()
+    let start = this.inputTarget.selectionStart
+    let end = this.inputTarget.selectionEnd
+    let lineStart = this.inputTarget.value.lastIndexOf("\n", start) + 1
+    let lineEnd = this.inputTarget.value.indexOf("\n", end)
+    if (lineEnd < 0) {
+      lineEnd = this.inputTarget.value.length
+    }
+    let selection = this.inputTarget.value.substring(lineStart, lineEnd)
+
+    let replaceText
+    if (typeof prefix === 'function') {
+      console.log('hit')
+      replaceText = prefix() + selection.replace(/\n/g, function() {
+        return `\n${prefix()}`
+      })
+    } else {
+      replaceText = prefix + selection.replace(/\n/g, `\n${prefix}`)
+    }
+
+    this.inputTarget.setSelectionRange(lineStart, lineEnd)
+    document.execCommand('insertText', false, replaceText)
   }
 
   attachFile(event) {

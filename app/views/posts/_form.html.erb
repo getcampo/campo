@@ -8,9 +8,6 @@
     <div class="editor" data-controller="editor">
       <div class="editor-toolbar d-flex border-bottom bg-light">
         <div class="btn-group">
-          <button type="button" class="btn btn-light btn-sm" data-action="editor#heading">
-            <i class="fa fa-heading fa-fw"></i>
-          </button>
           <button type="button" class="btn btn-light btn-sm" data-action="editor#bold">
             <i class="fa fa-bold fa-fw"></i>
           </button>
@@ -19,10 +16,13 @@
           </button>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn btn-light btn-sm">
+          <button type="button" class="btn btn-light btn-sm" data-action="editor#heading">
+            <i class="fa fa-heading fa-fw"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm" data-action="editor#quote">
             <i class="fa fa-quote-left fa-fw"></i>
           </button>
-          <button type="button" class="btn btn-light btn-sm">
+          <button type="button" class="btn btn-light btn-sm" data-action="editor#code">
             <i class="fa fa-code fa-fw"></i>
           </button>
           <button type="button" class="btn btn-light btn-sm">
@@ -33,10 +33,10 @@
           </button>
         </div>
         <div class="btn-group">
-          <button type="button" class="btn btn-light btn-sm">
+          <button type="button" class="btn btn-light btn-sm" data-action="editor#unorderedList">
             <i class="fa fa-list-ul fa-fw"></i>
           </button>
-          <button type="button" class="btn btn-light btn-sm">
+          <button type="button" class="btn btn-light btn-sm" data-action="editor#orderedList">
             <i class="fa fa-list-ol fa-fw"></i>
           </button>
         </div>
