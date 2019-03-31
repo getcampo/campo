@@ -9,7 +9,7 @@
   </div>
   <%= form.fields_for :first_post do |post_form| %>
     <div class="form-group">
-      <%= post_form.text_area :body, rows: 8, data: { target: 'editor.textarea' }, class: 'form-control' %>
+      <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
     </div>
   <% end %>
 

@@ -1,0 +1,61 @@
+<div class="editor" data-controller="editor">
+  <div class="editor-edit-area">
+    <div class="editor-toolbar d-flex border-bottom bg-light">
+      <div class="btn-group">
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#bold">
+          <i class="fa fa-bold fa-fw"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#italic">
+          <i class="fa fa-italic fa-fw"></i>
+        </button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#heading">
+          <i class="fa fa-heading fa-fw"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#quote">
+          <i class="fa fa-quote-left fa-fw"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#code">
+          <i class="fa fa-code fa-fw"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#link">
+          <i class="fa fa-link fa-fw"></i>
+        </button>
+        <label class="btn btn-light btn-sm mb-0">
+          <i class="fa fa-image fa-fw"></i>
+          <input type="file" accept=".gif,.jpeg,.jpg,.png" data-action="editor#attach" class="d-none">
+        </label>
+        <label class="btn btn-light btn-sm mb-0">
+          <i class="fa fa-paperclip fa-fw"></i>
+          <input type="file" accept=".gif,.jpeg,.jpg,.png,.docx,.gz,.log,.pdf,.pptx,.txt,.xlsx,.zip" data-action="editor#attach" class="d-none">
+        </label>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#unorderedList">
+          <i class="fa fa-list-ul fa-fw"></i>
+        </button>
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#orderedList">
+          <i class="fa fa-list-ol fa-fw"></i>
+        </button>
+      </div>
+      <div class="ml-auto">
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#preview">
+          <i class="fa fa-eye fa-fw"></i>
+        </button>
+      </div>
+    </div>
+    <%= form.text_area name, rows: 6, data: { target: 'editor.input' } %>
+  </div>
+  <div class="editor-preview-area">
+    <div class="editor-toolbar d-flex border-bottom bg-light">
+      <div class="ml-auto">
+        <button type="button" class="btn btn-light btn-sm" data-action="editor#edit">
+          <i class="fa fa-edit fa-fw"></i>
+        </button>
+      </div>
+    </div>
+    <div class="editor-preview-output" data-target="editor.previewOutput">
+    </div>
+  </div>
+</div>
