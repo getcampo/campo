@@ -34,6 +34,10 @@ class TopicsController < ApplicationController
     end
   end
 
+  def update
+    @topic.update params.require(:topic).permit(:title)
+  end
+
   def trash
     @topic.trash
     redirect_to root_path, notice: t('flash.topic_is_successfully_deleted')

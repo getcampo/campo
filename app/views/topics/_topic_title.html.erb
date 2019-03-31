@@ -1,0 +1,25 @@
+<div id="topic-title" class="expandable" data-controller="expandable">
+  <div class="collapsed-content">
+    <div class="d-flex">
+      <h1 class="h2">
+        <%= @topic.title %>
+      </h1>
+      <button type="button" class="btn" data-action="expandable#open">
+        <i class="fa fa-pen"></i>
+      </button>
+    </div>
+  </div>
+  <div class="expanded-content">
+    <%= form_for @topic, remote: true do |form| %>
+      <div class="form-row">
+        <div class="col-md-9 mb-2">
+          <%= form.text_field :title, class: 'form-control', autocomplete: 'off', data: { target: 'expandable.focus' } %>
+        </div>
+        <div class="col-md-3 mb-2">
+          <%= form.submit 'Save', class: 'btn btn-primary' %>
+          <button type="button" class="btn btn-link" data-action="expandable#close">Cancel</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.expandable {
+  .expanded-content {
+    display: none;
+  }
+
+  &.expanded {
+    .collapsed-content {
+      display: none;
+    }
+
+    .expanded-content {
+      display: block;
+    }
+  }
+}

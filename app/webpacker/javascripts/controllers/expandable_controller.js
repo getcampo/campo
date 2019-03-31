@@ -1,11 +1,16 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  expandMore() {
+  static targets = ["focus"]
+
+  open() {
     this.element.classList.add('expanded')
+    if (this.hasFocusTarget) {
+      this.focusTarget.focus()
+    }
   }
 
-  expandLess() {
+  close() {
     this.element.classList.remove('expanded')
   }
 }
