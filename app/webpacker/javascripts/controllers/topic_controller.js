@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer']
+  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate']
 
   connect() {
     this.element.topicController = this
@@ -169,9 +169,26 @@ export default class extends Controller {
   }
 
   newPost() {
+    this.resetPostForm()
     if (!this.composerTarget.composerController.isOpen()) {
       this.composerTarget.composerController.open()
-      this.composerTarget.querySelector('textarea').focus()
     }
+    this.composerTarget.querySelector('textarea').focus()
+  }
+
+  resetPostForm() {
+    let form = document.importNode(this.newPostFormTemplateTarget.content, true)
+    let postBody = this.composerTarget.querySelector('.post-body')
+    postBody.innerHTML = ''
+    postBody.appendChild(form)
+  }
+
+  replyPost(event) {
+    if (!this.composerTarget.composerController.isOpen()) {
+      this.composerTarget.composerController.open()
+    }
+    let post = event.currentTarget.closest('.post')
+    let text = `@${post.dataset.postUsername}#${post.dataset.postId} `
+    this.composerTarget.querySelector('.editor').editorController.insertText(text)
   }
 }

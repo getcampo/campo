@@ -1,11 +1,10 @@
-<%= form_with model: post, id: (post.new_record? ? 'new-post-form' : "post-#{post.id}-form") do |form| %>
-  <% if post.new_record? %>
-    <%= form.hidden_field :topic_id %>
-  <% end %>
-
-  <div class="form-group mb-2">
+<%= form_with model: post, id: 'post-form', class: 'h-100 d-flex flex-column' do |form| %>
+  <%= form.hidden_field :topic_id %>
+  <div class="form-group mb-2 flex-grow-1">
     <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
   </div>
 
-  <%= form.submit class: 'btn btn-primary' %>
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
 <% end %>

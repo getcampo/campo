@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="composer" data-controller="composer" data-target="topic.composer">
+  <div id="post-composer" class="composer" data-controller="composer" data-target="topic.composer">
     <div class="container">
       <div class="row">
         <div class="col-md-9">
@@ -77,15 +77,6 @@
                   <%= avatar_tag Current.user %>
                 </div>
                 <div class="post-body h-100">
-                  <%= form_with model: Post.new, class: 'h-100 d-flex flex-column' do |form| %>
-                    <div class="form-group mb-2 flex-grow-1">
-                      <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
-                    </div>
-
-                    <div>
-                      <%= form.submit class: 'btn btn-primary' %>
-                    </div>
-                  <% end %>
                 </div>
               </div>
             </div>
@@ -94,4 +85,8 @@
       </div>
     </div>
   </div>
+
+  <template data-target="topic.newPostFormTemplate">
+    <%= render 'posts/form', post: @topic.posts.new %>
+  </template>
 </div>

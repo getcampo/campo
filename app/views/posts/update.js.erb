@@ -1,4 +1,1 @@
-var oldPostElement = document.querySelector('#post-<%= @post.id %>');
-var index = oldPostElement.dataset.index;
-oldPostElement.outerHTML = '<%= j render @post %>';
-document.querySelector('#post-<%= @post.id %>').dataset.index = index;
+Turbolinks.visit("<%= topic_path(@post.topic, number: @post.number) %>");

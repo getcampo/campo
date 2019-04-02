@@ -1,4 +1,1 @@
-document.querySelector('#posts').insertAdjacentHTML('beforeend', '<%= j render @post %>');
-document.querySelector('#new-post-form').outerHTML = '<%= j render "form", post: @post.topic.posts.new %>';
-document.querySelector('#posts').dataset.total = '<%= @post.topic.posts.count %>';
-document.querySelector('#topic').topicController.updateIndex();
+Turbolinks.visit("<%= topic_path(@post.topic, number: @post.number) %>");

@@ -4,13 +4,6 @@ $breadcrumb-bg: transparent;
 $breadcrumb-margin-bottom: 0;
 $breadcrumb-divider: quote(">");
 
-$container-max-widths: (
-  sm: 100%,
-  md: 100%,
-  lg: 100%,
-  xl: 1140px
-) !default;
-
 @import "~bootstrap/scss/bootstrap";
 @import "~animate.css";
 

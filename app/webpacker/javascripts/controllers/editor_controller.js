@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ['input', 'editArea', 'previewOutput']
 
   connect() {
+    this.element.editorController = this
     this.inputTarget.addEventListener('focus', this.focus.bind(this))
     this.inputTarget.addEventListener('blur', this.blur.bind(this))
     this.blurHanlder = this.blur.bind(this)
@@ -83,6 +84,13 @@ export default class extends Controller {
 
   unorderedList() {
     this.prefixLine('- ')
+  }
+
+  insertText(text) {
+    this.inputTarget.focus()
+    let start = this.inputTarget.selectionStart
+    document.execCommand('insertText', false, text)
+    this.inputTarget.setSelectionRange(start + text.length, start + text.length)
   }
 
   wrapText(before, after) {
