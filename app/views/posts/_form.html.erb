@@ -1,27 +1,11 @@
 <%= form_with model: post, id: (post.new_record? ? 'new-post-form' : "post-#{post.id}-form") do |form| %>
   <% if post.new_record? %>
     <%= form.hidden_field :topic_id %>
-    <%= form.hidden_field :reply_to_post_id, data: { target: 'editor.replyToInput' }, disabled: post.persisted? %>
   <% end %>
 
   <div class="form-group mb-2">
     <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
   </div>
 
-  <div class="form-group d-flex">
-    <div>
-      <%= form.submit class: 'btn btn-primary' %>
-
-      <label class="btn btn-light mb-0">
-        <i class="fa fa-paperclip"></i>
-        <input type="file" name="attachment[file]" accept="image/*" data-action="editor#attachFile" class="d-none">
-      </label>
-    </div>
-
-    <% unless post.new_record? %>
-      <div class="ml-auto">
-        <a href="<%= post_path(post) %>" class="btn btn-light" data-remote="true" data-confirm="Are you sure cancle editing?">Cancel</a>
-      </div>
-    <% end %>
-  </div>
+  <%= form.submit class: 'btn btn-primary' %>
 <% end %>

@@ -3,6 +3,8 @@
   border-radius: $input-border-radius;
   overflow: hidden;
   transition: $input-transition;
+  display: flex;
+  flex-direction: column;
 
   &.focus {
     border-color: $input-focus-border-color;
@@ -35,6 +37,12 @@
   .editor-edit-area {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+
+    textarea {
+      flex-grow: 1;
+      resize: none;
+    }
   }
 
   .editor-preview-area {

@@ -1,0 +1,56 @@
+.composer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  animation-duration: 0.3s;
+
+  &.open {
+    display: block;
+  }
+}
+
+.composer-content {
+  margin: 0 -1rem;
+  background: white;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.composer-header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.composer-title {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.composer-header-actions {
+  margin: -0.5rem;
+
+  .btn {
+    padding: 0.5rem;
+    color: $body-color;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.composer-body {
+  padding: 1rem;
+  flex-grow: 1;
+
+  .editor {
+    height: 100%;
+  }
+}

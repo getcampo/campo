@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter']
+  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer']
 
   connect() {
     this.element.topicController = this
@@ -166,5 +166,12 @@ export default class extends Controller {
       let postBottom = postTop + post.offsetHeight
       return (postTop > 64 && postTop < window.innerHeight) || (postBottom > 64 && postBottom < window.innerHeight) || (postTop < 64 && postBottom > window.innerHeight)
     })
+  }
+
+  newPost() {
+    if (!this.composerTarget.composerController.isOpen()) {
+      this.composerTarget.composerController.open()
+      this.composerTarget.querySelector('textarea').focus()
+    }
   }
 }

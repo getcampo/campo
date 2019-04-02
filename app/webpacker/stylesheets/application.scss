@@ -12,6 +12,7 @@ $container-max-widths: (
 ) !default;
 
 @import "~bootstrap/scss/bootstrap";
+@import "~animate.css";
 
 // Fontawesome
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
@@ -20,6 +21,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 
 @import 'post';
+@import 'composer';
 @import 'slider';
 @import 'editor';
 @import 'expandable';

@@ -5,69 +5,92 @@
   </ol>
 </nav>
 
-<div class="mb-3">
-  <%= render 'topic_title' %>
-  <%= @topic.user.name %> Created at <%= local_time_or_date @topic.created_at %>
-</div>
-
-<div id="topic" class="row" data-controller="topic" data-topic-id="<%= @topic.id %>">
-  <div class="col-md-9">
-    <div class="p-4 text-muted text-center d-none" data-target="topic.loadingBefore">
-      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
-    </div>
-    <div id="posts"
-      data-target="topic.posts"
-      data-focus-id="<%= @focus_post&.id %>"
-      data-begin-id="<%= @posts.first&.id %>"
-      data-end-id="<%= @posts.last&.id %>"
-      data-reached-begin="<%= @reached_begin %>"
-      data-reached-end="<%= @reached_end %>"
-      data-offset="<%= @offset %>"
-      data-total="<%= @topic.posts.count %>"
-      >
-      <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
-    </div>
-    <div class="p-4 text-muted text-center d-none" data-target="topic.loadingAfter">
-      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
-    </div>
-
-    <% if Current.user %>
-      <div class="post">
-        <div class="post-header">
-          <div class="post-avatar">
-              <%= avatar_tag Current.user %>
-          </div>
-        </div>
-        <div class="post-body">
-          <%= render 'posts/form', post: @topic.posts.new %>
-        </div>
-      </div>
-    <% else %>
-      <div class="post">
-        <div class="post-body">
-          <a href="<%= new_session_path(return_to: topic_path(@topic)) %>" class="btn btn-primary"><%= t '.sign_in_to_comment' %></a>
-        </div>
-      </div>
-    <% end %>
+<div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>">
+  <div class="mb-3">
+    <%= render 'topic_title' %>
+    <%= @topic.user.name %> Created at <%= local_time_or_date @topic.created_at %>
   </div>
-  <div class="col-md-3">
-    <div class="position-fixed w-100">
-      <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
-        <button type="button" class="slider-link" data-action="slider#min">
-          <i class="fa fa-angle-double-up"></i> First
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="p-4 text-muted text-center d-none" data-target="topic.loadingBefore">
+        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+      </div>
+      <div id="posts"
+        data-target="topic.posts"
+        data-focus-id="<%= @focus_post&.id %>"
+        data-begin-id="<%= @posts.first&.id %>"
+        data-end-id="<%= @posts.last&.id %>"
+        data-reached-begin="<%= @reached_begin %>"
+        data-reached-end="<%= @reached_end %>"
+        data-offset="<%= @offset %>"
+        data-total="<%= @topic.posts.count %>"
+        >
+        <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
+      </div>
+      <div class="p-4 text-muted text-center d-none" data-target="topic.loadingAfter">
+        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="position-fixed w-100">
+        <button type="button" class="btn btn-primary" data-action="topic#newPost">
+          New Post
         </button>
-        <div class="slider-scrollbar" data-target="slider.scrollbar">
-          <div class="slider-handle" data-target="slider.handle">
-            <div class="slider-bar">
+        <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
+          <button type="button" class="slider-link" data-action="slider#min">
+            <i class="fa fa-angle-double-up"></i> First
+          </button>
+          <div class="slider-scrollbar" data-target="slider.scrollbar">
+            <div class="slider-handle" data-target="slider.handle">
+              <div class="slider-bar">
+              </div>
+              <div class="slider-info">
+                <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
+              </div>
             </div>
-            <div class="slider-info">
-              <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
+          </div>
+          <button type="button" class="slider-link" data-action="slider#max">
+            <i class="fa fa-angle-double-down"></i> Last
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="composer" data-controller="composer" data-target="topic.composer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="composer-content">
+            <div class="composer-header">
+              <h5 class="composer-title">Post</h5>
+              <div class="composer-header-actions">
+                <button type="button" class="btn" data-action="composer#close">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="composer-body">
+              <div class="post mb-0 h-100">
+                <div class="post-avatar">
+                  <%= avatar_tag Current.user %>
+                </div>
+                <div class="post-body h-100">
+                  <%= form_with model: Post.new, class: 'h-100 d-flex flex-column' do |form| %>
+                    <div class="form-group mb-2 flex-grow-1">
+                      <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
+                    </div>
+
+                    <div>
+                      <%= form.submit class: 'btn btn-primary' %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <button type="button" class="slider-link" data-action="slider#max">
-          <i class="fa fa-angle-double-down"></i> Last
-        </button>
       </div>
     </div>
   </div>
