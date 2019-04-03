@@ -1,0 +1,11 @@
+[data-controller="infinite-page"] {
+  .infinite-page-loading-placeholder {
+    display: none;
+  }
+
+  &.loading {
+    .infinite-page-loading-placeholder {
+      display: block;
+    }
+  }
+}

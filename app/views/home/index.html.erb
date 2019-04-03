@@ -25,11 +25,11 @@
 </div>
 
 
-<div id="topics" class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>">
-  <div class="topic-list">
+<div id="topics" class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+  <div class="topic-list" data-target="infinite-page.container">
     <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
   </div>
-  <div class="p-4 text-muted text-center" data-target="infinite-page.placeholder">
+  <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
     <i class="fas fa-circle-notch fa-spin fa-lg"></i>
   </div>
 </div>

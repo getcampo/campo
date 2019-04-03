@@ -2,23 +2,24 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['placeholder']
+  static targets = ['container']
 
   connect() {
     this.threshold = 400
-    document.addEventListener('scroll', this.onScroll)
+    this.onScrollHandle = this.onScroll.bind(this)
+    document.addEventListener('scroll', this.onScrollHandle)
   }
 
   disconnect() {
-    document.removeEventListener('scroll', this.onScroll)
+    document.removeEventListener('scroll', this.onScrollHandle)
   }
 
   onScroll() {
-    if (this.data.get('loading') == 'true') {
+    if (this.loading) {
       return
     }
 
-    if (this.element.dataset.infinitePageEnd) {
+    if (this.data.get('reachedEnd') == 'true') {
       this.disconnect()
       return
     }
@@ -26,16 +27,25 @@ export default class extends Controller {
     let rect = this.element.getBoundingClientRect()
     let distance = rect.height - (window.innerHeight - rect.top)
     if (distance < this.threshold) {
-      this.data.set('loading', 'true')
+      this.loading = true
+      this.element.classList.add('loading')
       let nextPage = parseInt(this.data.get('page')) + 1
       let url = new URL(location.href)
       url.searchParams.set('page', nextPage)
       Rails.ajax({
         url: url.href,
         type: 'get',
-        dataType: 'script',
+        dataType: 'html',
+        success: (data) => {
+          const page = data.querySelector('[data-controller~=infinite-page]')
+          this.data.set('page', page.dataset.infinitePagePage)
+          this.data.set('reachedEnd', page.dataset.infinitePageReachedEnd)
+
+          const container = data.querySelector('[data-target~="infinite-page.container"]')
+          this.containerTarget.insertAdjacentHTML('beforeend', container.innerHTML)
+        },
         complete: () => {
-          this.data.set('loading', 'false')
+          this.loading = false
           this.element.classList.remove('loading')
         }
       })
