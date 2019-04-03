@@ -18,12 +18,12 @@
       <%= sanitize markdown_render post.body %>
     </div>
     <div class="post-footer">
-      <button type="button" class="btn btn-light btn-sm" data-action="topic#replyPost">
+      <button type="button" class="btn btn-light btn-sm" data-action="topic#replyPost" data-controller="visible-to-user">
         <i class="fa fa-reply"></i>
       </button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-up"></i></button>
       <button type="button" class="btn btn-light btn-sm"><i class="far fa-thumbs-down"></i></button>
-      <div class="dropdown d-inline-block">
+      <div class="dropdown d-inline-block" data-controller="visible-to-creator">
         <button type="button" class="btn btn-light btn-sm" data-toggle="dropdown">
           <i class="fa fa-ellipsis-h"></i>
         </button>

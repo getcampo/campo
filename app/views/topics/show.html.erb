@@ -5,7 +5,7 @@
   </ol>
 </nav>
 
-<div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>">
+<div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
   <div class="mb-3">
     <%= render 'topic_title' %>
     <%= @topic.user.name %> Created at <%= local_time_or_date @topic.created_at %>

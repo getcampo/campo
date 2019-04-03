@@ -25,11 +25,4 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     put trash_topic_url(topic)
     assert topic.reload.trashed?
   end
-
-  test "should not trash topic by user" do
-    topic = create(:topic)
-    sign_in_as(topic.user)
-    put trash_topic_url(topic)
-    assert_not topic.reload.trashed?
-  end
 end

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_sign_in
   before_action :set_post, except: [:create]
+  before_action :check_edit_permission, only: [:update]
 
   def show
     render 'update'
@@ -15,9 +16,6 @@ class PostsController < ApplicationController
     else
       render 'update_form'
     end
-  end
-
-  def edit
   end
 
   def update
@@ -40,4 +38,11 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find params[:id]
   end
+
+  def check_edit_permission
+    unless @post.user == Current.user or Current.user.admin?
+      redirect_to topic_url(@post.topic, number: @post.number), alert: t('flash.you_have_no_permissions')
+    end
+  end
+
 end

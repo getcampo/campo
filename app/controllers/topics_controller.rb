@@ -1,8 +1,7 @@
 class TopicsController < ApplicationController
   before_action :require_sign_in, except: :show
   before_action :set_topic, except: [:create]
-  before_action :check_edit_permission, only: [:edit, :update]
-  before_action :check_trash_permission, only: [:trash]
+  before_action :check_edit_permission, only: [:update, :trash]
 
   def create
     @topic = Current.user.topics.new topic_params
@@ -50,12 +49,6 @@ class TopicsController < ApplicationController
 
   def check_edit_permission
     unless @topic.user == Current.user or Current.user.admin?
-      redirect_to topic_url(@topic), alert: t('flash.you_have_no_permissions')
-    end
-  end
-
-  def check_trash_permission
-    unless Current.user.admin?
       redirect_to topic_url(@topic), alert: t('flash.you_have_no_permissions')
     end
   end
