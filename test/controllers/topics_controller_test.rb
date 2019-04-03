@@ -6,12 +6,6 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new page" do
-    sign_in_as(create(:user))
-    get new_topic_url
-    assert_response :success
-  end
-
   test "should create topic" do
     user = create(:user)
     sign_in_as(user)

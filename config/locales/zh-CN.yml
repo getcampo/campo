@@ -95,9 +95,6 @@ zh-CN:
     passwords:
       form:
         update_password: 更新密码
-  topics:
-    show:
-      sign_in_to_comment: 登录后评论
   views:
     pagination:
       first: 首页

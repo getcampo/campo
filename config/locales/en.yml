@@ -95,9 +95,6 @@ en:
     passwords:
       form:
         update_password: Update Password
-  topics:
-    show:
-      sign_in_to_comment: Sign in to comment
   views:
     pagination:
       first: First

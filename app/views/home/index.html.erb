@@ -1,35 +1,69 @@
-<div class="d-flex mt-3 mb-2">
-  <div class="btn-group mr-1">
-    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
-      All
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Feed</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Ruby</a>
-      <a class="dropdown-item" href="#">Javascript</a>
+<div data-controller="topics">
+  <div class="d-flex mt-3 mb-2">
+    <div class="btn-group mr-1">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        All
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Feed</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Ruby</a>
+        <a class="dropdown-item" href="#">Javascript</a>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Latest
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Top</a>
+        <a class="dropdown-item" href="#">Oldest</a>
+      </div>
+    </div>
+
+    <% if Current.user %>
+      <button type="button" class="btn btn-primary ml-auto"  data-action="topics#newTopic">
+        New Topic
+      </button>
+    <% else %>
+      <a href="<%= new_session_path %>" class="btn btn-primary ml-auto">Sign in</a>
+    <% end %>
+  </div>
+
+  <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+    <div class="topic-list" data-target="infinite-page.container">
+      <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+    </div>
+    <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
+      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
     </div>
   </div>
 
-  <div class="btn-group">
-    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
-      Latest
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Top</a>
-      <a class="dropdown-item" href="#">Oldest</a>
+  <% if Current.user %>
+    <div id="post-composer" class="composer" data-controller="composer" data-target="topics.composer">
+      <div class="container">
+        <div class="composer-content">
+          <div class="composer-header">
+            <h5 class="composer-title">New Topic</h5>
+            <div class="composer-header-actions">
+              <button type="button" class="btn" data-action="composer#close">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="composer-body">
+            <div class="post mb-0 h-100">
+              <div class="post-avatar">
+                <%= avatar_tag Current.user %>
+              </div>
+              <div class="post-body h-100">
+                <%= render 'topics/form', topic: @topic %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <a href="<%= new_topic_path %>" class="btn btn-primary ml-auto">New Topic</a>
-</div>
-
-
-<div id="topics" class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
-  <div class="topic-list" data-target="infinite-page.container">
-    <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
-  </div>
-  <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
-    <i class="fas fa-circle-notch fa-spin fa-lg"></i>
-  </div>
+  <% end %>
 </div>

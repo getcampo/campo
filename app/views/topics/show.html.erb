@@ -34,9 +34,13 @@
     </div>
     <div class="col-md-3">
       <div class="position-fixed w-100">
-        <button type="button" class="btn btn-primary" data-action="topic#newPost">
-          New Post
-        </button>
+        <% if Current.user %>
+          <button type="button" class="btn btn-primary" data-action="topic#newPost">
+            Reply
+          </button>
+        <% else %>
+          <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
+        <% end %>
         <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
           <button type="button" class="slider-link" data-action="slider#min">
             <i class="fa fa-angle-double-up"></i> First
@@ -58,25 +62,27 @@
     </div>
   </div>
 
-  <div id="post-composer" class="composer" data-controller="composer" data-target="topic.composer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">
-          <div class="composer-content">
-            <div class="composer-header">
-              <h5 class="composer-title">Post</h5>
-              <div class="composer-header-actions">
-                <button type="button" class="btn" data-action="composer#close">
-                  <i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <div class="composer-body">
-              <div class="post mb-0 h-100">
-                <div class="post-avatar">
-                  <%= avatar_tag Current.user %>
+  <% if Current.user %>
+    <div id="post-composer" class="composer" data-controller="composer" data-target="topic.composer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="composer-content">
+              <div class="composer-header">
+                <h5 class="composer-title">Post</h5>
+                <div class="composer-header-actions">
+                  <button type="button" class="btn" data-action="composer#close">
+                    <i class="fa fa-times"></i>
+                  </button>
                 </div>
-                <div class="post-body h-100">
+              </div>
+              <div class="composer-body">
+                <div class="post mb-0 h-100">
+                  <div class="post-avatar">
+                    <%= avatar_tag Current.user %>
+                  </div>
+                  <div class="post-body h-100">
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,9 +90,9 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <template data-target="topic.newPostFormTemplate">
-    <%= render 'posts/form', post: @topic.posts.new %>
-  </template>
+    <template data-target="topic.newPostFormTemplate">
+      <%= render 'posts/form', post: @topic.posts.new %>
+    </template>
+  <% end %>
 </div>
