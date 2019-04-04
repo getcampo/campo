@@ -1,0 +1,100 @@
+<div data-controller="topics">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="mt-3">
+        <button type="button" class="btn btn-outline-primary d-flex d-md-none justify-content-between w-100 mb-2" data-toggle="collapse" data-target="#settings-nav">
+          <% case controller_name when 'home' %>
+            All
+          <% when 'forums' %>
+            <%= @forum.name %>
+          <% end %>
+          <i class="fa fa-angle-down align-self-center"></i>
+        </button>
+
+        <div class="collapse collapse-md-only" id="settings-nav">
+          <nav class="nav nav-pills flex-column">
+            <a href="<%= root_path %>" class="nav-link <%= 'active' if controller_name == 'home' %>">
+              All
+            </a>
+            <a href="#" class="nav-link">
+              Following
+            </a>
+          </nav>
+          <div class="pt-2 pb-2 px-3 text-muted">
+            <small>Forums</small>
+          </div>
+          <nav class="nav nav-pills flex-column">
+            <% Forum.all.limit(10).each do |forum| %>
+              <a href="<%= forum_path(forum) %>" class="nav-link <%= 'active' if @forum == forum %>">
+                <%= forum.name %>
+              </a>
+            <% end %>
+            <a href="#" class="nav-link">More...</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="d-flex mt-3 mb-2">
+        <div class="btn-group">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Latest
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Top</a>
+            <a class="dropdown-item" href="#">Oldest</a>
+          </div>
+        </div>
+
+        <% if Current.user %>
+          <button type="button" class="btn btn-primary ml-auto"  data-action="topics#newTopic">
+            New Topic
+          </button>
+        <% else %>
+          <a href="<%= new_session_path %>" class="btn btn-primary ml-auto">Sign in</a>
+        <% end %>
+      </div>
+
+      <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+        <div class="topic-list" data-target="infinite-page.container">
+          <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+        </div>
+        <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
+          <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <% if Current.user %>
+    <div id="post-composer" class="composer" data-controller="composer" data-target="topics.composer">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-9 offset-md-3">
+          <div class="composer-content">
+            <div class="composer-header">
+              <h5 class="composer-title">New Topic</h5>
+              <div class="composer-header-actions">
+                <button type="button" class="btn" data-action="composer#close">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="composer-body">
+              <div class="post mb-0 h-100">
+                <div class="post-avatar">
+                  <%= avatar_tag Current.user %>
+                </div>
+                <div class="post-body h-100">
+                  <%= render 'topics/form', topic: Topic.new(forum: @forum, first_post_attributes: {}) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

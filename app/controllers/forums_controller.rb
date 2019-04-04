@@ -6,6 +6,8 @@ class ForumsController < ApplicationController
   def show
     @forum = Forum.find_by!(slug: params[:id])
     @topics = @forum.topics.includes(:user).order(activated_at: :desc).page(params[:page])
+
+    render 'topics/index'
   end
 
   # constraints by routes
