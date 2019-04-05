@@ -6,6 +6,10 @@ export default class extends Controller {
   }
 
   open() {
+    if (this.isOpen()) {
+      return
+    }
+
     this.element.classList.add('open', 'animated', 'fadeInUp')
 
     let handleAnimationEnd = () => {

@@ -1,10 +1,25 @@
 <%= form_with model: post, id: 'post-form', class: 'h-100 d-flex flex-column' do |form| %>
-  <%= form.hidden_field :topic_id %>
-  <div class="form-group mb-2 flex-grow-1">
-    <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
+  <div class="composer-header">
+    <h5 class="composer-title">
+      <% if post.new_record? %>
+        New Post
+      <% else %>
+        Edit Post
+      <% end %>
+    </h5>
+    <div class="composer-header-actions">
+      <button type="button" class="btn" data-action="composer#close">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
   </div>
-
-  <div>
-    <%= form.submit class: 'btn btn-primary' %>
+  <div class="composer-body d-flex flex-column">
+    <%= form.hidden_field :topic_id %>
+    <div class="form-group mb-0 flex-grow-1">
+      <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
+    </div>
+  </div>
+  <div class="composer-footer">
+    <%= form.submit class: 'btn btn-primary ml-auto' %>
   </div>
 <% end %>

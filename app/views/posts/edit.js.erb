@@ -1,2 +1,2 @@
-document.querySelector('#post-composer .post-body').innerHTML = "<%= j render 'form', post: @post %>"
+document.querySelector('#post-composer .composer-content').innerHTML = "<%= j render 'form', post: @post %>"
 document.querySelector('#post-composer').composerController.open()

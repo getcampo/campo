@@ -1,17 +1,28 @@
-<%= form_with model: topic, id: 'topic-form', data: { controller: 'editor' } do |form| %>
-  <div class="form-row">
-    <div class="form-group col-8">
-      <%= form.text_field :title, class: 'form-control', placeholder: 'Title', autocomplete: 'off' %>
-    </div>
-    <div class="form-group col-4">
-      <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name, {}, class: 'form-control' %>
+<%= form_with model: Topic.new(first_post_attributes: {}), id: 'topic-form', class: 'h-100 d-flex flex-column' do |form| %>
+  <div class="composer-header">
+    <h5 class="composer-title">New Topic</h5>
+    <div class="composer-header-actions">
+      <button type="button" class="btn" data-action="composer#close">
+        <i class="fa fa-times"></i>
+      </button>
     </div>
   </div>
-  <%= form.fields_for :first_post do |post_form| %>
-    <div class="form-group">
-      <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
+  <div class="composer-body d-flex flex-column">
+    <div class="form-row">
+      <div class="form-group col-8">
+        <%= form.text_field :title, class: 'form-control', placeholder: 'Title', autocomplete: 'off' %>
+      </div>
+      <div class="form-group col-4">
+        <%= form.collection_select :forum_id, Forum.order(topics_count: :desc).all, :id, :name, {}, class: 'form-control' %>
+      </div>
     </div>
-  <% end %>
-
-  <%= form.submit class: 'btn btn-primary' %>
+    <div class="form-group mb-0 flex-grow-1">
+      <%= form.fields_for :first_post do |post_form| %>
+        <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
+      <% end %>
+    </div>
+  </div>
+  <div class="composer-footer d-flex">
+    <%= form.submit class: 'btn btn-primary ml-auto' %>
+  </div>
 <% end %>

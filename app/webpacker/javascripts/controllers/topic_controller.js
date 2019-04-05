@@ -170,17 +170,15 @@ export default class extends Controller {
 
   newPost() {
     this.resetPostForm()
-    if (!this.composerTarget.composerController.isOpen()) {
-      this.composerTarget.composerController.open()
-    }
+    this.composerTarget.composerController.open()
     this.composerTarget.querySelector('textarea').focus()
   }
 
   resetPostForm() {
     let form = document.importNode(this.newPostFormTemplateTarget.content, true)
-    let postBody = this.composerTarget.querySelector('.post-body')
-    postBody.innerHTML = ''
-    postBody.appendChild(form)
+    let composerContent = this.composerTarget.querySelector('.composer-content')
+    composerContent.innerHTML = ''
+    composerContent.appendChild(form)
   }
 
   replyPost(event) {
