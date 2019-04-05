@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
     @topic.first_post.user = Current.user
 
     if @topic.save
-      redirect_to @topic, notice: 'Topic is successfully created.'
+      render
     else
       render 'update_form'
     end
