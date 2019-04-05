@@ -1,6 +1,9 @@
 import { Controller } from "stimulus"
+import Utils from 'javascripts/utils'
 
 export default class extends Controller {
+  static targets = ["backdrop"]
+
   connect() {
     this.element.composerController = this
   }
@@ -10,14 +13,8 @@ export default class extends Controller {
       return
     }
 
-    this.element.classList.add('open', 'animated', 'fadeInUp')
-
-    let handleAnimationEnd = () => {
-      this.element.classList.remove('animated', 'fadeInUp')
-      this.element.removeEventListener('animationend', handleAnimationEnd)
-    }
-
-    this.element.addEventListener('animationend', handleAnimationEnd)
+    this.element.classList.add('open')
+    Utils.animateCSS(this.element, 'fadeInUp')
   }
 
   isOpen() {
@@ -25,13 +22,25 @@ export default class extends Controller {
   }
 
   close() {
-    this.element.classList.add('animated', 'fadeOutDown')
+    let animationName = this.element.classList.contains('expand') ? 'fadeOut' : 'fadeOutDown';
+    Utils.animateCSS(this.element, animationName, () => {
+      this.element.classList.remove('open')
+    })
+  }
 
-    let handleAnimationEnd = () => {
-      this.element.classList.remove('open', 'animated', 'fadeOutDown')
-      this.element.removeEventListener('animationend', handleAnimationEnd)
-    }
+  expand() {
+    this.element.classList.add('expand')
+    this.element.insertAdjacentHTML('beforeend', `
+      <div class="composer-backdrop" data-target="composer.backdrop" data-action="click->composer#compress">
+      </div>
+    `)
+    Utils.animateCSS(this.backdropTarget, 'fadeInHalf')
+  }
 
-    this.element.addEventListener('animationend', handleAnimationEnd)
+  compress() {
+    this.element.classList.remove('expand')
+    Utils.animateCSS(this.backdropTarget, 'fadeOutHalf', () => {
+      this.backdropTarget.remove()
+    })
   }
 }

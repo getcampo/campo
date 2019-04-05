@@ -46,7 +46,6 @@ Rails.application.routes.draw do
   end
 
   if Rails.env.development?
-    get '/ui', to: 'ui#index'
-    get '/scrollbar', to: 'ui#scrollbar'
+    get '/ui/(:page)', to: 'ui#page'
   end
 end

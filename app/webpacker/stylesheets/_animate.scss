@@ -1,0 +1,29 @@
+@import "~animate.css";
+
+@keyframes fadeInHalf {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+.fadeInHalf {
+  animation-name: fadeInHalf;
+}
+
+@keyframes fadeOutHalf {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOutHalf {
+  animation-name: fadeOutHalf;
+}

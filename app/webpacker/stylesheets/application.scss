@@ -5,7 +5,6 @@ $breadcrumb-margin-bottom: 0;
 $breadcrumb-divider: quote(">");
 
 @import "~bootstrap/scss/bootstrap";
-@import "~animate.css";
 
 // Fontawesome
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
@@ -13,6 +12,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 
+@import 'animate';
 @import 'post';
 @import 'composer';
 @import 'slider';

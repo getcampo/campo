@@ -1,9 +1,8 @@
 class UiController < ApplicationController
   layout 'base'
 
-  def index
-  end
-
-  def scrollbar
+  def page
+    page = params[:page] || 'index'
+    render page
   end
 end
