@@ -25,6 +25,11 @@ export default class extends Controller {
     let animationName = this.element.classList.contains('expand') ? 'fadeOut' : 'fadeOutDown';
     Utils.animateCSS(this.element, animationName, () => {
       this.element.classList.remove('open')
+
+      if (this.element.classList.contains('expand')) {
+        this.element.classList.remove('expand')
+        this.backdropTarget.remove()
+      }
     })
   }
 
