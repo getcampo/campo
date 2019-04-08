@@ -285,6 +285,16 @@ ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
 
 
 --
+-- Name: replies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.replies (
+    from_post_id bigint,
+    to_post_id bigint
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -626,6 +636,20 @@ CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
 
 
 --
+-- Name: index_replies_on_from_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_replies_on_from_post_id ON public.replies USING btree (from_post_id);
+
+
+--
+-- Name: index_replies_on_to_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_replies_on_to_post_id ON public.replies USING btree (to_post_id);
+
+
+--
 -- Name: index_topics_on_activated_at; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -681,6 +705,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180504131350'),
 ('20180505102833'),
 ('20180602062739'),
-('20190326074116');
+('20190326074116'),
+('20190408081650');
 
 
