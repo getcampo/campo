@@ -227,7 +227,7 @@ CREATE TABLE public.mentions (
 
 CREATE TABLE public.notifications (
     id bigint NOT NULL,
-    name character varying,
+    type integer,
     user_id bigint,
     record_type character varying,
     record_id bigint,

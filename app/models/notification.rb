@@ -1,8 +1,14 @@
 class Notification < ApplicationRecord
+  self.inheritance_column = '_type_disabled'
+
   belongs_to :user
   belongs_to :record, polymorphic: true
 
-  validates :name, inclusion: { in: %w(comment reply mention) }
+  enum type: {
+    post: 0,
+    reply: 1,
+    mention: 2
+  }
 
   scope :unread, -> { where(read: false) }
 end
