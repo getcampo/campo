@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :notifications
 
+  has_and_belongs_to_many :mentioned_posts, class_name: 'Post', join_table: 'mentions'
+
   validates :name, :username, :email, presence: true
   validates :username, :email, uniqueness: { case_sensitive: false }
   validates :username, format: { with: /\A[a-zA-Z][a-zA-Z0-9\-]+\z/ }

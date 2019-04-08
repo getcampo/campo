@@ -11,5 +11,7 @@ class PostTest < ActiveSupport::TestCase
     reply_post = create(:post, body: "@#{post.user.username}##{post.id}")
     assert reply_post.reply_to_posts.include?(post)
     assert post.reply_from_posts.include?(reply_post)
+    assert reply_post.mentioned_users.include?(post.user)
+    assert post.user.mentioned_posts.include?(reply_post)
   end
 end

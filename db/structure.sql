@@ -212,6 +212,16 @@ ALTER SEQUENCE public.identities_id_seq OWNED BY public.identities.id;
 
 
 --
+-- Name: mentions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mentions (
+    post_id bigint,
+    user_id bigint
+);
+
+
+--
 -- Name: notifications; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -594,6 +604,20 @@ CREATE INDEX index_identities_on_user_id ON public.identities USING btree (user_
 
 
 --
+-- Name: index_mentions_on_post_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_mentions_on_post_id ON public.mentions USING btree (post_id);
+
+
+--
+-- Name: index_mentions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_mentions_on_user_id ON public.mentions USING btree (user_id);
+
+
+--
 -- Name: index_notifications_on_record_type_and_record_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -706,6 +730,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180505102833'),
 ('20180602062739'),
 ('20190326074116'),
-('20190408081650');
+('20190408081650'),
+('20190408110402');
 
 
