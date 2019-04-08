@@ -5,4 +5,11 @@ class PostTest < ActiveSupport::TestCase
     post = create(:post)
     assert_equal 1, post.number
   end
+
+  test "should extract post reply relation from body" do
+    post = create(:post)
+    reply_post = create(:post, body: "@#{post.user.username}##{post.id}")
+    assert reply_post.reply_to_posts.include?(post)
+    assert post.reply_from_posts.include?(reply_post)
+  end
 end

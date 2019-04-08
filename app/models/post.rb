@@ -14,4 +14,14 @@ class Post < ApplicationRecord
     # TODO: lock
     self.number = (topic.posts.maximum(:number) || 0) + 1
   end
+
+  after_save :extract_reply_relation
+
+  def extract_reply_relation
+    post_ids = []
+    body.scan(/@([a-zA-Z][a-zA-Z0-9\-]+)#(\d+)/) do |username, post_id|
+      post_ids.push post_id
+    end
+    self.reply_to_post_ids = post_ids
+  end
 end
