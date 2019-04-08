@@ -183,10 +183,14 @@ export default class extends Controller {
 
   replyPost(event) {
     if (!this.composerTarget.composerController.isOpen()) {
+      this.resetPostForm()
       this.composerTarget.composerController.open()
     }
     let post = event.currentTarget.closest('.post')
-    let text = `@${post.dataset.postUsername}#${post.dataset.postId} `
-    this.composerTarget.querySelector('.editor').editorController.insertText(text)
+    // wait for editorController init
+    setTimeout(() => {
+      let text = `@${post.dataset.postUsername}#${post.dataset.postId} `
+      this.composerTarget.querySelector('[data-controller~="editor"]').editorController.insertText(text)
+    }, 1)
   }
 }
