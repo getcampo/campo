@@ -1,6 +1,4 @@
 class NotificationsController < ApplicationController
-  layout 'base'
-
   before_action :require_sign_in
   after_action :mark_all_as_read
 

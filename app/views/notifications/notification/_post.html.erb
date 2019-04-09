@@ -1,0 +1,14 @@
+<% post = notification.record %>
+<a href="<%= topic_path(post.topic, number: post.number) %>" class="list-item">
+  <div class="list-item-avatar">
+    <%= avatar_tag post.user %>
+  </div>
+  <div class="list-item-body">
+    <h3 class="list-item-title">
+      <%= post.user.name %> posted on <%= post.topic.title %>
+    </h3>
+    <div class="list-item-content">
+      <%= post.body %>
+    </div>
+  </div>
+</a>

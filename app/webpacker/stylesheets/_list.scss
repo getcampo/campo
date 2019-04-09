@@ -1,0 +1,39 @@
+.list {
+  margin: 0 -0.5rem;
+}
+
+.list-item {
+  display: flex;
+  padding: 0.5rem;
+  color: $body-color;
+
+  &:hover {
+    color: $body-color;
+    background: $gray-100;
+    text-decoration: none;
+  }
+}
+
+.list-item-avatar {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.list-item-body {
+  flex-grow: 1;
+}
+
+.list-item-title {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+.list-item-content {
+  font-size: 0.8rem;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
