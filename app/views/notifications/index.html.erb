@@ -1,5 +1,5 @@
 <div class="mt-3 mb-3" data-controller="infinite-page" data-infinite-page-page="<%= @notifications.current_page %>" data-infinite-page-reached-end="<%= @notifications.last_page? %>">
-  <div data-target="infinite-page.container">
+  <div class="media-link-wrap" data-target="infinite-page.container">
     <%= render partial: 'notification', collection: @notifications, cached: -> notification { [I18n.locale, notification] } %>
   </div>
   <div class="infinite-page-loading-placeholder p-4 text-muted text-center">

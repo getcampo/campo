@@ -1,26 +1,27 @@
 <% cache [I18n.locale, topic] do %>
-  <a class="media topic-item rounded" href="<%= topic_path(topic) %>">
+  <a class="media media-link" href="<%= topic_path(topic) %>">
     <div class="mr-2">
       <%= avatar_tag topic.user %>
     </div>
     <div class="media-body">
-      <h3 class="text-truncate"><%= topic.title %></h3>
-      <div class="topic-item-info text-muted">
-        <span class="badge badge-light"><%= topic.forum.name %></span>
-        •
-        <span><%= topic.user.name %></span>
-        •
-        <% if topic.posts.last %>
-          replied by <%= topic.posts.last.user.name %> at <%= local_time_or_date topic.posts.last.created_at %>
-        <% else %>
-          posted at <span><%= local_time_or_date topic.created_at %></span>
-        <% end %>
+      <div class="d-flex justify-content-between">
+        <div class="flex-grow-1 text-truncate">
+          <%= topic.title %>
+        </div>
+        <small class="ml-2 text-nowrap text-muted">
+          <%= local_time_or_date topic.activated_at %>
+        </small>
       </div>
-    </div>
-    <div class="ml-2 align-self-center">
-      <% if topic.posts.count > 1 %>
-        <span class="comment-count badge badge-pill badge-secondary"><%= topic.posts.count %></span>
-      <% end %>
+      <div>
+        <span class="badge badge-secondary">
+          <%= topic.forum.name %>
+        </span>
+        <small class="text-muted">
+          created by <%= topic.user.name %> at <%= local_time_or_date topic.created_at %>
+          ·
+          <%= topic.posts.count %> posts
+        </small>
+      </div>
     </div>
   </a>
 <% end %>

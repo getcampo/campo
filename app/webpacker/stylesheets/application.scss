@@ -65,41 +65,6 @@ img {
   }
 }
 
-.topic-list {
-  margin: 0 -0.5rem;
-}
-
-.topic-item {
-  padding: 0.5rem;
-  color: $body-color;
-
-  &:hover {
-    color: $body-color;
-    background: $gray-100;
-    text-decoration: none;
-  }
-
-  h3 {
-    font-size: 1rem;
-    font-weight: normal;
-    line-height: 22px;
-    margin-bottom: 8px;
-  }
-
-  .comment-count.badge {
-    background: $gray-500;
-  }
-
-  &:visited .comment-count.badge {
-    background: $gray-300;
-  }
-}
-
-.topic-item-info {
-  font-size: 0.8rem;
-  line-height: 18px;
-}
-
 .btn {
   cursor: pointer;
 }

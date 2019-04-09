@@ -56,7 +56,7 @@
       </div>
 
       <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
-        <div class="topic-list" data-target="infinite-page.container">
+        <div class="media-link-wrap" data-target="infinite-page.container">
           <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
         </div>
         <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
