@@ -13,8 +13,11 @@
       <ul class="navbar-nav flex-row">
         <% if Current.user %>
           <li class="nav-item">
-            <a class="nav-link" href="<%= notifications_path %>">
+            <a class="nav-link position-relative" href="<%= notifications_path %>">
               <i class="fa fa-bell"></i>
+              <% if Current.user.notifications.unread.any? %>
+                <span class="notification-unread"></span>
+              <% end %>
             </a>
           </li>
           <li class="nav-item dropdown">

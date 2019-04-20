@@ -101,3 +101,15 @@ img {
 .dropdown-item.active .text-muted {
   color: white !important;
 }
+
+.notification-unread {
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  display: inline-block;
+  content: "";
+  background: $red;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
