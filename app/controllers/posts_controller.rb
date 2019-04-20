@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
     if @post.save
       @post.topic.update activated_at: Time.now.utc
+      PostNotificationJob.perform_later(@post)
       render 'create'
     else
       render 'update_form'
