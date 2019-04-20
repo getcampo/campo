@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     self.number = (topic.posts.maximum(:number) || 0) + 1
   end
 
-  after_save :extract_reply_relation
+  before_save :extract_reply_relation
 
   def extract_reply_relation
     user_ids = []

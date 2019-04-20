@@ -36,7 +36,6 @@ en:
         topics: Topics
   common:
     home: Home
-    notifications: Notifications
     password: Password
     sign_in: Sign in
     sign_up: Sign up
@@ -67,11 +66,6 @@ en:
       create: Create %{model}
       submit: Submit %{model}
       update: Update %{model}
-  notifications:
-    notification:
-      comment_on_your_topic: comment your topic
-      mention_you: mention you
-      reply_to_your_comment: reply your comment
   password_resets:
     edit:
       password_reset: Password Reset

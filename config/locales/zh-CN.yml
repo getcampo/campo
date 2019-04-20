@@ -36,7 +36,6 @@ zh-CN:
         topics: 话题数
   common:
     home: 首页
-    notifications: 通知
     password: 密码
     sign_in: 登录
     sign_up: 注册
@@ -67,11 +66,6 @@ zh-CN:
       create: 创建%{model}
       submit: 提交%{model}
       update: 更新%{model}
-  notifications:
-    notification:
-      comment_on_your_topic: 评论了你的话题
-      mention_you: 提及了你
-      reply_to_your_comment: 回复了你的评论
   password_resets:
     edit:
       password_reset: 密码重置
