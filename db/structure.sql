@@ -314,6 +314,39 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: subscriptions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.subscriptions (
+    id bigint NOT NULL,
+    user_id bigint,
+    topic_id bigint,
+    status integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.subscriptions_id_seq OWNED BY public.subscriptions.id;
+
+
+--
 -- Name: topics; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -439,6 +472,13 @@ ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_
 
 
 --
+-- Name: subscriptions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.subscriptions ALTER COLUMN id SET DEFAULT nextval('public.subscriptions_id_seq'::regclass);
+
+
+--
 -- Name: topics id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -522,6 +562,14 @@ ALTER TABLE ONLY public.posts
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: subscriptions subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.subscriptions
+    ADD CONSTRAINT subscriptions_pkey PRIMARY KEY (id);
 
 
 --
@@ -674,6 +722,20 @@ CREATE INDEX index_replies_on_to_post_id ON public.replies USING btree (to_post_
 
 
 --
+-- Name: index_subscriptions_on_topic_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_subscriptions_on_topic_id ON public.subscriptions USING btree (topic_id);
+
+
+--
+-- Name: index_subscriptions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_subscriptions_on_user_id ON public.subscriptions USING btree (user_id);
+
+
+--
 -- Name: index_topics_on_activated_at; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -731,6 +793,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180602062739'),
 ('20190326074116'),
 ('20190408081650'),
-('20190408110402');
+('20190408110402'),
+('20190420083743');
 
 

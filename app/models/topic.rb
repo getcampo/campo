@@ -1,9 +1,10 @@
 class Topic < ApplicationRecord
   include Trashable, Editable, Mentionable
 
-  has_many :comments
   has_many :posts
   has_one :first_post, -> { where(number: 1) }, class_name: 'Post'
+  has_many :subscriptions
+  has_many :subscribed_users, -> { where(subscriptions: { status: :subscribed }) }, through: :subscriptions, source: :user
   belongs_to :forum, counter_cache: true, touch: true
   belongs_to :user
   belongs_to :last_comment, class_name: 'Comment', optional: true
