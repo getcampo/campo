@@ -35,9 +35,10 @@
     <div class="col-md-3">
       <div class="position-fixed w-100">
         <% if Current.user %>
-          <button type="button" class="btn btn-primary" data-action="topic#newPost">
+          <button type="button" class="btn btn-primary mb-2" data-action="topic#newPost">
             Reply
           </button>
+          <%= render 'subscriptions/button', topic: @topic %>
         <% else %>
           <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
         <% end %>

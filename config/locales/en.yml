@@ -89,6 +89,10 @@ en:
     passwords:
       form:
         update_password: Update Password
+  subscription_status:
+    ignored: Ignored
+    not_subscribed: Not subscribed
+    subscribed: Subscribed
   views:
     pagination:
       first: First

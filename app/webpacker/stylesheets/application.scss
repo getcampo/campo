@@ -97,3 +97,7 @@ img {
   padding: 0 8px;
   background: white;
 }
+
+.dropdown-item.active .text-muted {
+  color: white !important;
+}
