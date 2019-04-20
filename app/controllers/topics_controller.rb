@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
     @topic.first_post.user = Current.user
 
     if @topic.save
+      @topic.subscriptions.create(user: Current.user, status: 'subscribed')
       render
     else
       render 'update_form'

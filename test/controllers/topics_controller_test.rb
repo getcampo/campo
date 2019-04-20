@@ -17,6 +17,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'title', topic.title
     assert_equal 'body', topic.first_post.body
     assert_equal user, topic.user
+    assert user.subscribed_topics.include?(topic)
   end
 
   test "should trash topic by admin" do
