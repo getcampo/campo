@@ -1,12 +1,16 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
+
   test "should create post" do
     sign_in_as create(:user)
 
     topic = create(:topic)
-    assert_difference "topic.posts.count" do
-      post posts_url, params: { post: { topic_id: topic.id, body: 'body' } }, xhr: true
+    assert_enqueued_with(job: PostNotificationJob) do
+      assert_difference "topic.posts.count" do
+        post posts_url, params: { post: { topic_id: topic.id, body: 'body' } }, xhr: true
+      end
     end
     assert_response :success
   end

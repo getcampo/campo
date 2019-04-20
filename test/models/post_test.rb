@@ -21,19 +21,4 @@ class PostTest < ActiveSupport::TestCase
     assert reply_post.mentioned_users.include?(post.user)
     assert post.user.mentioned_posts.include?(reply_post)
   end
-
-  test "should generate notification for post" do
-    post = create(:post)
-    assert_difference "post.topic.user.notifications.count" do
-      post.create_post_notifications
-    end
-  end
-
-  test "should generate notification for mention" do
-    post = create(:post)
-    reply_post = create(:post, body: "@#{post.user.username}")
-    assert_difference "post.user.notifications.count" do
-      reply_post.create_mention_notifications
-    end
-  end
 end

@@ -13,16 +13,8 @@ class Topic < ApplicationRecord
   accepts_nested_attributes_for :first_post, update_only: true
 
   before_create :set_activated_at
-  after_commit :enqueue_create_notifications, on: [:create]
 
   def set_activated_at
     self.activated_at = current_time_from_proper_timezone
-  end
-
-  def enqueue_create_notifications
-    TopicNotificationJob.perform_later(self)
-  end
-
-  def create_notifications
   end
 end

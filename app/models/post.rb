@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     self.number = (topic.posts.maximum(:number) || 0) + 1
   end
 
-  before_save :extract_reply_relation
+  after_commit :extract_reply_relation
 
   def extract_reply_relation
     user_ids = []
@@ -33,15 +33,5 @@ class Post < ApplicationRecord
     end
     self.mentioned_user_ids = user_ids
     self.reply_to_post_ids = post_ids
-  end
-
-  def create_post_notifications
-    topic.user.notifications.create(type: 'post', record: self)
-  end
-
-  def create_mention_notifications
-    mentioned_users.each do |user|
-      user.notifications.create(type: 'mention', record: self)
-    end
   end
 end
