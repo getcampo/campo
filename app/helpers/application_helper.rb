@@ -11,8 +11,4 @@ module ApplicationHelper
   def local_time_or_date(time)
     local_relative_time time, type: 'time-or-date'
   end
-
-  def markdown_render(content)
-    MarkdownRenderer.render(content)
-  end
 end
