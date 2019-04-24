@@ -12,24 +12,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.timestamps
 
       t.index :auth_token, unique: true
-    end
-
-    reversible do |dir|
-      dir.up do
-        execute <<-SQL
-          CREATE UNIQUE INDEX index_users_on_lowercase_username
-            ON users USING btree (LOWER(username));
-          CREATE UNIQUE INDEX index_users_on_lowercase_email
-            ON users USING btree (LOWER(email));
-        SQL
-      end
-
-      dir.down do
-        execute <<-SQL
-          DROP INDEX index_users_on_lowercase_username;
-          DROP INDEX index_users_on_lowercase_email;
-        SQL
-      end
+      t.index 'lower(username)', unique: true
+      t.index 'lower(email)', unique: true
     end
   end
 end

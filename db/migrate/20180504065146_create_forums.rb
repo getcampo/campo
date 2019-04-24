@@ -7,21 +7,8 @@ class CreateForums < ActiveRecord::Migration[5.2]
       t.integer :topics_count, default: 0
 
       t.timestamps
-    end
 
-    reversible do |dir|
-      dir.up do
-        execute <<-SQL
-          CREATE UNIQUE INDEX index_forums_on_lowercase_slug
-            ON users USING btree (LOWER(username));
-        SQL
-      end
-
-      dir.down do
-        execute <<-SQL
-          DROP INDEX index_forums_on_lowercase_slug;
-        SQL
-      end
+      t.index 'lower(slug)', unique: true
     end
   end
 end
