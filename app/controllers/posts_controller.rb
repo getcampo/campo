@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   before_action :check_edit_permission, only: [:update]
 
   def show
-    render 'update'
+    respond_to do |format|
+      format.js { render 'update' }
+      format.json
+    end
   end
 
   def create

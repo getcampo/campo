@@ -113,3 +113,21 @@ img {
   top: 8px;
   right: 8px;
 }
+
+.post-mention-item {
+  color: $body-color;
+  padding: 8px 12px;
+  margin: -4px -12px;
+  min-width: 240px;
+
+  &:hover {
+    color: $body-color;
+    background: $gray-100;
+    text-decoration: none;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+  }
+}
