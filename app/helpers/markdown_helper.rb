@@ -27,7 +27,7 @@ module MarkdownHelper
       unless node.ancestors('a, pre, code').any?
       text = node.encode_special_chars(node.text)
 
-      text.gsub!(/@([a-zA-Z][a-zA-Z0-9\-]+)(#(\d+))?/) do |match|
+      text.gsub!(/@([a-zA-Z]\w+)(#(\d+))?/) do |match|
         username = $1
         post_id = $3
 

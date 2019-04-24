@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   def extract_reply_relation
     user_ids = []
     post_ids = []
-    body.scan(/@([a-zA-Z][a-zA-Z0-9\-]+)(#(\d+))?/) do |username, _, post_id|
+    body.scan(/@([a-zA-Z]\w+)(#(\d+))?/) do |username, _, post_id|
       user = User.find_by(username: username)
       if user
         user_ids.push user.id
