@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  include Trashable, Editable
+  include Trashable
 
   has_many :posts
   has_one :first_post, -> { where(number: 1) }, class_name: 'Post'
