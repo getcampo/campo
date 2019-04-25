@@ -1,0 +1,26 @@
+<div class="row mt-3">
+  <div class="col-md-3">
+    <div class="mb-3">
+      <%= avatar_tag @user, size: '4x' %>
+    </div>
+    <div class="mb-3">
+      <%= @user.bio %>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="nav nav-pills mb-2">
+      <a class="nav-link active" href="<%= profile_root_path(username: @user.username) %>">Topics</a>
+      <a class="nav-link" href="<%= profile_root_path(username: @user.username) %>">Posts</a>
+    </div>
+
+    <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+      <div class="media-link-wrap" data-target="infinite-page.container">
+        <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+      </div>
+      <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
+        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -42,6 +42,10 @@ Rails.application.routes.draw do
     resource :password, only: [:show, :update]
   end
 
+  scope '/@:username', module: 'profile', as: 'profile' do
+    root to: 'topics#index'
+  end
+
   namespace :admin do
     root to: 'dashboard#index'
     resources :forums

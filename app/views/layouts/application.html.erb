@@ -25,6 +25,7 @@
               <%= Current.user.name %>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="<%= profile_root_path(username: Current.user.username) %>">Profile</a>
               <a class="dropdown-item" href="<%= settings_account_path %>">Settings</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<%= session_path %>" data-remote="true" data-method="delete">Sign out</a>
