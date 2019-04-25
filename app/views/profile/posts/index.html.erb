@@ -6,9 +6,9 @@
   <div class="col-md-9">
     <%= render 'profile/nav' %>
 
-    <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+    <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? %>">
       <div class="media-link-wrap" data-target="infinite-page.container">
-        <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+        <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
       </div>
       <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
         <i class="fas fa-circle-notch fa-spin fa-lg"></i>

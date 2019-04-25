@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   scope '/@:username', module: 'profile', as: 'profile' do
     root to: 'topics#index'
+    resources :posts, only: [:index]
   end
 
   namespace :admin do

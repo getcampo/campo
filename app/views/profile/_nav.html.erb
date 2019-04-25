@@ -1,0 +1,4 @@
+<div class="nav nav-pills mb-2">
+  <a class="nav-link <%= 'active' if controller_name == 'topics' %>" href="<%= profile_root_path(username: @user.username) %>">Topics</a>
+  <a class="nav-link <%= 'active' if controller_name == 'posts' %>" href="<%= profile_posts_path(username: @user.username) %>">Posts</a>
+</div>

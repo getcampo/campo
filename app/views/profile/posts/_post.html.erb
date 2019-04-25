@@ -1,0 +1,20 @@
+<a href="<%= topic_path(post.topic, number: post.number) %>" class="media media-link">
+  <div class="mr-2">
+    <%= avatar_tag post.user %>
+  </div>
+  <div class="media-body">
+    <div class="d-flex justify-content-between">
+      <div class="flex-grow-1 text-truncate">
+        <%= post.topic.title %>
+      </div>
+      <small class="ml-2 text-nowrap text-muted">
+        <%= local_time_or_date post.created_at %>
+      </small>
+    </div>
+    <div class="text-truncate">
+      <small class="text-muted">
+        <%= post.body %>
+      </small>
+    </div>
+  </div>
+</a>
