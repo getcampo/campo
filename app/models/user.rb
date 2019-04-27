@@ -32,7 +32,30 @@ class User < ApplicationRecord
   end
 
   ADMIN_EMAILS = ENV['ADMIN_EMAILS'].split(',').map(&:strip)
+
   def admin?
     ADMIN_EMAILS.include?(email)
+  end
+
+  DEFAULT_AVATAR_COLORS = %w(
+    #007bff
+    #6610f2
+    #6f42c1
+    #e83e8c
+    #dc3545
+    #fd7e14
+    #ffc107
+    #28a745
+    #20c997
+    #17a2b8
+  )
+
+  after_commit :generate_default_avatar, on: [:create]
+
+  def generate_default_avatar
+    temp_path = "#{Rails.root}/tmp/#{id}_default_avatar.png"
+    system(*%W(convert -size 160x160 -annotate +0+0 #{username[0]} -font DejaVu-Sans -fill white -pointsize 120 -gravity Center xc:#{DEFAULT_AVATAR_COLORS.sample} #{temp_path}))
+    avatar.attach(io: File.open(temp_path), filename: 'avatar.png', content_type: 'image/png')
+    FileUtils.rm temp_path
   end
 end

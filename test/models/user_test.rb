@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should generate default avatar after create" do
+    user = create(:user)
+    assert user.avatar.attached?
+  end
 end
