@@ -42,8 +42,8 @@ Rails.application.routes.draw do
     resource :password, only: [:show, :update]
   end
 
+  get '/@:username', to: 'profile/topics#index', as: 'profile'
   scope '/@:username', module: 'profile', as: 'profile' do
-    root to: 'topics#index'
     resources :posts, only: [:index]
   end
 
