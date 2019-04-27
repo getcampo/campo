@@ -45,23 +45,6 @@ img {
   width: 192px;
 }
 
-.letter-avatar {
-  background: #ccc;
-  color: white;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-
-  &.avatar-2x {
-    font-size: 3rem;
-  }
-
-  &.avatar-4x {
-    font-size: 6rem;
-  }
-}
-
 .btn {
   cursor: pointer;
 }
