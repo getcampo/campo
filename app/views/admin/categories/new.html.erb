@@ -1,0 +1,17 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="<%= admin_root_path %>">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="<%= admin_categories_path %>">Categories</a>
+    </li>
+    <li class="breadcrumb-item active">New Category</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <%= render 'form' %>
+  </div>
+</div>
