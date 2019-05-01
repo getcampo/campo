@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_083743) do
+ActiveRecord::Schema.define(version: 2019_05_01_083359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_04_20_083743) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.string "name"
+    t.string "slug"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "lower((slug)::text)", name: "index_categories_on_lower_slug", unique: true
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
   create_table "forums", force: :cascade do |t|
@@ -122,7 +133,11 @@ ActiveRecord::Schema.define(version: 2019_04_20_083743) do
     t.datetime "edited_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.integer "category_ancestor_ids", array: true
     t.index ["activated_at"], name: "index_topics_on_activated_at"
+    t.index ["category_ancestor_ids"], name: "index_topics_on_category_ancestor_ids", using: :gin
+    t.index ["category_id"], name: "index_topics_on_category_id"
     t.index ["forum_id"], name: "index_topics_on_forum_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
