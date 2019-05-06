@@ -47,16 +47,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
     t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
-  create_table "forums", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "slug", null: false
-    t.text "description"
-    t.integer "topics_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index "lower((slug)::text)", name: "index_forums_on_lower_slug", unique: true
-  end
-
   create_table "identities", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -122,7 +112,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.bigint "forum_id"
     t.bigint "user_id"
     t.string "title", null: false
     t.integer "comments_count", default: 0
@@ -138,7 +127,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
     t.index ["activated_at"], name: "index_topics_on_activated_at"
     t.index ["category_ancestor_ids"], name: "index_topics_on_category_ancestor_ids", using: :gin
     t.index ["category_id"], name: "index_topics_on_category_id"
-    t.index ["forum_id"], name: "index_topics_on_forum_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 

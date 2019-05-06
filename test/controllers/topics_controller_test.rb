@@ -10,7 +10,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
     user = create(:user)
     sign_in_as(user)
     assert_difference "Topic.count" do
-      post topics_url, params: { topic: { title: 'title', forum_id: create(:forum).id, first_post_attributes: { body: 'body' } } }, xhr: true
+      post topics_url, params: { topic: { title: 'title', category_id: create(:category).id, first_post_attributes: { body: 'body' } } }, xhr: true
     end
     assert_response :success
     topic = Topic.last
