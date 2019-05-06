@@ -1,0 +1,32 @@
+.tab {
+  display: flex;
+  overflow: auto;
+}
+
+.tab-item {
+  font-size: 16px;
+  line-height: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.8;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    opacity: 1;
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.075);
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border-color);
+  }
+}

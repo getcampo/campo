@@ -26,7 +26,7 @@
   padding: 1rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid #ccc;
 }
 
 .composer-title {
@@ -40,7 +40,7 @@
 
   .btn {
     padding: 0.5rem;
-    color: $body-color;
+    color: #333;
     opacity: 0.5;
 
     &:hover {
@@ -61,7 +61,7 @@
 .composer-footer {
   padding: 1rem;
   display: flex;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid #ccc;
 }
 
 .composer-compress-button {

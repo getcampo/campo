@@ -1,25 +1,13 @@
-// Bootstrap
-$breadcrumb-padding-x: 0;
-$breadcrumb-bg: transparent;
-$breadcrumb-margin-bottom: 0;
-$breadcrumb-divider: quote(">");
-
-@import "~bootstrap/scss/bootstrap";
-
-// Fontawesome
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-
 @import 'animate';
-@import 'media';
-@import 'post';
+@import 'base/all';
+@import 'material-icons';
+// @import 'media';
+// @import 'post';
 @import 'composer';
-@import 'slider';
-@import 'editor';
-@import 'expandable';
-@import 'infinite_page';
+// @import 'slider';
+// @import 'editor';
+// @import 'expandable';
+// @import 'infinite_page';
 
 img {
   max-width: 100%;
@@ -49,12 +37,6 @@ img {
   cursor: pointer;
 }
 
-@include media-breakpoint-up(md) {
-  .collapse-md-only:not(.show) {
-    display: block;
-  }
-}
-
 .break {
   position: relative;
   padding: 16px;
@@ -67,7 +49,7 @@ img {
     display: block;
     content: "";
     width: 100%;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid #ccc;
     z-index: -1;
   }
 }
@@ -78,36 +60,14 @@ img {
   background: white;
 }
 
-.dropdown-item.active .text-muted {
-  color: white !important;
-}
-
 .notification-unread {
   height: 6px;
   width: 6px;
   border-radius: 6px;
   display: inline-block;
   content: "";
-  background: $red;
+  background: red;
   position: absolute;
   top: 8px;
   right: 8px;
-}
-
-.post-mention-item {
-  color: $body-color;
-  padding: 8px 12px;
-  margin: -4px -12px;
-  min-width: 240px;
-
-  &:hover {
-    color: $body-color;
-    background: $gray-100;
-    text-decoration: none;
-  }
-
-  .avatar {
-    width: 24px;
-    height: 24px;
-  }
 }

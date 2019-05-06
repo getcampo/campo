@@ -1,0 +1,18 @@
+.snackbar {
+  background: #323232;
+  color: white;
+  padding: 16px 24px;
+  font-size: 14px;
+  line-height: 16px;
+  position: fixed;
+  z-index: 32;
+  bottom: 16px;
+  left: 16px;
+  border-radius: 2px;
+  min-width: 288px;
+  max-width: 568px;
+
+  a {
+    color: var(--text-secondary-color);
+  }
+}

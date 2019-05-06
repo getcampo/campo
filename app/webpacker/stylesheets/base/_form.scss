@@ -1,0 +1,91 @@
+.form {
+  label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  textarea,
+  select {
+    line-height: 24px;
+    width: 100%;
+    outline: 0;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: block;
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 1px var(--primary-color);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  select {
+    height: 42px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 8px;
+    height: 16px;
+  }
+
+  .form-helper,
+  .validate-message {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .form-helper {
+    color: var(--text-secondary-color);
+  }
+
+  .form-field.invalid {
+    label,
+    .form-helper,
+    .validate-message {
+      color: var(--error-color);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    textarea,
+    select {
+      border-color: var(--error-color);
+
+      &:focus {
+        box-shadow: 0 0 1px var(--error-color);
+      }
+    }
+  }
+}
+
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+
+  .form-field {
+    flex-grow: 1;
+    margin-left: 8px;
+    margin-right: 8px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
