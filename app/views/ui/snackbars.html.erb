@@ -1,0 +1,19 @@
+<h3 id="snackbars">Snackbars</h3>
+<div class="demo">
+  <div class="snackbar">
+    Snackbar content
+  </div>
+</div>
+<h4>Snackbar toggle</h4>
+<button id="toggle-snackbar" type="button" name="button" class="button button-contained button-primary">Snackbar Toggle</button>
+<template id="snackbar-template">
+  <div class="snackbar animated fadeInUp" data-controller="snackbar" data-hide-on="5000">
+    Snackbar content
+  </div>
+</template>
+<script type="text/javascript">
+  document.querySelector('#toggle-snackbar').addEventListener('click', function(event) {
+    var snackbar = document.importNode(document.querySelector('#snackbar-template').content, true);
+    document.querySelector('main').appendChild(snackbar);
+  });
+</script>

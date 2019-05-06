@@ -1,0 +1,27 @@
+<h3 id="cards">Cards</h3>
+<div class="demo">
+  <div class="demo-row">
+    <% 3.times do %>
+      <div class="card demo-column">
+        <div class="card-header">
+          <h3 class="card-title">Card header</h3>
+          <div class="dropdown" data-controller="dropdown">
+            <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="#" class="dropdown-menu-item">Item</a>
+              <a href="#" class="dropdown-menu-item">Item</a>
+              <a href="#" class="dropdown-menu-item">Item</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          Content text
+        </div>
+        <div class="card-footer">
+          <button type="button" class="button button-text button-primary">Action 1</button>
+          <button type="button" class="button button-text button-primary">Action 2</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

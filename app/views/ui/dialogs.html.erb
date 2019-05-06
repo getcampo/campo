@@ -1,0 +1,43 @@
+<h3 id="dialogs">Dialogs</h3>
+<div class="demo">
+  <div class="dialog open">
+    <div class="dialog-container">
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h4 class="dialog-title">Dialog Title</h4>
+          <button type="button" class="button button-icon"><i class="material-icons">close</i></button>
+        </div>
+        <div class="dialog-body">
+          Dialog Content
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="button button-text button-primary">Action 1</button>
+          <button type="button" class="button button-text button-primary">Action 2</button>
+        </div>
+      </div>
+      <div class="dialog-background"></div>
+    </div>
+  </div>
+</div>
+<h4>Dialog toggle</h4>
+<button type="button" class="button button-contained button-primary" data-toggle="#dialog-demo" data-target="#dialog-demo">Dialog Toggle</button>
+<div id="dialog-demo" class="dialog" data-controller="dialog">
+  <div class="dialog-container">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h4 class="dialog-title">Dialog Title</h4>
+        <button type="button" class="button button-icon" data-action="dialog#close"><i class="material-icons">close</i></button>
+      </div>
+      <div class="dialog-body">
+        <% 50.times do %>
+          <p>Long content Long content Long content Long content Long content Long content Long conten Long content Long content Long content Long contentt</p>
+        <% end %>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="button button-text button-primary">Action 1</button>
+        <button type="button" class="button button-text button-primary">Action 2</button>
+      </div>
+    </div>
+    <div class="dialog-background" data-action="click->dialog#close"></div>
+  </div>
+</div>

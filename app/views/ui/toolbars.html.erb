@@ -1,0 +1,66 @@
+<h3 id="toolbars">Toolbars</h3>
+<% %w(white primary secondary).each do |style| %>
+  <div class="appbar appbar-<%= style %>">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
+      </div>
+      <div class="toolbar-title">
+        Title
+      </div>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
+      </div>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
+      </div>
+      <div class="toolbar-action dropdown" data-controller="dropdown">
+        <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#" class="dropdown-menu-item">Item</a>
+          <a href="#" class="dropdown-menu-item">Item</a>
+          <a href="#" class="dropdown-menu-item">Item</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
+<h4>With tabs</h4>
+<% %w(white primary secondary).each do |style| %>
+  <div class="appbar appbar-<%= style %>">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">menu</i></button>
+      </div>
+      <div class="toolbar-title">
+        Title
+      </div>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">search</i></button>
+      </div>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon"><i class="material-icons">notifications</i></button>
+      </div>
+      <div class="toolbar-action dropdown" data-controller="dropdown">
+        <button type="button" class="button button-icon" data-action="dropdown#open"><i class="material-icons">more_vert</i></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#" class="dropdown-menu-item">Item</a>
+          <a href="#" class="dropdown-menu-item">Item</a>
+          <a href="#" class="dropdown-menu-item">Item</a>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <div class="tab-item active">
+        Tab Item
+      </div>
+      <% 5.times do %>
+        <div class="tab-item">
+          Tab Item
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+<% end %>

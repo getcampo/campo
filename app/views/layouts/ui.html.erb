@@ -1,0 +1,88 @@
+<% content_for :head do %>
+  <style media="screen">
+    section {
+      margin-bottom: 48px;
+    }
+
+    .demo {
+      padding: 24px;
+      background: #f5f5f5;
+    }
+
+    .demo-row {
+      display: flex;
+    }
+
+    .demo-column {
+      flex-grow: 1;
+      margin: 0 8px;
+    }
+
+    .demo-column:first-child {
+      margin-left: 0;
+    }
+
+    .demo-column:last-child {
+      margin-right: 0;
+    }
+
+    .demo .dialog {
+      width: 100%;
+    }
+
+    .demo .dialog-container {
+      position: relative;
+      z-index: 0;
+    }
+
+    .demo .dialog-background {
+      position: absolute;
+    }
+
+    .list-item-avatar img {
+      background: #ccc;
+    }
+
+    .demo .snackbar {
+      position: static;
+      width: 288px;
+    }
+  </style>
+<% end %>
+
+<% content_for :body do %>
+  <nav id="drawer" class="drawer drawer-permanent" data-controller="drawer">
+    <div class="drawer-content">
+      <div class="list">
+        <% %w(buttons forms dropdowns toolbars cards dialogs lists snackbars).each do |name| %>
+          <a href="/ui/<%= name %>" class="list-item">
+            <div class="list-item-content">
+              <%= name.capitalize %>
+            </div>
+          </a>
+        <% end %>
+      </div>
+    </div>
+    <div class="drawer-background" data-action="click->drawer#close">
+    </div>
+  </nav>
+
+  <main class="main with-appbar">
+    <div class="appbar appbar-fixed appbar-white">
+      <div class="toolbar toolbar-fixed toolbar-white">
+        <div class="toolbar-action">
+          <button type="button" class="button button-icon" data-toggle="#drawer"><i class="material-icons">menu</i></button>
+        </div>
+        <div class="toolbar-title">
+          Campo UI
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>
+
+<%= render template: 'layouts/base' %>
