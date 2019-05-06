@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
 }
 
@@ -11,6 +17,7 @@ body {
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 .container-small {

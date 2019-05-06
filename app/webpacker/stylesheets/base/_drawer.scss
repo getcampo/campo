@@ -1,4 +1,4 @@
-.side-nav {
+.drawer {
   display: none;
 
   &.open {
@@ -6,7 +6,7 @@
   }
 }
 
-.side-nav-content {
+.drawer-content {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@
   box-shadow: 1px 0 3px rgba(0, 0, 0, 0.3);
 }
 
-.side-nav-background {
+.drawer-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -29,18 +29,21 @@
 }
 
 @media (min-width: 1200px) {
-  .side-nav-permanent {
+  .drawer-permanent {
     display: block;
 
-    .side-nav-content {
-      top: 56px;
-      background: #fafafa;
+    .drawer-content {
       box-shadow: none;
+      border-right: 1px solid #ccc;
       z-index: 0;
     }
 
     & + .main {
       margin-left: 240px;
+
+      & > .appbar {
+        margin-left: 240px;
+      }
     }
 
     &.open {
@@ -51,7 +54,7 @@
       }
     }
 
-    .side-nav-background {
+    .drawer-background {
       display: none;
     }
   }

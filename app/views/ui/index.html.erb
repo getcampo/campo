@@ -48,19 +48,8 @@
   }
 </style>
 
-<div class="appbar appbar-fixed appbar-white">
-  <div class="toolbar toolbar-fixed toolbar-white">
-    <div class="toolbar-action">
-      <button type="button" class="button button-icon" data-toggle="#side-nav"><i class="material-icons">menu</i></button>
-    </div>
-    <div class="toolbar-title">
-      Campo UI
-    </div>
-  </div>
-</div>
-
-<nav id="side-nav" class="side-nav side-nav-permanent" data-controller="side-nav">
-  <div class="side-nav-content">
+<nav id="drawer" class="drawer drawer-permanent" data-controller="drawer">
+  <div class="drawer-content">
     <div class="list">
       <% %w(buttons forms dropdowns toolbars cards dialogs lists snackbars).each do |name| %>
         <a href="#<%= name %>" class="list-item">
@@ -71,11 +60,22 @@
       <% end %>
     </div>
   </div>
-  <div class="side-nav-background" data-action="click->side-nav#close">
+  <div class="drawer-background" data-action="click->drawer#close">
   </div>
 </nav>
 
 <main class="main with-appbar">
+  <div class="appbar appbar-fixed appbar-white">
+    <div class="toolbar toolbar-fixed toolbar-white">
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon" data-toggle="#drawer"><i class="material-icons">menu</i></button>
+      </div>
+      <div class="toolbar-title">
+        Campo UI
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <section>
       <h3 id="buttons">Buttons</h3>
