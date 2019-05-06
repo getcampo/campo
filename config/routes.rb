@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:index, :show]
+
   concern :trashable do
     member do
       put :trash

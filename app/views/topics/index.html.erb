@@ -12,7 +12,7 @@
         </button>
 
         <div class="collapse collapse-md-only" id="settings-nav">
-          <nav class="nav nav-pills flex-column">
+          <nav class="nav nav-pills flex-column mb-3">
             <a href="<%= root_path %>" class="nav-link <%= 'active' if controller_name == 'home' %>">
               All
             </a>
@@ -20,16 +20,12 @@
               Following
             </a>
           </nav>
-          <div class="pt-2 pb-2 px-3 text-muted">
-            <small>Forums</small>
-          </div>
           <nav class="nav nav-pills flex-column">
-            <% Forum.all.limit(10).each do |forum| %>
-              <a href="<%= forum_path(forum) %>" class="nav-link <%= 'active' if @forum == forum %>">
-                <%= forum.name %>
+            <% Category.all.top_level.each do |category| %>
+              <a href="<%= category_path(id: category.slug) %>" class="nav-link <%= 'active' if @category == category %>">
+                <%= category.name %>
               </a>
             <% end %>
-            <a href="#" class="nav-link">More...</a>
           </nav>
         </div>
       </div>

@@ -6,6 +6,8 @@ class Category < ApplicationRecord
   validates :name, :slug, presence: true
   validates :slug, uniqueness: { case_sensitive: false }
 
+  scope :top_level, -> { where(parent_id: nil) }
+
   def ancestors
     Category.find_by_sql(["
       WITH RECURSIVE result AS (
