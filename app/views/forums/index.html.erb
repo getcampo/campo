@@ -1,0 +1,27 @@
+<% content_for :toolbar_title do %>
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/"><%= t 'common.home' %></a>
+    </li>
+    <li class="breadcrumb-item active">
+      <%= t '.all_forums' %>
+    </li>
+  </ul>
+<% end %>
+
+<div class="list">
+  <% @forums.each do |forum| %>
+    <a class="list-item" href="<%= forum_path(forum) %>">
+      <div class="list-item-icon">
+        <i class="material-icons">forum</i>
+      </div>
+      <div class="list-item-content">
+        <h3 class="list-item-content-primary">
+          <%= forum.name %>
+          <span class="text-secondary float-right"><%= forum.topics.size %> topics</span>
+        </h3>
+        <div class="list-item-content-secondary"><%= forum.description %></div>
+      </div>
+    </a>
+  <% end %>
+</div>

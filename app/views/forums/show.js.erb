@@ -1,0 +1,5 @@
+document.querySelector('#topics').insertAdjacentHTML('beforeend', '<%= j render partial: "topics/topic", collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>')
+document.querySelector('#topics').dataset.infinitePage = '<%= params[:page] %>'
+<% if @forum.topics.count <= ((params[:page] || 1).to_i * 25) %>
+  document.querySelector('#topics').dataset.infinitePageEnd = 'true'
+<% end %>

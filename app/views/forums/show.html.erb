@@ -1,0 +1,21 @@
+<% content_for :toolbar_title do %>
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/"><%= t 'common.home' %></a>
+    </li>
+    <li class="breadcrumb-item active">
+      <%= @forum.name %>
+    </li>
+  </ul>
+<% end %>
+
+<a href="<%= new_topic_path(forum_id: @forum.id) %>" class="button button-floating button-secondary right-bottom" data-controller="visible-to-user">
+  <i class="material-icons">add</i>
+</a>
+
+<div id="topics" class="list" data-controller="infinite-page" data-infinite-page="<%= params[:page] || 1 %>" data-infinite-page-url="<%= forum_path(@forum) %>">
+  <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic, topic.user] } %>
+</div>
+<div class="loading-message">
+  <i class="material-icons animated rotate">refresh</i>
+</div>

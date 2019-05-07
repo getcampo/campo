@@ -6,6 +6,7 @@ class Topic < ApplicationRecord
   has_many :subscriptions
   has_many :subscribed_users, -> { where(subscriptions: { status: 'subscribed' }) }, through: :subscriptions, source: :user
   has_many :ignored_users, -> { where(subscriptions: { status: 'ignored' }) }, through: :subscriptions, source: :user
+  belongs_to :forum, counter_cache: true, touch: true
   belongs_to :category, touch: true, optional: true
   belongs_to :user
   belongs_to :last_comment, class_name: 'Comment', optional: true

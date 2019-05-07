@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
+  resources :forums, only: [:index, :show] do
+    collection do
+      post 'validate/:attribute', to: 'forums#validate', constraints: { attribute: /name|slug/ }
+    end
+  end
+
   resources :categories, only: [:index, :show]
 
   concern :trashable do
@@ -45,6 +51,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'dashboard#index'
+    resources :forums
     resources :categories
   end
 

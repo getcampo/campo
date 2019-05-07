@@ -26,14 +26,16 @@ en:
       topic: Topic
       user: User
   admin:
-    categories:
+    forums:
       index:
         action: Action
-        id: Id
-        name: Name
-        parent: Parent
+        description: Description
+        id: ID
+        name: name
         slug: Slug
+        topics: Topics
   common:
+    home: Home
     password: Password
     sign_in: Sign in
     sign_up: Sign up
@@ -44,8 +46,8 @@ en:
       taken: Already exists
   flash:
     account_is_successfully_updated: Account is successfully updated.
-    category_is_successfully_created: Category is successfully created
-    category_is_successfully_updated: Category is successfully updated
+    forum_is_successfully_created: Forum is successfully created.
+    forum_is_successfully_updated: Forum is successfully updated.
     invalid_token: Invalid token.
     password_is_successfully_reset: Password is successfully reset.
     password_is_successfully_updated: Password is successfully updated.
@@ -54,6 +56,9 @@ en:
     topic_is_successfully_deleted: Topic is successfully deleted.
     user_not_found: User not found.
     you_have_no_permissions: You have no permissions.
+  forums:
+    index:
+      all_forums: All Forums
   helpers:
     select:
       prompt: Please Select

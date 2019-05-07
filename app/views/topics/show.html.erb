@@ -1,6 +1,7 @@
 <nav>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/" class="text-muted">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= forum_path(@topic.forum) %>" class="text-muted"><%= @topic.forum.name %></a></li>
   </ol>
 </nav>
 

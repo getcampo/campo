@@ -26,14 +26,16 @@ zh-CN:
       topic: 话题
       user: 用户
   admin:
-    categories:
+    forums:
       index:
-        action: Action
-        id: Id
-        name: Name
-        parent: Parent
+        action: 动作
+        description: 描述
+        id: ID
+        name: 名称
         slug: Slug
+        topics: 话题数
   common:
+    home: 首页
     password: 密码
     sign_in: 登录
     sign_up: 注册
@@ -44,8 +46,8 @@ zh-CN:
       taken: 已经存在
   flash:
     account_is_successfully_updated: 账号更新成功。
-    category_is_successfully_created: Category is successfully created
-    category_is_successfully_updated: Category is successfully updated
+    forum_is_successfully_created: 版块创建成功。
+    forum_is_successfully_updated: 版块更新成功。
     invalid_token: 无效 Token。
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
@@ -54,6 +56,9 @@ zh-CN:
     topic_is_successfully_deleted: 话题删除成功。
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
+  forums:
+    index:
+      all_forums: 全部版块
   helpers:
     select:
       prompt: 请选择
