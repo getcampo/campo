@@ -1,53 +1,28 @@
-<% content_for :body do %>
-  <nav class="navbar sticky-top navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="<%= asset_pack_path 'media/images/logo.png' %>" width="30" height="30" class="d-inline-block align-top" alt="">
-        Campo
-      </a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="locale" content="<%= I18n.locale %>">
+    <link rel="icon" href="<%= asset_pack_path 'media/images/logo.png' %>">
 
-      <form class="form-inline ml-auto">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      </form>
+    <title>Campo</title>
 
-      <ul class="navbar-nav flex-row">
-        <% if Current.user %>
-          <li class="nav-item">
-            <a class="nav-link position-relative" href="<%= notifications_path %>">
-              <i class="fa fa-bell"></i>
-              <% if Current.user.notifications.unread.any? %>
-                <span class="notification-unread"></span>
-              <% end %>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-              <%= Current.user.name %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="<%= profile_path(username: Current.user.username) %>">Profile</a>
-              <a class="dropdown-item" href="<%= settings_account_path %>">Settings</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<%= session_path %>" data-remote="true" data-method="delete">Sign out</a>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= new_session_path %>">Sign in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= new_user_path %>">Sign up</a>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <main class="main with-appbar">
-    <div class="container">
-      <%= yield %>
-    </div>
-  </main>
-<% end %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<%= render template: 'layouts/base' %>
+    <% if Current.user %>
+      <meta name="current-user-id" content="<%= Current.user.id %>">
+      <meta name="current-user-admin" content="<%= Current.user.admin? %>">
+    <% end %>
+
+    <%= yield(:head) %>
+  </head>
+
+  <body>
+    <%= content_for?(:body) ? yield(:body) : yield %>
+  </body>
+</html>

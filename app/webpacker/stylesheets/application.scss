@@ -72,3 +72,19 @@ img {
   top: 8px;
   right: 8px;
 }
+
+.brand {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
+
+  span {
+    font-weight: bold;
+    margin-left: 8px;
+  }
+}
