@@ -11,8 +11,8 @@
 
 .list-item-avatar {
   padding: 16px;
-  flex: 0 0 40px;
-  line-height: 0;
+  flex: 0 0 72px;
+  line-height: 1;
 
   img {
     width: 40px;
@@ -54,15 +54,15 @@
 
 .list-item-content-primary {
   font-size: 16px;
-  line-height: 1.2;
-  margin: 0 0 8px;
+  margin: 0;
   font-weight: normal;
+  line-height: 20px;
 }
 
 .list-item-content-secondary {
   font-size: 14px;
-  line-height: 1.2;
   margin: 0;
+  line-height: 20px;
   color: var(--text-secondary-color);
 }
 
@@ -79,6 +79,12 @@
   &:first-child {
     flex: 0 0 40px;
   }
+}
+
+.list-item-meta {
+  padding: 16px;
+  flex: 0 0 auto;
+  line-height: 20px;
 }
 
 a.list-item,

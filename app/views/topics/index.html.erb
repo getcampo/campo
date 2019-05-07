@@ -5,7 +5,7 @@
       <span>Campo</span>
     </div>
     <div class="drawer-menu">
-      <a href="" class="drawer-item active">
+      <a href="<%= root_path %>" class="drawer-item <%= 'active' if controller_name == 'home' %>">
         <div class="drawer-item-icon">
           <i class="material-icons">home</i>
         </div>
@@ -25,7 +25,7 @@
     </div>
     <div class="drawer-menu">
       <% Forum.all.each do |forum| %>
-        <a href="" class="drawer-item">
+        <a href="<%= forum_path(forum) %>" class="drawer-item <%= 'active' if @forum == forum %>">
           <div class="drawer-item-icon">
             <i class="material-icons">label</i>
           </div>
@@ -36,11 +36,26 @@
   </div>
 </div>
 
-<main class="main">
+<main class="main with-appbar">
   <div class="appbar appbar-primary appbar-fixed">
     <div class="toolbar">
       <div class="toolbar-title">
-        Home
+        <% case controller_name when 'home' %>
+          Home
+        <% when 'forums' %>
+          <%= @forum.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+      <div class="list" data-target="infinite-page.container">
+        <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
+      </div>
+      <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
+        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
       </div>
     </div>
   </div>
