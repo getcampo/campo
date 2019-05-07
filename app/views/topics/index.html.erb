@@ -24,12 +24,12 @@
       Forums
     </div>
     <div class="drawer-menu">
-      <% Category.all.each do |category| %>
+      <% Forum.all.each do |forum| %>
         <a href="" class="drawer-item">
           <div class="drawer-item-icon">
             <i class="material-icons">label</i>
           </div>
-          <%= category.name %>
+          <%= forum.name %>
         </a>
       <% end %>
     </div>

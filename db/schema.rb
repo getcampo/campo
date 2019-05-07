@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.bigint "parent_id"
-    t.string "name"
-    t.string "slug"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index "lower((slug)::text)", name: "index_categories_on_lower_slug", unique: true
-    t.index ["parent_id"], name: "index_categories_on_parent_id"
-  end
-
   create_table "forums", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
