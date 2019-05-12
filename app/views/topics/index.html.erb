@@ -1,9 +1,5 @@
-<div class="drawer drawer-permanent">
+<div class="drawer">
   <div class="drawer-content">
-    <div class="brand">
-      <img src="<%= asset_pack_path 'media/images/logo.png' %>">
-      <span>Campo</span>
-    </div>
     <div class="drawer-menu">
       <a href="<%= root_path %>" class="drawer-item <%= 'active' if controller_name == 'home' %>">
         <div class="drawer-item-icon">
@@ -37,15 +33,25 @@
 </div>
 
 <main class="main with-appbar">
-  <div class="appbar appbar-primary appbar-fixed">
+  <div class="appbar appbar-white appbar-fixed">
     <div class="toolbar">
-      <div class="toolbar-title">
-        <% case controller_name when 'home' %>
-          Home
-        <% when 'forums' %>
-          <%= @forum.name %>
-        <% end %>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon" data-toggle="#drawer"><i class="material-icons">menu</i></button>
       </div>
+      <div class="toolbar-title">
+        <a href="/" class="normal">
+          <img src="<%= asset_pack_path 'media/images/logo.png' %>" class="logo">
+          <span>Campo</span>
+        </a>
+      </div>
+      <% if Current.user %>
+      <% else %>
+        <div class="toolbar-action">
+          <a href="" class="button button-text">
+            Sign in
+          </a>
+        </div>
+      <% end %>
     </div>
   </div>
 

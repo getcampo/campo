@@ -73,18 +73,12 @@ img {
   right: 8px;
 }
 
-.brand {
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
+.logo {
+  height: 40px;
+  margin: -16px 0 -16px -16px;
+}
 
-  img {
-    height: 40px;
-    width: 40px;
-  }
-
-  span {
-    font-weight: bold;
-    margin-left: 8px;
-  }
+a.normal {
+  color: var(--text-primary-color);
+  text-decoration: none;
 }
