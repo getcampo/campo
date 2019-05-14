@@ -1,47 +1,50 @@
 .post {
-  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .post-header {
-  line-height: 24px;
-  margin-bottom: 16px;
-}
+  display: flex;
+  align-items: center;
+  margin-top: -16px;
+  margin-right: -16px;
 
-.post-avatar {
-  display: inline-block;
-  line-height: 1;
-  margin-right: 8px;
-
-  .avatar {
-    height: 24px;
-    width: 24px;
+  .button-icon {
+    margin: 6px;
   }
 }
 
-@include media-breakpoint-up(sm) {
-  .post {
-    position: relative;
-    padding-left: 56px;
+.post-info {
+  flex: 1;
+  color: var(--text-secondary-color);
+}
+
+.post-username {
+  text-decoration: none;
+  color: var(--text-primary-color);
+
+  span {
+    color: var(--text-secondary-color);
   }
 
-  .post-header {
-    margin-bottom: 8px;
-  }
-
-  .post-avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    .avatar {
-      height: 48px;
-      width: 48px;
+  &:hover {
+    b {
+      text-decoration: underline;
     }
   }
 }
 
-.post-composer.open.expand {
-  .post-composer-col {
-    margin: 0 auto;
+.post-body {
+}
+
+.post-footer {
+  margin-left: -12px;
+  margin-bottom: -9px;
+
+  .button-text {
+    color: var(--text-secondary-color);
+
+    &:hover {
+      color: var(--text-primary-color);
+    }
   }
 }

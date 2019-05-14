@@ -1,0 +1,15 @@
+.topic-content {
+  display: flex;
+}
+
+.topic-main {
+  flex: 1;
+}
+
+.topic-sidebar {
+}
+
+.topic-panel {
+  position: fixed;
+  margin-right: -240px;
+}

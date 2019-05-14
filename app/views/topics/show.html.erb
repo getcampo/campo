@@ -1,22 +1,25 @@
-<nav>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/" class="text-muted">Home</a></li>
-    <li class="breadcrumb-item"><a href="<%= forum_path(@topic.forum) %>" class="text-muted"><%= @topic.forum.name %></a></li>
-  </ol>
-</nav>
-
-<div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
-  <div class="mb-3">
-    <%= render 'topic_title' %>
-    <%= @topic.user.name %> Created at <%= local_time_or_date @topic.created_at %>
+<div id="topic" class="topic card mt-2" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
+  <div class="card-header border-bottom">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <a href="<%= forum_path(@topic.forum) %>" class="text-secondary"><%= @topic.forum.name %></a>
+        <%= @topic.title %>
+      </div>
+      <div class="toolbar-action">
+        <button type="button" class="button button-icon">
+          <i class="material-icons">more_vert</i>
+        </button>
+      </div>
+    </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-9">
-      <div class="p-4 text-muted text-center d-none" data-target="topic.loadingBefore">
-        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+  <div class="topic-content">
+    <div class="topic-main">
+      <div class="p-2 text-secondary text-align-center d-none" data-target="topic.loadingBefore">
+        <i class="material-icons animated spin">sync</i>
       </div>
       <div id="posts"
+        class="list"
         data-target="topic.posts"
         data-focus-id="<%= @focus_post&.id %>"
         data-begin-id="<%= @posts.first&.id %>"
@@ -28,40 +31,42 @@
         >
         <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
       </div>
-      <div class="p-4 text-muted text-center d-none" data-target="topic.loadingAfter">
-        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+      <div class="p-2 text-secondary text-align-center d-none" data-target="topic.loadingAfter">
+        <i class="material-icons animated spin">sync</i>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="position-fixed w-100">
+
+    <div class="topic-sidebar">
+      <div class="topic-panel">
         <% if Current.user %>
-          <button type="button" class="btn btn-primary mb-2" data-action="topic#newPost">
-            Reply
+          <button type="button" class="button button-text button-primary" data-action="topic#newPost">
+            <i class="material-icons">reply</i> Reply
           </button>
-          <%= render 'subscriptions/button', topic: @topic %>
         <% else %>
           <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
         <% end %>
         <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
-          <button type="button" class="slider-link" data-action="slider#min">
-            <i class="fa fa-angle-double-up"></i> First
+          <button type="button" class="button button-text" data-action="slider#min">
+            <i class="material-icons">expand_less</i> First post
           </button>
           <div class="slider-scrollbar" data-target="slider.scrollbar">
             <div class="slider-handle" data-target="slider.handle">
               <div class="slider-bar">
               </div>
               <div class="slider-info">
-                <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
+                <span data-target="slider.value"></span> / <span data-target="slider.range"></span>
               </div>
             </div>
           </div>
-          <button type="button" class="slider-link" data-action="slider#max">
-            <i class="fa fa-angle-double-down"></i> Last
+          <button type="button" class="button button-text" data-action="slider#max">
+            <i class="material-icons">expand_more</i> Last post
           </button>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <% if Current.user %>
     <div id="post-composer" class="composer post-composer" data-controller="composer" data-target="topic.composer">

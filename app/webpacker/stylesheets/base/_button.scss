@@ -1,8 +1,7 @@
 .button {
-  display: inline-block;
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
-  vertical-align: middle;
   outline: 0;
   text-align: center;
   text-decoration: none;
@@ -10,16 +9,26 @@
   white-space: nowrap;
 }
 
+.button-contained,
+.button-text,
+.button-outlined {
+  font-size: 16px;
+  line-height: 18px;
+
+  .material-icons {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+}
+
 .button[disabled] {
   pointer-events: none;
 }
 
 .button-contained {
-  line-height: 24px;
-  padding: 6px 12px;
+  padding: 9px 12px;
   border: 0;
   border-radius: 2px;
-  min-width: 88px;
   color: var(--text-primary-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
@@ -47,12 +56,11 @@
 }
 
 .button-text {
-  line-height: 24px;
-  padding: 6px 12px;
+  padding: 9px 12px;
   border: 0;
   border-radius: 2px;
-  min-width: 88px;
   color: var(--text-primary-color);
+  background: transparent;
 
   &:hover {
     background: rgba(0, 0, 0, 0.05);
@@ -76,11 +84,9 @@
 }
 
 .button-outlined {
-  line-height: 24px;
-  padding: 5px 11px;
+  padding: 8px 11px;
   border: 1px solid var(--border-color);
   border-radius: 2px;
-  min-width: 88px;
   color: var(--text-primary-color);
 
   &:hover {
@@ -145,18 +151,25 @@
 }
 
 .button-icon {
-  line-height: 0;
-  width: 48px;
-  padding: 12px;
+  line-height: 1;
+  padding: 9px;
   border: 0;
-  border-radius: 24px;
-  color: var(--text-primary-color);
+  border-radius: 50%;
+  color: var(--text-secondary-color);
   background: transparent;
 
+  .material-icons {
+    font-size: 18px;
+  }
+
   &:hover {
+    color: var(--text-primary-color);
+    background: rgba(0, 0, 0, 0.05);
   }
 
   &:active {
+    color: var(--text-primary-color);
+    background: rgba(0, 0, 0, 0.1);
   }
 
   &.button-primary {

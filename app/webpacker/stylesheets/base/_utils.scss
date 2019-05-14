@@ -1,3 +1,7 @@
+.d-none {
+  display: none;
+}
+
 .float-right {
   float: right;
 }
@@ -17,6 +21,10 @@
 a.text-secondary {
   color: var(--text-secondary-color);
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .text-small {
@@ -75,4 +83,8 @@ a.text-secondary {
   .mb-#{$i} {
     margin-bottom: $i * 4px;
   }
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
 }

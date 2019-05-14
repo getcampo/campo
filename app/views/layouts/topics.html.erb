@@ -1,0 +1,65 @@
+<% content_for :body do %>
+  <div class="drawer">
+    <div class="drawer-content">
+      <div class="drawer-menu">
+        <a href="<%= root_path %>" class="drawer-item <%= 'active' if controller_name == 'home' %>">
+          <div class="drawer-item-icon">
+            <i class="material-icons">home</i>
+          </div>
+          Home
+        </a>
+        <a href="" class="drawer-item">
+          <div class="drawer-item-icon">
+            <i class="material-icons">star</i>
+          </div>
+          Starred
+        </a>
+      </div>
+      <div class="divider">
+      </div>
+      <div class="subtitle">
+        Forums
+      </div>
+      <div class="drawer-menu">
+        <% Forum.all.each do |forum| %>
+          <a href="<%= forum_path(forum) %>" class="drawer-item <%= 'active' if @forum == forum %>">
+            <div class="drawer-item-icon">
+              <i class="material-icons">label</i>
+            </div>
+            <%= forum.name %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <main class="main with-appbar">
+    <div class="appbar appbar-white appbar-fixed">
+      <div class="toolbar">
+        <div class="toolbar-action">
+          <button type="button" class="button button-icon" data-toggle="#drawer"><i class="material-icons">menu</i></button>
+        </div>
+        <div class="toolbar-title">
+          <a href="/" class="normal">
+            <img src="<%= asset_pack_path 'media/images/logo.png' %>" class="logo">
+            <span>Campo</span>
+          </a>
+        </div>
+        <% if Current.user %>
+        <% else %>
+          <div class="toolbar-action">
+            <a href="" class="button button-text">
+              Sign in
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>
+
+<%= render template: 'layouts/application' %>

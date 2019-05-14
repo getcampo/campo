@@ -27,3 +27,17 @@
 .fadeOutHalf {
   animation-name: fadeOutHalf;
 }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(-1turn)
+    }
+}
+
+.spin {
+    animation: spin 2s infinite linear
+}

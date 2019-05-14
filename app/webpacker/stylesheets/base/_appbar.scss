@@ -6,6 +6,14 @@
   .tab-item:first-child {
     margin-left: 56px;
   }
+
+  .button-icon {
+    padding: 6px;
+
+    .material-icons {
+      font-size: 24px;
+    }
+  }
 }
 
 .appbar-fixed {
@@ -28,6 +36,10 @@
   .button-icon,
   .button-text {
     color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 
   .tab-item {
@@ -45,6 +57,10 @@
 
   .button-icon {
     color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 
   .tab-item {

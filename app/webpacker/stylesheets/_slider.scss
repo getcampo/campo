@@ -1,32 +1,21 @@
 .slider {
-  margin: 16px;
-}
-
-.slider-link {
-  background: none;
-  border: none;
-  padding: 0;
-
-  &:focus {
-    outline: 0;
-  }
+  margin: 16px 0;
 }
 
 .slider-scrollbar {
   height: 160px;
-  margin: 8px 0 8px 4px;
-  border-left: 2px solid $gray-300;
+  margin: 8px 0 8px 20px;
+  border-left: 2px solid #ccc;
   position: relative;
   cursor: pointer;
 }
 
 .slider-handle {
   position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 4px 0;
   margin-left: -3px;
-  background-color: white;
   cursor: ns-resize;
 }
 
@@ -37,11 +26,11 @@
 .slider-bar {
   width: 4px;
   height: 100%;
-  background-color: $primary;
+  background-color: var(--primary-color);
   border-radius: 2px;
 }
 
 .slider-info {
-  margin-left: 8px;
+  margin-left: 16px;
   user-select: none;
 }

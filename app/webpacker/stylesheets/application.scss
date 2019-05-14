@@ -3,12 +3,17 @@
 @import 'base/all';
 @import 'material-icons';
 // @import 'media';
-// @import 'post';
+@import 'topic';
+@import 'post';
 @import 'composer';
-// @import 'slider';
+@import 'slider';
 // @import 'editor';
 // @import 'expandable';
-// @import 'infinite_page';
+@import 'infinite_page';
+
+html {
+  background: #efefef;
+}
 
 img {
   max-width: 100%;

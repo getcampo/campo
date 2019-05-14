@@ -1,6 +1,10 @@
 .toolbar {
   display: flex;
-  align-items: center;
+  align-items: start;
+
+  .button-icon {
+    margin: 6px;
+  }
 }
 
 .toolbar-action {
@@ -16,9 +20,6 @@
 }
 
 .toolbar-title {
-  flex: 1 1 0;
-  overflow: hidden;
-  white-space: nowrap;
   padding: 12px;
   line-height: 24px;
   flex-grow: 1;
