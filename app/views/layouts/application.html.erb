@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="locale" content="<%= I18n.locale %>">
-    <link rel="icon" href="<%= asset_pack_path 'media/images/logo.png' %>">
+<% content_for :body do %>
+  <main class="main with-appbar">
+    <div class="appbar appbar-white appbar-fixed">
+      <div class="container">
+        <div class="toolbar">
+          <div class="toolbar-title">
+            <a href="/" class="normal">
+              <img src="<%= asset_pack_path 'media/images/logo.png' %>" class="logo">
+              <span>Campo</span>
+            </a>
+          </div>
+          <% if Current.user %>
+          <% else %>
+            <div class="toolbar-action">
+              <a href="" class="button button-text">
+                Sign in
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-    <title>Campo</title>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </main>
+<% end %>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <% if Current.user %>
-      <meta name="current-user-id" content="<%= Current.user.id %>">
-      <meta name="current-user-admin" content="<%= Current.user.admin? %>">
-    <% end %>
-
-    <%= yield(:head) %>
-  </head>
-
-  <body>
-    <%= content_for?(:body) ? yield(:body) : yield %>
-  </body>
-</html>
+<%= render template: 'layouts/base' %>

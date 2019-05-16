@@ -1,7 +1,15 @@
 class TopicsController < ApplicationController
   before_action :require_sign_in, except: :show
-  before_action :set_topic, except: [:create]
+  before_action :set_topic, except: [:new, :create]
   before_action :check_edit_permission, only: [:update, :trash]
+
+  def new
+    @topic = Topic.new first_post_attributes: {}
+
+    if params[:forum_id].present?
+      @topic.forum = Forum.find_by(id: params[:forum_id])
+    end
+  end
 
   def create
     @topic = Current.user.topics.new topic_params

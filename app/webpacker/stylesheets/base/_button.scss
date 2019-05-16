@@ -17,7 +17,6 @@
 
   .material-icons {
     font-size: 18px;
-    margin-right: 8px;
   }
 }
 
@@ -196,6 +195,28 @@
 }
 
 .form label.button {
-  display: inline-block;
+  display: inline-flex;
   margin-bottom: 0;
+}
+
+.button-group {
+  display: inline-flex;
+}
+
+.button-toggle {
+  padding: 6px;
+  background: white;
+  border: none;
+
+  & + .button-toggle {
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
 }

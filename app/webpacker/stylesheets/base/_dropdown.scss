@@ -13,7 +13,7 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 0;
+  top: 100%;
   left: 0;
   padding: 8px 0;
   background: white;
@@ -34,7 +34,7 @@
 
 .dropdown-menu-top {
   top: auto;
-  bottom: 0;
+  bottom: 100%;
 }
 
 .dropdown-menu-item {

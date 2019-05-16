@@ -1,8 +1,51 @@
-<div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
-  <div class="list" data-target="infinite-page.container">
-    <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
+<div class="card mt-4">
+  <div class="card-header border-bottom">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-text" data-action="dropdown#open">
+            All
+            <i class="material-icons ml-2">expand_more</i>
+          </button>
+          <div class="dropdown-menu">
+            <% Forum.limit(5).each do |forum| %>
+              <a href="<%= forum_path(forum) %>" class="dropdown-menu-item">
+                <%= forum.name %>
+              </a>
+            <% end %>
+            <a href="#" class="dropdown-menu-item">More...</a>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar-action">
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-text" data-action="dropdown#open">
+            Activated
+            <i class="material-icons ml-2">expand_more</i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-menu-item">
+              Activated
+            </a>
+            <a href="#" class="dropdown-menu-item">
+              Created
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar-space">
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= new_topic_path %>" class="button button-contained button-primary">New Topic</a>
+      </div>
+    </div>
   </div>
-  <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
-    <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+  <div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+    <div class="list" data-target="infinite-page.container">
+      <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
+    </div>
+    <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
+      <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+    </div>
   </div>
 </div>

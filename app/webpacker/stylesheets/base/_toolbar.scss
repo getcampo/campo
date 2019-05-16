@@ -2,21 +2,11 @@
   display: flex;
   align-items: start;
 
-  .button-icon {
-    margin: 6px;
-  }
 }
 
 .toolbar-action {
-  flex: 0 0 48px;
-
-  &:first-child {
-    flex: 0 0 56px;
-  }
-
-  .button-text {
-    min-width: 0;
-  }
+  flex-grow: 0;
+  padding: 6px;
 }
 
 .toolbar-title {
@@ -24,4 +14,8 @@
   line-height: 24px;
   flex-grow: 1;
   font-weight: bold;
+}
+
+.toolbar-space {
+  flex-grow: 1;
 }
