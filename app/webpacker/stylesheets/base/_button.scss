@@ -111,14 +111,21 @@
 
 
 .button-floating {
-  line-height: 0;
   padding: 16px;
-  width: 56px;
   border: 0;
   border-radius: 28px;
   vertical-align: middle;
   color: var(--text-primary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  .material-icons {
+    font-size: 24px;
+  }
+
+  &.extended {
+    padding: 12px 20px 12px 12px;
+    border-radius: 24px;
+  }
 
   &:hover {
     opacity: 0.9;

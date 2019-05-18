@@ -1,10 +1,9 @@
 .slider {
-  margin: 16px 0;
 }
 
 .slider-scrollbar {
-  height: 160px;
-  margin: 8px 0 8px 20px;
+  height: 240px;
+  margin-left: 27px;
   border-left: 2px solid #ccc;
   position: relative;
   cursor: pointer;
@@ -16,7 +15,16 @@
   display: flex;
   align-items: center;
   margin-left: -3px;
-  cursor: ns-resize;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
 }
 
 .slider-handle:not(.dragging) {

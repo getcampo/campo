@@ -1,73 +1,78 @@
-<div id="topic" class="topic card mt-4" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
-  <div class="card-header border-bottom">
-    <div class="toolbar">
-      <div class="toolbar-title">
-        <a href="<%= forum_path(@topic.forum) %>" class="text-secondary"><%= @topic.forum.name %></a>
-        <%= @topic.title %>
-      </div>
-      <div class="toolbar-action">
-        <button type="button" class="button button-icon">
-          <i class="material-icons">more_vert</i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="topic-content">
-    <div class="topic-main">
-      <div class="p-2 text-secondary text-align-center d-none" data-target="topic.loadingBefore">
-        <i class="material-icons animated spin">sync</i>
-      </div>
-      <div id="posts"
-        class="list"
-        data-target="topic.posts"
-        data-focus-id="<%= @focus_post&.id %>"
-        data-begin-id="<%= @posts.first&.id %>"
-        data-end-id="<%= @posts.last&.id %>"
-        data-reached-begin="<%= @reached_begin %>"
-        data-reached-end="<%= @reached_end %>"
-        data-offset="<%= @offset %>"
-        data-total="<%= @topic.posts.count %>"
-        >
-        <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
-      </div>
-      <div class="p-2 text-secondary text-align-center d-none" data-target="topic.loadingAfter">
-        <i class="material-icons animated spin">sync</i>
-      </div>
-
-      <% if Current.user %>
-        <%= render 'posts/form', post: @topic.posts.new(user: Current.user) %>
-      <% else %>
-        <a href="#" class="button button-contained button-primary">Sign in to Post</a>
-      <% end %>
-    </div>
-
-    <div class="topic-sidebar">
-      <div class="topic-panel">
-        <% if Current.user %>
-          <button type="button" class="button button-text button-primary" data-action="topic#newPost">
-            <i class="material-icons">reply</i> Reply
-          </button>
-        <% else %>
-          <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
-        <% end %>
-        <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
-          <button type="button" class="button button-text" data-action="slider#min">
-            <i class="material-icons">expand_less</i> First post
-          </button>
-          <div class="slider-scrollbar" data-target="slider.scrollbar">
-            <div class="slider-handle" data-target="slider.handle">
-              <div class="slider-bar">
-              </div>
-              <div class="slider-info">
-                <span data-target="slider.value"></span> / <span data-target="slider.range"></span>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="button button-text" data-action="slider#max">
-            <i class="material-icons">expand_more</i> Last post
+<div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
+  <div class="card mt-4">
+    <div class="card-header border-bottom">
+      <div class="toolbar">
+        <div class="toolbar-title">
+          <a href="<%= forum_path(@topic.forum) %>" class="text-secondary"><%= @topic.forum.name %></a>
+          <%= @topic.title %>
+        </div>
+        <div class="toolbar-action">
+          <button type="button" class="button button-icon">
+            <i class="material-icons">more_vert</i>
           </button>
         </div>
       </div>
     </div>
+
+    <div class="p-2 text-secondary text-align-center display-none" data-target="topic.loadingBefore">
+      <i class="material-icons animated spin">sync</i>
+    </div>
+    <div id="posts"
+      class="list"
+      data-target="topic.posts"
+      data-focus-id="<%= @focus_post&.id %>"
+      data-begin-id="<%= @posts.first&.id %>"
+      data-end-id="<%= @posts.last&.id %>"
+      data-reached-begin="<%= @reached_begin %>"
+      data-reached-end="<%= @reached_end %>"
+      data-offset="<%= @offset %>"
+      data-total="<%= @topic.posts.count %>"
+      >
+      <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
+    </div>
+    <div class="p-2 text-secondary text-align-center display-none" data-target="topic.loadingAfter">
+      <i class="material-icons animated spin">sync</i>
+    </div>
+
+    <% if Current.user %>
+      <%= render 'posts/form', post: @topic.posts.new(user: Current.user) %>
+    <% else %>
+      <a href="#" class="button button-contained button-primary">Sign in to Post</a>
+    <% end %>
   </div>
+
+  <div class="floating-action" data-controller="floating-action">
+    <button type="button" class="button button-floating extended" data-action="floating-action#open">
+      <i class="material-icons mr-2">comment</i>
+      <span class="text-monospace" data-target="topic.floatingActionText"></span>
+    </button>
+    <div class="floating-action-menu">
+      <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
+        <button type="button" class="floating-action-item" data-action="slider#min">
+          <i class="material-icons">expand_less</i> First post
+        </button>
+        <div class="slider-scrollbar" data-target="slider.scrollbar">
+          <div class="slider-handle" data-target="slider.handle">
+            <div class="slider-bar">
+            </div>
+            <div class="slider-info">
+              <span data-target="slider.value"></span> / <span data-target="slider.range"></span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="floating-action-item" data-action="slider#max">
+          <i class="material-icons">expand_more</i> Last post
+        </button>
+      </div>
+      <% if Current.user %>
+        <a href="#" class="floating-action-item">
+          <i class="material-icons">add</i> Create Post
+        </a>
+      <% else %>
+        <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
+      <% end %>
+    </div>
+    <div class="floating-action-backdrop" data-action="click->floating-action#close">
+    </div>
+  </div>
+</div>

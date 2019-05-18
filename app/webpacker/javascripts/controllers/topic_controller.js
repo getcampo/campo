@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate']
+  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate', 'floatingActionText']
 
   connect() {
     this.element.topicController = this
@@ -87,7 +87,7 @@ export default class extends Controller {
     }
 
     this.loading = true
-    this.loadingBeforeTarget.classList.remove('d-none')
+    this.loadingBeforeTarget.classList.remove('display-none')
     let url = new URL(location.href)
     url.searchParams.set('before', this.postsTarget.dataset.beginId)
     Rails.ajax({
@@ -108,7 +108,7 @@ export default class extends Controller {
       },
       complete: () => {
         this.loading = false
-        this.loadingBeforeTarget.classList.add('d-none')
+        this.loadingBeforeTarget.classList.add('display-none')
       }
     })
   }
@@ -119,7 +119,7 @@ export default class extends Controller {
     }
 
     this.loading = true
-    this.loadingAfterTarget.classList.remove('d-none')
+    this.loadingAfterTarget.classList.remove('display-none')
     let url = new URL(location.href)
     url.searchParams.set('after', this.postsTarget.dataset.endId)
     Rails.ajax({
@@ -136,7 +136,7 @@ export default class extends Controller {
       },
       complete: () => {
         this.loading = false
-        this.loadingAfterTarget.classList.add('d-none')
+        this.loadingAfterTarget.classList.add('display-none')
       }
     })
   }
@@ -156,7 +156,12 @@ export default class extends Controller {
       let end = parseInt(posts[posts.length - 1].dataset.index) + 1
       let total = parseInt(this.postsTarget.dataset.total)
       this.sliderTarget.sliderController.setData(begin, end, total)
+      this.updateFloatingActionText(`${end} / ${total}`)
     }
+  }
+
+  updateFloatingActionText(text) {
+    this.floatingActionTextTarget.textContent = text
   }
 
   // 64 is padding top with fixed navbar
