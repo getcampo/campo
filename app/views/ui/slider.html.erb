@@ -1,17 +1,21 @@
-<div class="slider" data-controller="slider" data-slider-begin="3" data-slider-end="3" data-slider-total="3">
-  <button type="button" class="button button-text">
-    <i class="material-icons">expand_less</i> First post
-  </button>
-  <div class="slider-scrollbar" data-target="slider.scrollbar">
-    <div class="slider-handle" data-target="slider.handle">
-      <div class="slider-bar">
+<div class="floating-action open">
+  <div class="floating-action-menu">
+    <div class="slider" data-controller="slider" data-slider-begin="3" data-slider-end="3" data-slider-total="3">
+      <button type="button" class="floating-action-item">
+        <i class="material-icons">expand_less</i> First post
+      </button>
+      <div class="slider-scrollbar" data-target="slider.scrollbar">
+        <div class="slider-handle" data-target="slider.handle">
+          <div class="slider-bar">
+          </div>
+          <div class="slider-info">
+            <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
+          </div>
+        </div>
       </div>
-      <div class="slider-info">
-        <span data-target="slider.value"></span> / <span data-target="slider.range"></span> post
-      </div>
+      <button type="button" class="floating-action-item">
+        <i class="material-icons">expand_more</i> last post
+      </button>
     </div>
   </div>
-  <button type="button" class="button button-text">
-    <i class="material-icons">expand_more</i> last post
-  </button>
 </div>
