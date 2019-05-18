@@ -1,31 +1,16 @@
-<%= form_with model: post, id: 'post-form', class: 'h-100 d-flex flex-column' do |form| %>
-  <div class="composer-header">
-    <h5 class="composer-title">
-      <% if post.new_record? %>
-        New Post
-      <% else %>
-        Edit Post
-      <% end %>
-    </h5>
-    <div class="composer-header-actions">
-      <button type="button" class="btn composer-expand-button" data-action="composer#expand">
-        <i class="fa fa-expand"></i>
-      </button>
-      <button type="button" class="btn composer-compress-button" data-action="composer#compress">
-        <i class="fa fa-compress"></i>
-      </button>
-      <button type="button" class="btn" data-action="composer#close">
-        <i class="fa fa-times"></i>
-      </button>
-    </div>
+<div class="post" id="<%= post.new_record? ? 'post-new' : "post-#{post.id}-edit" %>">
+  <div class="post-avatar">
+    <% if Current.user %>
+    <%= avatar_tag Current.user %>
+    <% end %>
   </div>
-  <div class="composer-body d-flex flex-column">
+  <div class="post-content">
+    <%= form_with model: post do |form| %>
     <%= form.hidden_field :topic_id %>
-    <div class="form-group mb-0 flex-grow-1">
+    <div class="form-field">
       <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
     </div>
+    <%= form.submit class: 'button button-contained button-primary' %>
+    <% end %>
   </div>
-  <div class="composer-footer">
-    <%= form.submit class: 'btn btn-primary ml-auto' %>
-  </div>
-<% end %>
+</div>

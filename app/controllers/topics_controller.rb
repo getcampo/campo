@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
 
     if @topic.save
       @topic.subscriptions.create(user: Current.user, status: 'subscribed')
-      render
+      redirect_to topic_path(@topic)
     else
       render 'update_form'
     end

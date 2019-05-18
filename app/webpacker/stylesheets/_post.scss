@@ -1,16 +1,31 @@
 .post {
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+}
+
+.post-avatar {
+  padding: 16px;
+  flex: 0 0 72px;
+  line-height: 1;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+  }
+}
+
+.post-content {
+  padding: 16px 16px 16px 0;
+  flex-grow: 1;
 }
 
 .post-header {
   display: flex;
   align-items: center;
-  margin-top: -16px;
-  margin-right: -16px;
-
-  .button-icon {
-    margin: 6px;
-  }
+  margin-top: -10px;
+  margin-right: -10px;
 }
 
 .post-info {

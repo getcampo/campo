@@ -1,11 +1,11 @@
 <% cache [I18n.locale, post, post.user] do %>
-  <div class="post list-item" id="post-<%= post.id %>" data-target="topic.post" data-number="<%= post.number %>" data-post-id="<%= post.id %>" data-post-username="<%= post.user.username %>">
-    <div class="list-item-avatar">
+  <div class="post" id="post-<%= post.id %>" data-target="topic.post" data-number="<%= post.number %>" data-post-id="<%= post.id %>" data-post-username="<%= post.user.username %>">
+    <div class="post-avatar">
       <a href="<%= profile_path(username: post.user.username) %>">
         <%= avatar_tag post.user %>
       </a>
     </div>
-    <div class="list-item-content">
+    <div class="post-content">
       <div class="post-header">
         <div class="post-info">
           <a class="post-username" href="<%= profile_path(username: post.user.username) %>">
@@ -21,13 +21,13 @@
             Edited at <%= local_time_or_date post.edited_at %>
           <% end %>
         </div>
-        <div class="dropdown">
-          <button type="button" class="button button-icon" data-toggle="dropdown">
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-icon" data-action="dropdown#open">
             <i class="material-icons">more_vert</i>
           </button>
-          <div class="dropdown-menu">
-            <a href="<%= edit_post_path(post) %>" class="dropdown-item" data-remote="true">Edit</a>
-            <a href="<%= trash_post_path(post) %>" class="dropdown-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item" data-remote="true">Edit</a>
+            <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
           </div>
         </div>
       </div>

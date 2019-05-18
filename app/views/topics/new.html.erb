@@ -7,28 +7,6 @@
     </div>
   </div>
   <div class="card-body">
-    <%= form_with model: @topic, html: { class: 'form' } do |form| %>
-      <div class="form-field">
-        <%= form.label :title %>
-        <%= form.text_field :title, autocomplete: 'off' %>
-      </div>
-
-      <div class="form-field">
-        <%= form.fields_for :first_post do |post_form| %>
-          <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
-        <% end %>
-      </div>
-      <div class="">
-        <button type="button" class="button button-contained button-primary">
-          Create Topic
-        </button>
-        <button type="button" class="button button-contained">
-          Save Draft
-        </button>
-        <button type="button" class="button button-text">
-          <i class="material-icons">trash</i>
-        </button>
-      </div>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
