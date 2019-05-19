@@ -1,49 +1,58 @@
 <% cache [I18n.locale, post, post.user] do %>
-  <div class="post" id="post-<%= post.id %>" data-target="topic.post" data-number="<%= post.number %>" data-post-id="<%= post.id %>" data-post-username="<%= post.user.username %>">
-    <div class="post-avatar">
-      <a href="<%= profile_path(username: post.user.username) %>">
-        <%= avatar_tag post.user %>
-      </a>
-    </div>
-    <div class="post-content">
-      <div class="post-header">
-        <div class="post-info">
-          <a class="post-username" href="<%= profile_path(username: post.user.username) %>">
-            <b><%= post.user.name %></b>
-            <span>@<%= post.user.username %></span>
-          </a>
-          ·
-          <a href="<%= topic_path(post.topic, number: (post.number > 1 ? post.number : nil)) %>" class="text-secondary">
-            <%= local_time_or_date post.created_at %>
-          </a>
-          <% if post.edited_at %>
+  <div
+    class="post"
+    id="post-<%= post.id %>"
+    data-controller="post"
+    data-target="topic.post"
+    data-number="<%= post.number %>"
+    data-post-id="<%= post.id %>"
+    data-post-username="<%= post.user.username %>">
+    <div class="post-container" data-target="post.container">
+      <div class="post-avatar">
+        <a href="<%= profile_path(username: post.user.username) %>">
+          <%= avatar_tag post.user %>
+        </a>
+      </div>
+      <div class="post-content">
+        <div class="post-header">
+          <div class="post-info">
+            <a class="post-username" href="<%= profile_path(username: post.user.username) %>">
+              <b><%= post.user.name %></b>
+              <span>@<%= post.user.username %></span>
+            </a>
             ·
-            Edited at <%= local_time_or_date post.edited_at %>
-          <% end %>
-        </div>
-        <div class="dropdown" data-controller="dropdown">
-          <button type="button" class="button button-icon" data-action="dropdown#open">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item" data-remote="true">Edit</a>
-            <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+            <a href="<%= topic_path(post.topic, number: (post.number > 1 ? post.number : nil)) %>" class="text-secondary">
+              <%= local_time_or_date post.created_at %>
+            </a>
+            <% if post.edited_at %>
+              ·
+              Edited at <%= local_time_or_date post.edited_at %>
+            <% end %>
+          </div>
+          <div class="dropdown" data-controller="dropdown">
+            <button type="button" class="button button-icon" data-action="dropdown#open">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item" data-remote="true">Edit</a>
+              <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="post-body">
-        <%= markdown_render post.body %>
-      </div>
-      <div class="post-footer">
-        <button type="button" class="button button-icon mr-2" data-action="topic#replyPost" data-controller="visible-to-user">
-          <i class="material-icons">reply</i>
-        </button>
-        <button type="button" class="button button-icon mr-2">
-          <i class="material-icons">thumb_up</i>
-        </button>
-        <button type="button" class="button button-icon mr-2">
-          <i class="material-icons">thumb_down</i>
-        </button>
+        <div class="post-body">
+          <%= markdown_render post.body %>
+        </div>
+        <div class="post-footer">
+          <a href="<%= reply_post_path(post) %>" class="button button-icon mr-2 button-reply" data-remote="true" data-controller="visible-to-user">
+            <i class="material-icons">reply</i>
+          </a>
+          <button type="button" class="button button-icon mr-2">
+            <i class="material-icons">thumb_up</i>
+          </button>
+          <button type="button" class="button button-icon mr-2">
+            <i class="material-icons">thumb_down</i>
+          </button>
+        </div>
       </div>
     </div>
   </div>

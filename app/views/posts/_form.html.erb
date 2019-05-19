@@ -1,21 +1,28 @@
-<div class="post" id="<%= post.new_record? ? 'post-new' : "post-#{post.id}-edit" %>">
-  <div class="post-avatar">
-    <% if Current.user %>
-    <%= avatar_tag Current.user %>
-    <% end %>
-  </div>
-  <div class="post-content">
-    <%= form_with model: post do |form| %>
-      <%= form.hidden_field :topic_id %>
-      <div class="form-field">
-        <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
-      </div>
-      <%= form.submit class: 'button button-contained button-primary mr-2' %>
-      <% if !post.new_record? %>
-        <a href="<%= post_path(post) %>" class="button button-text" data-remote="true" data-confirm="Are you sure you want to discard your unsaved changes?">
-          Cancel
-        </a>
+<div class="post" data-target="post.formContainer">
+  <div class="post-container">
+    <div class="post-avatar">
+      <% if Current.user %>
+      <%= avatar_tag Current.user %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="post-content">
+      <%= form_with model: post do |form| %>
+        <%= form.hidden_field :topic_id %>
+        <%= form.hidden_field :reply_to_post_id %>
+        <div class="form-field">
+          <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
+        </div>
+        <%= form.submit class: 'button button-contained button-primary mr-2' %>
+        <% if !post.new_record? %>
+          <button type="button" class="button button-text" data-action="post#cancelEdit">
+            Cancel
+          </button>
+        <% elsif post.reply_to_post %>
+          <button type="button" class="button button-text" data-action="post#cancelReply">
+            Cancel
+          </button>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

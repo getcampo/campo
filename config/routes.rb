@@ -32,7 +32,11 @@ Rails.application.routes.draw do
   resources :topics, only: [:new, :create, :edit, :update], concerns: [:trashable] do
     resource :subscription, only: [:update, :destroy]
   end
-  resources :posts, only: [:show, :create, :edit, :update], concerns: [:trashable]
+  resources :posts, only: [:show, :create, :edit, :update], concerns: [:trashable] do
+    member do
+      get :reply
+    end
+  end
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
   resources :notifications, only: [:index]
