@@ -6,10 +6,12 @@ export default class extends Controller {
   cancelEdit() {
     this.containerTarget.classList.remove('display-none');
     this.formContainerTarget.remove();
+    this.element.classList.remove('focus');
   }
 
   cancelReply() {
     this.formContainerTarget.remove();
-    this.element.querySelector('.button-reply').classList.remove('disabled');
+    this.element.querySelector('.post-footer').classList.remove('display-none');
+    this.element.classList.remove('focus');
   }
 }

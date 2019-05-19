@@ -42,7 +42,8 @@ export default class extends Controller {
 
   focuspost() {
     if (this.postsTarget.dataset.focusId) {
-      window.scrollTo(0, document.querySelector(`#post-${this.postsTarget.dataset.focusId}`).getBoundingClientRect().top + window.scrollY - 64)
+      let postElement = document.querySelector(`#post-${this.postsTarget.dataset.focusId}`)
+      window.scrollTo(0, postElement.getBoundingClientRect().top + window.scrollY - 64)
     } else {
       window.scrollTo(0, 0)
     }

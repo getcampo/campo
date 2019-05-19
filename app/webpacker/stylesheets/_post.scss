@@ -1,5 +1,18 @@
 .post {
   border-bottom: 1px solid var(--border-color);
+  background: white;
+
+  &.focus {
+    padding: 8px;
+    margin: -8px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-bottom: none;
+  }
+
+  .post {
+    border-bottom: none;
+  }
 }
 
 .post-container {
