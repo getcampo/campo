@@ -1,2 +1,1 @@
-document.querySelector('#posts').insertAdjacentHTML('beforeend', "<%= j render 'post', post: @post %>");
-document.querySelector('#post-new form').reset();
+Turbolinks.visit("<%= topic_path(@post.topic, number: @post.number) %>");

@@ -6,11 +6,16 @@
   </div>
   <div class="post-content">
     <%= form_with model: post do |form| %>
-    <%= form.hidden_field :topic_id %>
-    <div class="form-field">
-      <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
-    </div>
-    <%= form.submit class: 'button button-contained button-primary' %>
+      <%= form.hidden_field :topic_id %>
+      <div class="form-field">
+        <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
+      </div>
+      <%= form.submit class: 'button button-contained button-primary mr-2' %>
+      <% if !post.new_record? %>
+        <a href="<%= post_path(post) %>" class="button button-text" data-remote="true" data-confirm="Are you sure you want to discard your unsaved changes?">
+          Cancel
+        </a>
+      <% end %>
     <% end %>
   </div>
 </div>
