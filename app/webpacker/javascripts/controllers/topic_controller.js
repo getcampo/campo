@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "rails-ujs"
 
 export default class extends Controller {
-  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate', 'floatingActionText']
+  static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate', 'floatingActionText', 'floatingAction']
 
   connect() {
     this.element.topicController = this
@@ -12,7 +12,6 @@ export default class extends Controller {
     }, 0)
     this.focuspost()
     this.onScrollHandle = this.onScroll.bind(this)
-
     document.addEventListener('scroll', this.onScrollHandle)
   }
 
@@ -174,9 +173,20 @@ export default class extends Controller {
   }
 
   newPost() {
-    this.resetPostForm()
-    this.composerTarget.composerController.open()
-    this.composerTarget.querySelector('textarea').focus()
+    let url = new URL(location.href)
+    url.searchParams.set('position', this.postsTarget.dataset.total)
+    Rails.ajax({
+      url: url.href,
+      type: 'get',
+      dataType: 'html',
+      success: (data) => {
+        this.postsTarget.outerHTML = data.querySelector('#posts').outerHTML
+        this.recalculateIndex()
+        this.updateSlider()
+        document.querySelector('#post-new textarea').focus()
+        this.floatingActionTarget.floatingActionController.close()
+      }
+    })
   }
 
   resetPostForm() {

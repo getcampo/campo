@@ -35,13 +35,13 @@
     </div>
 
     <% if Current.user %>
-      <%= render 'posts/form', post: @topic.posts.new(user: Current.user) %>
+      <%= render 'posts/form', post: Post.new(topic: @topic, user: Current.user) %>
     <% else %>
       <a href="#" class="button button-contained button-primary">Sign in to Post</a>
     <% end %>
   </div>
 
-  <div class="floating-action" data-controller="floating-action">
+  <div class="floating-action" data-controller="floating-action" data-target="topic.floatingAction">
     <button type="button" class="button button-floating extended" data-action="floating-action#open">
       <i class="material-icons mr-2">comment</i>
       <span class="text-monospace" data-target="topic.floatingActionText"></span>
@@ -65,9 +65,9 @@
         </button>
       </div>
       <% if Current.user %>
-        <a href="#" class="floating-action-item">
+        <button type="button" class="floating-action-item" data-action="topic#newPost">
           <i class="material-icons">add</i> Create Post
-        </a>
+        </button>
       <% else %>
         <a href="<%= new_session_path %>" class="btn btn-primary">Sign in</a>
       <% end %>
