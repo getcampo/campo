@@ -2,12 +2,21 @@
   border-bottom: 1px solid var(--border-color);
   background: white;
 
-  &.focus {
+  &.editing,
+  &.replying {
     padding: 8px;
     margin: -8px;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
     z-index: 1;
     border-bottom: none;
+  }
+
+  &.editing .hide-on-editing {
+    display: none;
+  }
+
+  &.replying .hide-on-replying {
+    display: none;
   }
 
   .post {

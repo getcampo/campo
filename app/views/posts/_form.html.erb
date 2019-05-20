@@ -1,4 +1,14 @@
-<div class="post" data-target="post.formContainer">
+<%
+  id = if !post.new_record?
+    "post-#{post.id}-edit-form"
+  elsif post.reply_to_post
+    "post-#{post.reply_to_post_id}-reply-form"
+  else
+    "post-new-form"
+  end
+%>
+
+<div id="<%= id %>" class="post" data-target="post.formContainer">
   <div class="post-container">
     <div class="post-avatar">
       <% if Current.user %>

@@ -1,4 +1,3 @@
-document.querySelector('#post-<%= @post.id %>').classList.add('focus');
-document.querySelector('#post-<%= @post.id %> .post-footer').classList.add('display-none');
+document.querySelector('#post-<%= @post.id %>').classList.add('replying');
 document.querySelector('#post-<%= @post.id %>').insertAdjacentHTML('beforeend', '<%= j render "form", post: Post.new(topic: @post.topic, user: Current.user, reply_to_post: @post) %>');
 document.querySelector('#post-<%= @post.id %> textarea').focus();

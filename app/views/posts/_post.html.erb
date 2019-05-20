@@ -7,7 +7,7 @@
     data-number="<%= post.number %>"
     data-post-id="<%= post.id %>"
     data-post-username="<%= post.user.username %>">
-    <div class="post-container" data-target="post.container">
+    <div class="post-container hide-on-editing">
       <div class="post-avatar">
         <a href="<%= profile_path(username: post.user.username) %>">
           <%= avatar_tag post.user %>
@@ -34,7 +34,7 @@
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item" data-remote="true">Edit</a>
+              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">Edit</a>
               <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
             </div>
           </div>
@@ -42,7 +42,7 @@
         <div class="post-body">
           <%= markdown_render post.body %>
         </div>
-        <div class="post-footer">
+        <div class="post-footer hide-on-replying">
           <a href="<%= reply_post_path(post) %>" class="button button-icon mr-2 button-reply" data-remote="true" data-controller="visible-to-user">
             <i class="material-icons">reply</i>
           </a>
