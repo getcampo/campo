@@ -20,6 +20,13 @@ module MarkdownHelper
       .yield_self { |content| markdown_sanitize(content) }
   end
 
+  def markdown_summary(content, length: 30)
+    content
+      .yield_self { |content| MarkdownRenderer.render(content) }
+      .yield_self { |content| strip_tags(content) }
+      .yield_self { |content| truncate(content, length: length) }
+  end
+
   def markdown_postprocess(html)
     doc = Nokogiri::HTML.fragment(html)
     doc.xpath('*//text()').each do |node|

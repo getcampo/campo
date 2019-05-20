@@ -73,12 +73,18 @@
   }
 }
 
+.post-context {
+  margin-left: 60px;
+  margin-top: 4px;
+  margin-bottom: -8px;
+}
+
 .post-body {
 }
 
 .post-footer {
-  margin-left: -12px;
-  margin-bottom: -9px;
+  margin: 0 -12px -9px -9px;
+  display: flex;
 
   .button-text {
     color: var(--text-secondary-color);
@@ -87,7 +93,4 @@
       color: var(--text-primary-color);
     }
   }
-}
-
-.post-floating-action {
 }

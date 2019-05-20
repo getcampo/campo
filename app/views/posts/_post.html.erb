@@ -7,6 +7,25 @@
     data-number="<%= post.number %>"
     data-post-id="<%= post.id %>"
     data-post-username="<%= post.user.username %>">
+    <% if post.reply_to_post %>
+      <div class="post-context">
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-text" data-action="dropdown#open">
+            <i class="material-icons mr-2">reply</i> reply to <%= post.reply_to_post.user.name %>
+          </button>
+          <div class="dropdown-menu dropdown-menu-large dropdown-menu-top">
+            <a href="#" class="dropdown-menu-item">
+              <%= image_tag avatar_url(post.reply_to_post.user), class: 'avatar avatar-mini mr-2' %>
+              <div>
+                <b><%= post.reply_to_post.user.name %></b>
+                -
+                <%= markdown_summary post.reply_to_post.body %>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="post-container hide-on-editing">
       <div class="post-avatar">
         <a href="<%= profile_path(username: post.user.username) %>">
@@ -52,6 +71,26 @@
           <button type="button" class="button button-icon mr-2">
             <i class="material-icons">thumb_down</i>
           </button>
+
+          <% if post.replied_posts.any? %>
+            <div class="dropdown ml-auto" data-controller="dropdown">
+              <button type="button" class="button button-text" data-action="dropdown#open">
+                <%= post.replied_posts.count %> replies <i class="material-icons ml-2">expand_more</i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
+                <% post.replied_posts.each do |replied_post| %>
+                  <a href="<%= topic_path(replied_post.topic, number: replied_post.number) %>" class="dropdown-menu-item">
+                    <%= image_tag avatar_url(replied_post.user), class: 'avatar avatar-mini mr-2' %>
+                    <div>
+                      <b><%= replied_post.user.name %></b>
+                      -
+                      <%= markdown_summary replied_post.body %>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
