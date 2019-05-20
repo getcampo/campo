@@ -14,7 +14,7 @@
             <i class="material-icons mr-2">reply</i> reply to <%= post.reply_to_post.user.name %>
           </button>
           <div class="dropdown-menu dropdown-menu-large dropdown-menu-top">
-            <a href="#" class="dropdown-menu-item">
+            <a href="<%= topic_path(post.reply_to_post.topic, number: post.reply_to_post.number) %>" class="dropdown-menu-item">
               <%= image_tag avatar_url(post.reply_to_post.user), class: 'avatar avatar-mini mr-2' %>
               <div>
                 <b><%= post.reply_to_post.user.name %></b>
