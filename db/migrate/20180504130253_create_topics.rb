@@ -7,13 +7,14 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.integer :comments_count, default: 0
       t.belongs_to :last_comment, index: false
       t.datetime :activated_at, null: false
-      t.boolean :trashed, default: false
       t.belongs_to :edited_user, index: false
       t.datetime :edited_at
+      t.datetime :deleted_at
 
       t.timestamps
 
       t.index :activated_at
+      t.index :deleted_at
     end
   end
 end

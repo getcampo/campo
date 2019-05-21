@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["edited_user_id"], name: "index_posts_on_edited_user_id"
     t.index ["reply_to_post_id"], name: "index_posts_on_reply_to_post_id"
     t.index ["topic_id"], name: "index_posts_on_topic_id"
@@ -117,16 +118,13 @@ ActiveRecord::Schema.define(version: 2019_05_01_083359) do
     t.integer "comments_count", default: 0
     t.bigint "last_comment_id"
     t.datetime "activated_at", null: false
-    t.boolean "trashed", default: false
     t.bigint "edited_user_id"
     t.datetime "edited_at"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.integer "category_ancestor_ids", array: true
     t.index ["activated_at"], name: "index_topics_on_activated_at"
-    t.index ["category_ancestor_ids"], name: "index_topics_on_category_ancestor_ids", using: :gin
-    t.index ["category_id"], name: "index_topics_on_category_id"
+    t.index ["deleted_at"], name: "index_topics_on_deleted_at"
     t.index ["forum_id"], name: "index_topics_on_forum_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end

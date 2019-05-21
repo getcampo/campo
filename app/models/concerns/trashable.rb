@@ -2,15 +2,19 @@ module Trashable
   extend ActiveSupport::Concern
 
   included do
-    default_scope { where(trashed: false) }
-    scope :trashed, -> { where(trashed: true) }
+    default_scope { where(deleted_at: nil) }
+    scope :trashed, -> { where.not(deleted_at: nil) }
   end
 
   def trash
-    update_attribute :trashed, true
+    update_attribute :deleted_at, Time.now
+  end
+
+  def trashed?
+    deleted_at.present?
   end
 
   def restore
-    update_attribute :trashed, false
+    update_attribute :deleted_at, nil
   end
 end

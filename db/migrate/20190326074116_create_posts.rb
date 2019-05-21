@@ -11,6 +11,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.datetime :deleted_at
 
       t.timestamps
+
+      t.index :deleted_at
     end
   end
 end

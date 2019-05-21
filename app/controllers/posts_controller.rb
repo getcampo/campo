@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_sign_in
   before_action :set_post, except: [:create]
-  before_action :check_edit_permission, only: [:update]
+  before_action :check_edit_permission, only: [:update, :trash]
 
   def show
     render 'update'
@@ -33,6 +33,10 @@ class PostsController < ApplicationController
   def reply
   end
 
+  def trash
+    @post.trash
+  end
+
   private
 
   def post_params
@@ -48,5 +52,4 @@ class PostsController < ApplicationController
       redirect_to topic_url(@post.topic, number: @post.number), alert: t('flash.you_have_no_permissions')
     end
   end
-
 end

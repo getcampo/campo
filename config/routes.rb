@@ -22,19 +22,18 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
 
-  concern :trashable do
+  get 'topics/:id/(:number)', to: 'topics#show', as: 'topic', constraints: { id: /\d+/, number: /\d+/ }
+  resources :topics, only: [:new, :create, :edit, :update] do
     member do
       put :trash
     end
-  end
 
-  get 'topics/:id/(:number)', to: 'topics#show', as: 'topic', constraints: { id: /\d+/, number: /\d+/ }
-  resources :topics, only: [:new, :create, :edit, :update], concerns: [:trashable] do
     resource :subscription, only: [:update, :destroy]
   end
-  resources :posts, only: [:show, :create, :edit, :update], concerns: [:trashable] do
+  resources :posts, only: [:show, :create, :edit, :update] do
     member do
       get :reply
+      put :trash
     end
   end
   resources :attachments, only: [:create]

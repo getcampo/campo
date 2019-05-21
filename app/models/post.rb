@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Trashable
+
   belongs_to :topic, optional: true
   belongs_to :user
   belongs_to :edited_user, class_name: 'User', optional: true
@@ -16,7 +18,7 @@ class Post < ApplicationRecord
 
   def generate_number
     # TODO: lock
-    self.number = (topic.posts.maximum(:number) || 0) + 1
+    self.number = (topic.posts.unscoped.maximum(:number) || 0) + 1
   end
 
   after_commit :extract_reply_relation
