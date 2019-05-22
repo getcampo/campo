@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :require_sign_in, except: :show
   before_action :set_topic, except: [:new, :create]
-  before_action :check_edit_permission, only: [:update, :trash]
+  before_action :check_edit_permission, only: [:edit, :update, :trash]
 
   def new
     @topic = Topic.new first_post_attributes: {}
@@ -37,8 +37,15 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    @topic.update params.require(:topic).permit(:title)
+    if @topic.update params.require(:topic).permit(:title, :forum_id)
+      redirect_to topic_path(@topic)
+    else
+      render 'update_form'
+    end
   end
 
   def trash

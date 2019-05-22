@@ -26,6 +26,10 @@
         <i class="material-icons">more_vert</i>
       </button>
       <div class="dropdown-menu dropdown-menu-right">
+        <a href="<%= edit_topic_path(topic) %>" class="dropdown-menu-item">
+          <i class="material-icons">edit</i>
+          Edit topic
+        </a>
         <% if !subscription&.ignored? %>
           <a href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true" class="dropdown-menu-item" data-controller="visible-to-user">
             <i class="material-icons">notifications_off</i>

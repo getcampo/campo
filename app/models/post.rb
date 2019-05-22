@@ -18,7 +18,7 @@ class Post < ApplicationRecord
 
   def generate_number
     # TODO: lock
-    self.number = (topic.posts.unscoped.maximum(:number) || 0) + 1
+    self.number = (topic.posts.unscope(where: :deleted_at).maximum(:number) || 0) + 1
   end
 
   after_commit :extract_reply_relation

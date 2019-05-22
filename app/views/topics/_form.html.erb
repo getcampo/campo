@@ -7,11 +7,13 @@
     <%= form.label :title %>
     <%= form.text_field :title, autocomplete: 'off' %>
   </div>
-  <div class="form-field">
-    <label>Body</label>
-    <%= form.fields_for :first_post do |post_form| %>
-      <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
-    <% end %>
-  </div>
+  <% if @topic.new_record? %>
+    <div class="form-field">
+      <label>Body</label>
+      <%= form.fields_for :first_post do |post_form| %>
+        <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
+      <% end %>
+    </div>
+  <% end %>
   <%= form.submit class: 'button button-contained button-primary' %>
 <% end %>

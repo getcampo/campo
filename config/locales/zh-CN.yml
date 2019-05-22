@@ -89,10 +89,6 @@ zh-CN:
     passwords:
       form:
         update_password: 更新密码
-  subscription_status:
-    ignored: Ignored
-    not_subscribed: Not subscribed
-    subscribed: Subscribed
   views:
     pagination:
       first: 首页
