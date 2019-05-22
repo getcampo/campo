@@ -158,15 +158,11 @@
 
 .button-icon {
   line-height: 1;
-  padding: 9px;
+  padding: 6px;
   border: 0;
   border-radius: 50%;
   color: var(--text-secondary-color);
   background: transparent;
-
-  .material-icons {
-    font-size: 18px;
-  }
 
   &:hover {
     color: var(--text-primary-color);

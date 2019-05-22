@@ -1,0 +1,42 @@
+<% subscription = topic.subscriptions.find_by(user: Current.user) %>
+
+<div id="topic-toolbar" class="toolbar">
+  <div class="toolbar-title">
+    <a href="<%= forum_path(topic.forum) %>" class="text-secondary"><%= topic.forum.name %></a>
+    <%= topic.title %>
+  </div>
+  <div class="toolbar-action" data-controller="visible-to-user">
+    <% if subscription.nil? %>
+      <a href="<%= topic_subscription_path(topic, status: 'subscribed') %>" data-method="put" data-remote="true" class="button button-icon">
+        <i class="material-icons">notifications_none</i>
+      </a>
+    <% elsif subscription.subscribed? %>
+      <a href="<%= topic_subscription_path(topic) %>" data-method="delete" data-remote="true" class="button button-icon button-primary">
+        <i class="material-icons">notifications_active</i>
+      </a>
+    <% elsif subscription.ignored? %>
+      <a href="<%= topic_subscription_path(topic) %>" data-method="delete" data-remote="true" class="button button-icon button-secondary">
+        <i class="material-icons">notifications_off</i>
+      </a>
+    <% end %>
+  </div>
+  <div class="toolbar-action">
+    <div class="dropdown" data-controller="dropdown">
+      <button type="button" class="button button-icon" data-action="dropdown#open">
+        <i class="material-icons">more_vert</i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <% if !subscription&.ignored? %>
+          <a href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true" class="dropdown-menu-item" data-controller="visible-to-user">
+            <i class="material-icons">notifications_off</i>
+            Ignore notificatoins
+          </a>
+        <% end %>
+        <a href="<%= trash_topic_path(topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="Are you sure?">
+          <i class="material-icons">delete</i>
+          Trash
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -93,4 +93,10 @@
       color: var(--text-primary-color);
     }
   }
+
+  .button-icon {
+    .material-icons {
+      font-size: 18px;
+    }
+  }
 }

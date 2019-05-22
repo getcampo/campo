@@ -1,22 +1,7 @@
 <div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
   <div class="card mt-4">
     <div class="card-header border-bottom">
-      <div class="toolbar">
-        <div class="toolbar-title">
-          <a href="<%= forum_path(@topic.forum) %>" class="text-secondary"><%= @topic.forum.name %></a>
-          <%= @topic.title %>
-        </div>
-        <div class="toolbar-action">
-          <div class="dropdown" data-controller="dropdown">
-            <button type="button" class="button button-icon" data-action="dropdown#open">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="Are you sure?">Trash</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render 'toolbar', topic: @topic %>
     </div>
 
     <div class="p-2 text-secondary text-align-center display-none" data-target="topic.loadingBefore">
