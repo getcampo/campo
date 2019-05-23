@@ -68,40 +68,6 @@ body {
   }
 }
 
-.letter-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ccc;
-  color: white;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.letter-avatar-2x {
-  width: 80px;
-  height: 80px;
-}
-
-.letter-avatar-4x {
-  width: 160px;
-  height: 160px;
-}
-
-.button-avatar {
-  padding: 6px;
-  background: none;
-  box-shadow: none;
-  border: none;
-
-  .letter-avatar,
-  .avatar {
-    width: 36px;
-    height: 36px;
-  }
-}
-
 .subtitle {
   font-size: 14px;
   line-height: 16px;

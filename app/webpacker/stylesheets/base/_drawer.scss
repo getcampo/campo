@@ -49,6 +49,7 @@
     display: block;
 
     .drawer-content {
+      top: 56px;
       box-shadow: none;
       border-right: 1px solid #ccc;
       z-index: 0;
@@ -102,13 +103,13 @@
     color: var(--primary-color);
     background: rgba(33, 150, 243, 0.3);
 
-    .drawer-item-icon {
+    .material-icons {
       color: var(--primary-color);
     }
   }
-}
 
-.drawer-item-icon {
-  margin-right: 16px;
-  color: var(--text-secondary-color);
+  .material-icons {
+    margin-right: 16px;
+    color: var(--text-secondary-color);
+  }
 }

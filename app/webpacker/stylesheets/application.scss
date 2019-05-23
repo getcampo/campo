@@ -83,12 +83,36 @@ img {
   right: 8px;
 }
 
-.logo {
-  height: 40px;
-  margin: -16px 0 -16px -16px;
-}
-
 a.normal {
   color: var(--text-primary-color);
   text-decoration: none;
+}
+
+.button-avatar {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  vertical-align: bottom;
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.toolbar-brand {
+  padding: 4px 6px;
+  font-weight: bold;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: var(--text-primary-color);
+    text-decoration: none;
+  }
+
+  img {
+    height: 40px;
+  }
 }
