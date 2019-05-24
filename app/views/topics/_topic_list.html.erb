@@ -1,8 +1,8 @@
 <div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
-  <div class="list" data-target="infinite-page.container">
+  <div class="list list-bordered" data-target="infinite-page.container">
     <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
   </div>
-  <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
-    <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+  <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center display-none">
+    <i class="material-icons animated spin">sync</i>
   </div>
 </div>

@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.list-bordered {
+  .list-item:not(:last-child) {
+    border-bottom:  1px solid var(--border-color);
+  }
+}
+
 .list-item {
   display: flex;
 }
