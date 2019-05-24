@@ -71,16 +71,12 @@ img {
   background: white;
 }
 
-.notification-unread {
-  height: 6px;
-  width: 6px;
-  border-radius: 6px;
-  display: inline-block;
-  content: "";
-  background: red;
-  position: absolute;
-  top: 8px;
-  right: 8px;
+.button-notification-unread {
+  color: #F44336;
+
+  &:hover {
+    color: #F44336;
+  }
 }
 
 a.normal {
