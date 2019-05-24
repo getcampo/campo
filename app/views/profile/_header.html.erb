@@ -1,0 +1,24 @@
+<div class="card-header border-bottom">
+  <div class="profile">
+    <div class="profile-avatar">
+      <%= avatar_tag @user %>
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">
+        <b><%= @user.name %></b>
+        <span>@<%= @user.username %></span>
+      </div>
+      <div class="profile-bio">
+        <%= @user.bio %>
+      </div>
+    </div>
+  </div>
+  <div class="tab">
+    <a href="<%= profile_path(username: @user.username) %>" class="tab-item <%= 'active' if controller_name == 'topics' %>">
+      Topics
+    </a>
+    <a href="<%= profile_posts_path(username: @user.username) %>" class="tab-item <%= 'active' if controller_name == 'posts' %>">
+      Posts
+    </a>
+  </div>
+</div>

@@ -1,18 +1,12 @@
-<div class="row mt-3">
-  <div class="col-md-3">
-    <%= render 'profile/sidebar' %>
-  </div>
+<div class="card mt-4">
+  <%= render 'profile/header' %>
 
-  <div class="col-md-9">
-    <%= render 'profile/nav' %>
-
-    <div class="mb-4" data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? %>">
-      <div class="media-link-wrap" data-target="infinite-page.container">
-        <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
-      </div>
-      <div class="infinite-page-loading-placeholder p-4 text-muted text-center">
-        <i class="fas fa-circle-notch fa-spin fa-lg"></i>
-      </div>
+  <div data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? %>">
+    <div class="list list-bordered" data-target="infinite-page.container">
+      <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
+    </div>
+    <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center display-none">
+      <i class="material-icons animated spin">sync</i>
     </div>
   </div>
 </div>

@@ -1,0 +1,23 @@
+.profile {
+  display: flex;
+  padding: 16px;
+}
+
+.profile-avatar {
+  margin-right: 16px;
+
+  .avatar {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.profile-name {
+  b {
+    font-size: 20px;
+  }
+
+  span {
+    color: var(--text-secondary-color);
+  }
+}

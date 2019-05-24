@@ -47,6 +47,12 @@ a.text-secondary {
   white-space: nowrap;
 }
 
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @for $i from 1 through 4 {
   .p-#{$i} {
     padding: $i * 4px;

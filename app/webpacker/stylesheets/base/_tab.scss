@@ -13,6 +13,7 @@
   opacity: 0.8;
   text-decoration: none;
   flex-shrink: 0;
+  color: var(--text-priamry-color);
 
   &:hover {
     background: rgba(0, 0, 0, 0.05);
@@ -27,6 +28,7 @@
   &.active {
     opacity: 1;
     padding-bottom: 14px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
   }
 }

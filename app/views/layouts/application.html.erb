@@ -32,7 +32,7 @@
               <%= avatar_tag Current.user %>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-menu-item">
+              <a href="<%= profile_path(username: Current.user.username) %>" class="dropdown-menu-item">
                 <i class="material-icons">person</i> Profile
               </a>
               <a href="#" class="dropdown-menu-item">
