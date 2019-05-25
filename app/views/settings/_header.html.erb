@@ -1,0 +1,14 @@
+<div class="card-header border-bottom">
+  <div class="toolbar">
+    <div class="tab">
+      <a href="<%= settings_account_path %>" class="tab-item <%= 'active' if controller_name == 'accounts' %>">
+        Account
+      </a>
+      <% if AUTH_PROVIDERS.include?('password') %>
+        <a href="<%= settings_password_path %>" class="tab-item <%= 'active' if controller_name == 'passwords' %>">
+          Password
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -35,15 +35,20 @@
               <a href="<%= profile_path(username: Current.user.username) %>" class="dropdown-menu-item">
                 <i class="material-icons">person</i> Profile
               </a>
-              <a href="#" class="dropdown-menu-item">
+              <a href="<%= settings_account_path %>" class="dropdown-menu-item">
                 <i class="material-icons">settings</i> Settings
+              </a>
+              <div class="divider">
+              </div>
+              <a href="<%= session_path %>" class="dropdown-menu-item" data-remote="true" data-method="delete" data-confirm="Are you sure?">
+                <i class="material-icons">exit_to_app</i> Sign out
               </a>
             </div>
           </div>
         </div>
       <% else %>
         <div class="toolbar-action">
-          <a href="" class="button button-text">
+          <a href="<%= new_session_path %>" class="button button-text">
             Sign in
           </a>
         </div>
