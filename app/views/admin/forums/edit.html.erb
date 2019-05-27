@@ -1,17 +1,17 @@
-<nav>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="<%= admin_root_path %>">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item">
-      <a href="<%= admin_forums_path %>">Admin</a>
-    </li>
-    <li class="breadcrumb-item active">Edit</li>
-  </ol>
-</nav>
-
-<div class="row justify-content-center">
-  <div class="col-md-6">
+<div class="card">
+  <div class="card-header border-bottom">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <a href="<%= admin_forums_path %>" class="button button-icon">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+      <div class="toolbar-title">
+        Edit Forum
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
     <%= render 'form' %>
   </div>
 </div>

@@ -1,37 +1,42 @@
-<div class="row mt-3">
-  <div class="col-md-3">
-    <%= render 'admin/nav' %>
-  </div>
-  <div class="col-md-9">
-    <div class="mb-2">
-      <a href="<%= new_admin_forum_path %>" class="btn btn-primary">Add Forum</a>
+<div class="card">
+  <div class="card-header border-bottom">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        Forums
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= new_admin_forum_path %>" class="button button-contained button-primary">
+          Add Forum
+        </a>
+      </div>
     </div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th><%= t '.id' %></th>
-          <th><%= t '.name' %></th>
-          <th><%= t '.slug' %></th>
-          <th><%= t '.description' %></th>
-          <th><%= t '.topics' %></th>
-          <th class="text-align-right"><%= t '.action' %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @forums.each do |forum| %>
-          <tr>
-            <td><%= forum.id %></td>
-            <td><%= forum.name %></td>
-            <td><%= forum.slug %></td>
-            <td><%= truncate forum.description %></td>
-            <td><%= forum.topics_count %></td>
-            <td class="text-align-right">
-              <a href="<%= edit_admin_forum_url(forum) %>" class="btn btn-light btn-sm"><i class="fa fa-edit"></i></a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t '.id' %></th>
+        <th><%= t '.name' %></th>
+        <th><%= t '.slug' %></th>
+        <th><%= t '.description' %></th>
+        <th><%= t '.topics' %></th>
+        <th class="text-align-right"><%= t '.action' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @forums.each do |forum| %>
+        <tr>
+          <td><%= forum.id %></td>
+          <td><%= forum.name %></td>
+          <td><%= forum.slug %></td>
+          <td><%= truncate forum.description %></td>
+          <td><%= forum.topics_count %></td>
+          <td class="text-align-right">
+            <a href="<%= edit_admin_forum_url(forum) %>">
+              Edit
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

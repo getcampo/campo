@@ -1,4 +1,6 @@
 class Admin::BaseController < ApplicationController
+  layout 'admin'
+
   before_action :require_sign_in, :require_admin
 
   private
