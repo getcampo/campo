@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import Rails from "rails-ujs"
 
 export default class extends Controller {
   connect() {
@@ -9,35 +10,34 @@ export default class extends Controller {
   }
 
   validateRemote(event) {
-    let input = event.target;
-    return fetch(input.dataset['validateUrl'], {
-      method: 'post',
-      body: `value=${encodeURIComponent(input.value)}`,
-      headers: {
-        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      credentials: 'same-origin'
-    }).then(function(response) {
-      return response.json();
-    }).then(function(json) {
-      let field = input.closest('.form-field')
-      let message = field.querySelector('.validate-message')
-      if (json.valid) {
-        field.classList.remove('invalid')
-        field.classList.add('valid')
-        if (message != null) {
-          message.remove()
+    let input = event.target
+    let formData = new FormData()
+    formData.append('value', input.value)
+    Rails.ajax({
+      url: input.dataset.validateUrl,
+      type: 'post',
+      data: formData,
+      success: (data) => {
+        console.log(data)
+        let field = input.closest('.form-field')
+        let message = field.querySelector('.validate-message')
+
+        if (data.valid) {
+          field.classList.remove('invalid')
+          field.classList.add('valid')
+          if (message) {
+            message.remove()
+          }
+        } else {
+          field.classList.add('invalid')
+          field.classList.remove('valid')
+          if (!message) {
+            message = document.createElement('div')
+            message.className = 'validate-message'
+          }
+          message.textContent = data.message
+          field.insertBefore(message, input.nextSibling)
         }
-      } else {
-        field.classList.add('invalid')
-        field.classList.remove('valid')
-        if (!message) {
-          message = document.createElement('div')
-          message.className = 'validate-message'
-        }
-        message.textContent = json.message
-        field.insertBefore(message, input.nextSibling)
       }
     })
   }
