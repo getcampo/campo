@@ -2,7 +2,7 @@ class Admin::ForumsController < Admin::BaseController
   before_action :set_forum, only: [:show, :edit, :update]
 
   def index
-    @forums = Forum.order(id: :desc).all
+    @forums = Forum.order(id: :desc).page(params[:page])
   end
 
   def show

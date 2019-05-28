@@ -33,6 +33,12 @@ zh-CN:
         name: 名称
         slug: Slug
         topics: 话题数
+    topics:
+      index:
+        created_at: Created at
+        id: Id
+        title: Title
+        user: User
   common:
     home: 首页
     password: 密码
@@ -52,7 +58,9 @@ zh-CN:
     password_is_successfully_updated: 密码更新成功。
     password_reset_email_has_been_send: 密码重置邮件已发送。
     require_sign_in: 需要登录。
+    topic_is_successfully_created: Topic is successfully created
     topic_is_successfully_deleted: 话题删除成功。
+    topic_is_successfully_updated: Topic is successfully updated
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
   forums:
@@ -88,9 +96,3 @@ zh-CN:
     passwords:
       form:
         update_password: 更新密码
-  views:
-    pagination:
-      first: 首页
-      last: 尾页
-      next: 下一页
-      previous: 上一页

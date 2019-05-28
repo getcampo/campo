@@ -2,10 +2,10 @@
   <div class="card-header">
     <div class="toolbar">
       <div class="toolbar-title">
-        Forums
+        Topics
       </div>
       <div class="toolbar-action">
-        <a href="<%= new_admin_forum_path %>" class="button button-icon">
+        <a href="<%= new_admin_topic_path %>" class="button button-icon">
           <i class="material-icons">add</i>
         </a>
       </div>
@@ -15,23 +15,21 @@
     <thead>
       <tr>
         <th><%= t '.id' %></th>
-        <th><%= t '.name' %></th>
-        <th><%= t '.slug' %></th>
-        <th><%= t '.description' %></th>
-        <th><%= t '.topics' %></th>
+        <th><%= t '.title' %></th>
+        <th><%= t '.user' %></th>
+        <th><%= t '.created_at' %></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <% @forums.each do |forum| %>
+      <% @topics.each do |topic| %>
         <tr>
-          <td><%= forum.id %></td>
-          <td><%= forum.name %></td>
-          <td><%= forum.slug %></td>
-          <td><%= truncate forum.description %></td>
-          <td><%= forum.topics_count %></td>
+          <td><%= topic.id %></td>
+          <td><%= topic.title %></td>
+          <td><%= topic.user.name %></td>
+          <td><%= local_time_or_date topic.created_at %></td>
           <td class="table-action text-align-right">
-            <a href="<%= admin_forum_url(forum) %>" class="button button-icon">
+            <a href="<%= admin_topic_url(topic) %>" class="button button-icon">
               <i class="material-icons">chevron_right</i>
             </a>
           </td>
@@ -40,6 +38,6 @@
     </tbody>
   </table>
   <div class="card-footer border-top">
-    <%= render_paginator @forums %>
+    <%= render_paginator @topics %>
   </div>
 </div>

@@ -1,0 +1,21 @@
+<div class="toolbar">
+  <div class="toolbar-space">
+  </div>
+  <div class="toolbar-text text-align-right">
+    <small class="text-secondary">
+      <%= scope.offset_value + 1 %> - <%= scope.offset_value + scope.to_a.size %> of <%= scope.total_count %>
+    </small>
+  </div>
+  <div class="toolbar-action">
+    <% prev_page = path_to_prev_page(scope) %>
+    <a href="<%= prev_page %>" class="button button-icon <%= 'disabled' if prev_page.nil? %>">
+      <i class="material-icons">navigate_before</i>
+    </a>
+  </div>
+  <div class="toolbar-action">
+    <% next_page = path_to_next_page(scope) %>
+    <a href="<%= next_page %>" class="button button-icon <%= 'disabled' if next_page.nil? %>">
+      <i class="material-icons">navigate_next</i>
+    </a>
+  </div>
+</div>

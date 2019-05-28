@@ -1,0 +1,17 @@
+<%= form_with model: [:admin, @topic], class: 'form', id: 'topic-form', data: { controller: 'form-validation' } do |form| %>
+  <div class="form-field <%= 'invalid' if @topic.errors[:forum_id].any? %>">
+    <%= form.label :forum_id %>
+    <%= form.collection_select :forum_id, Forum.all, :id, :name %>
+    <div class="validate-message">
+      <%= @topic.errors[:forum_id].first %>
+    </div>
+  </div>
+  <div class="form-field <%= 'invalid' if @topic.errors[:title].any? %>">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <div class="validate-message">
+      <%= @topic.errors[:title].first %>
+    </div>
+  </div>
+  <%= form.submit class: 'button button-contained button-primary' %>
+<% end %>
