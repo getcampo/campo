@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        Posts
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= new_admin_post_path %>" class="button button-icon">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Body</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.user.name %></td>
+          <td><%= truncate post.body %></td>
+          <td><%= local_time_or_date post.created_at %></td>
+          <td class="table-action text-align-right">
+            <a href="<%= admin_post_url(post) %>" class="button button-icon">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="card-footer border-top">
+    <%= render_paginator @posts %>
+  </div>
+</div>

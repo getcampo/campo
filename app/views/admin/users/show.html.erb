@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <a href="<%= admin_users_path %>" class="button button-icon">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+      <div class="toolbar-title">
+        User #<%= @user.id %>
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= edit_admin_user_path(@user) %>" class="button button-icon">
+          <i class="material-icons">edit</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <tbody>
+      <% @user.attributes.except('password_digest', 'auth_token').each do |attribute, value| %>
+        <tr>
+          <th><%= attribute %></th>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

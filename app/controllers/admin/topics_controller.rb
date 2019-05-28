@@ -2,7 +2,7 @@ class Admin::TopicsController < Admin::BaseController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.order(id: :desc).page(params[:page]).per(3)
+    @topics = Topic.order(id: :desc).page(params[:page])
   end
 
   def show

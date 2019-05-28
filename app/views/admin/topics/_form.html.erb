@@ -1,4 +1,11 @@
 <%= form_with model: [:admin, @topic], class: 'form', id: 'topic-form', data: { controller: 'form-validation' } do |form| %>
+  <div class="form-field <%= 'invalid' if @topic.errors[:user_id].any? %>">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+    <div class="validate-message">
+      <%= @topic.errors[:user_id].first %>
+    </div>
+  </div>
   <div class="form-field <%= 'invalid' if @topic.errors[:forum_id].any? %>">
     <%= form.label :forum_id %>
     <%= form.collection_select :forum_id, Forum.all, :id, :name %>

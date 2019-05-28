@@ -57,10 +57,14 @@ zh-CN:
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
     password_reset_email_has_been_send: 密码重置邮件已发送。
+    post_is_successfully_created: Post is successfully created
+    post_is_successfully_updated: Post is successfully updated
     require_sign_in: 需要登录。
     topic_is_successfully_created: Topic is successfully created
     topic_is_successfully_deleted: 话题删除成功。
     topic_is_successfully_updated: Topic is successfully updated
+    user_is_successfully_created: User is successfully created
+    user_is_successfully_updated: User is successfully updated
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
   forums:

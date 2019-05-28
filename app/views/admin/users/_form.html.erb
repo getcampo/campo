@@ -1,0 +1,24 @@
+<%= form_with model: [:admin, @user], class: 'form', id: 'user-form', data: { controller: 'form-validation' } do |form| %>
+  <div class="form-field <%= 'invalid' if @user.errors[:name].any? %>">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <div class="validate-message">
+      <%= @user.errors[:name].first %>
+    </div>
+  </div>
+  <div class="form-field <%= 'invalid' if @user.errors[:username].any? %>">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+    <div class="validate-message">
+      <%= @user.errors[:username].first %>
+    </div>
+  </div>
+  <div class="form-field <%= 'invalid' if @user.errors[:bio].any? %>">
+    <%= form.label :bio %>
+    <%= form.text_field :bio %>
+    <div class="validate-message">
+      <%= @user.errors[:bio].first %>
+    </div>
+  </div>
+  <%= form.submit class: 'button button-contained button-primary' %>
+<% end %>

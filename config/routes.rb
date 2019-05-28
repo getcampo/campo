@@ -56,6 +56,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
     resources :forums
     resources :topics
+    resources :posts
+    resources :users
   end
 
   if Rails.env.development?
