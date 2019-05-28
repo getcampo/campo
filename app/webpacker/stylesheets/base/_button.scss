@@ -12,8 +12,11 @@
 .button-contained,
 .button-text,
 .button-outlined {
+  min-width: 64px;
   font-size: 16px;
   line-height: 18px;
+  justify-content: center;
+  text-transform: uppercase;
 
   .material-icons {
     font-size: 18px;

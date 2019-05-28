@@ -16,15 +16,26 @@
   }
 
   th {
-    border-bottom: 1px solid var(--border-color);
     color: var(--text-secondary-color);
+    font-weight: bold;
   }
 
   td {
+  }
+
+  tr {
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  thead {
     border-bottom: 1px solid var(--border-color);
   }
 
-  tr:last-child td {
-    border-bottom: none;
+  .table-action {
+    padding: 6px 10px;
   }
 }

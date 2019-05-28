@@ -1,13 +1,13 @@
 <div class="card">
-  <div class="card-header border-bottom">
+  <div class="card-header">
     <div class="toolbar">
       <div class="toolbar-action">
-        <a href="<%= admin_forums_path %>" class="button button-icon">
+        <a href="<%= admin_forum_path(@forum) %>" class="button button-icon">
           <i class="material-icons">arrow_back</i>
         </a>
       </div>
       <div class="toolbar-title">
-        Edit Forum
+        Edit Forum #<%= @forum.id %>
       </div>
     </div>
   </div>

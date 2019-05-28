@@ -103,6 +103,10 @@ a.text-secondary {
   margin-right: auto
 }
 
+.border-top {
+  border-top: 1px solid var(--border-color);
+}
+
 .border-bottom {
   border-bottom: 1px solid var(--border-color);
 }

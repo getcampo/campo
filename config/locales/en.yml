@@ -28,7 +28,6 @@ en:
   admin:
     forums:
       index:
-        action: Action
         description: Description
         id: ID
         name: name

@@ -1,12 +1,12 @@
 <div class="card">
-  <div class="card-header border-bottom">
+  <div class="card-header">
     <div class="toolbar">
       <div class="toolbar-title">
         Forums
       </div>
       <div class="toolbar-action">
-        <a href="<%= new_admin_forum_path %>" class="button button-contained button-primary">
-          Add Forum
+        <a href="<%= new_admin_forum_path %>" class="button button-icon">
+          <i class="material-icons">add</i>
         </a>
       </div>
     </div>
@@ -19,7 +19,7 @@
         <th><%= t '.slug' %></th>
         <th><%= t '.description' %></th>
         <th><%= t '.topics' %></th>
-        <th class="text-align-right"><%= t '.action' %></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,9 +30,9 @@
           <td><%= forum.slug %></td>
           <td><%= truncate forum.description %></td>
           <td><%= forum.topics_count %></td>
-          <td class="text-align-right">
-            <a href="<%= edit_admin_forum_url(forum) %>">
-              Edit
+          <td class="table-action text-align-right">
+            <a href="<%= admin_forum_url(forum) %>" class="button button-icon">
+              <i class="material-icons">chevron_right</i>
             </a>
           </td>
         </tr>

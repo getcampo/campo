@@ -1,6 +1,11 @@
 class Admin::ForumsController < Admin::BaseController
+  before_action :set_forum, only: [:show, :edit, :update]
+
   def index
     @forums = Forum.order(id: :desc).all
+  end
+
+  def show
   end
 
   def new
@@ -11,21 +16,18 @@ class Admin::ForumsController < Admin::BaseController
     @forum = Forum.new forum_params
 
     if @forum.save
-      redirect_to admin_forums_url, notice: t('flash.forum_is_successfully_created')
+      redirect_to admin_forum_url(@forum), notice: t('flash.forum_is_successfully_created')
     else
       render 'update_form'
     end
   end
 
   def edit
-    @forum = Forum.find_by!(slug: params[:id])
   end
 
   def update
-    @forum = Forum.find_by!(slug: params[:id])
-
     if @forum.update forum_params
-      redirect_to admin_forums_url, notice: t('flash.forum_is_successfully_updated')
+      redirect_to admin_forum_url(@forum), notice: t('flash.forum_is_successfully_updated')
     else
       render 'update_form'
     end
@@ -35,5 +37,9 @@ class Admin::ForumsController < Admin::BaseController
 
   def forum_params
     params.require(:forum).permit(:name, :slug, :description)
+  end
+
+  def set_forum
+    @forum = Forum.find params[:id]
   end
 end

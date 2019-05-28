@@ -28,7 +28,6 @@ zh-CN:
   admin:
     forums:
       index:
-        action: 动作
         description: 描述
         id: ID
         name: 名称
