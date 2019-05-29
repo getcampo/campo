@@ -2,7 +2,7 @@
 
 <div id="topic-toolbar" class="toolbar">
   <div class="toolbar-title">
-    <a href="<%= forum_path(topic.forum) %>" class="text-secondary"><%= topic.forum.name %></a>
+    <a href="<%= forum_path(id: topic.forum.slug) %>" class="text-secondary"><%= topic.forum.name %></a>
     <%= topic.title %>
   </div>
   <div class="toolbar-action" data-controller="visible-to-user">

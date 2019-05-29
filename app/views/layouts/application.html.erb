@@ -71,11 +71,14 @@
           Forums
         </div>
         <div class="drawer-menu">
-          <% Forum.all.each do |forum| %>
-            <a href="<%= forum_path(forum) %>" class="drawer-item <%= 'active' if @forum == forum %>">
-              <i class="material-icons">label</i> <%= forum.name %>
+          <% Forum.order(topics_count: :desc).limit(5).each do |forum| %>
+            <a href="<%= forum_path(id: forum.slug) %>" class="drawer-item <%= 'active' if @forum == forum %>">
+              <i class="material-icons">forum</i> <%= forum.name %>
             </a>
           <% end %>
+          <a href="<%= forums_path %>" class="drawer-item">
+            <i class="material-icons">more_vert</i> More
+          </a>
         </div>
       </div>
     </div>
