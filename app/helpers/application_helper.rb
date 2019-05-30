@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def avatar_url(user)
-    url_for(user.avatar.variant(combine_options: { resize: '192x192^', gravity: 'center', extent: '192x192' }))
+    user.avatar.thumb.url
   end
 
   def local_time_or_date(time)

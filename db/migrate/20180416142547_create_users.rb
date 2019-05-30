@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, null: false
       t.boolean :email_verified, default: false
       t.string :password_digest, null: false
+      t.string :avatar
       t.text :bio
       t.string :auth_token, null: false
 

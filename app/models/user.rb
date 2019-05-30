@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :auth_token
-  has_one_attached :avatar
   has_many_attached :attachments
 
   has_many :identities
@@ -13,6 +12,8 @@ class User < ApplicationRecord
   has_many :ignored_topics, -> { where(subscriptions: { status: 'ignored' }) }, through: :subscriptions, source: :topic
 
   has_and_belongs_to_many :mentioned_posts, class_name: 'Post', join_table: 'mentions'
+
+  mount_uploader :avatar, AvatarUploader
 
   USERNAME_REGEXP = /\A[a-zA-Z]\w+\z/
 
@@ -55,7 +56,8 @@ class User < ApplicationRecord
   def generate_default_avatar
     temp_path = "#{Rails.root}/tmp/#{id}_default_avatar.png"
     system(*%W(convert -size 192x192 -annotate 0 #{username[0]} -font DejaVu-Sans -fill white -pointsize 128 -gravity Center xc:#{DEFAULT_AVATAR_COLORS.sample} #{temp_path}))
-    avatar.attach(io: File.open(temp_path), filename: 'avatar.png', content_type: 'image/png')
+    avatar.store!(File.open(temp_path))
+    save
     FileUtils.rm temp_path
   end
 end
