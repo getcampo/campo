@@ -7,7 +7,6 @@ class Settings::AccountsController < Settings::BaseController
     @user = Current.user
 
     if @user.update user_params
-      @user.avatar.attach params[:user][:avatar] if params[:user][:avatar].present?
       redirect_to settings_account_path, notice: t('flash.account_is_successfully_updated')
     else
       respond_to do |format|
@@ -32,6 +31,6 @@ class Settings::AccountsController < Settings::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :bio)
+    params.require(:user).permit(:name, :username, :avatar, :bio)
   end
 end
