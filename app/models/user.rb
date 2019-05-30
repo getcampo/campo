@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :auth_token
-  has_many_attached :attachments
 
   has_many :identities
   has_many :topics
@@ -13,6 +12,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :mentioned_posts, class_name: 'Post', join_table: 'mentions'
 
+  has_many :attachments
   mount_uploader :avatar, AvatarUploader
 
   USERNAME_REGEXP = /\A[a-zA-Z]\w+\z/
