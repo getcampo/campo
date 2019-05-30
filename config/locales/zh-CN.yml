@@ -40,7 +40,6 @@ zh-CN:
         title: Title
         user: User
   common:
-    home: 首页
     password: 密码
     sign_in: 登录
     sign_up: 注册
@@ -67,9 +66,6 @@ zh-CN:
     user_is_successfully_updated: User is successfully updated
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
-  forums:
-    index:
-      all_forums: 全部版块
   helpers:
     select:
       prompt: 请选择

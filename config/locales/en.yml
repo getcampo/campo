@@ -40,7 +40,6 @@ en:
         title: Title
         user: User
   common:
-    home: Home
     password: Password
     sign_in: Sign in
     sign_up: Sign up
@@ -67,9 +66,6 @@ en:
     user_is_successfully_updated: User is successfully updated
     user_not_found: User not found.
     you_have_no_permissions: You have no permissions.
-  forums:
-    index:
-      all_forums: All Forums
   helpers:
     select:
       prompt: Please Select
