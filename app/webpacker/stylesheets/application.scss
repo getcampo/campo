@@ -29,7 +29,9 @@ img {
 }
 
 .avatar {
-  width: 48px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .avatar-mini {
@@ -37,12 +39,9 @@ img {
   height: 24px;
 }
 
-.avatar-2x {
-  width: 96px;
-}
-
-.avatar-4x {
-  width: 192px;
+.avatar-large {
+  width: 80px;
+  height: 80px
 }
 
 .btn {

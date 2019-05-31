@@ -15,7 +15,7 @@
           </button>
           <div class="dropdown-menu dropdown-menu-large dropdown-menu-top">
             <a href="<%= topic_path(post.reply_to_post.topic, number: post.reply_to_post.number) %>" class="dropdown-menu-item">
-              <%= image_tag avatar_url(post.reply_to_post.user), class: 'avatar avatar-mini mr-2' %>
+              <img src="<%= post.reply_to_post.user.avatar.thumb.url %>" class="avatar avatar-mini mr-2">
               <div>
                 <b><%= post.reply_to_post.user.name %></b>
                 -
@@ -29,7 +29,7 @@
     <div class="post-container hide-on-editing">
       <div class="post-avatar">
         <a href="<%= profile_path(username: post.user.username) %>">
-          <%= avatar_tag post.user %>
+          <img src="<%= post.user.avatar.thumb.url %>" class="avatar">
         </a>
       </div>
       <div class="post-content">
@@ -80,7 +80,7 @@
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
                 <% post.replied_posts.each do |replied_post| %>
                   <a href="<%= topic_path(replied_post.topic, number: replied_post.number) %>" class="dropdown-menu-item">
-                    <%= image_tag avatar_url(replied_post.user), class: 'avatar avatar-mini mr-2' %>
+                    <img src="<%= replied_post.user.avatar.thumb.url %>" class="avatar avatar-mini mr-2">
                     <div>
                       <b><%= replied_post.user.name %></b>
                       -

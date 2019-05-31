@@ -29,7 +29,7 @@
   <div class="form-field <%= 'is-invalid' if @user.errors[:email].any? %>">
     <%= form.label :avatar %>
     <div class="mb-2">
-      <%= avatar_tag @user %>
+      <img src="<%= @user.avatar.thumb.url %>" class="avatar">
     </div>
     <label class="button button-outlined button-primary">
       Select Image

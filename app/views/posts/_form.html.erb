@@ -12,7 +12,7 @@
   <div class="post-container">
     <div class="post-avatar">
       <% if Current.user %>
-      <%= avatar_tag Current.user %>
+        <img src="<%= Current.user.avatar.thumb.url %>" class="avatar">
       <% end %>
     </div>
     <div class="post-content">

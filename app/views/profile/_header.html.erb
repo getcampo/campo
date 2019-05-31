@@ -1,7 +1,7 @@
 <div class="card-header border-bottom">
   <div class="profile">
     <div class="profile-avatar">
-      <%= avatar_tag @user %>
+      <img src="<%= @user.avatar.thumb.url %>" class="avatar avatar-large">
     </div>
     <div class="profile-info">
       <div class="profile-name">

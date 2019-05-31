@@ -1,7 +1,7 @@
 <% cache [I18n.locale, topic] do %>
 <a class="list-item" href="<%= topic_path(topic) %>">
     <div class="list-item-avatar">
-      <%= avatar_tag topic.user %>
+      <img src="<%= topic.user.avatar.thumb.url %>" class="avatar">
     </div>
     <div class="list-item-content text-overflow">
       <div class="list-item-content-primary">
