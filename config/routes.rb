@@ -37,7 +37,6 @@ Rails.application.routes.draw do
     end
   end
   resources :attachments, only: [:create]
-  get '/attachments/:token/*filename', to: 'attachments#show', as: :attachment
   resource :preview, only: [:create]
   resources :notifications, only: [:index]
 

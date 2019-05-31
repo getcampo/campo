@@ -29,6 +29,7 @@ module MarkdownHelper
 
   def markdown_postprocess(html)
     doc = Nokogiri::HTML.fragment(html)
+
     doc.xpath('*//text()').each do |node|
       # skip some element
       unless node.ancestors('a, pre, code').any?
@@ -54,6 +55,29 @@ module MarkdownHelper
       node.replace text
       end
     end
+
+    doc.css('img').each do |node|
+      if node['src'] =~ %r(\A/attachments/([^/]+)/)
+        token = $1
+        if attachment = Attachment.find_by(token: token)
+          node['src'] = attachment.file.url
+        else
+          node['src'] = nil
+        end
+      end
+    end
+
+    doc.css('a').each do |node|
+      if node['href'] =~ %r(\A/attachments/([^/]+)/)
+        token = $1
+        if attachment = Attachment.find_by(token: token)
+          node['href'] = attachment.file.url
+        else
+          node['href'] = nil
+        end
+      end
+    end
+
     doc.to_html
   end
 

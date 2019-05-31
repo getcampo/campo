@@ -8,12 +8,4 @@ class AttachmentsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
   end
-
-  test "should get attachment" do
-    attachment = Attachment.new user: create(:user)
-    attachment.file.store!(File.open('test/fixtures/files/logo.png'))
-    attachment.save
-    get attachment_path(token: attachment.token, filename: attachment.file_identifier)
-    assert_response :redirect
-  end
 end

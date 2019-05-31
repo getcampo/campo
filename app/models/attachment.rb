@@ -17,4 +17,8 @@ class Attachment < ApplicationRecord
       self.byte_size = file.file.size
     end
   end
+
+  def uri
+    "/attachments/#{token}/#{file_identifier}"
+  end
 end

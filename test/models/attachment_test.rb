@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class AttachmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should generate uri" do
+    attachment = create(:attachment)
+    assert_equal "/attachments/#{attachment.token}/#{attachment.file_identifier}", attachment.uri
+  end
 end
