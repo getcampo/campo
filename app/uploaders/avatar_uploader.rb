@@ -20,4 +20,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def content_type_whitelist
     ['image/jpeg', 'image/png']
   end
+
+  def filename
+    if original_filename
+      "#{secure_token}.#{file.extension}"
+    end
+  end
+
+  private
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.base58)
+  end
 end
