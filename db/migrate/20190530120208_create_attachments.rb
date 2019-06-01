@@ -8,6 +8,8 @@ class CreateAttachments < ActiveRecord::Migration[5.2]
       t.integer :byte_size
 
       t.timestamps
+
+      t.index :token, unique: true
     end
   end
 end

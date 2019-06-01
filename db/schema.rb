@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_120208) do
     t.integer "byte_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_attachments_on_token", unique: true
     t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 

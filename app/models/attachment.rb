@@ -6,7 +6,7 @@ class Attachment < ApplicationRecord
   before_create :set_token
 
   def set_token
-    self.token = SecureRandom.base58
+    self.token = SecureRandom.base58(24)
   end
 
   before_save :set_meta_data
