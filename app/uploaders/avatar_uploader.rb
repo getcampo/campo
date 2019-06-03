@@ -14,7 +14,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def content_type_whitelist
-    ['image/jpeg', 'image/png']
+    %w(
+      image/jpeg
+      image/png
+    )
   end
 
   def filename
