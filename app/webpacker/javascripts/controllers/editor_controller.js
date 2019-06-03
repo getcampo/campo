@@ -154,7 +154,7 @@ export default class extends Controller {
           if (file.type.startsWith('image/')) {
             content = `![${data.filename}](${data.url})`
           } else {
-            pendingTag = `[${data.filename}](${data.url})`
+            content = `[${data.filename}](${data.url})`
           }
           this.inputTarget.value = this.inputTarget.value.replace(pendingTag, content)
           this.inputTarget.setSelectionRange(start + content.length, end + content.length)
