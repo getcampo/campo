@@ -63,8 +63,9 @@ gem 'sidekiq'
 gem 'webpacker', '~> 4.0.1'
 
 # Attachment
-gem 'carrierwave', '~> 1.0'
-gem 'carrierwave-aws'
+gem 'carrierwave', '~> 1.2.0'
+gem 'carrierwave-aws', '~> 1.3.0'
+gem 'carrierwave-google-storage'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
