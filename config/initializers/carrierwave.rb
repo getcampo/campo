@@ -1,6 +1,7 @@
 CarrierWave.configure do |config|
   case ENV['STORAGE_SERVICE']
   when 'aws'
+    require 'carrierwave-aws'
     config.storage = :aws
     config.aws_bucket = ENV.fetch('STORAGE_AWS_BUCKET')
     config.aws_acl = 'public-read'
@@ -10,6 +11,7 @@ CarrierWave.configure do |config|
       region: ENV.fetch('STORAGE_AWS_REGION')
     }
   when 'gcloud'
+    require 'carrierwave-google-storage'
     require 'google/cloud/storage'
     config.storage = :gcloud
     config.gcloud_bucket = ENV['STORAGE_GCLOUD_BUCKET']
