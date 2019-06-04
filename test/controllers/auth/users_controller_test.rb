@@ -9,7 +9,7 @@ class Auth::UsersControllerTest < ActionDispatch::IntegrationTest
 
    test "should not get new user page without identity" do
     get new_auth_user_path
-    assert_redirected_to new_session_url
+    assert_redirected_to sign_in_url
    end
 
    test "should create user and bind identity" do

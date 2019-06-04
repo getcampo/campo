@@ -22,7 +22,7 @@ class PasswordResetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update password with token" do
     patch password_reset_url(token: @user.password_reset_token), params: { user: { password: '654321', password_confirmation: '654321' } }
-    assert_redirected_to new_session_path
+    assert_redirected_to sign_in_path
     assert @user.reload.authenticate('654321')
   end
 

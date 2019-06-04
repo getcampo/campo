@@ -22,7 +22,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     if @user.update params.require(:user).permit(:password, :password_confirmation)
-      redirect_to new_session_path, notice: t('flash.password_is_successfully_reset')
+      redirect_to sign_in_path, notice: t('flash.password_is_successfully_reset')
     else
       render 'update_form'
     end

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should not get new user page without identity" do
-    get new_user_url
+    get sign_up_url
     assert_response :success
   end
 

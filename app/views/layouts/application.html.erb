@@ -40,7 +40,7 @@
               </a>
               <div class="divider">
               </div>
-              <a href="<%= session_path %>" class="dropdown-menu-item" data-remote="true" data-method="delete" data-confirm="Are you sure?">
+              <a href="<%= sign_out_path %>" class="dropdown-menu-item" data-remote="true" data-method="delete">
                 <i class="material-icons">exit_to_app</i> Sign out
               </a>
             </div>
@@ -48,8 +48,13 @@
         </div>
       <% else %>
         <div class="toolbar-action">
-          <a href="<%= new_session_path %>" class="button button-text">
+          <a href="<%= sign_in_path %>" class="button button-text">
             Sign in
+          </a>
+        </div>
+        <div class="toolbar-action">
+          <a href="<%= sign_up_path %>" class="button button-text">
+            Sign up
           </a>
         </div>
       <% end %>

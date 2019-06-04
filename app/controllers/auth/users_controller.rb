@@ -28,7 +28,7 @@ class Auth::UsersController < ApplicationController
 
   def load_identity
     unless @identity = Identity.find_by(id: session[:identity_id], user: nil)
-      redirect_to new_session_url
+      redirect_to sign_in_url
     end
   end
 end

@@ -17,7 +17,7 @@ module Authenticate
 
   def require_sign_in
     unless Current.user
-      redirect_to new_session_path(return_to: request.path), alert: t('flash.require_sign_in')
+      redirect_to sign_in_path(return_to: request.path), alert: t('flash.require_sign_in')
     end
   end
 
