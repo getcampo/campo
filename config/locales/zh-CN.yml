@@ -74,12 +74,9 @@ zh-CN:
       submit: 提交%{model}
       update: 更新%{model}
   password_resets:
-    edit:
-      password_reset: 密码重置
     form:
       change_password: 修改密码
     show:
-      password_reset: 密码重置
       password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。
       send_email: 发送邮件
   sessions:

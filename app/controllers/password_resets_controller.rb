@@ -31,8 +31,8 @@ class PasswordResetsController < ApplicationController
   private
 
   def load_user_from_token
-    unless @user = User.from_password_reset_token(params[:token])
-      redirect_to password_reset_url, alert: t('flash.invalid_token')
-    end
+    @user = User.from_password_reset_token(params[:token])
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    redirect_to password_reset_url, alert: t('flash.invalid_token')
   end
 end

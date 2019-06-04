@@ -1,13 +1,21 @@
-<div class="row justify-content-center mt-4">
-  <div class="col-md-6">
-    <h3 class="pb-2 mb-4 border-bottom text-center"><%= t '.password_reset' %></h3>
-    <%= form_with url: password_reset_url do |form| %>
-      <div class="form-group">
-        <%= form.label :email, 'Email' %>
-        <%= form.text_field :email, class: 'form-control' %>
-        <small class="form-text text-muted"><%= t '.password_reset_notice' %></small>
+<div class="session-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="toolbar">
+        <div class="toolbar-title">
+          Password reset
+        </div>
       </div>
-      <%= form.submit t('.send_email'), class: 'btn btn-primary w-100' %>
-    <% end %>
+    </div>
+    <div class="card-body">
+      <%= form_with url: password_reset_url, class: 'form' do |form| %>
+        <div class="form-field">
+          <%= form.label :email, 'Email' %>
+          <%= form.text_field :email, class: 'form-control' %>
+          <small class="text-secondary"><%= t '.password_reset_notice' %></small>
+        </div>
+        <%= form.submit t('.send_email'), class: 'button button-contained button-primary' %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <% if AUTH_PROVIDERS.any? %>
   <% if AUTH_PROVIDERS.include?('test') %>
-    <a href="/auth/test" class="btn btn-outline-primary w-100">Test Auth</a>
+    <a href="/auth/test" class="button button-contained button-full-width">
+      Test Auth
+    </a>
   <% end %>
   <% if AUTH_PROVIDERS.include?('password') and AUTH_PROVIDERS.count > 1 %>
     <div class="break">

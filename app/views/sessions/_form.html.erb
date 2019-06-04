@@ -1,19 +1,19 @@
-<%= form_with url: session_path, id: 'sign-in-form' do |form| %>
-  <div class="form-group">
+<%= form_with url: session_path, class: 'form', id: 'sign-in-form' do |form| %>
+  <div class="form-field">
     <%= form.label :login, t('.username_or_email') %>
-    <%= form.text_field :login, value: params[:login], class: 'form-control', autofocus: true %>
+    <%= form.text_field :login, value: params[:login], class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <label for="password" class="w-100">
+  <div class="form-field <%= 'invalid' if @sign_in_error %>">
+    <label for="password">
       <%= t 'common.password' %>
       <a href="/password_reset" class="text-secondary float-right" tabindex="-1"><%= t '.forgot_password' %></a>
     </label>
-    <%= form.password_field :password, class: "form-control #{'is-invalid' if @sign_in_error}" %>
+    <%= form.password_field :password %>
     <% if @sign_in_error %>
-      <div class="invalid-feedback">
+      <div class="validate-feedback">
         <%= t '.incorrect_username_or_password' %>
       </div>
     <% end %>
   </div>
-  <%= form.submit t('common.sign_in'), class: 'btn btn-primary w-100' %>
+  <%= form.submit t('common.sign_in'), class: 'button button-contained button-primary button-full-width' %>
 <% end %>

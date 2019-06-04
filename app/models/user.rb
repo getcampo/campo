@@ -22,14 +22,15 @@ class User < ApplicationRecord
   validates :username, format: { with: USERNAME_REGEXP }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  mattr_accessor :verifier
+  self.verifier = Rails.application.message_verifier('User')
+
   def password_reset_token
-    token = SecureRandom.base58(32)
-    Rails.cache.write "users/password_reset/#{token}", id, expires_in: 30.minutes
-    token
+    self.class.verifier.generate(id, purpose: :password_reset, expires_in: 5.minutes)
   end
 
   def self.from_password_reset_token(token)
-    find_by(id: Rails.cache.read("users/password_reset/#{token}"))
+    find verifier.verify(token, purpose: :password_reset)
   end
 
   ADMIN_EMAILS = ENV['ADMIN_EMAILS'].split(',').map(&:strip)
