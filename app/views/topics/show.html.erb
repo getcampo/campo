@@ -27,7 +27,15 @@
     <% if Current.user %>
       <%= render 'posts/form', post: Post.new(topic: @topic, user: Current.user) %>
     <% else %>
-      <a href="#" class="button button-contained button-primary">Sign in to Post</a>
+      <div class="post">
+        <div class="post-container">
+          <div class="post-avatar">
+          </div>
+          <div class="post-content">
+            <a href="<%= sign_in_path %>" class="button button-contained button-primary">Sign in</a>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 
