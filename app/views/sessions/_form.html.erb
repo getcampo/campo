@@ -10,7 +10,7 @@
     </label>
     <%= form.password_field :password %>
     <% if @sign_in_error %>
-      <div class="validate-feedback">
+      <div class="validate-message">
         <%= t '.incorrect_username_or_password' %>
       </div>
     <% end %>
