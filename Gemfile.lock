@@ -106,6 +106,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
+    cppjieba_rb (0.3.3)
     crass (1.0.4)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -356,6 +357,7 @@ DEPENDENCIES
   carrierwave-google-storage
   chromedriver-helper
   coffee-rails (~> 4.2)
+  cppjieba_rb
   dotenv-rails
   factory_bot_rails
   hiredis

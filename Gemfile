@@ -67,6 +67,9 @@ gem 'carrierwave', '~> 1.2.0'
 gem 'carrierwave-aws', '~> 1.3.0', require: false
 gem 'carrierwave-google-storage', require: false
 
+# Full text search
+gem 'cppjieba_rb'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

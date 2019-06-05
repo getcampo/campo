@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_120208) do
+ActiveRecord::Schema.define(version: 2019_06_05_091330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,9 +78,11 @@ ActiveRecord::Schema.define(version: 2019_05_30_120208) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.tsvector "search_data"
     t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["edited_user_id"], name: "index_posts_on_edited_user_id"
     t.index ["reply_to_post_id"], name: "index_posts_on_reply_to_post_id"
+    t.index ["search_data"], name: "index_posts_on_search_data", using: :gin
     t.index ["topic_id"], name: "index_posts_on_topic_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
