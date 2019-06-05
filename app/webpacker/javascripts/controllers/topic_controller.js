@@ -184,7 +184,7 @@ export default class extends Controller {
         this.postsTarget.outerHTML = data.querySelector('#posts').outerHTML
         this.recalculateIndex()
         this.updateSlider()
-        document.querySelector('#post-new textarea').focus()
+        document.querySelector('#post-new-form textarea').focus()
         this.floatingActionTarget.floatingActionController.close()
       }
     })
