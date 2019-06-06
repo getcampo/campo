@@ -117,3 +117,19 @@ a.normal {
   max-width: 360px;
   margin: 0 auto;
 }
+
+.search-form {
+  position: relative;
+  margin: -3px 0;
+}
+
+.form input[type="text"].search-input {
+  min-width: 240px;
+  padding-right: 42px;
+}
+
+.search-button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}

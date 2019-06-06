@@ -44,6 +44,11 @@ class Post < ApplicationRecord
     CppjiebaRb.filter_stop_word(segment).join(' ')
   end
 
+  def self.prepare_search_query(text)
+    segment = CppjiebaRb.segment(text, mode: :mix)
+    CppjiebaRb.filter_stop_word(segment).join(' & ')
+  end
+
   after_commit :enqueu_update_search_job, if: :saved_change_to_body?
 
   def enqueu_update_search_job
@@ -58,6 +63,6 @@ class Post < ApplicationRecord
   end
 
   scope :search, -> (query) {
-    where("search_data @@ to_tsquery(?)", Post.prepare_search_data(query))
+    where("search_data @@ to_tsquery(?)", Post.prepare_search_query(query))
   }
 end

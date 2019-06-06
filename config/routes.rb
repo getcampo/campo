@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
+  get '/search', to: 'search#index', as: :search
+
   resources :forums, only: [:index, :show] do
     collection do
       post 'validate/:attribute', to: 'forums#validate', constraints: { attribute: /name|slug/ }

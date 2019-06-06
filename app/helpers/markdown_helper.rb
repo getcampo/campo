@@ -26,7 +26,7 @@ module MarkdownHelper
       .yield_self { |content| strip_tags(content) }
   end
 
-  def markdown_summary(content, length: 30)
+  def markdown_summary(content, length: 140)
     content
       .yield_self { |content| MarkdownRenderer.render(content) }
       .yield_self { |content| strip_tags(content) }

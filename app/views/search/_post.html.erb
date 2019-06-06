@@ -1,0 +1,18 @@
+<% cache [I18n.locale, post, post.user] do %>
+  <a href="<%= topic_path(post.topic, number: post.number) %>" class="list-item">
+    <div class="list-item-avatar">
+      <img src="<%= post.user.avatar.thumb.url %>" class="avatar">
+    </div>
+    <div class="list-item-content">
+      <div class="list-item-content-primary">
+        <%= post.user.name %> post to <%= post.topic.title %>
+      </div>
+      <div class="list-item-content-secondary">
+        <%= markdown_summary post.body %>
+      </div>
+    </div>
+    <div class="list-item-meta">
+      <small class="text-secondary"><%= local_time_or_date post.created_at %></small>
+    </div>
+  </a>
+<% end %>

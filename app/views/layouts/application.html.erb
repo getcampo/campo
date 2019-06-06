@@ -16,9 +16,12 @@
 
       </div>
       <div class="toolbar-action">
-        <a href="#" class="button button-icon">
-          <i class="material-icons">search</i>
-        </a>
+        <%= form_with url: search_path, method: 'get', class: 'form search-form', data: { controller: 'turbolink-form' } do |form| %>
+          <%= form.text_field :query, value: params[:query], class: 'search-input', placeholder: 'Search' %>
+          <button type="submit" class="button button-icon search-button">
+            <i class="material-icons">search</i>
+          </button>
+        <% end %>
       </div>
       <% if Current.user %>
         <div class="toolbar-action">
