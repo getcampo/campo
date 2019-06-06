@@ -6,6 +6,8 @@ class CreateReactions < ActiveRecord::Migration[5.2]
       t.integer :type
 
       t.timestamps
+
+      t.index [:user_id, :post_id], unique: true
     end
   end
 end
