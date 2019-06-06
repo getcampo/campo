@@ -62,15 +62,10 @@
           <%= markdown_render post.body %>
         </div>
         <div class="post-footer hide-on-replying">
+          <%= render 'reactions/reaction', post: post %>
           <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true" data-controller="visible-to-user">
             <i class="material-icons">reply</i>
           </a>
-          <button type="button" class="button button-text mr-2">
-            <i class="material-icons">thumb_up</i>
-          </button>
-          <button type="button" class="button button-text mr-2">
-            <i class="material-icons">thumb_down</i>
-          </button>
 
           <% if post.replied_posts.any? %>
             <div class="dropdown ml-auto" data-controller="dropdown">

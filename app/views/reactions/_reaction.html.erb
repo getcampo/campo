@@ -1,0 +1,13 @@
+<% like_count = post.reactions.like.count %>
+<% dislike_count = post.reactions.dislike.count %>
+
+<div id="post-<%= post.id %>-reaction" class="button-group">
+  <a href="<%= post_reaction_path(post, type: :like) %>" data-remote="true" data-method="post" class="button button-text mr-2" id="post-<%= post.id %>-reaction-like">
+    <i class="material-icons <%= 'mr-2' if like_count > 0 %>">thumb_up</i>
+    <%= like_count if like_count > 0 %>
+  </a>
+  <a href="<%= post_reaction_path(post, type: :dislike) %>" data-remote="true" data-method="post" class="button button-text mr-2" id="post-<%= post.id %>-reaction-dislike">
+    <i class="material-icons <%= 'mr-2' if dislike_count > 0 %>">thumb_down</i>
+    <%= dislike_count if dislike_count > 0 %>
+  </a>
+</div>

@@ -1,0 +1,4 @@
+document.querySelector('#post-<%= @post.id %>-reaction').outerHTML = '<%= j render "reactions/reaction", post: @post %>';
+var button = document.querySelector('#post-<%= @post.id %>-reaction-<%= @reaction.type %>');
+button.classList.add('active');
+button.dataset.method = 'delete';

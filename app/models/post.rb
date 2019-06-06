@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   belongs_to :edited_user, class_name: 'User', optional: true
   belongs_to :reply_to_post, class_name: 'Post', optional: true
   has_many :replied_posts, class_name: 'Post', foreign_key: 'reply_to_post_id'
+  has_many :reactions
 
   has_and_belongs_to_many :reply_to_posts, class_name: 'Post', join_table: 'replies', foreign_key: 'from_post_id', association_foreign_key: 'to_post_id'
   has_and_belongs_to_many :reply_from_posts, class_name: 'Post', join_table: 'replies', foreign_key: 'to_post_id', association_foreign_key: 'from_post_id'

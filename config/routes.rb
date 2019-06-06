@@ -33,12 +33,16 @@ Rails.application.routes.draw do
 
     resource :subscription, only: [:update, :destroy]
   end
+
   resources :posts, only: [:show, :create, :edit, :update] do
     member do
       get :reply
       put :trash
     end
   end
+  post 'posts/:id/reaction/:type', to: 'reactions#create', as: :post_reaction, constraints: { type: /like|dislike/ }
+  delete 'posts/:id/reaction/:type', to: 'reactions#destroy', constraints: { type: /like|dislike/ }
+
   resources :attachments, only: [:create]
   resource :preview, only: [:create]
   resources :notifications, only: [:index]

@@ -88,15 +88,14 @@
 
   .button-text {
     color: var(--text-secondary-color);
+    justify-content: flex-start;
 
     &:hover {
       color: var(--text-primary-color);
     }
-  }
 
-  .button-icon {
-    .material-icons {
-      font-size: 18px;
+    &.active {
+      color: var(--primary-color);
     }
   }
 }
