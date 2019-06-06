@@ -17,6 +17,15 @@
       data-reached-end="<%= @reached_end %>"
       data-offset="<%= @offset %>"
       data-total="<%= @topic.posts.count %>"
+      <% if Current.user %>
+        <%
+          reactions = Current.user.reactions.where(post_id: @posts.pluck(:id))
+          like_post_ids = reactions.like.pluck(:post_id)
+          dislike_post_ids = reactions.dislike.pluck(:post_id)
+         %>
+        data-like-post-ids="<%= like_post_ids.join(',') %>"
+        data-dislike-post-ids="<%= dislike_post_ids.join(',') %>"
+      <% end %>
       >
       <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
     </div>

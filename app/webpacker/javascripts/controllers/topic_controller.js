@@ -11,6 +11,8 @@ export default class extends Controller {
       this.updateIndex()
     }, 0)
     this.focuspost()
+    this.parseReaction(this.postsTarget.dataset.likePostIds, 'like')
+    this.parseReaction(this.postsTarget.dataset.dislikePostIds, 'dislike')
     this.onScrollHandle = this.onScroll.bind(this)
     document.addEventListener('scroll', this.onScrollHandle)
   }
@@ -36,6 +38,8 @@ export default class extends Controller {
         this.recalculateIndex()
         this.updateSlider()
         this.focuspost()
+        this.parseReaction(this.postsTarget.dataset.likePostIds, 'like')
+        this.parseReaction(this.postsTarget.dataset.dislikePostIds, 'dislike')
       }
     })
   }
@@ -105,6 +109,8 @@ export default class extends Controller {
         window.scrollTo(0, oldScrollY + (this.postsTarget.offsetHeight - oldHeight))
         this.recalculateIndex()
         this.updateSlider()
+        this.parseReaction(postsElement.dataset.likePostIds, 'like')
+        this.parseReaction(postsElement.dataset.dislikePostIds, 'dislike')
       },
       complete: () => {
         this.loading = false
@@ -133,6 +139,8 @@ export default class extends Controller {
         this.postsTarget.dataset.reachedEnd = postsElement.dataset.reachedEnd
         this.recalculateIndex()
         this.updateSlider()
+        this.parseReaction(postsElement.dataset.likePostIds, 'like')
+        this.parseReaction(postsElement.dataset.dislikePostIds, 'dislike')
       },
       complete: () => {
         this.loading = false
@@ -184,6 +192,8 @@ export default class extends Controller {
         this.postsTarget.outerHTML = data.querySelector('#posts').outerHTML
         this.recalculateIndex()
         this.updateSlider()
+        this.parseReaction(this.postsTarget.dataset.likePostIds, 'like')
+        this.parseReaction(this.postsTarget.dataset.dislikePostIds, 'dislike')
         document.querySelector('#post-new-form textarea').focus()
         this.floatingActionTarget.floatingActionController.close()
       }
@@ -208,5 +218,13 @@ export default class extends Controller {
       let text = `@${post.dataset.postUsername}#${post.dataset.postId} `
       this.composerTarget.querySelector('[data-controller~="editor"]').editorController.insertText(text)
     }, 1)
+  }
+
+  parseReaction(ids, type) {
+    if (ids.length) {
+      ids.split(',').forEach((id) => {
+        document.querySelector(`#post-${id}-reaction-${type}`).classList.add('active')
+      })
+    }
   }
 }
