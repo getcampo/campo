@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <div class="appbar appbar-white appbar-fixed">
+  <div class="appbar appbar-white appbar-fixed <%= 'search-open' if controller_name == 'search' %>" data-controller="appbar">
     <div class="toolbar">
       <div class="toolbar-action">
         <button type="button" class="button button-icon" data-toggle="#drawer">
@@ -13,9 +13,16 @@
         </a>
       </div>
       <div class="toolbar-space">
-
       </div>
-      <div class="toolbar-action">
+      <div class="toolbar-action search-toolbar-action-toggle">
+        <button type="button" class="button button-icon search-open-button" data-action="appbar#openSearch">
+          <i class="material-icons">search</i>
+        </button>
+        <button type="button" class="button button-icon search-close-button" data-action="appbar#closeSearch">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="toolbar-action search-toolbar-action-form">
         <%= form_with url: search_path, method: 'get', class: 'form search-form', data: { controller: 'turbolink-form' } do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'search-input', placeholder: 'Search' %>
           <button type="submit" class="button button-icon search-button">

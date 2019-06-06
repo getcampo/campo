@@ -1,0 +1,55 @@
+.appbar {
+  .search-open-button {
+    display: none;
+  }
+
+  .search-close-button {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .appbar {
+    .search-open-button {
+      display: inline-flex;
+    }
+
+    .search-close-button {
+      display: none;
+    }
+
+    .search-toolbar-action-toggle {
+      display: block;
+    }
+
+    .search-toolbar-action-form {
+      display: none;
+    }
+
+  }
+
+  .appbar.search-open {
+    .search-open-button {
+      display: none;
+    }
+
+    .search-close-button {
+      display: inline-flex;
+    }
+
+    .toolbar-brand,
+    .toolbar-title,
+    .toolbar-space,
+    .toolbar-action {
+      display: none;
+    }
+
+    .search-toolbar-action-toggle {
+      display: block;
+    }
+    .search-toolbar-action-form {
+      display: block;
+      flex-grow: 1;
+    }
+  }
+}
