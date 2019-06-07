@@ -8,11 +8,6 @@ class Post < ApplicationRecord
   has_many :replied_posts, class_name: 'Post', foreign_key: 'reply_to_post_id'
   has_many :reactions
 
-  has_and_belongs_to_many :reply_to_posts, class_name: 'Post', join_table: 'replies', foreign_key: 'from_post_id', association_foreign_key: 'to_post_id'
-  has_and_belongs_to_many :reply_from_posts, class_name: 'Post', join_table: 'replies', foreign_key: 'to_post_id', association_foreign_key: 'from_post_id'
-
-  has_and_belongs_to_many :mentioned_users, class_name: 'User', join_table: 'mentions'
-
   validates :body, presence: true
 
   before_create :generate_number
@@ -22,22 +17,9 @@ class Post < ApplicationRecord
     self.number = (topic.posts.unscope(where: :deleted_at).maximum(:number) || 0) + 1
   end
 
-  after_commit :extract_reply_relation
-
-  def extract_reply_relation
-    user_ids = []
-    post_ids = []
-    body.scan(/@([a-zA-Z]\w+)(#(\d+))?/) do |username, _, post_id|
-      user = User.find_by(username: username)
-      if user
-        user_ids.push user.id
-        if user.posts.where(id: post_id).exists?
-          post_ids.push post_id
-        end
-      end
-    end
-    self.mentioned_user_ids = user_ids
-    self.reply_to_post_ids = post_ids
+  def mentioned_users
+    usernames = body.scan(/@([a-zA-Z]\w+)/).flatten
+    User.where(username: usernames)
   end
 
   def self.prepare_search_data(text)

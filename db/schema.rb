@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "mentions", id: false, force: :cascade do |t|
-    t.bigint "post_id"
-    t.bigint "user_id"
-    t.index ["post_id"], name: "index_mentions_on_post_id"
-    t.index ["user_id"], name: "index_mentions_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer "type"
     t.bigint "user_id"
@@ -96,13 +89,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
     t.index ["post_id"], name: "index_reactions_on_post_id"
     t.index ["user_id", "post_id"], name: "index_reactions_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_reactions_on_user_id"
-  end
-
-  create_table "replies", id: false, force: :cascade do |t|
-    t.bigint "from_post_id"
-    t.bigint "to_post_id"
-    t.index ["from_post_id"], name: "index_replies_on_from_post_id"
-    t.index ["to_post_id"], name: "index_replies_on_to_post_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
