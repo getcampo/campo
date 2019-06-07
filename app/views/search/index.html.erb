@@ -6,10 +6,12 @@
       </div>
     </div>
   </div>
-  <div class="list">
-    <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
-  </div>
-  <div class="card-footer border-top">
-    <%= render_paginator @posts %>
+  <div data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? %>">
+    <div class="list list-bordered" data-target="infinite-page.container">
+      <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
+    </div>
+    <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center border-top">
+      <i class="material-icons animated spin">sync</i>
+    </div>
   </div>
 </div>

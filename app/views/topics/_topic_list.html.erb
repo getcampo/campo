@@ -2,7 +2,7 @@
   <div class="list list-bordered" data-target="infinite-page.container">
     <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
   </div>
-  <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center display-none">
+  <div class="infinite-page-loading-placeholder p-2 text-secondary text-align-center border-top">
     <i class="material-icons animated spin">sync</i>
   </div>
 </div>

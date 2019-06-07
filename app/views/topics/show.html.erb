@@ -4,7 +4,7 @@
       <%= render 'toolbar', topic: @topic %>
     </div>
 
-    <div class="p-2 text-secondary text-align-center display-none" data-target="topic.loadingBefore">
+    <div class="p-2 text-secondary text-align-center display-none border-bottom" data-target="topic.loadingBefore">
       <i class="material-icons animated spin">sync</i>
     </div>
     <div id="posts"
@@ -29,7 +29,7 @@
       >
       <%= render partial: 'posts/post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
     </div>
-    <div class="p-2 text-secondary text-align-center display-none" data-target="topic.loadingAfter">
+    <div class="p-2 text-secondary text-align-center display-none border-bottom" data-target="topic.loadingAfter">
       <i class="material-icons animated spin">sync</i>
     </div>
 
