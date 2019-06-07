@@ -77,6 +77,15 @@
   margin-left: 60px;
   margin-top: 4px;
   margin-bottom: -8px;
+
+  .button-text {
+    color: var(--text-secondary-color);
+
+    &:hover {
+      color: var(--text-primary-color);
+      background: none;
+    }
+  }
 }
 
 .post-body {
@@ -92,6 +101,7 @@
 
     &:hover {
       color: var(--text-primary-color);
+      background: none;
     }
 
     &.active {
