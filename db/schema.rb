@@ -118,12 +118,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   create_table "topics", force: :cascade do |t|
     t.bigint "forum_id"
     t.bigint "user_id"
-    t.string "title", null: false
-    t.integer "comments_count", default: 0
-    t.bigint "last_comment_id"
-    t.datetime "activated_at", null: false
-    t.bigint "edited_user_id"
-    t.datetime "edited_at"
+    t.string "title"
+    t.datetime "activated_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
