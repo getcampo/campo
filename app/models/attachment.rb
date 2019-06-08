@@ -5,6 +5,7 @@ class Attachment < ApplicationRecord
 
   before_create :set_token
 
+  # Do not use has_secure_token because it's late for file store
   def set_token
     self.token = SecureRandom.base58(24)
   end

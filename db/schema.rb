@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   enable_extension "plpgsql"
 
   create_table "attachments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "token"
-    t.string "file"
+    t.bigint "user_id", null: false
+    t.string "token", null: false
+    t.string "file", null: false
     t.string "content_type"
     t.integer "byte_size"
     t.datetime "created_at", null: false
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
 
   create_table "identities", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "provider"
-    t.string "uid"
+    t.string "provider", null: false
+    t.string "uid", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "type"
-    t.bigint "user_id"
-    t.string "record_type"
-    t.bigint "record_id"
-    t.boolean "read", default: false
+    t.bigint "user_id", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.integer "type", null: false
+    t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id"], name: "index_notifications_on_record_type_and_record_id"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "topic_id"
-    t.bigint "user_id"
-    t.integer "number"
+    t.bigint "topic_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "number", null: false
     t.bigint "reply_to_post_id"
-    t.text "body"
+    t.text "body", null: false
     t.bigint "edited_user_id"
     t.datetime "edited_at"
     t.datetime "deleted_at"
@@ -81,20 +81,19 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   end
 
   create_table "reactions", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.integer "type"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.integer "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_reactions_on_post_id"
     t.index ["user_id", "post_id"], name: "index_reactions_on_user_id_and_post_id", unique: true
-    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "topic_id"
-    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "topic_id", null: false
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["topic_id"], name: "index_subscriptions_on_topic_id"
@@ -102,10 +101,10 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.bigint "forum_id"
-    t.bigint "user_id"
-    t.string "title"
-    t.datetime "activated_at"
+    t.bigint "forum_id", null: false
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.datetime "activated_at", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,7 +3,7 @@ class ReactionsController < ApplicationController
 
   def create
     # TODO: use create_or_find in rails 6
-    @reaction = Current.user.reactions.find_or_create_by!(post: @post)
+    @reaction = Current.user.reactions.find_or_initialize_by(post: @post)
     @reaction.update(type: params[:type])
   end
 
