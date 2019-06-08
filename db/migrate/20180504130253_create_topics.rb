@@ -4,6 +4,7 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.belongs_to :forum, null: false
       t.belongs_to :user, null: false
       t.string :title, null: false
+      t.integer :posts_count, null: false, default: 0
       t.datetime :activated_at, null: false
       t.datetime :deleted_at
 

@@ -6,10 +6,8 @@ class Topic < ApplicationRecord
   has_many :subscriptions
   has_many :subscribed_users, -> { where(subscriptions: { status: 'subscribed' }) }, through: :subscriptions, source: :user
   has_many :ignored_users, -> { where(subscriptions: { status: 'ignored' }) }, through: :subscriptions, source: :user
-  belongs_to :forum, counter_cache: true, touch: true
-  belongs_to :category, touch: true, optional: true
+  belongs_to :forum, touch: true
   belongs_to :user
-  belongs_to :last_comment, class_name: 'Comment', optional: true
 
   validates :title, presence: true
 
@@ -21,11 +19,15 @@ class Topic < ApplicationRecord
     self.activated_at = current_time_from_proper_timezone
   end
 
-  before_save :set_category_ancestor_ids
+  after_create :increment_topics_count
+  after_trash :decrement_topics_count
+  after_restore :increment_topics_count
 
-  def set_category_ancestor_ids
-    if category
-      self.category_ancestor_ids = category.ancestors.pluck(:id)
-    end
+  def increment_topics_count
+    Forum.increment_counter :topics_count, forum_id, touch: true
+  end
+
+  def decrement_topics_count
+    Forum.decrement_counter :topics_count, forum_id, touch: true
   end
 end

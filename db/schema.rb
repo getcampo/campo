@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "description"
-    t.integer "topics_count", default: 0
+    t.integer "topics_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index "lower((slug)::text)", name: "index_forums_on_lower_slug", unique: true
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
     t.bigint "forum_id", null: false
     t.bigint "user_id", null: false
     t.string "title", null: false
+    t.integer "posts_count", default: 0, null: false
     t.datetime "activated_at", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false

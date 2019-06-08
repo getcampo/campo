@@ -19,9 +19,26 @@ class PostTest < ActiveSupport::TestCase
     end
   end
 
-  test "should update search do" do
+  test "should update search data" do
     post = create(:post)
     post.update_search_data
     assert_not_nil post.reload.search_data
+  end
+
+  test "should update forum topics counter" do
+    topic = create(:topic)
+    assert_difference "topic.reload.posts_count", 1 do
+      create(:post, topic: topic)
+    end
+
+    post = topic.posts.last
+
+    assert_difference "topic.reload.posts_count", -1 do
+      post.trash
+    end
+
+    assert_difference "topic.reload.posts_count", 1 do
+      post.restore
+    end
   end
 end

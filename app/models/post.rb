@@ -48,4 +48,16 @@ class Post < ApplicationRecord
   scope :search, -> (query) {
     where("search_data @@ to_tsquery(?)", Post.prepare_search_query(query))
   }
+
+  after_create :increment_posts_count
+  after_trash :decrement_posts_count
+  after_restore :increment_posts_count
+
+  def increment_posts_count
+    Topic.increment_counter :posts_count, topic_id, touch: true
+  end
+
+  def decrement_posts_count
+    Topic.decrement_counter :posts_count, topic_id, touch: true
+  end
 end
