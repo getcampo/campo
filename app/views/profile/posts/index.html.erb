@@ -9,4 +9,10 @@
       <i class="material-icons animated spin">sync</i>
     </div>
   </div>
+
+  <% if @posts.empty? %>
+    <div class="text-align-center p-4">
+      No content.
+    </div>
+  <% end %>
 </div>

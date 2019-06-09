@@ -6,7 +6,8 @@
       </div>
     </div>
   </div>
-  <div data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? %>">
+
+  <div data-controller="infinite-page" data-infinite-page-page="<%= @posts.current_page %>" data-infinite-page-reached-end="<%= @posts.last_page? || @posts.out_of_range? %>">
     <div class="list list-bordered" data-target="infinite-page.container">
       <%= render partial: 'post', collection: @posts, cached: -> post { [I18n.locale, post, post.user] } %>
     </div>
@@ -14,4 +15,10 @@
       <i class="material-icons animated spin">sync</i>
     </div>
   </div>
+
+  <% if @posts.empty? %>
+    <div class="text-align-center p-4">
+      No content.
+    </div>
+  <% end %>
 </div>

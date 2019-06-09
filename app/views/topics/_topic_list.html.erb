@@ -1,4 +1,4 @@
-<div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? %>">
+<div data-controller="infinite-page" data-infinite-page-page="<%= @topics.current_page %>" data-infinite-page-reached-end="<%= @topics.last_page? || @topics.out_of_range? %>">
   <div class="list list-bordered" data-target="infinite-page.container">
     <%= render partial: 'topics/topic', collection: @topics, cached: -> topic { [I18n.locale, topic] } %>
   </div>
