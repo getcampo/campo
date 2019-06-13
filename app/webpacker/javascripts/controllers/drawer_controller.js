@@ -16,3 +16,7 @@ export default class extends Controller {
     this.element.classList.remove('open')
   }
 }
+
+document.addEventListener('turbolinks:before-cache', () => {
+  document.querySelector('.drawer.open').classList.remove('open')
+})
