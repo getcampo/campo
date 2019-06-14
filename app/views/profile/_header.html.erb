@@ -15,10 +15,10 @@
   </div>
   <div class="tab">
     <a href="<%= profile_path(username: @user.username) %>" class="tab-item <%= 'active' if controller_name == 'topics' %>">
-      Topics
+      <%= t '.topics' %>
     </a>
     <a href="<%= profile_posts_path(username: @user.username) %>" class="tab-item <%= 'active' if controller_name == 'posts' %>">
-      Posts
+      <%= t '.posts' %>
     </a>
   </div>
 </div>

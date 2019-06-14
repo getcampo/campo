@@ -27,19 +27,19 @@
       <div class="drawer-body">
         <div class="drawer-menu">
           <a href="<%= admin_root_path %>" class="drawer-item <%= 'active' if controller_name == 'dashboard' %>">
-            <i class="material-icons">dashboard</i> Dashboard
+            <i class="material-icons">dashboard</i> <%= t '.dashboard' %>
           </a>
           <a href="<%= admin_forums_path %>" class="drawer-item <%= 'active' if controller_name == 'forums' %>">
-            <i class="material-icons">forum</i> Forums
+            <i class="material-icons">forum</i> <%= t '.forums' %>
           </a>
           <a href="<%= admin_topics_path %>" class="drawer-item">
-            <i class="material-icons">chat_bubble</i> Topics
+            <i class="material-icons">chat_bubble</i> <%= t '.topics' %>
           </a>
           <a href="<%= admin_posts_path %>" class="drawer-item">
-            <i class="material-icons">message</i> Posts
+            <i class="material-icons">message</i> <%= t '.posts' %>
           </a>
           <a href="<%= admin_users_path %>" class="drawer-item">
-            <i class="material-icons">person</i> Users
+            <i class="material-icons">person</i> <%= t '.users' %>
           </a>
         </div>
       </div>

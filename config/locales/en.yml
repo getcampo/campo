@@ -8,10 +8,15 @@ en:
         description: Description
         name: Name
         slug: Slug
+      post:
+        body: Body
+        topic_id: Topic ID
+        user_id: User ID
       topic:
         content: Content
         forum_id: Forum
         title: Title
+        user_id: User ID
       user:
         avatar: Avatar
         bio: Bio
@@ -23,22 +28,51 @@ en:
     models:
       comment: Comment
       forum: Forum
+      post: Post
       topic: Topic
       user: User
   admin:
     forums:
+      edit:
+        edit_forum: Edit forum
       index:
         description: Description
+        forums: Forums
         id: ID
         name: name
         slug: Slug
         topics: Topics
+      new:
+        new_forum: New forum
+    posts:
+      edit:
+        edit_post: Edit post
+      index:
+        body: Body
+        created_at: Created at
+        id: Id
+        posts: Posts
+        user: User
+      new:
+        new_post: New post
     topics:
+      edit:
+        edit_topic: Edit topic
       index:
         created_at: Created at
         id: Id
         title: Title
+        topics: Topics
         user: User
+      new:
+        new_topic: New topic
+    users:
+      edit:
+        edit_user: Edit user
+      index:
+        users: Users
+      new:
+        new_user: New user
   common:
     password: Password
     sign_in: Sign in
@@ -66,6 +100,12 @@ en:
     user_is_successfully_updated: User is successfully updated
     user_not_found: User not found.
     you_have_no_permissions: You have no permissions.
+  forums:
+    index:
+      forums: Forums
+    show:
+      new_topic: New topic
+      no_content: No content.
   helpers:
     select:
       prompt: Please Select
@@ -73,12 +113,51 @@ en:
       create: Create %{model}
       submit: Submit %{model}
       update: Update %{model}
+  home:
+    index:
+      new_topic: New Topic
+      no_content: No content.
+      topics: Topics
+  layouts:
+    admin:
+      dashboard: Dashboard
+      forums: Forums
+      posts: Posts
+      topics: Topics
+      users: Users
+    application:
+      forums: Forums
+      more: More
+      profile: Profile
+      search: Search
+      settings: Settings
+      sign_in: Sign in
+      sign_out: Sign out
+      sign_up: Sign up
+  notifications:
+    index:
+      no_content: No content.
+      notifications: Notifications
   password_resets:
     form:
       change_password: Change password
     show:
       password_reset_notice: Enter your email and we will send your a link to reset your password.
       send_email: Send Email
+  posts:
+    post:
+      delete: Delete
+      delete_post_confirm: Delete post confirm
+      edit_post: Edit post
+      edited_at: Edited at
+  profile:
+    header:
+      posts: Posts
+      topics: Topics
+  search:
+    index:
+      no_content: No content.
+      search_result: Search result
   sessions:
     auth_providers:
       or: Or
@@ -86,10 +165,29 @@ en:
       forgot_password: Forgot password?
       incorrect_username_or_password: Incorrect username or password.
       username_or_email: Username or Email
+    new:
+      sign_in: Sign in
   settings:
     accounts:
       form:
         update_account: Update Account
+        upload_image: Upload image
+    header:
+      account: Account
+      password: Password
     passwords:
       form:
         update_password: Update Password
+  topics:
+    edit:
+      edit_topic: Edit Topic
+    new:
+      new_topic: New Topic
+    toolbar:
+      delete: Delete
+      delete_topic_confirm: Are you sure delte this topic?
+      edit_topic: Edit topic
+      ignore_notifications: Ignore notifications
+  users:
+    new:
+      sign_up: Sign up

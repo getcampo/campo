@@ -32,7 +32,7 @@
       <img src="<%= @user.avatar.thumb.url %>" class="avatar">
     </div>
     <label class="button button-outlined button-primary">
-      Select Image
+      <%= t '.upload_image' %>
       <%= form.file_field :avatar, accept: 'image/*', class: 'display-none' %>
     </label>
   </div>

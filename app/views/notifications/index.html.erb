@@ -2,7 +2,7 @@
   <div class="card-header border-bottom">
     <div class="toolbar">
       <div class="toolbar-title">
-        Notifications
+        <%= t '.notifications' %>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
 
   <% if @notifications.empty? %>
     <div class="text-align-center p-4">
-      No content.
+      <%= t '.no_content' %>
     </div>
   <% end %>
 </div>

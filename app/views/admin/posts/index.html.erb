@@ -2,7 +2,7 @@
   <div class="card-header">
     <div class="toolbar">
       <div class="toolbar-title">
-        Posts
+        <%= t '.posts' %>
       </div>
       <div class="toolbar-action">
         <a href="<%= new_admin_post_path %>" class="button button-icon">
@@ -14,10 +14,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>User</th>
-        <th>Body</th>
-        <th>Created at</th>
+        <th><%= t '.id' %></th>
+        <th><%= t '.user' %></th>
+        <th><%= t '.body' %></th>
+        <th><%= t '.created_at' %></th>
         <th></th>
       </tr>
     </thead>

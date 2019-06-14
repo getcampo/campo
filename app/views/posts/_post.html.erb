@@ -45,7 +45,7 @@
             </a>
             <% if post.edited_at %>
               ·
-              Edited at <%= local_time_or_date post.edited_at %>
+              <%= t '.edited_at' %> <%= local_time_or_date post.edited_at %>
             <% end %>
           </div>
           <div class="dropdown" data-controller="dropdown">
@@ -53,8 +53,14 @@
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">Edit</a>
-              <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="Are you sure?">Trash</a>
+              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">
+                <i class="material-icons">edit</i>
+                <%= t '.edit_post' %>
+              </a>
+              <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="<%= t '.delete_post_confirm' %>">
+                <i class="material-icons">delete</i>
+                <%= t '.delete' %>
+              </a>
             </div>
           </div>
         </div>

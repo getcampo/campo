@@ -2,12 +2,12 @@
   <div class="card-header border-bottom">
     <div class="toolbar">
       <div class="toolbar-title">
-        Topics
+        <%= t '.topics' %>
       </div>
       <div class="toolbar-space">
       </div>
       <div class="toolbar-action">
-        <a href="<%= new_topic_path %>" class="button button-contained button-primary">New Topic</a>
+        <a href="<%= new_topic_path %>" class="button button-contained button-primary"><%= t '.new_topic' %></a>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
   <% if @topics.empty? %>
     <div class="text-align-center p-4">
-      No content.
+      <%= t '.no_content' %>
     </div>
   <% end %>
 </div>

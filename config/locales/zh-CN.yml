@@ -8,10 +8,15 @@ zh-CN:
         description: 描述
         name: 名称
         slug: Slug
+      post:
+        body: 内容
+        topic_id: 主题 ID
+        user_id: 用户 ID
       topic:
         content: 内容
         forum_id: 版块
         title: 标题
+        user_id: 用户 ID
       user:
         avatar: 头像
         bio: 简介
@@ -23,22 +28,51 @@ zh-CN:
     models:
       comment: 评论
       forum: 版块
-      topic: 话题
+      post: 帖子
+      topic: 主题
       user: 用户
   admin:
     forums:
+      edit:
+        edit_forum: 编辑板块
       index:
         description: 描述
+        forums: 板块
         id: ID
         name: 名称
         slug: Slug
-        topics: 话题数
-    topics:
+        topics: 主题数
+      new:
+        new_forum: 新建板块
+    posts:
+      edit:
+        edit_post: 编辑帖子
       index:
-        created_at: Created at
+        body: 内容
+        created_at: 创建时间
         id: Id
-        title: Title
-        user: User
+        posts: 帖子
+        user: 用户
+      new:
+        new_post: 新建帖子
+    topics:
+      edit:
+        edit_topic: 编辑主题
+      index:
+        created_at: 创建于
+        id: Id
+        title: 标题
+        topics: 主题
+        user: 用户
+      new:
+        new_topic: 新建话题
+    users:
+      edit:
+        edit_user: 编辑用户
+      index:
+        users: 用户
+      new:
+        new_user: 创建用户
   common:
     password: 密码
     sign_in: 登录
@@ -60,12 +94,18 @@ zh-CN:
     post_is_successfully_updated: Post is successfully updated
     require_sign_in: 需要登录。
     topic_is_successfully_created: Topic is successfully created
-    topic_is_successfully_deleted: 话题删除成功。
+    topic_is_successfully_deleted: 主题删除成功。
     topic_is_successfully_updated: Topic is successfully updated
     user_is_successfully_created: User is successfully created
     user_is_successfully_updated: User is successfully updated
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
+  forums:
+    index:
+      forums: 板块
+    show:
+      new_topic: 创建主题
+      no_content: 没有内容。
   helpers:
     select:
       prompt: 请选择
@@ -73,12 +113,51 @@ zh-CN:
       create: 创建%{model}
       submit: 提交%{model}
       update: 更新%{model}
+  home:
+    index:
+      new_topic: 创建主题
+      no_content: 没有内容。
+      topics: 主题
+  layouts:
+    admin:
+      dashboard: 面板
+      forums: 板块
+      posts: 帖子
+      topics: 主题
+      users: 用户
+    application:
+      forums: 板块
+      more: 更多
+      profile: 个人页面
+      search: 搜索
+      settings: 设置
+      sign_in: 登入
+      sign_out: 登出
+      sign_up: 注册
+  notifications:
+    index:
+      no_content: 没有内容。
+      notifications: 通知
   password_resets:
     form:
       change_password: 修改密码
     show:
       password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。
       send_email: 发送邮件
+  posts:
+    post:
+      delete: 删除
+      delete_post_confirm: 确认删除该帖子？
+      edit_post: 编辑帖子
+      edited_at: 编辑于
+  profile:
+    header:
+      posts: 帖子
+      topics: 主题
+  search:
+    index:
+      no_content: 没有内容。
+      search_result: 搜索结果
   sessions:
     auth_providers:
       or: 或者
@@ -86,10 +165,29 @@ zh-CN:
       forgot_password: 忘记密码？
       incorrect_username_or_password: 账号名或密码不正确。
       username_or_email: 用户名或邮箱
+    new:
+      sign_in: 登入
   settings:
     accounts:
       form:
         update_account: 更新账号
+        upload_image: 上传图片
+    header:
+      account: 账号
+      password: 密码
     passwords:
       form:
         update_password: 更新密码
+  topics:
+    edit:
+      edit_topic: 编辑主题
+    new:
+      new_topic: 创建主题
+    toolbar:
+      delete: 删除
+      delete_topic_confirm: 确认删除该主题？
+      edit_topic: 编辑主题
+      ignore_notifications: 忽略提醒
+  users:
+    new:
+      sign_up: 注册

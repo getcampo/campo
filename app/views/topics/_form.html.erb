@@ -9,8 +9,8 @@
   </div>
   <% if @topic.new_record? %>
     <div class="form-field">
-      <label>Body</label>
       <%= form.fields_for :first_post do |post_form| %>
+        <%= post_form.label :body %>
         <%= render partial: 'posts/editor', locals: { form: post_form, name: :body } %>
       <% end %>
     </div>

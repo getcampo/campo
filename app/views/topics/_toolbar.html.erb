@@ -28,17 +28,17 @@
       <div class="dropdown-menu dropdown-menu-right">
         <a href="<%= edit_topic_path(topic) %>" class="dropdown-menu-item">
           <i class="material-icons">edit</i>
-          Edit topic
+          <%= t '.edit_topic' %>
         </a>
         <% if !subscription&.ignored? %>
           <a href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true" class="dropdown-menu-item" data-controller="visible-to-user">
             <i class="material-icons">notifications_off</i>
-            Ignore notificatoins
+            <%= t '.ignore_notifications' %>
           </a>
         <% end %>
-        <a href="<%= trash_topic_path(topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="Are you sure?">
+        <a href="<%= trash_topic_path(topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="<%= t '.delete_topic_confirm' %>">
           <i class="material-icons">delete</i>
-          Trash
+          <%= t '.delete' %>
         </a>
       </div>
     </div>

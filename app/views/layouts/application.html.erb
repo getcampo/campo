@@ -24,7 +24,7 @@
       </div>
       <div class="toolbar-action search-toolbar-action-form">
         <%= form_with url: search_path, method: 'get', class: 'form search-form', data: { controller: 'turbolink-form' } do |form| %>
-          <%= form.text_field :query, value: params[:query], class: 'search-input', placeholder: 'Search' %>
+          <%= form.text_field :query, value: params[:query], class: 'search-input', placeholder: t('.search') %>
           <button type="submit" class="button button-icon search-button">
             <i class="material-icons">search</i>
           </button>
@@ -43,15 +43,15 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="<%= profile_path(username: Current.user.username) %>" class="dropdown-menu-item">
-                <i class="material-icons">person</i> Profile
+                <i class="material-icons">person</i> <%= t '.profile' %>
               </a>
               <a href="<%= settings_account_path %>" class="dropdown-menu-item">
-                <i class="material-icons">settings</i> Settings
+                <i class="material-icons">settings</i> <%= t '.settings' %>
               </a>
               <div class="divider">
               </div>
               <a href="<%= sign_out_path %>" class="dropdown-menu-item" data-remote="true" data-method="delete">
-                <i class="material-icons">exit_to_app</i> Sign out
+                <i class="material-icons">exit_to_app</i> <%= t '.sign_out' %>
               </a>
             </div>
           </div>
@@ -59,12 +59,12 @@
       <% else %>
         <div class="toolbar-action">
           <a href="<%= sign_in_path %>" class="button button-text">
-            Sign in
+            <%= t '.sign_in' %>
           </a>
         </div>
         <div class="toolbar-action">
           <a href="<%= sign_up_path %>" class="button button-text">
-            Sign up
+            <%= t '.sign_up' %>
           </a>
         </div>
       <% end %>
@@ -78,12 +78,9 @@
           <a href="<%= root_path %>" class="drawer-item <%= 'active' if controller_name == 'home' %>">
             <i class="material-icons">home</i> Home
           </a>
-          <a href="#" class="drawer-item">
-            <i class="material-icons">star</i> Starred
-          </a>
         </div>
         <div class="subtitle">
-          Forums
+          <%= t '.forums' %>
         </div>
         <div class="drawer-menu">
           <% Forum.order(topics_count: :desc).limit(5).each do |forum| %>
@@ -92,7 +89,7 @@
             </a>
           <% end %>
           <a href="<%= forums_path %>" class="drawer-item">
-            <i class="material-icons">more_vert</i> More
+            <i class="material-icons">more_vert</i> <%= t '.more' %>
           </a>
         </div>
       </div>
