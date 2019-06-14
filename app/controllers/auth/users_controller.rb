@@ -1,6 +1,4 @@
 class Auth::UsersController < ApplicationController
-  layout 'base'
-
   before_action :load_identity
 
   def new

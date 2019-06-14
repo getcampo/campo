@@ -73,6 +73,12 @@ en:
         users: Users
       new:
         new_user: New user
+  auth:
+    users:
+      form:
+        sign_up: Sign up
+      new:
+        complete_account_info: Complete account info
   common:
     password: Password
     sign_in: Sign in

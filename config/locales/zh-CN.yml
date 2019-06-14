@@ -73,6 +73,12 @@ zh-CN:
         users: 用户
       new:
         new_user: 创建用户
+  auth:
+    users:
+      form:
+        sign_up: 注册
+      new:
+        complete_account_info: 完成账号信息
   common:
     password: 密码
     sign_in: 登录
