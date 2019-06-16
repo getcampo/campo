@@ -70,6 +70,9 @@ gem 'carrierwave-google-storage', require: false
 # Full text search
 gem 'cppjieba_rb'
 
+# ActiveRecord Advisory Lock
+gem 'with_advisory_lock'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

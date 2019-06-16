@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   before_create :generate_number
 
   def generate_number
-    # TODO: lock
     self.number = (topic.posts.unscope(where: :deleted_at).maximum(:number) || 0) + 1
   end
 

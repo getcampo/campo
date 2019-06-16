@@ -10,12 +10,15 @@ class PostsController < ApplicationController
   def create
     @post = Current.user.posts.new post_params
 
-    if @post.save
-      @post.topic.update activated_at: Time.now.utc
-      PostNotificationJob.perform_later(@post)
-      render 'create'
-    else
-      render 'update_form'
+    # lock for post number generate
+    Topic.with_advisory_lock("topic_#{@post.topic_id}_create_post") do
+      if @post.save
+        @post.topic.update activated_at: Time.now.utc
+        PostNotificationJob.perform_later(@post)
+        render 'create'
+      else
+        render 'update_form'
+      end
     end
   end
 
