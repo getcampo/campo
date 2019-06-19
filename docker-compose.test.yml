@@ -1,7 +1,9 @@
 version: '3.4'
 services:
   sut:
-    build: .
+    build:
+      context: .
+      target: development
     command: bash -c "bin/setup && bin/rails test && bundle exec brakeman"
     depends_on:
       - postgres
