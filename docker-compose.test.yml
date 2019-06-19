@@ -3,7 +3,7 @@ services:
   sut:
     build:
       context: .
-      target: base
+      target: testing
     command: bash -c "bin/setup && bin/rails test && bundle exec brakeman"
     depends_on:
       - postgres

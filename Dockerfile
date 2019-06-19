@@ -24,19 +24,31 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl gnupg && \
 
 RUN gem install bundler -v 2.0.2
 
-WORKDIR /app
+WORKDIR /campo
 
-## release stage
+## testing stage
 
-FROM base
+FROM base AS testing
+
+COPY Gemfile Gemfile.lock /campo/
+RUN bundle install --deployment
+
+COPY package.json yarn.lock /campo/
+RUN yarn install
+
+COPY . /campo/
+
+## production stage
+
+FROM base AS production
 
 ENV RAILS_ENV=production
 
-COPY Gemfile Gemfile.lock /app/
+COPY . /campo/
+
 RUN bundle install --deployment --without test development && \
   rm vendor/bundle/ruby/2.5.0/cache/*
 
-COPY . /app/
 RUN yarn install && \
   bin/rails assets:precompile && \
   yarn cache clean && \

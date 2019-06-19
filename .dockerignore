@@ -27,3 +27,5 @@
 
 /.docker-sync
 /.git
+
+/public/uploads
