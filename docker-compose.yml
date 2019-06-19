@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      target: base
+      target: development
     command: bin/rails server -b 0.0.0.0
     environment:
       WEBPACKER_DEV_SERVER_HOST: webpacker
@@ -18,7 +18,7 @@ services:
   webpacker:
     build:
       context: .
-      target: base
+      target: development
     command: bin/webpack-dev-server
     environment:
       WEBPACKER_DEV_SERVER_HOST: webpacker
@@ -29,7 +29,7 @@ services:
   worker:
     build:
       context: .
-      target: base
+      target: development
     command: bundle exec sidekiq
     volumes:
       - campo-sync:/app:nocopy

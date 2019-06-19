@@ -14,12 +14,16 @@
 /yarn-error.log
 /vendor/bundle
 
-/public/assets
+/public/packs
+/public/packs-test
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-.env.production
-.env.local
-.env.*.local
+/.env.production
+/.env.local
+/.env.*.local
+
+/.docker-sync
+/.git
