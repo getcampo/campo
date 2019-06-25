@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_114621) do
     t.string "avatar"
     t.text "bio"
     t.string "auth_token", null: false
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true

@@ -34,12 +34,6 @@ class User < ApplicationRecord
     find verifier.verify(token, purpose: :password_reset)
   end
 
-  ADMIN_EMAILS = ENV['ADMIN_EMAILS'].split(',').map(&:strip)
-
-  def admin?
-    ADMIN_EMAILS.include?(email)
-  end
-
   DEFAULT_AVATAR_COLORS = %w(
     #007bff
     #6610f2
