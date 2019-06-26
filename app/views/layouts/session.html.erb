@@ -1,0 +1,14 @@
+<% content_for :body do %>
+  <div class="main">
+    <div class="container">
+      <div class="session-logo">
+        <a href="<%= root_path %>">
+          <img src="<%= asset_pack_path 'media/images/logo.png' %>">
+        </a>
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/base' %>

@@ -18,4 +18,8 @@ end
 
 class ActionDispatch::IntegrationTest
   include SessionHelper
+
+  setup do
+    @site = Site.create
+  end
 end

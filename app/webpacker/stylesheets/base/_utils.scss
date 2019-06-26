@@ -53,7 +53,7 @@ a.text-secondary {
   text-overflow: ellipsis;
 }
 
-@for $i from 1 through 4 {
+@for $i from 0 through 4 {
   .p-#{$i} {
     padding: $i * 4px;
   }

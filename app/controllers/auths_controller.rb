@@ -1,4 +1,6 @@
 class AuthsController < ApplicationController
+  skip_before_action :check_setup_wizard
+
   def callback
     auth_hash = request.env['omniauth.auth']
     identity = Identity.find_or_create_by(provider: auth_hash[:provider], uid: auth_hash[:uid])

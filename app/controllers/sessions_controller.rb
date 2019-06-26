@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
   include AuthPassword
+  layout 'session'
 
+  skip_before_action :check_setup_wizard
   before_action :require_auth_password_enabled, only: [:create]
 
   def new
     if params[:return_to]
       session[:return_to] = URI(params[:return_to]).path
     end
-    logger.info session[:return_to]
   end
 
   def create

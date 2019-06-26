@@ -83,6 +83,21 @@ en:
     password: Password
     sign_in: Sign in
     sign_up: Sign up
+  default_data:
+    announcement: Announcement
+    post_body: |
+      Welcome to the Campo forum.
+
+      You can do the following to the [admin panel](/admin):
+
+      - Modify the site settings.
+      - Add/modify sub-forum.
+      - Manage users and content.
+
+      Delete or modify this topic when you are ready.
+
+      I wish you a happy stay!
+    topic_title: Welcome to Campo!
   errors:
     messages:
       blank: Can't be blank
@@ -184,6 +199,13 @@ en:
     passwords:
       form:
         update_password: Update Password
+  setup:
+    show:
+      require_sign_up_body: Now you need to register an account, which will become the first administrator.
+      require_sign_up_title: Congratulations! You have successfully installed Campo
+      setup_completed_body: You will be redirected to the home page after the initialization is complete.
+      setup_completed_title: Initializing data
+      sign_up: 注册
   topics:
     edit:
       edit_topic: Edit Topic

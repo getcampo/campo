@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   include AuthPassword
+  layout 'session'
 
+  skip_before_action :check_setup_wizard
   before_action :require_auth_password_enabled, only: [:create]
 
   def new
+    if params[:return_to]
+      session[:return_to] = URI(params[:return_to]).path
+    end
     @user = User.new
   end
 
@@ -12,7 +17,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to root_url
+      redirect_to session.delete(:return_to) || root_path
     else
       render 'update_form'
     end

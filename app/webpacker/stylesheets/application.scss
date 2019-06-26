@@ -12,6 +12,8 @@
 @import 'infinite_page';
 @import 'profile';
 @import 'search';
+@import 'session';
+@import 'wizard';
 
 html {
   background: #efefef;
@@ -112,11 +114,6 @@ a.normal {
   img {
     height: 40px;
   }
-}
-
-.session-container {
-  max-width: 360px;
-  margin: 0 auto;
 }
 
 .search-form {

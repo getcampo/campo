@@ -1,0 +1,32 @@
+<div class="session-container">
+  <% if Current.user %>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="mt-0">
+          <%= t '.setup_completed_title' %>
+        </h3>
+        <p>
+          <%= t '.setup_completed_body' %>
+        </p>
+        <a id="setup-link" href="<%= setup_path %>" data-remote="true" data-method="patch" class="display-none"></a>
+        <script>
+          document.querySelector('#setup-link').click();
+        </script>
+      </div>
+    </div>
+  <% else %>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="mt-0">
+          <%= t '.require_sign_up_title' %>
+        </h3>
+        <p>
+          <%= t '.require_sign_up_body' %>
+        </p>
+        <a href="<%= sign_up_path(return_to: setup_path) %>" class="button button-contained button-primary">
+          <%= t '.sign_up' %>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

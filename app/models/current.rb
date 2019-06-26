@@ -1,3 +1,3 @@
 class Current < ActiveSupport::CurrentAttributes
-  attribute :user, :identity
+  attribute :user, :identity, :site
 end

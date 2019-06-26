@@ -83,6 +83,21 @@ zh-CN:
     password: 密码
     sign_in: 登录
     sign_up: 注册
+  default_data:
+    announcement: 公告
+    post_body: |
+      欢迎使用 Campo 论坛。
+
+      您可以到[管理面板](/admin)进行以下操作：
+
+      - 修改站点设置。
+      - 增加/修改子板块。
+      - 管理用户和内容。
+
+      当您准备好后，删除或修改本话题。
+
+      祝您使用愉快！
+    topic_title: 欢迎来到 Campo！
   errors:
     messages:
       blank: 不能为空
@@ -184,6 +199,13 @@ zh-CN:
     passwords:
       form:
         update_password: 更新密码
+  setup:
+    show:
+      require_sign_up_body: 现在您需要注册一个账号，该账号将成为首位管理员。
+      require_sign_up_title: 恭喜！您已经成功安装 Campo
+      setup_completed_body: 初始化完成后您将被重定向到首页。
+      setup_completed_title: 正在初始化数据
+      sign_up: 注册
   topics:
     edit:
       edit_topic: 编辑主题
