@@ -24,6 +24,7 @@ zh-CN:
         name: 全名
         password: 密码
         password_confirmation: 密码确认
+        role: 角色
         username: 用户名
     models:
       comment: 评论

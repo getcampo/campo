@@ -20,5 +20,12 @@
       <%= @user.errors[:bio].first %>
     </div>
   </div>
+  <div class="form-field <%= 'invalid' if @user.errors[:role].any? %>">
+    <%= form.label :role %>
+    <%= form.select :role, User.roles.keys %>
+    <div class="validate-message">
+      <%= @user.errors[:role].first %>
+    </div>
+  </div>
   <%= form.submit class: 'button button-contained button-primary' %>
 <% end %>

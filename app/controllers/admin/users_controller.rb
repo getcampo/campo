@@ -39,7 +39,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:name, :slug, :description)
+    params.require(:user).permit(:name, :slug, :description, :role)
   end
 
   def set_user
