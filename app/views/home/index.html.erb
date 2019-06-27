@@ -1,13 +1,15 @@
+<div class="floating-action">
+  <a href="<%= new_topic_path %>" class="button button-floating extended button-primary">
+    <i class="material-icons mr-2">add</i>
+    <%= t '.new_topic' %>
+  </a>
+</div>
+
 <div class="card">
   <div class="card-header border-bottom">
     <div class="toolbar">
       <div class="toolbar-title">
         <%= t '.topics' %>
-      </div>
-      <div class="toolbar-space">
-      </div>
-      <div class="toolbar-action">
-        <a href="<%= new_topic_path %>" class="button button-contained button-primary"><%= t '.new_topic' %></a>
       </div>
     </div>
   </div>
