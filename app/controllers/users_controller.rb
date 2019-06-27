@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include AuthPassword
   layout 'session'
 
-  skip_before_action :check_setup_wizard
+  skip_before_action :require_site
   before_action :require_auth_password_enabled, only: [:create]
 
   def new

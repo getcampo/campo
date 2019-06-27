@@ -1,5 +1,5 @@
 class AuthsController < ApplicationController
-  skip_before_action :check_setup_wizard
+  skip_before_action :require_site
 
   def callback
     auth_hash = request.env['omniauth.auth']

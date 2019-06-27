@@ -1,7 +1,7 @@
 class Auth::UsersController < ApplicationController
   layout 'session'
   before_action :load_identity
-  skip_before_action :check_setup_wizard
+  skip_before_action :require_site
 
   def new
     @user = User.new(

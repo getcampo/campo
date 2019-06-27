@@ -1,8 +1,8 @@
 class SetupController < ApplicationController
   layout 'session'
 
-  skip_before_action :check_setup_wizard
-  before_action :require_setup_wizard_enabled
+  skip_before_action :require_site
+  before_action :require_no_site
   before_action :require_sign_in, only: [:update]
 
   def show
@@ -10,22 +10,26 @@ class SetupController < ApplicationController
 
   def update
     Current.user.admin!
-    Current.site.update(setup_wizard_enabled: false)
     generate_default_data
     redirect_to root_path
   end
 
   private
 
-  def require_setup_wizard_enabled
-    unless Current.site.setup_wizard_enabled?
+  def require_no_site
+    if Current.site
       redirect_to root_path
     end
   end
 
   def generate_default_data
+    Site.create(
+      title: 'Campo',
+      logo: File.open(Rails.root.join('app', 'webpacker', 'images', 'logo.png')),
+      icon: File.open(Rails.root.join('app', 'webpacker', 'images', 'logo.png'))
+    )
     forum = Forum.create(name: I18n.t('default_data.announcement'), slug: 'announcement')
-    Topic.create!(
+    Topic.create(
       user: Current.user,
       forum: forum,
       title: I18n.t('default_data.topic_title'),

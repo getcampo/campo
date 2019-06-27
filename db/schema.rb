@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2019_06_25_121526) do
     t.string "description"
     t.string "logo"
     t.string "icon"
-    t.boolean "setup_wizard_enabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
