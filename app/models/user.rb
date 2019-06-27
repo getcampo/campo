@@ -16,6 +16,11 @@ class User < ApplicationRecord
   has_many :attachments
   mount_uploader :avatar, AvatarUploader
 
+  enum role: {
+    default: 0,
+    admin: 1
+  }
+
   USERNAME_REGEXP = /\A[a-zA-Z]\w+\z/
 
   validates :name, :username, :email, presence: true

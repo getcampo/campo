@@ -9,7 +9,7 @@ class SetupController < ApplicationController
   end
 
   def update
-    Current.user.update(admin: true)
+    Current.user.admin!
     Current.site.update(setup_wizard_enabled: false)
     generate_default_data
     redirect_to root_path

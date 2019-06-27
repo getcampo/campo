@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :avatar
       t.text :bio
       t.string :auth_token, null: false
-      t.boolean :admin, default: false
+      t.integer :role, default: 0
 
       t.timestamps
 

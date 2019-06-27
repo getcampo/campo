@@ -6,7 +6,7 @@ FactoryBot.define do
     password { SecureRandom.base58 }
 
     trait :admin do
-      admin { true }
+      role { 'admin' }
     end
   end
 end
