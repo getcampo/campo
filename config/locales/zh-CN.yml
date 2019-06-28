@@ -217,6 +217,9 @@ zh-CN:
       delete_topic_confirm: 确认删除该主题？
       edit_topic: 编辑主题
       ignore_notifications: 忽略提醒
+    topic:
+      created_by_at: "%{name} 创建于"
+      replied_by_at: "%{name} 回复于"
   users:
     new:
       sign_up: 注册

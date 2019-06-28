@@ -217,6 +217,9 @@ en:
       delete_topic_confirm: Are you sure delte this topic?
       edit_topic: Edit topic
       ignore_notifications: Ignore notifications
+    topic:
+      created_by_at: created by %{name} at
+      replied_by_at: replied by %{name} at
   users:
     new:
       sign_up: Sign up
