@@ -26,73 +26,71 @@
         </div>
       </div>
     <% end %>
-    <div class="post-container hide-on-editing">
-      <div class="post-avatar">
-        <a href="<%= profile_path(username: post.user.username) %>">
-          <img src="<%= post.user.avatar.thumb.url %>" class="avatar">
-        </a>
-      </div>
-      <div class="post-content">
-        <div class="post-header">
-          <div class="post-info">
-            <a class="post-username" href="<%= profile_path(username: post.user.username) %>">
-              <b><%= post.user.name %></b>
-              <span>@<%= post.user.username %></span>
-            </a>
-            ·
-            <a href="<%= topic_path(post.topic, number: (post.number > 1 ? post.number : nil)) %>" class="text-secondary">
-              <%= local_time_or_date post.created_at %>
-            </a>
-            <% if post.edited_at %>
-              ·
-              <%= t '.edited_at' %> <%= local_time_or_date post.edited_at %>
-            <% end %>
-          </div>
-          <div class="dropdown" data-controller="dropdown">
-            <button type="button" class="button button-icon" data-action="dropdown#open">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">
-                <i class="material-icons">edit</i>
-                <%= t '.edit_post' %>
-              </a>
-              <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="<%= t '.delete_post_confirm' %>">
-                <i class="material-icons">delete</i>
-                <%= t '.delete' %>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="post-body">
-          <%= markdown_render post.body %>
-        </div>
-        <div class="post-footer hide-on-replying">
-          <%= render 'reactions/reaction', post: post %>
-          <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true" data-controller="visible-to-user">
-            <i class="material-icons">reply</i>
+    <div class="post-content hide-on-editing">
+      <div class="post-header">
+        <div class="post-avatar">
+          <a href="<%= profile_path(username: post.user.username) %>">
+            <img src="<%= post.user.avatar.thumb.url %>" class="avatar">
           </a>
-
-          <% if post.replied_posts.any? %>
-            <div class="dropdown ml-auto" data-controller="dropdown">
-              <button type="button" class="button button-text" data-action="dropdown#open">
-                <%= post.replied_posts.count %> replies <i class="material-icons ml-2">expand_more</i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
-                <% post.replied_posts.each do |replied_post| %>
-                  <a href="<%= topic_path(replied_post.topic, number: replied_post.number) %>" class="dropdown-menu-item">
-                    <img src="<%= replied_post.user.avatar.thumb.url %>" class="avatar avatar-mini mr-2">
-                    <div>
-                      <b><%= replied_post.user.name %></b>
-                      -
-                      <%= markdown_summary replied_post.body %>
-                    </div>
-                  </a>
-                <% end %>
-              </div>
-            </div>
+        </div>
+        <div class="post-info">
+          <a class="post-username" href="<%= profile_path(username: post.user.username) %>">
+            <b><%= post.user.name %></b>
+            <span>@<%= post.user.username %></span>
+          </a>
+          ·
+          <a href="<%= topic_path(post.topic, number: (post.number > 1 ? post.number : nil)) %>" class="text-secondary">
+            <%= local_time_or_date post.created_at %>
+          </a>
+          <% if post.edited_at %>
+            ·
+            <%= t '.edited_at' %> <%= local_time_or_date post.edited_at %>
           <% end %>
         </div>
+        <div class="dropdown" data-controller="dropdown">
+          <button type="button" class="button button-icon" data-action="dropdown#open">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">
+              <i class="material-icons">edit</i>
+              <%= t '.edit_post' %>
+            </a>
+            <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="<%= t '.delete_post_confirm' %>">
+              <i class="material-icons">delete</i>
+              <%= t '.delete' %>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="post-body">
+        <%= markdown_render post.body %>
+      </div>
+      <div class="post-footer hide-on-replying">
+        <%= render 'reactions/reaction', post: post %>
+        <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true" data-controller="visible-to-user">
+          <i class="material-icons">reply</i>
+        </a>
+
+        <% if post.replied_posts.any? %>
+          <div class="dropdown ml-auto" data-controller="dropdown">
+            <button type="button" class="button button-text" data-action="dropdown#open">
+              <%= post.replied_posts.count %> replies <i class="material-icons ml-2">expand_more</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
+              <% post.replied_posts.each do |replied_post| %>
+                <a href="<%= topic_path(replied_post.topic, number: replied_post.number) %>" class="dropdown-menu-item">
+                  <img src="<%= replied_post.user.avatar.thumb.url %>" class="avatar avatar-mini mr-2">
+                  <div>
+                    <b><%= replied_post.user.name %></b>
+                    -
+                    <%= markdown_summary replied_post.body %>
+                  </div>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

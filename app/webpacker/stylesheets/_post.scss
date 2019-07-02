@@ -24,13 +24,34 @@
   }
 }
 
-.post-container {
+.post-context {
+  padding: 6px 6px 0 6px;
+
+  .button-text {
+    color: var(--text-secondary-color);
+
+    &:hover {
+      color: var(--text-primary-color);
+      background: none;
+    }
+  }
+}
+
+.post-content {
+  position: relative;
+  padding-left: 72px;
+}
+
+.post-header {
+  padding: 6px 6px 0 0;
   display: flex;
+  align-items: center;
 }
 
 .post-avatar {
-  padding: 16px;
-  flex: 0 0 72px;
+  position: absolute;
+  top: 16px;
+  left: 16px;
   line-height: 1;
 
   img {
@@ -41,16 +62,16 @@
   }
 }
 
-.post-content {
+.post-body {
   padding: 16px 16px 16px 0;
-  flex-grow: 1;
-}
 
-.post-header {
-  display: flex;
-  align-items: center;
-  margin-top: -10px;
-  margin-right: -10px;
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .post-info {
@@ -73,26 +94,10 @@
   }
 }
 
-.post-context {
-  margin-left: 60px;
-  margin-top: 4px;
-  margin-bottom: -8px;
-
-  .button-text {
-    color: var(--text-secondary-color);
-
-    &:hover {
-      color: var(--text-primary-color);
-      background: none;
-    }
-  }
-}
-
-.post-body {
-}
-
 .post-footer {
-  margin: 0 -12px -9px -9px;
+  padding: 0 6px 6px 0;
+  margin-top: -6px;
+  margin-left: -12px;
   display: flex;
 
   .button-text {
@@ -107,5 +112,33 @@
     &.active {
       color: var(--primary-color);
     }
+  }
+}
+
+@media (max-width: 640px) {
+  .post-context {
+    padding: 6px 6px 0 6px;
+  }
+
+  .post-content {
+    padding-left: 0;
+  }
+
+  .post-avatar {
+    position: static;
+    margin-right: 8px;
+  }
+
+  .post-header {
+    padding: 6px 6px 0 16px;
+  }
+
+  .post-body {
+    padding: 16px;
+  }
+
+  .post-footer {
+    padding: 0 6px 6px 6px;
+    margin-left: 0;
   }
 }

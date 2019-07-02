@@ -9,13 +9,15 @@
 %>
 
 <div id="<%= id %>" class="post" data-target="post.formContainer">
-  <div class="post-container">
-    <div class="post-avatar">
-      <% if Current.user %>
-        <img src="<%= Current.user.avatar.thumb.url %>" class="avatar">
-      <% end %>
+  <div class="post-content">
+    <div class="post-header display-none-mobile">
+      <div class="post-avatar">
+        <% if Current.user %>
+          <img src="<%= Current.user.avatar.thumb.url %>" class="avatar">
+        <% end %>
+      </div>
     </div>
-    <div class="post-content">
+    <div class="post-body">
       <%= form_with model: post do |form| %>
         <%= form.hidden_field :topic_id %>
         <%= form.hidden_field :reply_to_post_id %>

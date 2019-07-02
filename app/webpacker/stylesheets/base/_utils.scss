@@ -2,6 +2,12 @@
   display: none !important;
 }
 
+@media(max-width: 640px) {
+  .display-none-mobile {
+    display: none !important;
+  }
+}
+
 .float-right {
   float: right;
 }

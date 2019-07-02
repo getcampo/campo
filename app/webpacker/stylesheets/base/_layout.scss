@@ -20,6 +20,12 @@ body {
   padding: 16px;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding: 8px;
+  }
+}
+
 .container-small {
   max-width: 540px;
 }
