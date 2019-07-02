@@ -7,6 +7,7 @@ export default class extends Controller {
     this.element.sliderController = this
     this.scrollbarTarget.addEventListener('click', this.select.bind(this))
     this.handleTarget.addEventListener('mousedown', this.start.bind(this))
+    this.handleTarget.addEventListener('touchstart', this.start.bind(this), { passive: false })
 
     this.handlers = {
       move: this.move.bind(this),
@@ -85,17 +86,21 @@ export default class extends Controller {
   }
 
   start(event) {
+    event.preventDefault()
     document.addEventListener('mousemove', this.handlers.move)
     document.addEventListener('mouseup', this.handlers.stop)
+    document.addEventListener('touchmove', this.handlers.move, { passive: false })
+    document.addEventListener('touchend', this.handlers.stop, { passive: false })
     this.tmpValue = this.getBegin()
   }
 
   move(event) {
+    event.preventDefault()
     let scrollbarTop = this.scrollbarTarget.getBoundingClientRect().top
     let scrollbarHeight = this.scrollbarTarget.offsetHeight
     let handleHeight = this.handleTarget.offsetHeight
     let max = scrollbarHeight - handleHeight
-    let mouseTop = event.y
+    let mouseTop = event.clientY || event.touches[0].clientY
     let position = mouseTop - scrollbarTop - (handleHeight / 2)
 
     if (max == 0) {
@@ -125,8 +130,11 @@ export default class extends Controller {
   }
 
   stop(event) {
+    event.preventDefault()
     document.removeEventListener('mousemove', this.handlers.move)
     document.removeEventListener('mouseup', this.handlers.stop)
+    document.removeEventListener('touchmove', this.handlers.move)
+    document.removeEventListener('touchend', this.handlers.stop)
     this.handleTarget.classList.remove('dragging')
     this.setBegin(this.tmpValue)
     this.setEnd(this.tmpValue + this.getLength() - 1)
