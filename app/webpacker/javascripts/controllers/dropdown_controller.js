@@ -6,6 +6,12 @@ export default class extends Controller {
     document.addEventListener('click', () => {
       this.close();
     }, { once: true, capture: true })
+    document.addEventListener('touchend', (event) => {
+      // wait for item click trigger
+      setTimeout(() => {
+        this.close();
+      }, 10)
+    }, { once: true, capture: true })
   }
 
   close() {
