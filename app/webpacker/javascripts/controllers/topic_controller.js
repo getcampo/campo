@@ -221,7 +221,7 @@ export default class extends Controller {
   }
 
   parseReaction(ids, type) {
-    if (ids.length) {
+    if (ids && ids.length) {
       ids.split(',').forEach((id) => {
         document.querySelector(`#post-${id}-reaction-${type}`).classList.add('active')
       })
