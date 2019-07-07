@@ -4,9 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="locale" content="<%= I18n.locale %>">
-    <link rel="icon" href="<%= asset_pack_path 'media/images/logo.png' %>">
 
-    <title>Campo</title>
+    <% if Current.site %>
+      <title><%= "#{@page_title} - " if @page_title %><%= Current.site.title %></title>
+      <meta name="description" content="<%= Current.site.description %>">
+      <link rel="icon" href="<%= Current.site.icon.thumb.url %>">
+    <% else %>
+      <title>Campo</title>
+      <link rel="icon" href="<%= asset_pack_path 'media/images/logo.png' %>">
+    <% end %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

@@ -26,7 +26,7 @@ class SetupController < ApplicationController
     Site.create(
       title: 'Campo',
       logo: File.open(Rails.root.join('app', 'webpacker', 'images', 'logo.png')),
-      icon: File.open(Rails.root.join('app', 'webpacker', 'images', 'logo.png'))
+      icon: File.open(Rails.root.join('app', 'webpacker', 'images', 'icon.png'))
     )
     forum = Forum.create(name: I18n.t('default_data.announcement'), slug: 'announcement')
     Topic.create(
