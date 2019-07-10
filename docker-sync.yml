@@ -3,4 +3,4 @@ version: '2'
 syncs:
   campo-sync:
     src: './'
-    sync_excludes: ['.git', 'node_modules', 'vendor/bundle', 'tmp', 'log']
+    sync_excludes: ['.git', 'node_modules', 'vendor/bundle', 'tmp', 'log', 'public/uploads', 'public/packs', 'public/packs-test']
