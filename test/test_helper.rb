@@ -20,6 +20,6 @@ class ActionDispatch::IntegrationTest
   include SessionHelper
 
   setup do
-    @site = Site.create
+    @site = create(:site)
   end
 end

@@ -12,6 +12,11 @@ en:
         body: Body
         topic_id: Topic ID
         user_id: User ID
+      site:
+        description: Description
+        icon: Icon
+        logo: Logo
+        title: Title
       topic:
         content: Content
         forum_id: Forum
@@ -56,6 +61,12 @@ en:
         user: User
       new:
         new_post: New post
+    settings:
+      form:
+        select_image: Select image
+        update_settings: Update settings
+      show:
+        settings: Settings
     topics:
       edit:
         edit_topic: Edit topic
@@ -112,14 +123,15 @@ en:
     password_is_successfully_reset: Password is successfully reset.
     password_is_successfully_updated: Password is successfully updated.
     password_reset_email_has_been_send: Password reset email has been send.
-    post_is_successfully_created: Post is successfully created
-    post_is_successfully_updated: Post is successfully updated
+    post_is_successfully_created: Post is successfully created.
+    post_is_successfully_updated: Post is successfully updated.
     require_sign_in: Require sign in.
-    topic_is_successfully_created: Topic is successfully created
+    site_is_successfully_created: Site is successfully created.
+    topic_is_successfully_created: Topic is successfully created.
     topic_is_successfully_deleted: Topic is successfully deleted.
-    topic_is_successfully_updated: Topic is successfully updated
-    user_is_successfully_created: User is successfully created
-    user_is_successfully_updated: User is successfully updated
+    topic_is_successfully_updated: Topic is successfully updated.
+    user_is_successfully_created: User is successfully created.
+    user_is_successfully_updated: User is successfully updated.
     user_not_found: User not found.
     you_have_no_permissions: You have no permissions.
   forums:
@@ -145,6 +157,7 @@ en:
       dashboard: Dashboard
       forums: Forums
       posts: Posts
+      settings: Settings
       topics: Topics
       users: Users
     application:

@@ -12,6 +12,11 @@ zh-CN:
         body: 内容
         topic_id: 主题 ID
         user_id: 用户 ID
+      site:
+        description: 描述
+        icon: 图标
+        logo: Logo
+        title: 标题
       topic:
         content: 内容
         forum_id: 版块
@@ -56,6 +61,12 @@ zh-CN:
         user: 用户
       new:
         new_post: 新建帖子
+    settings:
+      form:
+        select_image: 选择图片
+        update_settings: 更新设置
+      show:
+        settings: 设置
     topics:
       edit:
         edit_topic: 编辑主题
@@ -112,14 +123,15 @@ zh-CN:
     password_is_successfully_reset: 密码重置成功。
     password_is_successfully_updated: 密码更新成功。
     password_reset_email_has_been_send: 密码重置邮件已发送。
-    post_is_successfully_created: Post is successfully created
-    post_is_successfully_updated: Post is successfully updated
+    post_is_successfully_created: 帖子创建成功。
+    post_is_successfully_updated: 帖子更新成功。
     require_sign_in: 需要登录。
-    topic_is_successfully_created: Topic is successfully created
+    site_is_successfully_created: 网站更新成功。
+    topic_is_successfully_created: 主题创建成功。
     topic_is_successfully_deleted: 主题删除成功。
-    topic_is_successfully_updated: Topic is successfully updated
-    user_is_successfully_created: User is successfully created
-    user_is_successfully_updated: User is successfully updated
+    topic_is_successfully_updated: 主题更新成功。
+    user_is_successfully_created: 用户创建成功。
+    user_is_successfully_updated: 用户更新成功。
     user_not_found: 没有找到该用户。
     you_have_no_permissions: 您没有权限。
   forums:
@@ -145,6 +157,7 @@ zh-CN:
       dashboard: 面板
       forums: 板块
       posts: 帖子
+      settings: 设置
       topics: 主题
       users: 用户
     application:

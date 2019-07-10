@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     resources :topics
     resources :posts
     resources :users
+    resource :settings
   end
 
   if Rails.env.development?
