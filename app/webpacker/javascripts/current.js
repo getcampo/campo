@@ -12,8 +12,8 @@ export default class Current {
     return this.getMetaContent('current-user-id', null)
   }
 
-  static admin() {
-    return this.getMetaContent('current-user-admin', null)
+  static isAdmin() {
+    return this.getMetaContent('current-user-admin', null) == 'true'
   }
 
   static locale() {

@@ -5,7 +5,7 @@
     <a href="<%= forum_path(id: topic.forum.slug) %>" class="text-secondary"><%= topic.forum.name %></a>
     <%= topic.title %>
   </div>
-  <div class="toolbar-action" data-controller="visible-to-user">
+  <div class="toolbar-action">
     <% if subscription.nil? %>
       <a href="<%= topic_subscription_path(topic, status: 'subscribed') %>" data-method="put" data-remote="true" class="button button-icon">
         <i class="material-icons">notifications_none</i>
@@ -26,17 +26,17 @@
         <i class="material-icons">more_vert</i>
       </button>
       <div class="dropdown-menu dropdown-menu-right">
-        <a href="<%= edit_topic_path(topic) %>" class="dropdown-menu-item">
+        <a href="<%= edit_topic_path(topic) %>" class="dropdown-menu-item" data-controller="visible" data-visible-to="creator admin">
           <i class="material-icons">edit</i>
           <%= t '.edit_topic' %>
         </a>
         <% if !subscription&.ignored? %>
-          <a href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true" class="dropdown-menu-item" data-controller="visible-to-user">
+          <a href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true" class="dropdown-menu-item">
             <i class="material-icons">notifications_off</i>
             <%= t '.ignore_notifications' %>
           </a>
         <% end %>
-        <a href="<%= trash_topic_path(topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="<%= t '.delete_topic_confirm' %>">
+        <a href="<%= trash_topic_path(topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="<%= t '.delete_topic_confirm' %>" data-controller="visible" data-visible-to="creator admin">
           <i class="material-icons">delete</i>
           <%= t '.delete' %>
         </a>

@@ -2,6 +2,7 @@
   <div
     class="post"
     id="post-<%= post.id %>"
+    data-creator-id="<%= post.user.id %>"
     data-controller="post"
     data-target="topic.post"
     data-number="<%= post.number %>"
@@ -52,11 +53,11 @@
             <i class="material-icons">more_vert</i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true">
+            <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true" data-controller="visible" data-visible-to="creator admin">
               <i class="material-icons">edit</i>
               <%= t '.edit_post' %>
             </a>
-            <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="<%= t '.delete_post_confirm' %>">
+            <a href="<%= trash_post_path(post) %>" class="dropdown-menu-item" data-remote="true" data-method="put" data-confirm="<%= t '.delete_post_confirm' %>" data-controller="visible" data-visible-to="creator admin">
               <i class="material-icons">delete</i>
               <%= t '.delete' %>
             </a>
@@ -68,7 +69,7 @@
       </div>
       <div class="post-footer hide-on-replying">
         <%= render 'reactions/reaction', post: post %>
-        <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true" data-controller="visible-to-user">
+        <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true">
           <i class="material-icons">reply</i>
         </a>
 
