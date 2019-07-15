@@ -183,9 +183,6 @@ zh-CN:
     form:
       cancel: 取消
       reply: 回复
-    header:
-      posts: 帖子
-      topics: 主题
     post:
       copy_link: 复制链接
       copy_link_message: 链接已复制
@@ -212,6 +209,7 @@ zh-CN:
       username_or_email: 用户名或邮箱
     new:
       sign_in: 登入
+      sign_up_account: 注册账号
   settings:
     accounts:
       form:
@@ -259,4 +257,5 @@ zh-CN:
       replied_by_at: "%{name} 回复于"
   users:
     new:
+      sign_in_existing_account: 登录已有账号
       sign_up: 注册

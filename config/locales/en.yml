@@ -183,9 +183,6 @@ en:
     form:
       cancel: Cancel
       reply: Reply
-    header:
-      posts: 帖子
-      topics: 主题
     post:
       copy_link: Copy link
       copy_link_message: Link copied
@@ -212,6 +209,7 @@ en:
       username_or_email: Username or Email
     new:
       sign_in: Sign in
+      sign_up_account: Sign up account
   settings:
     accounts:
       form:
@@ -259,4 +257,5 @@ en:
       replied_by_at: replied by %{name} at
   users:
     new:
+      sign_in_existing_account: Sign in existing account
       sign_up: Sign up
