@@ -8,7 +8,6 @@ export default class extends Controller {
 
       if (roles.includes('admin')) {
         if (Current.isAdmin()) {
-          console.log('admin pass')
           return
         }
       }
@@ -16,14 +15,12 @@ export default class extends Controller {
       if (roles.includes('creator')) {
         let creatorElement = this.element.closest('[data-creator-id]')
         if (creatorElement && creatorElement.dataset.creatorId == Current.userId()) {
-          console.log('creator pass')
           return
         }
       }
 
       if (roles.includes('user')) {
         if (Current.userId()) {
-          console.log('user pass')
           return
         }
       }
