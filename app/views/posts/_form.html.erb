@@ -24,14 +24,14 @@
         <div class="form-field">
           <%= render partial: 'posts/editor', locals: { form: form, name: :body } %>
         </div>
-        <%= form.submit class: 'button button-contained button-primary mr-2' %>
+        <%= form.submit t('.reply'), class: 'button button-contained button-primary mr-2' %>
         <% if !post.new_record? %>
           <button type="button" class="button button-text" data-action="post#cancelEdit">
-            Cancel
+            <%= t '.cancel' %>
           </button>
         <% elsif post.reply_to_post %>
           <button type="button" class="button button-text" data-action="post#cancelReply">
-            Cancel
+            <%= t '.cancel' %>
           </button>
         <% end %>
       <% end %>

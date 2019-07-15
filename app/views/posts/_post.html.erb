@@ -12,7 +12,7 @@
       <div class="post-context">
         <div class="dropdown" data-controller="dropdown">
           <button type="button" class="button button-text" data-action="dropdown#open">
-            <i class="material-icons mr-2">reply</i> reply to <%= post.reply_to_post.user.name %>
+            <i class="material-icons mr-2">reply</i> <%= t '.reply_to' %> <%= post.reply_to_post.user.name %>
           </button>
           <div class="dropdown-menu dropdown-menu-large dropdown-menu-top">
             <a href="<%= topic_path(post.reply_to_post.topic, number: post.reply_to_post.number) %>" class="dropdown-menu-item">
@@ -80,7 +80,7 @@
         <% if post.replied_posts.any? %>
           <div class="dropdown ml-auto" data-controller="dropdown">
             <button type="button" class="button button-text" data-action="dropdown#open">
-              <%= post.replied_posts.count %> replies <i class="material-icons ml-2">expand_more</i>
+              <%= post.replied_posts.count %> <%= t '.replies' %> <i class="material-icons ml-2">expand_more</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
               <% post.replied_posts.each do |replied_post| %>

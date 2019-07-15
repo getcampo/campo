@@ -180,6 +180,12 @@ en:
       password_reset_notice: Enter your email and we will send your a link to reset your password.
       send_email: Send Email
   posts:
+    form:
+      cancel: Cancel
+      reply: Reply
+    header:
+      posts: 帖子
+      topics: 主题
     post:
       copy_link: Copy link
       copy_link_message: Link copied
@@ -187,6 +193,8 @@ en:
       delete_post_confirm: Delete post confirm
       edit_post: Edit post
       edited_at: Edited at
+      replies: replies
+      reply_to: Reply to
   profile:
     header:
       posts: Posts
@@ -238,6 +246,9 @@ en:
       delete: Delete
       delete_topic_confirm: Are you sure delete this topic?
       edit_topic: Edit topic
+      first_post: First post
+      last_post: Last post
+      new_post: New post
     toolbar:
       delete: Delete
       delete_topic_confirm: Are you sure delte this topic?

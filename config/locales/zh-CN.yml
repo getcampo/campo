@@ -180,6 +180,12 @@ zh-CN:
       password_reset_notice: 输入邮箱地址，您将会收到一封包含密码重置链接的邮件。
       send_email: 发送邮件
   posts:
+    form:
+      cancel: 取消
+      reply: 回复
+    header:
+      posts: 帖子
+      topics: 主题
     post:
       copy_link: 复制链接
       copy_link_message: 链接已复制
@@ -187,6 +193,8 @@ zh-CN:
       delete_post_confirm: 确认删除该帖子？
       edit_post: 编辑帖子
       edited_at: 编辑于
+      replies: 回复
+      reply_to: 回复
   profile:
     header:
       posts: 帖子
@@ -238,6 +246,9 @@ zh-CN:
       delete: 删除
       delete_topic_confirm: 确认删除主题？
       edit_topic: 编辑主题
+      first_post: 最先回复
+      last_post: 最后回复
+      new_post: 新回复
     toolbar:
       delete: 删除
       delete_topic_confirm: 确认删除该主题？

@@ -85,7 +85,7 @@
     <div class="floating-action-menu">
       <div class="slider" data-controller="slider" data-slider-begin="<%= @offset + 1 %>" data-slider-end="<%= @offset + 1 %>" data-slider-total="<%= @topic.posts.count %>" data-target="topic.slider">
         <button type="button" class="floating-action-item" data-action="slider#min">
-          <i class="material-icons">expand_less</i> First post
+          <i class="material-icons">expand_less</i> <%= t '.first_post' %>
         </button>
         <div class="slider-scrollbar" data-target="slider.scrollbar">
           <div class="slider-handle" data-target="slider.handle">
@@ -97,12 +97,12 @@
           </div>
         </div>
         <button type="button" class="floating-action-item" data-action="slider#max">
-          <i class="material-icons">expand_more</i> Last post
+          <i class="material-icons">expand_more</i> <%= t '.last_post' %>
         </button>
       </div>
       <% if Current.user %>
         <button type="button" class="floating-action-item" data-action="topic#newPost">
-          <i class="material-icons">add</i> Create Post
+          <i class="material-icons">add</i> <%= t '.new_post' %>
         </button>
       <% end %>
     </div>
