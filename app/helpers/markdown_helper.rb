@@ -39,26 +39,13 @@ module MarkdownHelper
     doc.xpath('*//text()').each do |node|
       # skip some element
       unless node.ancestors('a, pre, code').any?
-      text = node.encode_special_chars(node.text)
+        text = node.encode_special_chars(node.text)
 
-      text.gsub!(/@([a-zA-Z]\w+)(#(\d+))?/) do |match|
-        username = $1
-        post_id = $3
-
-        user = User.find_by(username: username)
-
-        if user
-          if post_id && post = user.posts.find_by(id: post_id)
-            %Q(<a href="#{topic_path(post.topic, number: post.number)}" data-controller="post-mention" data-username="#{username}" data-post-id="#{post_id}">#{match}</a>)
-          else
-            %Q(<a href="/@#{username}" data-controller="user-mention" data-username="#{username}">#{match}</a>)
-          end
-        else
-          match
+        text.gsub!(/@[a-zA-Z]\w+/) do |match|
+          %Q(<a href="/#{match}">#{match}</a>)
         end
-      end
 
-      node.replace text
+        node.replace text
       end
     end
 
