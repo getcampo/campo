@@ -6,19 +6,7 @@
     <%= topic.title %>
   </div>
   <div class="toolbar-action">
-    <% if subscription.nil? %>
-      <a href="<%= topic_subscription_path(topic, status: 'subscribed') %>" data-method="put" data-remote="true" class="button button-icon">
-        <i class="material-icons">notifications_none</i>
-      </a>
-    <% elsif subscription.subscribed? %>
-      <a href="<%= topic_subscription_path(topic) %>" data-method="delete" data-remote="true" class="button button-icon button-primary">
-        <i class="material-icons">notifications_active</i>
-      </a>
-    <% elsif subscription.ignored? %>
-      <a href="<%= topic_subscription_path(topic) %>" data-method="delete" data-remote="true" class="button button-icon button-secondary">
-        <i class="material-icons">notifications_off</i>
-      </a>
-    <% end %>
+    <%= render 'subscriptions/button', topic: topic %>
   </div>
   <div class="toolbar-action">
     <div class="dropdown" data-controller="dropdown">

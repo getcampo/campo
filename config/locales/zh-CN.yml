@@ -220,11 +220,20 @@ zh-CN:
       setup_completed_body: 初始化完成后您将被重定向到首页。
       setup_completed_title: 正在初始化数据
       sign_up: 注册
+  subscriptions:
+    button:
+      ignore_notifications: 忽略提醒
+      subscribe: 订阅
+      unsubscribe: 不订阅
   topics:
     edit:
       edit_topic: 编辑主题
     new:
       new_topic: 创建主题
+    show:
+      delete: 删除
+      delete_topic_confirm: 确认删除主题？
+      edit_topic: 编辑主题
     toolbar:
       delete: 删除
       delete_topic_confirm: 确认删除该主题？

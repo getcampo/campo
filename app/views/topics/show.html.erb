@@ -3,7 +3,32 @@
 <div id="topic" data-controller="topic" data-topic-id="<%= @topic.id %>" data-creator-id="<%= @topic.user.id %>">
   <div class="card">
     <div class="card-header border-bottom">
-      <%= render 'toolbar', topic: @topic %>
+      <div id="topic-toolbar" class="toolbar">
+        <div class="toolbar-title">
+          <a href="<%= forum_path(id: @topic.forum.slug) %>" class="text-secondary"><%= @topic.forum.name %></a>
+          <%= @topic.title %>
+        </div>
+        <div class="toolbar-action">
+          <%= render 'subscriptions/button', topic: @topic %>
+        </div>
+        <div class="toolbar-action">
+          <div class="dropdown" data-controller="dropdown">
+            <button type="button" class="button button-icon" data-action="dropdown#open">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible" data-visible-to="creator admin">
+                <i class="material-icons">edit</i>
+                <%= t '.edit_topic' %>
+              </a>
+              <a href="<%= trash_topic_path(@topic) %>" class="dropdown-menu-item" data-method="put" data-remote="true" data-confirm="<%= t '.delete_topic_confirm' %>" data-controller="visible" data-visible-to="creator admin">
+                <i class="material-icons">delete</i>
+                <%= t '.delete' %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="p-2 text-secondary text-align-center display-none border-bottom" data-target="topic.loadingBefore">

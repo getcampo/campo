@@ -1,0 +1,27 @@
+<% subscription = topic.subscriptions.find_by(user: Current.user) %>
+
+<div id="subscription-button" class="dropdown" data-controller="dropdown">
+  <button type="button" class="button button-icon" data-action="dropdown#open">
+    <% if subscription.nil? %>
+      <i class="material-icons">notifications_none</i>
+    <% elsif subscription.subscribed? %>
+      <i class="material-icons">notifications_active</i>
+    <% elsif subscription.ignored? %>
+      <i class="material-icons">notifications_off</i>
+    <% end %>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-menu-item" href="<%= topic_subscription_path(topic) %>" data-method="delete" data-remote="true">
+      <i class="material-icons">notifications_none</i>
+      <%= t '.unsubscribe' %>
+    </a>
+    <a class="dropdown-menu-item" href="<%= topic_subscription_path(topic, status: 'subscribed') %>" data-method="put" data-remote="true">
+      <i class="material-icons">notifications_active</i>
+      <%= t '.subscribe' %>
+    </a>
+    <a class="dropdown-menu-item" href="<%= topic_subscription_path(topic, status: 'ignored') %>" data-method="put" data-remote="true">
+      <i class="material-icons">notifications_off</i>
+      <%= t '.ignore_notifications' %>
+    </a>
+  </div>
+</div>

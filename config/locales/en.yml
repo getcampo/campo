@@ -220,11 +220,20 @@ en:
       setup_completed_body: You will be redirected to the home page after the initialization is complete.
       setup_completed_title: Initializing data
       sign_up: 注册
+  subscriptions:
+    button:
+      ignore_notifications: Ignore notifications
+      subscribe: Subscribe
+      unsubscribe: Unsubscribe
   topics:
     edit:
       edit_topic: Edit Topic
     new:
       new_topic: New Topic
+    show:
+      delete: Delete
+      delete_topic_confirm: Are you sure delete this topic?
+      edit_topic: Edit topic
     toolbar:
       delete: Delete
       delete_topic_confirm: Are you sure delte this topic?
