@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Rails from "rails-ujs"
+import Utils from 'javascripts/utils'
 
 export default class extends Controller {
   static targets = ['slider', 'posts', 'post', 'loadingBefore', 'loadingAfter', 'composer', 'newPostFormTemplate', 'floatingActionText', 'floatingAction']
@@ -238,5 +239,6 @@ export default class extends Controller {
     textarea.select()
     document.execCommand('copy')
     document.body.removeChild(textarea)
+    Utils.showSnackbar(event.currentTarget.dataset.message)
   }
 }

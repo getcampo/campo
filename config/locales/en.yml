@@ -182,6 +182,7 @@ en:
   posts:
     post:
       copy_link: Copy link
+      copy_link_message: Link copied
       delete: Delete
       delete_post_confirm: Delete post confirm
       edit_post: Edit post
@@ -233,6 +234,7 @@ en:
       new_topic: New Topic
     show:
       copy_link: Copy link
+      copy_link_message: Link copied
       delete: Delete
       delete_topic_confirm: Are you sure delete this topic?
       edit_topic: Edit topic

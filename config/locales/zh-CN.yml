@@ -182,6 +182,7 @@ zh-CN:
   posts:
     post:
       copy_link: 复制链接
+      copy_link_message: 链接已复制
       delete: 删除
       delete_post_confirm: 确认删除该帖子？
       edit_post: 编辑帖子
@@ -233,6 +234,7 @@ zh-CN:
       new_topic: 创建主题
     show:
       copy_link: 复制链接
+      copy_link_message: 链接已复制
       delete: 删除
       delete_topic_confirm: 确认删除主题？
       edit_topic: 编辑主题

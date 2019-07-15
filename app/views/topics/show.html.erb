@@ -17,7 +17,7 @@
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="<%= topic_url(@topic) %>" class="dropdown-menu-item" data-action="topic#copyLink">
+              <a href="<%= topic_url(@topic) %>" class="dropdown-menu-item" data-action="topic#copyLink" data-message="<%= t '.copy_link_message' %>">
                 <i class="material-icons">link</i>
                 <%= t '.copy_link' %>
               </a>
