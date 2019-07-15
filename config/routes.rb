@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:show, :create, :edit, :update] do
     member do
-      get :reply
+      post :reply
       put :trash
     end
   end

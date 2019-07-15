@@ -17,7 +17,8 @@ module Authenticate
 
   def require_sign_in
     unless Current.user
-      redirect_to sign_in_path(return_to: request.path), alert: t('flash.require_sign_in')
+      return_path = request.get? ? request.path : URI(request.referer.presence || '/').path
+      redirect_to sign_in_path(return_to: return_path), alert: t('flash.require_sign_in')
     end
   end
 

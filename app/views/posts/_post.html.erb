@@ -73,7 +73,7 @@
       </div>
       <div class="post-footer hide-on-replying">
         <%= render 'reactions/reaction', post: post %>
-        <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true">
+        <a href="<%= reply_post_path(post) %>" class="button button-text mr-2" data-remote="true" data-method="post">
           <i class="material-icons">reply</i>
         </a>
 
