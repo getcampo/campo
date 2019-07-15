@@ -181,6 +181,7 @@ en:
       send_email: Send Email
   posts:
     post:
+      copy_link: Copy link
       delete: Delete
       delete_post_confirm: Delete post confirm
       edit_post: Edit post
@@ -231,6 +232,7 @@ en:
     new:
       new_topic: New Topic
     show:
+      copy_link: Copy link
       delete: Delete
       delete_topic_confirm: Are you sure delete this topic?
       edit_topic: Edit topic

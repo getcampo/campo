@@ -181,6 +181,7 @@ zh-CN:
       send_email: 发送邮件
   posts:
     post:
+      copy_link: 复制链接
       delete: 删除
       delete_post_confirm: 确认删除该帖子？
       edit_post: 编辑帖子
@@ -231,6 +232,7 @@ zh-CN:
     new:
       new_topic: 创建主题
     show:
+      copy_link: 复制链接
       delete: 删除
       delete_topic_confirm: 确认删除主题？
       edit_topic: 编辑主题

@@ -53,6 +53,10 @@
             <i class="material-icons">more_vert</i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
+            <a href="<%= topic_path(post.topic, number: post.number) %>" class="dropdown-menu-item" data-action="topic#copyLink">
+              <i class="material-icons">link</i>
+              <%= t '.copy_link' %>
+            </a>
             <a href="<%= edit_post_path(post) %>" class="dropdown-menu-item hide-on-replying" data-remote="true" data-controller="visible" data-visible-to="creator admin">
               <i class="material-icons">edit</i>
               <%= t '.edit_post' %>

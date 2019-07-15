@@ -227,4 +227,16 @@ export default class extends Controller {
       })
     }
   }
+
+  copyLink(event) {
+    event.preventDefault()
+    let textarea = document.createElement('textarea')
+    textarea.value = event.currentTarget.href
+    textarea.setAttribute('readonly', '')
+    textarea.style = { position: 'absolute', left: '-999px' }
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textarea)
+  }
 }

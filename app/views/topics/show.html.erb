@@ -17,6 +17,10 @@
               <i class="material-icons">more_vert</i>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
+              <a href="<%= topic_url(@topic) %>" class="dropdown-menu-item" data-action="topic#copyLink">
+                <i class="material-icons">link</i>
+                <%= t '.copy_link' %>
+              </a>
               <a href="<%= edit_topic_path(@topic) %>" class="dropdown-menu-item" data-controller="visible" data-visible-to="creator admin">
                 <i class="material-icons">edit</i>
                 <%= t '.edit_topic' %>
