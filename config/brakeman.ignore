@@ -27,7 +27,7 @@
       "check_name": "Execute",
       "message": "Possible command injection",
       "file": "app/models/user.rb",
-      "line": 60,
+      "line": 59,
       "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
       "code": "system(*[\"convert\", \"-size\", \"160x160\", \"-annotate\", \"0\", \"#{username[0]}\", \"-font\", \"DejaVu-Sans\", \"-fill\", \"white\", \"-pointsize\", \"100\", \"-gravity\", \"Center\", \"xc:#{[\"#007bff\", \"#6610f2\", \"#6f42c1\", \"#e83e8c\", \"#dc3545\", \"#fd7e14\", \"#ffc107\", \"#28a745\", \"#20c997\", \"#17a2b8\"].sample}\", \"#{\"#{Rails.root}/tmp/#{id}_default_avatar.png\"}\"])",
       "render_path": null,
@@ -39,8 +39,28 @@
       "user_input": "username[0]",
       "confidence": "Medium",
       "note": "All param value is limited to simple chars"
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 105,
+      "fingerprint": "8ac54062005a078f0baa50a2201bb479003852be0ad8aaf45ec5126cd8401541",
+      "check_name": "PermitAttributes",
+      "message": "Potentially dangerous key allowed for mass assignment",
+      "file": "app/controllers/admin/users_controller.rb",
+      "line": 42,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params.require(:user).permit(:name, :slug, :description, :role)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::UsersController",
+        "method": "user_params"
+      },
+      "user_input": ":role",
+      "confidence": "Medium",
+      "note": "admin panel"
     }
   ],
-  "updated": "2019-06-17 12:02:30 +0000",
+  "updated": "2019-07-16 08:40:29 +0000",
   "brakeman_version": "4.4.0"
 }
