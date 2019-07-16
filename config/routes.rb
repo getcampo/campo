@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'admin_constraint'
+
 Rails.application.routes.draw do
   root to: 'home#index'
 
@@ -69,6 +72,9 @@ Rails.application.routes.draw do
     resources :users
     resource :settings
   end
+
+
+  mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
   if Rails.env.development?
     get '/ui/(:page)', to: 'ui#page'
