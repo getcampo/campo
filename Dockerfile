@@ -26,18 +26,6 @@ RUN gem install bundler -v 2.0.2
 
 WORKDIR /campo
 
-## testing stage
-
-FROM base AS testing
-
-COPY Gemfile Gemfile.lock /campo/
-RUN bundle install --deployment
-
-COPY package.json yarn.lock /campo/
-RUN yarn install
-
-COPY . /campo/
-
 ## production stage
 
 FROM base AS production
