@@ -5,8 +5,8 @@ services:
     build:
       context: .
       target: base
-    cache_from:
-      - getcampo/campo:latest
+      cache_from:
+        - getcampo/campo:latest
     command: bash -c "bin/setup && bin/rails test && bundle exec brakeman"
     volumes:
       - .:/campo
