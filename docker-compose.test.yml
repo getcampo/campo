@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: base
-    command: bin/setup && bin/rails test && bundle exec brakeman
+    command: bash -c "bin/setup && bin/rails test && bundle exec brakeman"
     volumes:
       - .:/campo
     depends_on:

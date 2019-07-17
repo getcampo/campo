@@ -10,3 +10,8 @@ install:
 
 script:
   - docker-compose -f docker-compose.test.yml run sut
+
+cache:
+  directories:
+    - node_modules
+    - vendor/bundle
