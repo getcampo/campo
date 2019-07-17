@@ -7,8 +7,6 @@ services:
 
 install:
   - docker-compose -f docker-compose.test.yml build
-  - docker-compose -f docker-compose.test.yml run web bin/setup
 
 script:
-  - docker-compose -f docker-compose.test.yml run web bash -c "bin/rails test"
-  - docker-compose -f docker-compose.test.yml run web bash -c "bundle exec brakeman"
+  - docker-compose -f docker-compose.test.yml run sut
