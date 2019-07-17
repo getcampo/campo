@@ -6,6 +6,7 @@ services:
   - docker
 
 install:
+  - docker pull getcampo/campo:latest
   - docker-compose -f docker-compose.test.yml build
 
 script:
