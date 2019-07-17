@@ -32,12 +32,13 @@ FROM base AS production
 
 ENV RAILS_ENV=production
 
-COPY . /campo/
+COPY Gemfile Gemfile.lock /campo/
 
 RUN bundle install --deployment --without test development && \
   rm vendor/bundle/ruby/2.5.0/cache/*
 
-RUN yarn install && \
-  bin/rails assets:precompile && \
+COPY . /campo/
+
+RUN bin/rails assets:precompile && \
   yarn cache clean && \
   rm -rf node_modules tmp/cache/* /tmp/*
