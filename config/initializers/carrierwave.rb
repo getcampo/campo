@@ -18,18 +18,7 @@ CarrierWave.configure do |config|
     config.gcloud_bucket_is_public = true
     config.gcloud_credentials = {
       gcloud_project: ENV['STORAGE_GCLOUD_PROJECT'],
-      gcloud_keyfile: Google::Cloud::Storage::Credentials.new({
-        type: 'service_account',
-        project_id: ENV['STORAGE_GCLOUD_PROJECT_ID'],
-        private_key_id: ENV['STORAGE_GCLOUD_PRIVATE_KEY_ID'],
-        private_key: ENV['STORAGE_GCLOUD_PRIVATE_KEY'],
-        client_email: ENV['STORAGE_GCLOUD_CLIENT_EMAIL'],
-        client_id: ENV['STORAGE_GCLOUD_CLIENT_ID'],
-        auth_uri: 'https://accounts.google.com/o/oauth2/auth',
-        token_uri: 'https://accounts.google.com/o/oauth2/token',
-        auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-        client_x509_cert_url: ENV['STORAGE_GCLOUD_CLIENT_X509_CERT_URL']
-      })
+      gcloud_keyfile: ENV['STORAGE_GCLOUD_KEYFILE'] || JSON.parse(ENV['STORAGE_GCLOUD_KEYFILE_CONTENT'])
     }
   else
     config.storage = :file
