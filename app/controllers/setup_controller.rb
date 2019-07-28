@@ -24,9 +24,7 @@ class SetupController < ApplicationController
 
   def generate_default_data
     Site.create(
-      title: 'Campo',
-      logo: File.open(Rails.root.join('app', 'webpacker', 'images', 'logo.png')),
-      icon: File.open(Rails.root.join('app', 'webpacker', 'images', 'icon.png'))
+      title: 'Campo'
     )
     forum = Forum.create(name: I18n.t('default_data.announcement'), slug: 'announcement')
     Topic.create(
