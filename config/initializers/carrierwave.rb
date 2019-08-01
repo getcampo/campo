@@ -10,6 +10,9 @@ CarrierWave.configure do |config|
       secret_access_key: ENV.fetch('STORAGE_AWS_SECRET_ACCESS_KEY'),
       region: ENV.fetch('STORAGE_AWS_REGION')
     }
+    config.aws_attributes = {
+      cache_control: 'max-age=86400'
+    }
   when 'gcloud'
     require 'carrierwave-google-storage'
     require 'google/cloud/storage'
@@ -19,6 +22,9 @@ CarrierWave.configure do |config|
     config.gcloud_credentials = {
       gcloud_project: ENV['STORAGE_GCLOUD_PROJECT'],
       gcloud_keyfile: ENV['STORAGE_GCLOUD_KEYFILE'] || JSON.parse(ENV['STORAGE_GCLOUD_KEYFILE_CONTENT'])
+    }
+    config.gcloud_attributes = {
+      cache_control: 'max-age=86400'
     }
   else
     config.storage = :file
