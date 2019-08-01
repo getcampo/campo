@@ -23,4 +23,6 @@ CarrierWave.configure do |config|
   else
     config.storage = :file
   end
+
+  config.asset_host = ENV['STORAGE_ASSET_HOST']
 end
