@@ -162,6 +162,7 @@ zh-CN:
       users: 用户
     application:
       forums: 板块
+      home: 首页
       more: 更多
       profile: 个人页面
       search: 搜索
@@ -247,6 +248,7 @@ zh-CN:
       first_post: 最先回复
       last_post: 最后回复
       new_post: 新回复
+      sign_in_to_post: 登录后评论
     toolbar:
       delete: 删除
       delete_topic_confirm: 确认删除该主题？

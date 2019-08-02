@@ -162,6 +162,7 @@ en:
       users: Users
     application:
       forums: Forums
+      home: Home
       more: More
       profile: Profile
       search: Search
@@ -247,6 +248,7 @@ en:
       first_post: First post
       last_post: Last post
       new_post: New post
+      sign_in_to_post: Sign in to post
     toolbar:
       delete: Delete
       delete_topic_confirm: Are you sure delte this topic?
