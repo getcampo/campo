@@ -10,9 +10,11 @@ Campo use docker in development and deployment, it provides a consistent environ
 
 ### Install Docker
 
-Visit https://www.docker.com/community-edition and install docker for you operating system.
+Install Docker, visit https://docs.docker.com/install/ .
 
 ### Install docker-sync
+
+Campo use docker-sync to speed up docker volume IO. install Docker-sync:
 
 ```console
 $ gem install docker-sync
@@ -25,7 +27,7 @@ $ git clone https://github.com/getcampo/campo.git
 $ cd campo
 ```
 
-### Run dev server
+### Start dev server
 
 Start docker sync:
 
@@ -33,7 +35,7 @@ Start docker sync:
 $ docker-sync start
 ```
 
-Open a new console and run:
+Setup dev environment:
 
 ```console
 $ docker-compose run web bin/setup
@@ -46,6 +48,14 @@ $ docker-compose up
 ```
 
 Visit http://localhost:3000/ .
+
+### console
+
+```console
+$ docker-compose run web bash
+```
+
+You can run other rails command in this console, for example `bin/rails test`.
 
 ## License
 
