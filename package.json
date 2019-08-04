@@ -6,7 +6,6 @@
     "actioncable": "^5.2.2",
     "activestorage": "^5.2.2",
     "animate.css": "^3.7.0",
-    "jquery": "^3.3.1",
     "local-time": "^2.1.0",
     "normalize.css": "^8.0.1",
     "rails-ujs": "^5.2.2",
