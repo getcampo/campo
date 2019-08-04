@@ -43,7 +43,7 @@ gem 'local_time'
 gem 'kaminari'
 
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '>= 4.9.4'
 
 # I18n
 gem 'http_accept_language'
