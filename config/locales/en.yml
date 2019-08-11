@@ -228,7 +228,7 @@ en:
       require_sign_up_title: Congratulations! You have successfully installed Campo
       setup_completed_body: You will be redirected to the home page after the initialization is complete.
       setup_completed_title: Initializing data
-      sign_up: 注册
+      sign_up: Sign up
   subscriptions:
     button:
       ignore_notifications: Ignore notifications
