@@ -7,7 +7,8 @@ export default class extends Controller {
     this.element.addEventListener('submit', this.visit.bind(this))
   }
 
-  visit() {
+  visit(event) {
+    event.preventDefault()
     Turbolinks.visit(this.element.action + '?' + Rails.serializeElement(this.element))
   }
 }
