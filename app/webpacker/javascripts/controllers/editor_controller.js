@@ -129,37 +129,41 @@ export default class extends Controller {
   attach(event) {
     this.inputTarget.focus()
     Array.from(event.target.files).forEach(file => {
-      let fileName = file.name
-      let pendingTag
-      if (file.type.startsWith('image/')) {
-        pendingTag = `![Uplaoding ${fileName}...]()`
+      if (file.size > 10 * 1024 * 1024) {
+        alert(`${file.name} is too big! Should be less than 10MB.`)
       } else {
-        pendingTag = `[Uplaoding ${fileName}...]()`
-      }
-      let start = this.inputTarget.selectionStart
-      let end = this.inputTarget.selectionEnd
-      document.execCommand('insertText', false, pendingTag)
-      this.inputTarget.setSelectionRange(start + pendingTag.length, start + pendingTag)
-      let formData = new FormData()
-      formData.append('attachment[file]', file)
-      Rails.ajax({
-        url: '/attachments',
-        type: 'POST',
-        dataType: 'json',
-        data: formData,
-        success: (data) => {
-          let start = this.inputTarget.selectionStart
-          let end = this.inputTarget.selectionEnd
-          let content;
-          if (file.type.startsWith('image/')) {
-            content = `![${data.filename}](${data.url})`
-          } else {
-            content = `[${data.filename}](${data.url})`
-          }
-          this.inputTarget.value = this.inputTarget.value.replace(pendingTag, content)
-          this.inputTarget.setSelectionRange(start + content.length, end + content.length)
+        let fileName = file.name
+        let pendingTag
+        if (file.type.startsWith('image/')) {
+          pendingTag = `![Uplaoding ${fileName}...]()\n`
+        } else {
+          pendingTag = `[Uplaoding ${fileName}...]()\n`
         }
-      });
+        let start = this.inputTarget.selectionStart
+        let end = this.inputTarget.selectionEnd
+        document.execCommand('insertText', false, pendingTag)
+        this.inputTarget.setSelectionRange(start + pendingTag.length, start + pendingTag.length)
+        let formData = new FormData()
+        formData.append('attachment[file]', file)
+        Rails.ajax({
+          url: '/attachments',
+          type: 'POST',
+          dataType: 'json',
+          data: formData,
+          success: (data) => {
+            let start = this.inputTarget.selectionStart
+            let end = this.inputTarget.selectionEnd
+            let content;
+            if (file.type.startsWith('image/')) {
+              content = `![${data.filename}](${data.url})\n`
+            } else {
+              content = `[${data.filename}](${data.url})\n`
+            }
+            this.inputTarget.value = this.inputTarget.value.replace(pendingTag, content)
+            this.inputTarget.setSelectionRange(start + content.length, end + content.length)
+          }
+        })
+      }
     })
 
     // reset file input

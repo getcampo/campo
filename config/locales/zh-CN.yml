@@ -114,6 +114,7 @@ zh-CN:
     messages:
       blank: 不能为空
       confirmation: 确认值不匹配
+      max_size_error: 文件需要小于 %{max_size}
       taken: 已经存在
   flash:
     account_is_successfully_updated: 账号更新成功。

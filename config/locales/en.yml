@@ -114,6 +114,7 @@ en:
     messages:
       blank: Can't be blank
       confirmation: Confirmation not match
+      max_size_error: File size should be less than %{max_size}
       taken: Already exists
   flash:
     account_is_successfully_updated: Account is successfully updated.

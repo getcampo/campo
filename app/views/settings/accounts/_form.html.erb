@@ -1,5 +1,5 @@
 <%= form_with model: @user, url: settings_account_path, class: 'form', id: 'account-form', data: { controller: 'form-validation' } do |form| %>
-  <div class="form-field <%= 'is-invalid' if @user.errors[:name].any? %>">
+  <div class="form-field <%= 'invalid' if @user.errors[:name].any? %>">
     <%= form.label :name %>
     <%= form.text_field :name, 'data-validate-url': '/settings/account/validate/name' %>
     <% if @user.errors[:name].any? %>
@@ -8,7 +8,7 @@
       </div>
     <% end %>
   </div>
-  <div class="form-field <%= 'is-invalid' if @user.errors[:username].any? %>">
+  <div class="form-field <%= 'invalid' if @user.errors[:username].any? %>">
     <%= form.label :username %>
     <%= form.text_field :username, 'data-validate-url': '/settings/account/validate/username' %>
     <% if @user.errors[:username].any? %>
@@ -17,7 +17,7 @@
       </div>
     <% end %>
   </div>
-  <div class="form-field <%= 'is-invalid' if @user.errors[:email].any? %>">
+  <div class="form-field <%= 'invalid' if @user.errors[:email].any? %>">
     <%= form.label :email %>
     <%= form.text_field :email, 'data-validate-url': '/settings/account/validate/email' %>
     <% if @user.errors[:email].any? %>
@@ -26,7 +26,7 @@
       </div>
     <% end %>
   </div>
-  <div class="form-field <%= 'is-invalid' if @user.errors[:email].any? %>">
+  <div class="form-field <%= 'invalid' if @user.errors[:avatar].any? %>">
     <%= form.label :avatar %>
     <div class="mb-2">
       <img src="<%= @user.avatar.thumb.url %>" class="avatar">
@@ -35,8 +35,13 @@
       <%= t '.upload_image' %>
       <%= form.file_field :avatar, accept: 'image/*', class: 'display-none' %>
     </label>
+    <% if @user.errors[:avatar].any? %>
+      <div class="validate-message">
+        <%= @user.errors[:avatar].first %>
+      </div>
+    <% end %>
   </div>
-  <div class="form-field <%= 'is-invalid' if @user.errors[:bio].any? %>">
+  <div class="form-field <%= 'invalid' if @user.errors[:bio].any? %>">
     <%= form.label :bio %>
     <%= form.text_area :bio %>
     <% if @user.errors[:bio].any? %>
