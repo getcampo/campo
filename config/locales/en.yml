@@ -38,6 +38,16 @@ en:
       topic: Topic
       user: User
   admin:
+    attachments:
+      index:
+        attachments: Attachments
+        created_at: Created at
+        file: File
+        file_size: File size
+        id: ID
+        user: User
+      show:
+        delete_confirm: Are you sure delete this attachment?
     forums:
       edit:
         edit_forum: Edit forum
@@ -118,6 +128,7 @@ en:
       taken: Already exists
   flash:
     account_is_successfully_updated: Account is successfully updated.
+    attachment_is_successfully_destroy: Attachment is successfully destroy
     forum_is_successfully_created: Forum is successfully created.
     forum_is_successfully_updated: Forum is successfully updated.
     invalid_token: Invalid token.
@@ -155,6 +166,7 @@ en:
       topics: Topics
   layouts:
     admin:
+      attachments: Attachments
       dashboard: Dashboard
       forums: Forums
       posts: Posts

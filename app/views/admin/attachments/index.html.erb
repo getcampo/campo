@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header">
+    <div class="toolbar">
+      <div class="toolbar-title">
+        <%= t '.attachments' %>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t '.id' %></th>
+        <th><%= t '.user' %></th>
+        <th><%= t '.file' %></th>
+        <th><%= t '.file_size' %></th>
+        <th><%= t '.created_at' %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attachments.each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <td><%= attachment.user.name %></td>
+          <td><%= link_to attachment.file_identifier, attachment.file.url, target: '_blank' %></td>
+          <td><%= number_to_human_size attachment.byte_size %></td>
+          <td><%= local_time_or_date attachment.created_at %></td>
+          <td class="table-action text-align-right">
+            <a href="<%= admin_attachment_url(attachment) %>" class="button button-icon">
+              <i class="material-icons">chevron_right</i>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="card-footer border-top">
+    <%= render_paginator @attachments %>
+  </div>
+</div>

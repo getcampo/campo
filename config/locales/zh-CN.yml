@@ -38,6 +38,16 @@ zh-CN:
       topic: 主题
       user: 用户
   admin:
+    attachments:
+      index:
+        attachments: 附件
+        created_at: 创建时间
+        file: 文件
+        file_size: 文件大小
+        id: ID
+        user: 用户
+      show:
+        delete_confirm: 确认删除附件？
     forums:
       edit:
         edit_forum: 编辑板块
@@ -118,6 +128,7 @@ zh-CN:
       taken: 已经存在
   flash:
     account_is_successfully_updated: 账号更新成功。
+    attachment_is_successfully_destroy: 附件已删除。
     forum_is_successfully_created: 版块创建成功。
     forum_is_successfully_updated: 版块更新成功。
     invalid_token: 无效 Token。
@@ -155,6 +166,7 @@ zh-CN:
       topics: 主题
   layouts:
     admin:
+      attachments: 附件
       dashboard: 面板
       forums: 板块
       posts: 帖子

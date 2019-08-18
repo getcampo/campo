@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    <div class="toolbar">
+      <div class="toolbar-action">
+        <a href="<%= admin_attachments_path %>" class="button button-icon">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+      <div class="toolbar-title">
+        Topic #<%= @attachment.id %>
+      </div>
+      <div class="toolbar-action">
+        <a href="<%= admin_attachment_path(@attachment) %>" class="button button-icon" data-remote="true" data-method="delete" data-confirm="<%= t '.delete_confirm' %>">
+          <i class="material-icons">delete</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <tbody>
+      <% @attachment.attributes.each do |attribute, value| %>
+        <tr>
+          <th><%= attribute %></th>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>link</th>
+        <td><%= link_to @attachment.file_identifier, @attachment.file.url, target: '_blank' %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
