@@ -225,6 +225,7 @@ export default class extends Controller {
     if (ids && ids.length) {
       ids.split(',').forEach((id) => {
         document.querySelector(`#post-${id}-reaction-${type}`).classList.add('active')
+        document.querySelector(`#post-${id}-reaction-${type}`).dataset.method = 'delete'
       })
     }
   }
