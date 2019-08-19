@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :topic, optional: true
   belongs_to :user
   belongs_to :edited_user, class_name: 'User', optional: true
-  belongs_to :reply_to_post, class_name: 'Post', optional: true
+  belongs_to :reply_to_post, class_name: 'Post', optional: true, touch: true
   has_many :replied_posts, class_name: 'Post', foreign_key: 'reply_to_post_id'
   has_many :reactions
 
