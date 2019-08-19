@@ -9,6 +9,7 @@
 
 - Fix search form duplicate request.
 - Fix search toggle unnecessary padding.
+- Fix reaction data action bug.
 
 ## v0.1.1
 
