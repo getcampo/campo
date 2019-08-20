@@ -1,5 +1,7 @@
 ## Master
 
+## v0.1.2
+
 ### New feature
 
 - Add file upload size limit(10 MB).
