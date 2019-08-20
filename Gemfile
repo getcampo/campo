@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth'
 
+gem 'nokogiri', '>= 1.10.4'
+
 # Markdown
 gem 'redcarpet'
 # Code heighlight
