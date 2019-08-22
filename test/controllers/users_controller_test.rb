@@ -12,4 +12,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+
+  test "should validate user name" do
+    post '/users/validate/name'
+    assert_response :success
+  end
+
+  test "should validate user username" do
+    post '/users/validate/username'
+    assert_response :success
+  end
+
+  test "should validate user email" do
+    post '/users/validate/email'
+    assert_response :success
+  end
+  
 end
