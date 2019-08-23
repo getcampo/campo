@@ -1,5 +1,5 @@
 <%= form_with model: @user, class: 'form', id: 'sign-up-form', data: { controller: 'form-validation' } do |form| %>
-  <div class="form-field">
+  <div class="form-field <%= 'invalid' if @user.errors[:name].any? %>">
     <%= form.label :name %>
     <%= form.text_field :name, 'data-validate-url': '/users/validate/name' %>
     <% if @user.errors[:name].any? %>
