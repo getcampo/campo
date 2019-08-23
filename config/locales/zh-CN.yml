@@ -37,6 +37,14 @@ zh-CN:
       post: 帖子
       topic: 主题
       user: 用户
+    # errors:
+    #   models:
+    #     user:
+    #       attributes:
+    #         username:
+    #           invalid: 只接受英文字母
+    #         email:
+    #           invalid: 不符合邮箱格式
   admin:
     attachments:
       index:
