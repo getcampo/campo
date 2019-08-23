@@ -37,6 +37,14 @@ en:
       post: Post
       topic: Topic
       user: User
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              invalid: Only accept English letters
+            email:
+              invalid: Not valid email address
   admin:
     attachments:
       index:

@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :users, only: [:create] do
-    post 'validate/:attribute', to: 'users#validate', constraints: { attribute: /name|username|email|password/ }
+    collection do
+      post 'validate/:attribute', to: 'users#validate', constraints: { attribute: /name|username|email|password/ }
+    end
   end
+
   resource :password_reset, only: [:show, :create, :edit, :update]
   resource :session, only: [:create]
   get '/sign_up', to: 'users#new', as: :sign_up
