@@ -31,20 +31,20 @@ zh-CN:
         password_confirmation: 密码确认
         role: 角色
         username: 用户名
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: 不符合邮箱格式
+            username:
+              invalid: 只接受英文字母
     models:
       comment: 评论
       forum: 版块
       post: 帖子
       topic: 主题
       user: 用户
-    # errors:
-    #   models:
-    #     user:
-    #       attributes:
-    #         username:
-    #           invalid: 只接受英文字母
-    #         email:
-    #           invalid: 不符合邮箱格式
   admin:
     attachments:
       index:

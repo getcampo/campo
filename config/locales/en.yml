@@ -31,20 +31,20 @@ en:
         password_confirmation: Password Confirmation
         role: Role
         username: Username
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: Not valid email address
+            username:
+              invalid: Only accept English letters
     models:
       comment: Comment
       forum: Forum
       post: Post
       topic: Topic
       user: User
-    # errors:
-    #   models:
-    #     user:
-    #       attributes:
-    #         username:
-    #           invalid: Only accept English letters
-    #         email:
-    #           invalid: Not valid email address
   admin:
     attachments:
       index:
