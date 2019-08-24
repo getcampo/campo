@@ -38,7 +38,7 @@ zh-CN:
             email:
               invalid: 不符合邮箱格式
             username:
-              invalid: 只接受英文字母
+              invalid: 必须以字母开头，只接受字母、数字和下划线
     models:
       comment: 评论
       forum: 版块

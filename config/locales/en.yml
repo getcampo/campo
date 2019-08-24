@@ -38,7 +38,7 @@ en:
             email:
               invalid: Not valid email address
             username:
-              invalid: Only accept English letters
+              invalid: Must begin with a letter, only accept letter, number and underline
     models:
       comment: Comment
       forum: Forum
