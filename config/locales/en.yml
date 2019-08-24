@@ -188,9 +188,12 @@ en:
       no_content: No content.
       notifications: Notifications
   password_resets:
+    edit:
+      password_reset: Password Reset
     form:
       change_password: Change password
     show:
+      password_reset: Password Reset
       password_reset_notice: Enter your email and we will send your a link to reset your password.
       send_email: Send Email
   posts:
