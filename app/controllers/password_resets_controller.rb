@@ -23,6 +23,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     if @user.update params.require(:user).permit(:password, :password_confirmation)
+      User.verifier = Rails.application.message_verifier('User-' + SecureRandom.base64(8))
       redirect_to sign_in_path, notice: t('flash.password_is_successfully_reset')
     else
       render 'update_form'

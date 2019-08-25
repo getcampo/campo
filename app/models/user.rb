@@ -29,9 +29,10 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   mattr_accessor :verifier
-  self.verifier = Rails.application.message_verifier('User')
+  self.verifier = Rails.application.message_verifier('User-default')
 
   def password_reset_token
+    self.class.verifier = Rails.application.message_verifier('User-' + SecureRandom.base64(8))
     self.class.verifier.generate(id, purpose: :password_reset, expires_in: 5.minutes)
   end
 
