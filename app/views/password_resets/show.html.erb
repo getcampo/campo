@@ -3,14 +3,14 @@
     <div class="card-header">
       <div class="toolbar">
         <div class="toolbar-title">
-          Password reset
+          <%= t('.password_reset') %>
         </div>
       </div>
     </div>
     <div class="card-body">
       <%= form_with url: password_reset_url, class: 'form' do |form| %>
         <div class="form-field">
-          <%= form.label :email, 'Email' %>
+          <%= form.label :email, User.human_attribute_name('email') %>
           <%= form.text_field :email, class: 'form-control' %>
           <small class="text-secondary"><%= t '.password_reset_notice' %></small>
         </div>
