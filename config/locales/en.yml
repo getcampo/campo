@@ -31,6 +31,14 @@ en:
         password_confirmation: Password Confirmation
         role: Role
         username: Username
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: Not valid email address
+            username:
+              invalid: Must begin with a letter, only accept letter, number and underline
     models:
       comment: Comment
       forum: Forum

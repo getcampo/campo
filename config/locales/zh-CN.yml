@@ -31,6 +31,14 @@ zh-CN:
         password_confirmation: 密码确认
         role: 角色
         username: 用户名
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: 不符合邮箱格式
+            username:
+              invalid: 必须以字母开头，只接受字母、数字和下划线
     models:
       comment: 评论
       forum: 版块
