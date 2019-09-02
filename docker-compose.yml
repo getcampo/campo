@@ -39,7 +39,7 @@ services:
   postgres:
     image: postgres:10
   redis:
-    image: redis:3.2
+    image: redis:4
 
 volumes:
   campo-sync:
