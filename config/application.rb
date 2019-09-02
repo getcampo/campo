@@ -19,6 +19,12 @@ Bundler.require(*Rails.groups)
 
 if ENV['ENV_FILE'].present?
   Dotenv.load(ENV['ENV_FILE'])
+else
+  Dotenv::Railtie.load
+end
+
+if ENV['NEW_RELIC_LICENSE_KEY'].present?
+  require 'newrelic_rpm'
 end
 
 module Campo
