@@ -25,9 +25,14 @@
       <meta name="current-user-admin" content="<%= Current.user.admin? %>">
     <% end %>
 
-    <%= yield(:head) %>
-
     <meta name="turbolinks-cache-control" content="no-cache">
+
+    <% if ENV['SENTRY_DSN'].present? %>
+      <% sentry_dsn = URI(ENV['SENTRY_DSN']) %>
+      <script src="https://js.sentry-cdn.com/<%= sentry_dsn.user %>.min.js" crossorigin="anonymous"></script>
+    <% end %>
+
+    <%= yield(:head) %>
   </head>
 
   <body>

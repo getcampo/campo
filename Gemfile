@@ -63,6 +63,7 @@ gem 'cppjieba_rb'
 gem 'with_advisory_lock'
 
 gem 'newrelic_rpm', require: false
+gem 'sentry-raven', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

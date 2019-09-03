@@ -283,6 +283,8 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    sentry-raven (2.11.0)
+      faraday (>= 0.7.6, < 1.0)
     sidekiq (6.0.0)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
@@ -369,6 +371,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rouge
   selenium-webdriver
+  sentry-raven
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
