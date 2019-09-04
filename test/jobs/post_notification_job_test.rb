@@ -55,4 +55,29 @@ class PostNotificationJobTest < ActiveJob::TestCase
       PostNotificationJob.perform_now(post)
     end
   end
+
+  test "should create reply notification" do
+    post = create(:post)
+    reply_post = create(:post, topic: post.topic, reply_to_post: post)
+    assert_difference "post.user.notifications.count" do
+      PostNotificationJob.perform_now(reply_post)
+    end
+  end
+
+  test "should not create reply notification for self" do
+    post = create(:post)
+    reply_post = create(:post, topic: post.topic, user: post.user, reply_to_post: post)
+    assert_no_difference "post.user.notifications.count" do
+      PostNotificationJob.perform_now(reply_post)
+    end
+  end
+
+  test "should not create reply notification for ignored user" do
+    post = create(:post)
+    post.topic.subscriptions.create!(user: post.user, status: 'ignored')
+    reply_post = create(:post, topic: post.topic, reply_to_post: post)
+    assert_no_difference "post.user.notifications.count" do
+      PostNotificationJob.perform_now(reply_post)
+    end
+  end
 end

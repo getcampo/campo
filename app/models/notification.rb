@@ -6,7 +6,8 @@ class Notification < ApplicationRecord
 
   enum type: {
     post: 0,
-    mention: 1
+    mention: 1,
+    reply: 2
   }
 
   scope :unread, -> { where(read: false) }
