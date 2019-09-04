@@ -195,6 +195,13 @@ zh-CN:
     index:
       no_content: 没有内容。
       notifications: 通知
+    notification:
+      mention:
+        mentioned_you_on: 提及你于
+      post:
+        posted_on: 回帖于
+      reply:
+        reply_to_you_on: 回复你于
   password_resets:
     edit:
       password_reset: 重置密码

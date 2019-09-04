@@ -5,7 +5,7 @@
   </div>
   <div class="list-item-content">
     <div class="list-item-content-primary">
-      <%= post.user.name %> posted on <%= post.topic.title %>
+      <%= post.user.name %> <%= t '.posted_on' %> <%= post.topic.title %>
     </div>
     <div class="list-item-content-secondary">
       <%= post.body %>

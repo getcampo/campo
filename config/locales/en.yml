@@ -195,6 +195,13 @@ en:
     index:
       no_content: No content.
       notifications: Notifications
+    notification:
+      mention:
+        mentioned_you_on: mentioned you on
+      post:
+        posted_on: posted on
+      reply:
+        reply_to_you_on: reply to you on
   password_resets:
     edit:
       password_reset: Password Reset
