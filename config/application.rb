@@ -60,5 +60,7 @@ module Campo
       generate.assets false
       generate.view_specs false
     end
+
+    config.middleware.use Rack::Attack
   end
 end
