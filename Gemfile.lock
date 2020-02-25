@@ -217,7 +217,7 @@ GEM
     multipart-post (2.1.1)
     newrelic_rpm (6.5.0.357)
     nio4r (2.5.1)
-    nokogiri (1.10.4)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
