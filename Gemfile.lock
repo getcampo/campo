@@ -176,7 +176,7 @@ GEM
     io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     jwt (2.2.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
