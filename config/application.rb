@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -23,14 +23,10 @@ else
   Dotenv::Railtie.load
 end
 
-if ENV['NEW_RELIC_LICENSE_KEY'].present?
-  require 'newrelic_rpm'
-end
-
 module Campo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults '6.0'
+    config.load_defaults '7.0'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
