@@ -57,7 +57,10 @@ class User < ApplicationRecord
   def generate_default_avatar
     temp_path = "#{Rails.root}/tmp/#{id}_default_avatar.png"
     system(*%W(convert -size 160x160 -annotate 0 #{username[0]} -font DejaVu-Sans -fill white -pointsize 100 -gravity Center xc:#{DEFAULT_AVATAR_COLORS.sample} #{temp_path}))
-    avatar.store!(File.open(temp_path))
+    File.open(temp_path) do |file|
+      puts file.inspect
+      avatar.store! file
+    end
     save
     FileUtils.rm temp_path
   end

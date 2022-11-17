@@ -5,12 +5,11 @@ services:
     build:
       context: .
       target: base
-    entrypoint: bin/entrypoint.sh
     command: bin/rails server -b 0.0.0.0
     environment:
       WEBPACKER_DEV_SERVER_HOST: webpacker
     volumes:
-      - campo-sync:/campo:nocopy
+      - campo-sync:/app:nocopy
     ports:
       - 3000:3000
     depends_on:
@@ -24,7 +23,7 @@ services:
     environment:
       WEBPACKER_DEV_SERVER_HOST: webpacker
     volumes:
-      - campo-sync:/campo:nocopy
+      - campo-sync:/app:nocopy
     ports:
       - 3035:3035
   worker:
@@ -38,9 +37,11 @@ services:
       - postgres
       - redis
   postgres:
-    image: postgres:10
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: postgres
   redis:
-    image: redis:4
+    image: redis:6
 
 volumes:
   campo-sync:

@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.1.7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -52,7 +52,7 @@ gem 'sidekiq'
 gem 'webpacker', '~> 4.0.1'
 
 # Attachment
-gem 'carrierwave', '~> 1.2.0'
+gem 'carrierwave', '~> 1.3.0'
 gem 'carrierwave-aws', '~> 1.3.0', require: false
 gem 'carrierwave-google-storage', require: false
 
@@ -62,10 +62,13 @@ gem 'cppjieba_rb'
 # ActiveRecord Advisory Lock
 gem 'with_advisory_lock'
 
-gem 'newrelic_rpm', require: false
-gem 'sentry-raven', require: false
+# gem 'newrelic_rpm', require: false
+# gem 'sentry-raven', require: false
 
 gem 'rack-attack'
+
+# fix yaml load incompatibility
+gem 'psych', '< 4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

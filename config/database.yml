@@ -12,12 +12,14 @@ development:
   <<: *default
   host: postgres
   username: postgres
+  password: postgres
   database: campo_development
 
 test:
   <<: *default
   host: postgres
   username: postgres
+  password: postgres
   database: campo_test
 
 production:
