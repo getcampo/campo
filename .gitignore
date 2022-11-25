@@ -33,3 +33,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /public/uploads
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

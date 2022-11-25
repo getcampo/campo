@@ -11,14 +11,14 @@
       <link rel="icon" href="<%= Current.site.icon.thumb.url %>">
     <% else %>
       <title>Campo</title>
-      <link rel="icon" href="<%= asset_pack_path 'media/images/icon.png' %>">
+      <link rel="icon" href="<%= asset_path 'icon.png' %>">
     <% end %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'tailwind', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
 
     <% if Current.user %>
       <meta name="current-user-id" content="<%= Current.user.id %>">

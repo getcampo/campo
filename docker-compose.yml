@@ -15,24 +15,21 @@ services:
     depends_on:
       - postgres
       - redis
-  webpacker:
+  css:
     build:
       context: .
       target: base
-    command: bin/webpack-dev-server
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: webpacker
+    command: bin/rails tailwindcss:watch[debug]
+    tty: true
     volumes:
       - campo-sync:/app:nocopy
-    ports:
-      - 3035:3035
   worker:
     build:
       context: .
       target: base
     command: bundle exec sidekiq
     volumes:
-      - campo-sync:/campo:nocopy
+      - campo-sync:/app:nocopy
     depends_on:
       - postgres
       - redis

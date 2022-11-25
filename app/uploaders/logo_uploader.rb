@@ -4,6 +4,6 @@ class LogoUploader < ImageUploader
   end
 
   def default_url(*args)
-    ActionController::Base.helpers.asset_pack_path('media/images/logo.png')
+    ActionController::Base.helpers.asset_path('logo.png')
   end
 end

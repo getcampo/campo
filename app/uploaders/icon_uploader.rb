@@ -4,6 +4,6 @@ class IconUploader < ImageUploader
   end
 
   def default_url(*args)
-    ActionController::Base.helpers.asset_pack_path('media/images/icon.png')
+    ActionController::Base.helpers.asset_path('icon.png')
   end
 end
