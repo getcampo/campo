@@ -35,7 +35,7 @@
     <%= yield(:head) %>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
     <%= content_for?(:body) ? yield(:body) : yield %>
 
     <% %w(notice alert).each do |type| %>

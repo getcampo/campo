@@ -1,20 +1,29 @@
-<div class="session-container">
-  <div class="card">
-    <div class="card-header">
-      <div class="toolbar">
-        <div class="toolbar-title">
-          <%= t '.sign_up' %>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <%= render 'sessions/auth_providers' %>
-      <% if AUTH_PROVIDERS.include?('password') %>
-        <%= render 'form' %>
+<div class="max-w-md mx-auto p-4">
+  <div class="flex justify-center p-4">
+    <a href="<%= root_path %>">
+      <% if Current.site %>
+        <img src="<%= Current.site.logo.thumb.url %>" class="object-fill h-[60px]">
+      <% else %>
+        <img src="<%= asset_path 'logo.png' %>" class="object-fill h-[60px]">
       <% end %>
-    </div>
+    </a>
   </div>
-  <div class="text-align-center">
-    <a href="<%= sign_in_path %>" class="text-secondary"><%= t '.sign_in_existing_account' %></a>
+
+  <div class="border p-4 shadow rounded-xl bg-white">
+    <h1 class="text-2xl mb-4">
+      <%= t '.sign_up' %>
+    </h1>
+
+    <%= render 'sessions/auth_providers' %>
+
+    <% if AUTH_PROVIDERS.include?('password') %>
+      <%= render 'form' %>
+    <% end %>
+
+    <div class="mt-4">
+      <a href="<%= sign_in_path %>" class="btn-text block w-full text-center">
+        <%= t '.sign_in_existing_account' %>
+      </a>
+    </div>
   </div>
 </div>

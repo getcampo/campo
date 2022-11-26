@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include AuthPassword
-  layout 'session'
+  layout 'base'
 
   skip_before_action :require_site
   before_action :require_auth_password_enabled, only: [:create]
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to session.delete(:return_to) || root_path
     else
-      render 'update_form'
+      render :new, status: :unprocessable_entity
     end
   end
 
