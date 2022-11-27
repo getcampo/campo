@@ -35,6 +35,8 @@ zh-CN:
       models:
         user:
           attributes:
+            base:
+              email_or_password_invalid: 邮箱或密码不正确。
             email:
               invalid: 不符合邮箱格式。
             username:

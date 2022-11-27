@@ -35,6 +35,8 @@ en:
       models:
         user:
           attributes:
+            base:
+              email_or_password_invalid: Email or password invalid.
             email:
               invalid: Not valid email address.
             username:

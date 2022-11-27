@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   include AuthPassword
-  layout 'session'
+  layout 'base'
 
   skip_before_action :require_site
   before_action :require_auth_password_enabled, only: [:create]
@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     if params[:return_to]
       session[:return_to] = URI(params[:return_to]).path
     end
+    @user = User.new
   end
 
   def create
@@ -18,8 +19,9 @@ class SessionsController < ApplicationController
       sign_in(user)
       redirect_to session.delete(:return_to) || root_path
     else
-      @sign_in_error = true
-      render 'update_form'
+      @user = User.new email: user_params[:email]
+      @user.errors.add(:base, :email_or_password_invalid)
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +32,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def auth_hash
-    request.env['omniauth.auth']
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
