@@ -36,9 +36,9 @@ en:
         user:
           attributes:
             email:
-              invalid: Not valid email address
+              invalid: Not valid email address.
             username:
-              invalid: Must begin with a letter, only accept letter, number and underline
+              invalid: Must begin with a letter, only accept letter, number and dash, not less than 3 chars.
     models:
       comment: Comment
       forum: Forum

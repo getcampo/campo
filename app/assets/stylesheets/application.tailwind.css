@@ -15,6 +15,10 @@
     @apply bg-transparent hover:bg-blue-100/50 active:bg-blue-100/100 text-blue-500 py-2 px-4 rounded-full min-w-[88px];
   }
 
+  .label {
+    @apply block text-sm text-gray-700 font-medium mb-2;
+  }
+
   .input {
     @apply w-full outline-none border border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded py-2 px-3;
     @apply invalid:border-red-500 invalid:focus:border-red-500 invalid:focus:ring-red-500 invalid:text-red-500;
@@ -22,5 +26,9 @@
 
   .input-invalid {
     @apply border-red-500 focus:border-red-500 focus:ring-red-500 text-red-500;
+  }
+
+  .helper {
+    @apply text-sm text-gray-500 mt-2;
   }
 }

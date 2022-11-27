@@ -36,9 +36,9 @@ zh-CN:
         user:
           attributes:
             email:
-              invalid: 不符合邮箱格式
+              invalid: 不符合邮箱格式。
             username:
-              invalid: 必须以字母开头，只接受字母、数字和下划线
+              invalid: 必须以字母开头，只接受字母、数字和 -，不少于 3 字符。
     models:
       comment: 评论
       forum: 版块

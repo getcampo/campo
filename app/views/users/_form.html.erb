@@ -1,20 +1,25 @@
 <%= form_with model: @user, class: 'form', id: 'sign-up-form' do |form| %>
   <div class="mb-4">
-    <%= form.label :name, class: "block mb-2" %>
-    <%= form.text_field :name, require: true, class: "input #{"input-invalid" if @user.errors[:name].any?}" %>
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, placeholder: "Name", require: true, class: "input #{"input-invalid" if @user.errors[:name].any?}" %>
   </div>
 
   <div class="mb-4">
-    <%= form.label :username, class: "block mb-2" %>
-    <%= form.text_field :username, data: { controller: "validator", validator_url_value: "users/validate/username" }, class: "input #{"input-invalid" if @user.errors[:username].any?}" %>
+    <%= form.label :username, class: "label" %>
+    <div class="flex">
+      <div class="p-2 bg-gray-300 rounded-l">
+        @
+      </div>
+      <%= form.text_field :username, placeholder: "username", data: { controller: "validator", validator_url_value: "users/validate/username" }, class: "input #{"input-invalid" if @user.errors[:username].any?} rounded-l-none" %>
+    </div>
   </div>
 
   <div class="mb-4">
-    <%= form.label :email, class: "block mb-2" %>
-    <%= form.text_field :email, data: { controller: "validator", validator_url_value: "users/validate/email" }, class: "input #{"input-invalid" if @user.errors[:email].any?}" %>
+    <%= form.label :email, class: "label" %>
+    <%= form.text_field :email, placeholder: "name@example.com", data: { controller: "validator", validator_url_value: "users/validate/email" }, class: "input #{"input-invalid" if @user.errors[:email].any?}" %>
   </div>
   <div class="mb-4">
-    <%= form.label :password, class: "block mb-2" %>
+    <%= form.label :password, class: "label" %>
     <%= form.password_field :password, require: true, class: "input #{"input-invalid" if @user.errors[:password].any?}" %>
   </div>
 
