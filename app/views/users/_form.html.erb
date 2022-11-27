@@ -1,39 +1,21 @@
-<%= form_with model: @user, class: 'form', id: 'sign-up-form', data: { controller: 'form-validation' } do |form| %>
+<%= form_with model: @user, class: 'form', id: 'sign-up-form' do |form| %>
   <div class="mb-4">
     <%= form.label :name, class: "block mb-2" %>
-    <%= form.text_field :name, 'data-validate-url': '/users/validate/name', class: "text-field #{"text-field--invalid" if @user.errors[:name].any?}" %>
-    <% if @user.errors[:name].any? %>
-      <div class="text-red-500">
-        <%= @user.errors[:name].first %>
-      </div>
-    <% end %>
+    <%= form.text_field :name, require: true, class: "input #{"input-invalid" if @user.errors[:name].any?}" %>
   </div>
+
   <div class="mb-4">
     <%= form.label :username, class: "block mb-2" %>
-    <%= form.text_field :username, 'data-validate-url': '/users/validate/username', class: "text-field #{"text-field--invalid" if @user.errors[:username].any?}" %>
-    <% if @user.errors[:username].any? %>
-      <div class="text-red-500">
-        <%= @user.errors[:username].first %>
-      </div>
-    <% end %>
+    <%= form.text_field :username, data: { controller: "validator", validator_url_value: "users/validate/username" }, class: "input #{"input-invalid" if @user.errors[:username].any?}" %>
   </div>
+
   <div class="mb-4">
     <%= form.label :email, class: "block mb-2" %>
-    <%= form.text_field :email, 'data-validate-url': '/users/validate/email', class: "text-field #{"text-field--invalid" if @user.errors[:email].any?}" %>
-    <% if @user.errors[:email].any? %>
-      <div class="text-red-500">
-        <%= @user.errors[:email].first %>
-      </div>
-    <% end %>
+    <%= form.text_field :email, data: { controller: "validator", validator_url_value: "users/validate/email" }, class: "input #{"input-invalid" if @user.errors[:email].any?}" %>
   </div>
   <div class="mb-4">
     <%= form.label :password, class: "block mb-2" %>
-    <%= form.password_field :password, 'data-validate-url': '/users/validate/name', class: "text-field #{"text-field--invalid" if @user.errors[:password].any?}" %>
-    <% if @user.errors[:password].any? %>
-      <div class="text-red-500">
-        <%= @user.errors[:password].first %>
-      </div>
-    <% end %>
+    <%= form.password_field :password, require: true, class: "input #{"input-invalid" if @user.errors[:password].any?}" %>
   </div>
 
   <button type="submit" class="btn-filled block w-full text-center">

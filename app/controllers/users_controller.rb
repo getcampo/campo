@@ -24,14 +24,12 @@ class UsersController < ApplicationController
   end
 
   # constraints by routes
-  # attribute: /name|username|email|password/
+  # attribute: /username|email/
   def validate
-    user = User.new(params[:attribute] => params[:value])
+    user = User.new(user_params)
     user.valid?
-    errors = user.errors[params[:attribute]]
     render json: {
-      valid: errors.empty?,
-      message: errors.first
+      errors: user.errors[params[:attribute]]
     }
   end
 

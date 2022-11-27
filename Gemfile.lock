@@ -302,6 +302,8 @@ GEM
       declarative (< 0.1.0)
       trailblazer-option (>= 0.1.1, < 0.2.0)
       uber (< 0.2.0)
+    requestjs-rails (0.0.10)
+      rails (>= 6.0.0)
     retriable (3.1.2)
     rexml (3.2.5)
     rouge (4.0.0)
@@ -393,6 +395,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   redcarpet
   redis (~> 4.0)
+  requestjs-rails
   rouge
   selenium-webdriver
   sidekiq

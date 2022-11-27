@@ -21,7 +21,7 @@ class User < ApplicationRecord
     admin: 1
   }
 
-  USERNAME_REGEXP = /\A[a-zA-Z]\w+\z/
+  USERNAME_REGEXP = /\A[a-zA-Z0-9][a-zA-Z0-9\-]{1,61}[a-zA-Z0-9]\z/
 
   validates :name, :username, :email, presence: true
   validates :username, :email, uniqueness: { case_sensitive: false }
