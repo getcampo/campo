@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create]
   end
 
-  resource :setup, only: [:show, :update], controller: 'setup'
-
   get '/search', to: 'search#index', as: :search
 
   resources :forums, only: [:index, :show] do

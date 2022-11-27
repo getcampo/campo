@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   include AuthPassword
   layout 'base'
 
-  skip_before_action :require_site
   before_action :require_auth_password_enabled, only: [:create]
 
   def new
@@ -13,9 +12,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.where("lower(username) = lower(:login) or lower(email) = lower(:login)", login: params[:login]).first
+    user = User.where(email: user_params[:email]).first
 
-    if user&.authenticate(params[:password])
+    if user&.authenticate(user_params[:password])
       sign_in(user)
       redirect_to session.delete(:return_to) || root_path
     else
