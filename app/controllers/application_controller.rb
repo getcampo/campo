@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_site
-    Current.site = Site.first_or_create
+    Current.site = Site.first || Site.create_default
   end
 end

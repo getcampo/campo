@@ -1,10 +1,8 @@
 class CreateSites < ActiveRecord::Migration[5.2]
   def change
     create_table :sites do |t|
-      t.string :title
+      t.string :name
       t.string :description
-      t.string :logo
-      t.string :icon
 
       t.timestamps
     end

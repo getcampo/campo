@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   include AuthPassword
-  layout 'base'
+  layout 'session'
 
   before_action :require_auth_password_enabled, only: [:create]
 

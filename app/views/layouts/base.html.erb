@@ -5,14 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="locale" content="<%= I18n.locale %>">
 
-    <% if Current.site %>
-      <title><%= "#{@page_title} - " if @page_title %><%= Current.site.title %></title>
-      <meta name="description" content="<%= Current.site.description %>">
-      <link rel="icon" href="<%= Current.site.icon.thumb.url %>">
-    <% else %>
-      <title>Campo</title>
-      <link rel="icon" href="<%= asset_path 'icon.png' %>">
-    <% end %>
+    <title><%= "#{@page_title} - " if @page_title %><%= Current.site.name %></title>
+    <meta name="description" content="<%= Current.site.description %>">
+    <link rel="icon" href="<%= site_icon_path Current.site %>">
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,14 +17,6 @@
 
     <% if Current.user %>
       <meta name="current-user-id" content="<%= Current.user.id %>">
-      <meta name="current-user-admin" content="<%= Current.user.admin? %>">
-    <% end %>
-
-    <meta name="turbolinks-cache-control" content="no-cache">
-
-    <% if ENV['SENTRY_DSN'].present? %>
-      <% sentry_dsn = URI(ENV['SENTRY_DSN']) %>
-      <script src="https://js.sentry-cdn.com/<%= sentry_dsn.user %>.min.js" crossorigin="anonymous"></script>
     <% end %>
 
     <%= yield(:head) %>
@@ -37,13 +24,5 @@
 
   <body class="bg-gray-100">
     <%= content_for?(:body) ? yield(:body) : yield %>
-
-    <% %w(notice alert).each do |type| %>
-      <% if flash[type] %>
-        <div class="snackbar animated fadeInUp" data-controller="snackbar" data-hide-on="5000">
-          <%= flash[type] %>
-        </div>
-      <% end %>
-    <% end %>
   </body>
 </html>

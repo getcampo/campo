@@ -1,17 +1,13 @@
 <% content_for :body do %>
-  <div class="main">
-    <div class="container">
-      <div class="session-logo">
-        <a href="<%= root_path %>">
-          <% if Current.site %>
-            <img src="<%= Current.site.logo.thumb.url %>">
-          <% else %>
-            <img src="<%= asset_path 'logo.png' %>">
-          <% end %>
-        </a>
-      </div>
-      <%= yield %>
+  <div class="max-w-md mx-auto p-4">
+    <div class="flex justify-center p-4">
+      <a href="<%= root_path %>">
+        <img src="<%= site_logo_path(Current.site) %>" class="object-fill h-[60px]">
+      </a>
     </div>
+
+    <%= yield %>
+
   </div>
 <% end %>
 

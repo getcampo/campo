@@ -4,15 +4,23 @@
 
 @layer components {
   .btn-filled {
-    @apply bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 shadow hover:shadow-md active:shadow-sm rounded-full min-w-[88px];
+    @apply h-[40px] flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 shadow hover:shadow-md active:shadow-sm rounded-full;
   }
 
   .btn-outlined {
-    @apply bg-white hover:bg-blue-100/50 active:bg-blue-100/100 text-blue-500 py-2 px-4 outline outline-1 outline-gray-300 rounded-full min-w-[88px];
+    @apply h-[40px] flex justify-center items-center bg-white hover:bg-blue-100/50 active:bg-blue-100/100 text-blue-500 py-2 px-4 ring-1 ring-inset ring-offset-0 ring-gray-300 rounded-full;
   }
 
   .btn-text {
-    @apply bg-transparent hover:bg-blue-100/50 active:bg-blue-100/100 text-blue-500 py-2 px-4 rounded-full min-w-[88px];
+    @apply h-[40px] flex justify-center items-center bg-transparent hover:bg-blue-100/50 active:bg-blue-100/100 text-blue-500 py-2 px-4 rounded-full;
+  }
+
+  .btn-icon {
+    @apply w-[40px] h-[40px] flex justify-center items-center text-gray-700 hover:bg-gray-100 rounded-full;
+  }
+
+  .btn-icon svg {
+    fill: currentColor;
   }
 
   .label {
@@ -30,5 +38,25 @@
 
   .helper {
     @apply text-sm text-gray-500 mt-2;
+  }
+
+  .dropdown {
+    @apply relative;
+  }
+
+  .dropdown-menu {
+    @apply scale-0 transition-transform origin-top-left absolute top-full mt-1 flex flex-col py-2 gap-1 rounded w-64 bg-white shadow-md;
+  }
+
+  .dropdown:focus-within .dropdown-menu {
+    @apply scale-100;
+  }
+
+  .dropdown-item {
+    @apply flex items-center gap-4 py-2 px-4 hover:bg-gray-100 text-gray-700;
+  }
+
+  .dropdown-item svg {
+    fill: currentColor;
   }
 }

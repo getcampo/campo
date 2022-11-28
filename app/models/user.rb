@@ -14,7 +14,9 @@ class User < ApplicationRecord
   has_and_belongs_to_many :mentioned_posts, class_name: 'Post', join_table: 'mentions'
 
   has_many :attachments
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar do |attachable|
+    attachable.variant :normal, resize_to_fit: [160, 160]
+  end
 
   enum role: {
     default: 0,
